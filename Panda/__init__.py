@@ -64,11 +64,6 @@ except Exception as e:
     sys.exit()
 
 
-from .helpers.functions.auto import autobot
-
-if not BOT_TOKEN:
-    PandaBot.loop.run_until_complete(autobot())
-
 if BOT_TOKEN is not None:
     PandaBot.tgbot = tgbot = PandaUserbotSession(
         "BOT_TOKEN",
