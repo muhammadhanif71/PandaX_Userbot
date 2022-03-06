@@ -17,7 +17,6 @@ from .utils import P, M, V, A
 
 try:
     LOGS.info("Memulai PandaUserbot")
-    Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
     LOGS.info("Asistant Bot berhasil")
 except Exception as e:
     LOGS.error(f"{e}")
@@ -34,6 +33,7 @@ async def memulai():
 
 print("🛠 Sedang memperoses.....")
 Panda.PandaBot.loop.run_until_complete(memulai())
+Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
 print("Berhasil Mengaktifkan Userbot")
 Panda.PandaBot.loop.run_until_complete(utils.join())
 
