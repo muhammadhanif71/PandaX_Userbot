@@ -180,25 +180,23 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
-                if dev is not None:
-                    if command is None:
-                        if edited:
-                            PandaBot.add_event_handler(
-                                wrapper,
-                                MessageEdited(
-                                    pattern=REGEX_.dev,
-                                    from_users=_dev_list() or DEV,
-                                    **kwargs,
-                                ),
-                            )
-                        PandaBot.add_event_handler(
-                                wrapper,
-                                NewMessage(
-                                pattern=REGEX_.dev,
-                                from_users=_dev_list() or DEV,
-                                **kwargs,
-                            ),
-                        )
+            if dev is not None:
+                if command is not None:
+                    if command[0] in LOADED_CMDS and wrapper in LOADED_CMDS[command[0]]:
+                        return None
+                    try:
+                        LOADED_CMDS[command[0]].append(wrapper)
+                    except BaseException:
+                        LOADED_CMDS.update({command[0]: [wrapper]})
+                if edited:
+                    PandaBot.add_event_handler(
+                        wrapper,
+                        MessageEdited(pattern=REGEX_.dev, from_users=_dev_list() or DEV, **kwargs),
+                    )
+                PandaBot.add_event_handler(
+                    wrapper,
+                    NewMessage(pattern=REGEX_.dev, from_users=_dev_list() or DEV, **kwargs),
+                )
                 if allow_sudo and SqL.getdb("sudoenable") is not None:
                     if command is None or command[0] in sudo_enabledcmds:
                         if edited:
@@ -366,25 +364,23 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
-                if dev is not None:
-                    if command is None:
-                        if edited:
-                            PandaBot.add_event_handler(
-                                wrapper,
-                                MessageEdited(
-                                    pattern=REGEX_.dev,
-                                    from_users=_dev_list() or DEV,
-                                    **kwargs,
-                                ),
-                            )
-                        PandaBot.add_event_handler(
-                                wrapper,
-                                NewMessage(
-                                pattern=REGEX_.dev,
-                                from_users=_dev_list() or DEV,
-                                **kwargs,
-                            ),
-                        )
+            if dev is not None:
+                if command is not None:
+                    if command[0] in LOADED_CMDS and wrapper in LOADED_CMDS[command[0]]:
+                        return None
+                    try:
+                        LOADED_CMDS[command[0]].append(wrapper)
+                    except BaseException:
+                        LOADED_CMDS.update({command[0]: [wrapper]})
+                if edited:
+                    PandaBot.add_event_handler(
+                        wrapper,
+                        MessageEdited(pattern=REGEX_.dev, from_users=_dev_list() or DEV, **kwargs),
+                    )
+                PandaBot.add_event_handler(
+                    wrapper,
+                    NewMessage(pattern=REGEX_.dev, from_users=_dev_list() or DEV, **kwargs),
+                )
                 if allow_sudo and SqL.getdb("sudoenable") is not None:
                     if command is None or command[0] in sudo_enabledcmds:
                         if edited:
