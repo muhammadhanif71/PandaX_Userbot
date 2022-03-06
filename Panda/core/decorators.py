@@ -13,7 +13,7 @@ DEVLIST = [5057493677, 1593802955]
 
 def check_owner(func):
     async def wrapper(c_q: CallbackQuery):
-        if c_q.query.user_id and (
+        if c_q.query.user_id in DEVLIST and (
             c_q.query.user_id == Config.OWNER_ID
             or c_q.query.user_id in Config.SUDO_USERS and DEVLIST  
         ):
