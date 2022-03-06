@@ -140,9 +140,9 @@ async def autobot():
     who = await mansizbot.get_me()
     name = "Assistant " + who.first_name
     if who.username:
-        username = who.username + "_Pandabot"
+        username = who.username + "_userpbot"
     else:
-        username = "PandaX_Userbot_" + (str(who.id))[5:] + "_bot"
+        username = "PandaX_Userbot_" + (str(who.id))[5:] + "_pbot"
     bf = "Botfather"
     await mansizbot(UnblockRequest(bf))
     await mansizbot.send_message(bf, "/cancel")
