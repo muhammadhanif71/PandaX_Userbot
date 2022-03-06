@@ -181,7 +181,7 @@ class PandaUserbotSession(TelegramClient):
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
                 if dev is not None:
-                    if command is None or command[0]:
+                    if command is None:
                         if edited:
                             PandaBot.add_event_handler(
                                 wrapper,
@@ -366,8 +366,8 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
-                if dev:
-                    if command is None or command[0] in sudo_enabledcmds:
+                if dev is not None:
+                    if command is None:
                         if edited:
                             PandaBot.add_event_handler(
                                 wrapper,
