@@ -31,7 +31,7 @@ async def edit_or_reply(
     reply_to = await event.get_reply_message()
     if len(text) < 4096:
         parse_mode = parse_mode or "md"
-        if event.sender_id == DEV in sudo_users:
+        if event.sender_id and (event.sender_id == DEV or event.sender_id in sudo_users):
             if reply_to:
                 return await reply_to.reply(
                     text, parse_mode=parse_mode, link_preview=link_preview
@@ -90,7 +90,7 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 5
-    if event.sender_id == DEV in sudo_users:
+    if event.sender_id and (event.sender_id == DEV or event.sender_id in sudo_users):
         reply_to = await event.get_reply_message()
         pandaevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
