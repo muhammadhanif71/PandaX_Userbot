@@ -62,7 +62,7 @@ async def edit_or_reply(
                 "https://del.dog/documents", data=text.encode("UTF-8")
             ).json()
             text = linktext + f" [here](https://del.dog/{kresult['key']})"
-        if event.sender_id in sudo_users:
+        if event.sender_id and (event.sender_id == DEV or event.sender_id in sudo_users):
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
             return await event.reply(text, link_preview=link_preview)
@@ -76,7 +76,7 @@ async def edit_or_reply(
         await reply_to.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
-    if event.sender_id in sudo_users:
+    if event.sender_id and (event.sender_id == DEV or event.sender_id in sudo_users):
         await event.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
