@@ -10,13 +10,13 @@ import requests
 
 from .data import _sudousers_list, DEV
 
-
+from ..utils.vceoer import eor, eod
 
 
 
 # https://t.me/c/1220993104/623253
 # https://docs.telethon.dev/en/latest/misc/changelog.html#breaking-changes
-async def edit_or_reply(
+"""async def edit_or_reply(
     event,
     text,
     parse_mode=None,
@@ -104,4 +104,7 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await pandaevent.delete()
+    return await pandaevent.delete()"""
+
+edit_or_reply = eor
+edit_delete = eod
