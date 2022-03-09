@@ -2,13 +2,8 @@
 # Panda Userbot
 # Copyright cat userbot
 
-import asyncio
-import os
-import re
 
-import requests
 
-from .data import _sudousers_list, DEV
 
 from ..utils.vceoer import eor, eod
 
