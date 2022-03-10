@@ -11,10 +11,9 @@ from asyncio.exceptions import CancelledError
 from pathlib import Path
 from telethon.tl.functions.channels import JoinChannelRequest
 import requests
-from telethon import Button, functions, types, utils
+from telethon import functions, types, utils
 
 from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from datetime import timedelta
 
 from ..Config import Config
 from ..core.logger import logging
