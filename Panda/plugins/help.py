@@ -1,4 +1,6 @@
 from telethon import functions
+from time import sleep
+
 
 from Panda import pandaub
 Bot = pandaub
@@ -156,7 +158,9 @@ async def _(event):
         outstr = await plugininfo(input_str, event, flag)
         if outstr is None:
             return
-    await edit_or_reply(event, outstr)
+    dev = await edit_or_reply(event, outstr)
+    sleep(1000)
+    await dev.delete()
 
 
 @pandaub.ilhammansiz_cmd(
