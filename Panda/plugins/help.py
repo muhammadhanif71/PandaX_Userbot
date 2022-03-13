@@ -6,7 +6,7 @@ from ..Config import Config
 from ..core import CMD_INFO, GRP_INFO, PLG_INFO
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
-
+from . import mention
 cmdprefix = Config.COMMAND_HAND_LER
 
 plugin_category = "plugins"
@@ -16,6 +16,7 @@ plugin_category = "plugins"
 hemojis = {
     "plugins": "🗂",
     "modules": "📂",
+    "music": "🎙"
 }
 
 
@@ -94,21 +95,21 @@ async def plugininfo(input_str, event, flag):
 
 
 async def grpinfo():
-    outstr = "**Plugins in Pandauserbot are:**\n\n"
-    outstr += f"**🗂 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
-    category = ["modules", "plugins"]
+    outstr = "**Plugins in Panda-Userbot are:**\n\n"
+    outstr += f"**👤 Owner : ** {mention}\n\n"
+    category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
             outstr += f"`{plugin}`  "
-        outstr += "\n\n"
+        outstr += f"**📜 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     return outstr
 
 
 async def cmdlist():
     outstr = "**Total list of Commands in your Pandauserbot are :**\n\n"
-    category = ["modules", "plugins"]
+    category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} ** - {len(plugins)}\n\n"
@@ -124,9 +125,9 @@ async def cmdlist():
 
 @pandaub.ilhammansiz_cmd(
     pattern="help ?(-c|-p|-t)? ?(.*)?",
-    command=("helps", plugin_category),
+    command=("help", plugin_category),
     info={
-        "header": "To get guide for pandauserbot.",
+        "header": "To get guide for Panda-Userbot.",
         "description": "To get information or guide for the command or plugin",
         "note": "if command name and plugin name is same then you get guide for plugin. So by using this flag you get command guide",
         "flags": {
@@ -171,8 +172,8 @@ async def _(event):
 )
 async def _(event):
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, "help")
-    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
-    
+    botfer = await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+    await edit_or_reply(event, botfer)
 
 @pandaub.ilhammansiz_cmd(
     pattern="cmds(?: |$)(.*)",
