@@ -1,5 +1,4 @@
 from telethon import functions
-from time import sleep
 from Panda import pandaub
 Bot = pandaub
 from ..Config import Config
@@ -159,7 +158,7 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            helppan = await grpinfo()
+            await grpinfo()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
