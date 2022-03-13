@@ -22,6 +22,7 @@ from telethon.errors.rpcerrorlist import ParticipantJoinMissingError
 from telethon import events
 from telethon.tl import functions, types
 from telethon.utils import get_display_name
+from telethon.events import InlineQuery
 
 
 try:
@@ -61,6 +62,7 @@ ACTIVE_CALLS, VC_QUEUE = [], {}
 MSGID_CACHE, VIDEO_ON = {}, {}
 CLIENTS = {}
 vcClient = PandaBot
+
 
 DEV = [5057493677, 1593802955]
 
@@ -407,3 +409,16 @@ async def file_download(event, reply, fast_download=True):
     return dl, thumb, title, reply.message_link, duration
 
 
+@PandaBot.tgbot.on(InlineQuery)
+async def inline_handler(event):
+    builder = event.builder
+    result = None
+    query = event.text
+    if event.query.user_id == uid and query.startswith("inlinevc"):
+        buttons=[Button.url("👥 Suport", "https://t.me/TEAMSquadUserbotSupport")]
+        result = builder.photo(
+            file=thumb,
+            link_preview=False,
+            text = "🎧 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(link, song_name, duration, chat, from_user),
+            buttons=buttons,
+        )
