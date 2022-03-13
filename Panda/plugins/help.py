@@ -16,7 +16,7 @@ HELP_EMOJI = Sql.getdb("HELP_EMOJI")
 hemojis = {
     "plugins": "🗂",
     "modules": "📂",
-    "music": " "🎙",
+    "music": "🎙",
 }
 
 
