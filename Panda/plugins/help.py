@@ -1,6 +1,6 @@
 from telethon import functions
 from time import sleep
-from Panda import pandaub, SqL
+from Panda import pandaub
 Bot = pandaub
 from ..Config import Config
 from ..core import CMD_INFO, GRP_INFO, PLG_INFO
@@ -146,7 +146,7 @@ async def _(event):
     "To get guide for pandauserbot."
     flag = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
-    reply_to_id = await reply_id(event)
+    await reply_id(event)
     if flag and flag == "-c" and input_str:
         outstr = await cmdinfo(input_str, event)
         if outstr is None:
