@@ -116,6 +116,7 @@ def main_menu():
     return text, buttons
 
 
+
 def command_in_category(cname):
     cmds = 0
     for i in GRP_INFO[cname]:
@@ -466,6 +467,12 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 Button.inline(text="Show Options.", data="show_pmpermit_options"),
             ]
+        elif string == "vcinline":
+            vctext = "🎧 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(link, song_name, duration, chat, from_user)
+            buttons = [
+                Button.url("👤Grup Support", "https://t.me/TEAMSquadUserbotSupport"),
+            ]
+            await event.answer(text, buttons)
             PANDA_IMG = gvarstatus("pmpermit_pic") or None
             query = gvarstatus("pmpermit_text")
             if PANDA_IMG and PANDA_IMG.endswith((".jpg", ".jpeg", ".png")):
@@ -565,7 +572,6 @@ async def on_plugin_callback_query_handler(event):
 @PandaBot.tgbot.on(callbackquery.CallbackQuery(data=re.compile(b"ilhammansiz")))
 async def on_plugin_callback_query_handler(event):
     await event.edit(
-        file=ilhammansiez,
         link_preview=True,
         buttons=[
             Button.url("🤖 SUPPORT 🤖", "https://t.me/TEAMSquadUserbotSupport"),
