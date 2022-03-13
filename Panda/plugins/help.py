@@ -101,7 +101,7 @@ async def grpinfo():
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
-            outstr += f"`{plugin}`"
+            outstr += f"{HELP_EMOJI}`{plugin}`"
         outstr += f"👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     return outstr
 
@@ -166,7 +166,7 @@ async def _(event):
 
 
 
-pandaub.ilhammansiz_cmd(
+@pandaub.ilhammansiz_cmd(
     pattern="helpme$",
     command=("helpme", plugin_category),
     info={
