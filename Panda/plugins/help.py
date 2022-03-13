@@ -158,8 +158,7 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            results = await event.client.inline_query(Config.TG_BOT_USERNAME, "help")
-            await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+            await grpinfo()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
@@ -167,21 +166,20 @@ async def _(event):
 
 
 @pandaub.ilhammansiz_cmd(
-    pattern="perintah(?: |$)(.*)",
-    command=("perintah", plugin_category),
+    pattern="helpme(?: |$)(.*)",
+    command=("helpme", plugin_category),
     info={
-        "header": "To show list of cmds.",
-        "description": "if no input is given then will show list of all commands.",
+        "header": "Inline bot",
+        "description": "Help via inline Bot",
         "usage": [
-            "{tr}cmds for all cmds",
-            "{tr}cmds <plugin name> for paticular plugin",
+            "{tr}helpme",
         ],
     },
 )
 async def _(event):
-    outstr = await grpinfo()
-    await edit_or_reply(event, outstr)
-
+    results = await event.client.inline_query(Config.TG_BOT_USERNAME, "help")
+    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+    
 
 @pandaub.ilhammansiz_cmd(
     pattern="cmds(?: |$)(.*)",
