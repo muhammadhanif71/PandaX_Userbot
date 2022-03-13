@@ -467,10 +467,6 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 Button.inline(text="Show Options.", data="show_pmpermit_options"),
             ]
-        elif string == "vcinline":
-             buttons = [
-                Button.url("👤Grup Support", "https://t.me/TEAMSquadUserbotSupport"),
-            ]
             PANDA_IMG = gvarstatus("pmpermit_pic") or None
             query = gvarstatus("pmpermit_text")
             if PANDA_IMG and PANDA_IMG.endswith((".jpg", ".jpeg", ".png")):
