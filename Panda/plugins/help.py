@@ -158,7 +158,7 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            await grpinfo()
+            outstr = await grpinfo()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
@@ -166,13 +166,13 @@ async def _(event):
 
 
 @pandaub.ilhammansiz_cmd(
-    pattern="helpme(?: |$)(.*)",
-    command=("helpme", plugin_category),
+    pattern="inline(?: |$)(.*)",
+    command=("inline", plugin_category),
     info={
         "header": "Inline bot",
         "description": "Help via inline Bot",
         "usage": [
-            "{tr}helpme",
+            "{tr}inline",
         ],
     },
 )
