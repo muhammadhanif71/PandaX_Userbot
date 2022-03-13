@@ -146,6 +146,7 @@ async def _(event):
     flag = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
     await reply_id(event)
+    outstr = await grpinfo()
     if flag and flag == "-c" and input_str:
         outstr = await cmdinfo(input_str, event)
         if outstr is None:
@@ -156,20 +157,6 @@ async def _(event):
             return
     await edit_or_reply(event, outstr)
 
-@pandaub.ilhammansiz_cmd(
-    pattern="help(?: |$)(.*)",
-    command=("help", plugin_category),
-    info={
-        "header": "Inline bot",
-        "description": "Help ",
-        "usage": [
-            "{tr}help",
-        ],
-    },
-)
-async def _(event):
-    outstr = await grpinfo()
-    await edit_or_reply(event, outstr)
 
 @pandaub.ilhammansiz_cmd(
     pattern="inline(?: |$)(.*)",
