@@ -1,5 +1,5 @@
 from telethon import functions
-
+from time import sleep
 from Panda import pandaub
 Bot = pandaub
 from ..Config import Config
@@ -158,11 +158,42 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            results = await event.client.inline_query(Config.TG_BOT_USERNAME, "help")
-            await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+            helppan = await grpinfo()
+            sleep(1000)
+            await helppan.delete()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
+
+
+
+
+pandaub.ilhammansiz_cmd(
+    pattern="helpme$",
+    command=("helpme", plugin_category),
+    info={
+        "header": "Help To inline bot",
+        "description": "Help Via inline bot",
+        "usage": "{tr}helpme",
+    },
+)
+async def helome(event):
+    try:
+        tgbotusername = Config.TG_BOT_USERNAME
+        if tgbotusername is not None:
+            results = await event.client.inline_query(tgbotusername, "help")
+            await results[0].click(
+                event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
+            )
+            await event.delete()
+        else:
+            await edit_or_reply(event,
+                "`The bot doesn't work! Please set the Bot Token and Username correctly. The module has been stopped..`"
+            )
+    except Exception:
+        return await edit_or_reply(event,
+            "`You cannot send inline results in this chat (caused by SendInlineBotResultRequest)`"
+        )
 
 
 @pandaub.ilhammansiz_cmd(
