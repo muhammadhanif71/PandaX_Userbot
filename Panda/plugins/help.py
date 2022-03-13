@@ -98,14 +98,15 @@ async def plugininfo(input_str, event, flag):
 
 async def grpinfo():
     outstr = "**Plugins in Panda-Userbot are:**\n\n"
-    outstr += f"**👤 Owner : ** {mention}\n\n"
+    outstr += f"**👤 Owner : ** {mention}\n"
+    outstr += f"**📜 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
             outstr += f"`{plugin}`  "
-        outstr += f"**📜 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
+        outstr += "\n\n"
     return outstr
 
 
