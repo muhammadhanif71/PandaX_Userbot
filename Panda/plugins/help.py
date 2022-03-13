@@ -1,21 +1,22 @@
 from telethon import functions
 from time import sleep
-from Panda import pandaub
+from Panda import pandaub, SqL
 Bot = pandaub
 from ..Config import Config
 from ..core import CMD_INFO, GRP_INFO, PLG_INFO
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
-
+from . import mention
 cmdprefix = Config.COMMAND_HAND_LER
 
 plugin_category = "plugins"
 
-
+HELP_EMOJI = Sql.getdb("HELP_EMOJI")
 
 hemojis = {
     "plugins": "🗂",
     "modules": "📂",
+    "music": " "🎙",
 }
 
 
@@ -94,21 +95,21 @@ async def plugininfo(input_str, event, flag):
 
 
 async def grpinfo():
-    outstr = "**Plugins in Pandauserbot are:**\n\n"
-    outstr += f"**🗂 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
-    category = ["modules", "plugins"]
+    outstr = "**Plugins in Panda-Userbot are:**\n\n"
+    outstr += f"**👤 Owner : ** `{mention}\n\n"
+    category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
-            outstr += f"`{plugin}`  "
-        outstr += "\n\n"
+            outstr += f"{HELP_EMOJI}`{plugin}`"
+        outstr += f"👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     return outstr
 
 
 async def cmdlist():
-    outstr = "**Total list of Commands in your Pandauserbot are :**\n\n"
-    category = ["modules", "plugins"]
+    outstr = "**Total list of Commands in your Panda-Userbot are :**\n\n"
+    category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} ** - {len(plugins)}\n\n"
@@ -145,7 +146,7 @@ async def _(event):
     "To get guide for pandauserbot."
     flag = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
-    await reply_id(event)
+    reply_to_id = await reply_id(event)
     if flag and flag == "-c" and input_str:
         outstr = await cmdinfo(input_str, event)
         if outstr is None:
