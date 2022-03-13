@@ -468,11 +468,9 @@ async def inline_handler(event):  # sourcery no-metrics
                 Button.inline(text="Show Options.", data="show_pmpermit_options"),
             ]
         elif string == "vcinline":
-            vctext = "🎧 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(link, song_name, duration, chat, from_user)
-            buttons = [
+             buttons = [
                 Button.url("👤Grup Support", "https://t.me/TEAMSquadUserbotSupport"),
             ]
-            await event.answer(text, buttons)
             PANDA_IMG = gvarstatus("pmpermit_pic") or None
             query = gvarstatus("pmpermit_text")
             if PANDA_IMG and PANDA_IMG.endswith((".jpg", ".jpeg", ".png")):
