@@ -108,7 +108,7 @@ async def grpinfo():
 
 async def cmdlist():
     outstr = "**Total list of Commands in your Panda-Userbot are :**\n\n"
-    category = ["modules", "plugins", "music"]
+    category = ["modules", "plugins"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} ** - {len(plugins)}\n\n"
@@ -158,7 +158,7 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            await grpinfo()
+            outstr = await grpinfo()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
