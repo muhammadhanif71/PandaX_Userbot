@@ -102,7 +102,7 @@ async def grpinfo():
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
-            outstr += f"{HELP_EMOJI}`{plugin}`"
+            outstr += f"`{plugin}`"
         outstr += f"👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     return outstr
 
@@ -160,8 +160,6 @@ async def _(event):
             outstr = await grpinfo()
         else:
             helppan = await grpinfo()
-            sleep(1000)
-            await helppan.delete()
             await event.delete()
             return
     await edit_or_reply(event, outstr)
