@@ -1,21 +1,21 @@
 from telethon import functions
-from Panda import pandaub, Sql
+
+from Panda import pandaub
 Bot = pandaub
 from ..Config import Config
 from ..core import CMD_INFO, GRP_INFO, PLG_INFO
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
-from . import mention
+
 cmdprefix = Config.COMMAND_HAND_LER
 
 plugin_category = "plugins"
 
-HELP_EMOJI = Sql.getdb("HELP_EMOJI")
+
 
 hemojis = {
     "plugins": "🗂",
     "modules": "📂",
-    "music": "🎙",
 }
 
 
@@ -94,21 +94,21 @@ async def plugininfo(input_str, event, flag):
 
 
 async def grpinfo():
-    outstr = "**Plugins in Panda-Userbot are:**\n\n"
-    outstr += f"**👤 Owner : ** `{mention}\n\n"
-    category = ["modules", "plugins", "music"]
+    outstr = "**Plugins in Pandauserbot are:**\n\n"
+    outstr += f"**🗂 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
+    category = ["modules", "plugins"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} **({len(plugins)})\n"
         for plugin in plugins:
-            outstr += f"{HELP_EMOJI}`{plugin}`"
-        outstr += f"👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
+            outstr += f"`{plugin}`  "
+        outstr += "\n\n"
     return outstr
 
 
 async def cmdlist():
-    outstr = "**Total list of Commands in your Panda-Userbot are :**\n\n"
-    category = ["modules", "plugins", "music"]
+    outstr = "**Total list of Commands in your Pandauserbot are :**\n\n"
+    category = ["modules", "plugins"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} ** - {len(plugins)}\n\n"
@@ -145,7 +145,7 @@ async def _(event):
     "To get guide for pandauserbot."
     flag = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
-    await reply_id(event)
+    reply_to_id = await reply_id(event)
     if flag and flag == "-c" and input_str:
         outstr = await cmdinfo(input_str, event)
         if outstr is None:
@@ -158,40 +158,29 @@ async def _(event):
         if flag == "-t":
             outstr = await grpinfo()
         else:
-            outstr = await grpinfo()
+            results = await event.client.inline_query(Config.TG_BOT_USERNAME, "help")
+            await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
             await event.delete()
             return
     await edit_or_reply(event, outstr)
 
 
 
-
 @pandaub.ilhammansiz_cmd(
-    pattern="helpme$",
-    command=("helpme", plugin_category),
+    pattern="perintah(?: |$)(.*)",
+    command=("perintah", plugin_category),
     info={
-        "header": "Help To inline bot",
-        "description": "Help Via inline bot",
-        "usage": "{tr}helpme",
+        "header": "To show list of cmds.",
+        "description": "if no input is given then will show list of all commands.",
+        "usage": [
+            "{tr}cmds for all cmds",
+            "{tr}cmds <plugin name> for paticular plugin",
+        ],
     },
 )
-async def helome(event):
-    try:
-        tgbotusername = Config.TG_BOT_USERNAME
-        if tgbotusername is not None:
-            results = await event.client.inline_query(tgbotusername, "help")
-            await results[0].click(
-                event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-            )
-            await event.delete()
-        else:
-            await edit_or_reply(event,
-                "`The bot doesn't work! Please set the Bot Token and Username correctly. The module has been stopped..`"
-            )
-    except Exception:
-        return await edit_or_reply(event,
-            "`You cannot send inline results in this chat (caused by SendInlineBotResultRequest)`"
-        )
+async def _(event):
+    outstr = await grpinfo()
+    await edit_or_reply(event, outstr)
 
 
 @pandaub.ilhammansiz_cmd(
