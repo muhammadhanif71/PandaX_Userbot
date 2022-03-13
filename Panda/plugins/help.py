@@ -124,7 +124,7 @@ async def cmdlist():
 
 @pandaub.ilhammansiz_cmd(
     pattern="help ?(-c|-p|-t)? ?(.*)?",
-    command=("help", plugin_category),
+    command=("helps", plugin_category),
     info={
         "header": "To get guide for pandauserbot.",
         "description": "To get information or guide for the command or plugin",
@@ -154,16 +154,22 @@ async def _(event):
         outstr = await plugininfo(input_str, event, flag)
         if outstr is None:
             return
-    else:
-        if flag == "-t":
-            outstr = await grpinfo()
-        else:
-            outstr = await grpinfo()
-            await event.delete()
-            return
     await edit_or_reply(event, outstr)
 
-
+@pandaub.ilhammansiz_cmd(
+    pattern="help(?: |$)(.*)",
+    command=("help", plugin_category),
+    info={
+        "header": "Inline bot",
+        "description": "Help ",
+        "usage": [
+            "{tr}help",
+        ],
+    },
+)
+async def _(event):
+    outstr = await grpinfo()
+    await edit_or_reply(event, outstr)
 
 @pandaub.ilhammansiz_cmd(
     pattern="inline(?: |$)(.*)",
