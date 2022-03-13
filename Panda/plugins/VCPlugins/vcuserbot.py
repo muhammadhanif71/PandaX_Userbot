@@ -14,7 +14,7 @@ from pytgcalls.exceptions import NotConnectedError
 from requests.exceptions import MissingSchema
 from telethon import events
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError
-
+from ..helpers.utils import reply_id
 import requests
 
 def mansiez(**args):
@@ -97,12 +97,9 @@ async def play_music_(event):
                 link, song_name, duration, chat, from_user
         )
         try:
-            await xx.reply(
-            text,
-            file=thumb,
-            link_preview=False,
-            parse_mode="html",
-            )
+            reply_to_id = await reply_id(event)
+            results = await event.client.inline_query(Config.TG_BOT_USERNAME, "inlinevc")
+            await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
             await xx.delete()
         except ChatSendMediaForbiddenError:
             await eor(xx, text, link_preview=False)
