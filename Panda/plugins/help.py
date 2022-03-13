@@ -1,5 +1,5 @@
 from telethon import functions
-from Panda import pandaub
+from Panda import pandaub, Sql
 Bot = pandaub
 from ..Config import Config
 from ..core import CMD_INFO, GRP_INFO, PLG_INFO
@@ -108,7 +108,7 @@ async def grpinfo():
 
 async def cmdlist():
     outstr = "**Total list of Commands in your Panda-Userbot are :**\n\n"
-    category = ["modules", "plugins"]
+    category = ["modules", "plugins", "music"]
     for panda in category:
         plugins = GRP_INFO[panda]
         outstr += f"**{hemojis[panda]} {panda.title()} ** - {len(plugins)}\n\n"
