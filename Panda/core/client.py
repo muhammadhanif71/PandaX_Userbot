@@ -65,6 +65,7 @@ class PandaUserbotSession(TelegramClient):
         private_only: bool = False,
         allow_sudo: bool = True,
         dev: bool = True,
+        dual: bool = True,
         edited: bool = True,
         forword=False,
         disable_errors: bool = False,
@@ -220,6 +221,15 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
+                if dual:
+                    PandaBot.tgbot.add_event_handler(
+                        wrapper,
+                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    )
+                PandaBot.tgbot.add_event_handler(
+                    wrapper,
+                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                )
                 if dev is not None:
                     if command is not None or command[0]:
                         if edited:
@@ -232,6 +242,23 @@ class PandaUserbotSession(TelegramClient):
                                 ),
                             )
                         PandaBot.add_event_handler(
+                            wrapper,
+                            NewMessage(
+                                pattern=REGEX_.dev,
+                                from_users=_dev_list() or DEV,
+                                **kwargs,
+                            ),
+                        )
+                        if dual:
+                            PandaBot.tgbot.add_event_handler(
+                                wrapper,
+                                MessageEdited(
+                                    pattern=REGEX_.dev,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
+                        PandaBot.tgbot.add_event_handler(
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.dev,
