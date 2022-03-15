@@ -32,14 +32,6 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-MODE-USERBOT2 = os.environ.get("MODE-USERBOT2", None) or Var.STRING_SESSION
-MODE-USERBOT3 = (os.environ.get("MODE-USERBOT3", None) or Var.STRING_SESSION
-MODE-USERBOT4 = os.environ.get("MODE-USERBOT4", None) or Var.STRING_SESSION
-MODE-USERBOT5 = (os.environ.get("MODE-USERBOT5", None) or Var.STRING_SESSION
-MODE-USERBOT6 = os.environ.get("MODE-USERBOT6", None) or Var.STRING_SESSION
-MODE-USERBOT7 = (os.environ.get("MODE-USERBOT7", None) or Var.STRING_SESSION
-MODE-USERBOT8 = os.environ.get("MODE-USERBOT8", None) or Var.STRING_SESSION
-MODE-USERBOT9 = (os.environ.get("MODE-USERBOT9", None) or Var.STRING_SESSION
 
 
 
@@ -56,7 +48,7 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-BOT_MODE = Var.STRING_SESSION = MODE-USERBOT2 = MODE-USERBOT3 = MODE-USERBOT4 = MODE-USERBOT5 = MODE-USERBOT6= MODE-USERBOT7 = MODE-USERBOT8 = MODE-USERBOT9 
+BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
 
 try:
@@ -67,7 +59,7 @@ try:
         PandaBot = None
     else:
          PandaBot = PandaUserbotSession(
-            session=StringSession(str(BOT_MODE)),
+            session=StringSession(str(Var.STRING_SESSION)),
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
             loop=loop,
@@ -76,25 +68,6 @@ try:
             auto_reconnect=True,
             connection_retries=None,
         )  
-    if not Var.STRING_SESSION:
-        failed += 1
-    if not MODE-USERBOT2:
-        failed += 1
-    if not MODE-USERBOT3:
-        failed += 1
-    if not MODE-USERBOT4:
-        failed += 1
-    if not MODE-USERBOT5:
-        failed += 1
-    if not MODE-USERBOT6:
-        failed += 1
-    if not MODE-USERBOT7:
-        failed += 1
-    if not MODE-USERBOT8:
-        failed += 1
-    if not MODE-USERBOT9:
-        failed += 1
-    return failed
 except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
