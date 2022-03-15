@@ -101,8 +101,13 @@ else:
 
         sys_exit()
 
-if BOT_MODE:
-    PandaBot = PandaBot.tgbot = tgbot
+def DUAL_MODE():
+    try:
+        BOT_MODE
+        return DUAL
+    except BaseException:
+        return USER
+
 
 bot = PandaBot
 pandaub = PandaBot
