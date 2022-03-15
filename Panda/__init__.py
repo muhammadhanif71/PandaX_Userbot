@@ -1,6 +1,7 @@
 # Copyright (C) 2020 Catuserbot <https://github.com/sandy1709/catuserbot>
 # Import Panda Userbot
 # Recode by Ilham Mansiz
+# t.me/PandaUserbot
 # ••••••••••••••••••••••√•••••••••••••√√√••••••••
 
 
@@ -31,6 +32,17 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
+MODE-USERBOT2 = os.environ.get("MODE-USERBOT2", None)
+MODE-USERBOT3 = (os.environ.get("MODE-USERBOT3", None)
+MODE-USERBOT4 = os.environ.get("MODE-USERBOT4", None)
+MODE-USERBOT5 = (os.environ.get("MODE-USERBOT5", None)
+MODE-USERBOT6 = os.environ.get("MODE-USERBOT6", None)
+MODE-USERBOT7 = (os.environ.get("MODE-USERBOT7", None)
+MODE-USERBOT8 = os.environ.get("MODE-USERBOT8", None)
+MODE-USERBOT9 = (os.environ.get("MODE-USERBOT9", None)
+
+
+
 
 StartTime = time.time()
 pandaversion = __version__
@@ -44,7 +56,7 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-BOT_MODE = SqL.getdb("BOTMODE")
+BOT_MODE = Var.STRING_SESSION = MODE-USERBOT2 = MODE-USERBOT3 = MODE-USERBOT4 = MODE-USERBOT5 = MODE-USERBOT6= MODE-USERBOT7 = MODE-USERBOT8 = MODE-USERBOT9 
 DUAL_MODE = SqL.getdb("DUAL_MODE")
 
 try:
@@ -55,7 +67,7 @@ try:
         PandaBot = None
     else:
          PandaBot = PandaUserbotSession(
-            session=StringSession(str(Var.STRING_SESSION)),
+            session=StringSession(str(BOT_MODE)),
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
             loop=loop,
