@@ -44,13 +44,13 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-BOT_MODE = Sql.getdb("BOTMODE")
-DUAL_MODE = Sql.getdb("DUAL_MODE")
+BOT_MODE = SqL.getdb("BOTMODE")
+DUAL_MODE = SqL.getdb("DUAL_MODE")
 
 try:
     if BOT_MODE:
         if DUAL_MODE:
-            Sql.deldb("DUAL_MODE")
+            SqL.deldb("DUAL_MODE")
             DUAL_MODE = False
         PandaBot = None
     else:
@@ -89,9 +89,9 @@ from .helpers.functions.auto import autobot
 if not BOT_MODE:
     PandaBot.loop.run_until_complete(autobot())
 else:
-    if not Sql.getdb("BOT_TOKEN") and BOT_TOKEN:
-        Sql.setdb("BOT_TOKEN", BOT_TOKEN)
-    if not Sql.setdb("BOT_TOKEN"):
+    if not SqL.getdb("BOT_TOKEN") and BOT_TOKEN:
+        SqL.setdb("BOT_TOKEN", BOT_TOKEN)
+    if not SqL.setdb("BOT_TOKEN"):
         LOGS.info('"BOT_TOKEN" not Found! Please add it, in order to use "MODE BoT"')
         import sys
 
