@@ -76,6 +76,25 @@ try:
             auto_reconnect=True,
             connection_retries=None,
         )  
+    if not Var.STRING_SESSION:
+        failed += 1
+    if not MODE-USERBOT2:
+        failed += 1
+    if not MODE-USERBOT3:
+        failed += 1
+    if not MODE-USERBOT4:
+        failed += 1
+    if not MODE-USERBOT5:
+        failed += 1
+    if not MODE-USERBOT6:
+        failed += 1
+    if not MODE-USERBOT7:
+        failed += 1
+    if not MODE-USERBOT8:
+        failed += 1
+    if not MODE-USERBOT9:
+        failed += 1
+    return failed
 except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
