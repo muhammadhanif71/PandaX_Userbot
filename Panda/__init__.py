@@ -44,13 +44,18 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-if Var.STRING_SESSION:
-    session = StringSession(str(Var.STRING_SESSION))
+BOT_MODE = Sql.getdb("BOTMODE")
+DUAL_MODE = Sql.getdb("DUAL_MODE")
+
+
+if BOT_MODE:
+    if DUAL_MODE:
+        Sql.deldb("DUAL_MODE")
+        DUAL_MODE = False
+    PandaBot = None
 else:
-    session = "pandauserbot"
-try:
     PandaBot = PandaUserbotSession(
-        session=session,
+        session=StringSession(str(Var.STRING_SESSION)),
         api_id=Var.APP_ID,
         api_hash=Var.API_HASH,
         loop=loop,
@@ -63,10 +68,19 @@ except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
 
+
 from .helpers.functions.auto import autobot
 
-if not BOT_TOKEN:
+if not BOT_MODE:
     PandaBot.loop.run_until_complete(autobot())
+else:
+    if not Sql.getdb("BOT_TOKEN") and BOT_TOKEN:
+        Sql.setdb("BOT_TOKEN", BOT_TOKEN)
+    if not Sql.setdb("BOT_TOKEN"):
+        LOGS.info('"BOT_TOKEN" not Found! Please add it, in order to use "MODE BoT"')
+        import sys
+
+        sys_exit()
 
 if BOT_TOKEN is not None:
     PandaBot.tgbot = tgbot = PandaUserbotSession(
@@ -79,6 +93,10 @@ if BOT_TOKEN is not None:
     ).start(bot_token=BOT_TOKEN)
 else:
     PandaBot.tgbot = tgbot = None
+
+
+if BOT_MODE:
+    PandaBot = PandaBot.tgbot = tgbot
 
 bot = PandaBot
 pandaub = PandaBot
