@@ -221,12 +221,12 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
-                if dual:
-                    PandaBot.add_event_handler(
+                if dual and SqL.getdb("MODE_DUAL"):
+                    PandaBot.tgbot.add_event_handler(
                         wrapper,
                         MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
-                PandaBot.add_event_handler(
+                PandaBot.tgbot.add_event_handler(
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
@@ -249,8 +249,8 @@ class PandaUserbotSession(TelegramClient):
                                 **kwargs,
                             ),
                         )
-                        if dual:
-                            PandaBot.add_event_handler(
+                        if dual and SqL.getdb("MODE_DUAL"):
+                            PandaBot.tgbot.add_event_handler(
                                 wrapper,
                                 MessageEdited(
                                     pattern=REGEX_.dev,
@@ -258,7 +258,7 @@ class PandaUserbotSession(TelegramClient):
                                     **kwargs,
                                 ),
                             )
-                        PandaBot.add_event_handler(
+                        PandaBot.tgbot.add_event_handler(
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.dev,
