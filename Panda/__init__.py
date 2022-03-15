@@ -32,14 +32,14 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-MODE-USERBOT2 = os.environ.get("MODE-USERBOT2", None)
-MODE-USERBOT3 = (os.environ.get("MODE-USERBOT3", None)
-MODE-USERBOT4 = os.environ.get("MODE-USERBOT4", None)
-MODE-USERBOT5 = (os.environ.get("MODE-USERBOT5", None)
-MODE-USERBOT6 = os.environ.get("MODE-USERBOT6", None)
-MODE-USERBOT7 = (os.environ.get("MODE-USERBOT7", None)
-MODE-USERBOT8 = os.environ.get("MODE-USERBOT8", None)
-MODE-USERBOT9 = (os.environ.get("MODE-USERBOT9", None)
+MODE-USERBOT2 = os.environ.get("MODE-USERBOT2", None) or Var.STRING_SESSION
+MODE-USERBOT3 = (os.environ.get("MODE-USERBOT3", None) or Var.STRING_SESSION
+MODE-USERBOT4 = os.environ.get("MODE-USERBOT4", None) or Var.STRING_SESSION
+MODE-USERBOT5 = (os.environ.get("MODE-USERBOT5", None) or Var.STRING_SESSION
+MODE-USERBOT6 = os.environ.get("MODE-USERBOT6", None) or Var.STRING_SESSION
+MODE-USERBOT7 = (os.environ.get("MODE-USERBOT7", None) or Var.STRING_SESSION
+MODE-USERBOT8 = os.environ.get("MODE-USERBOT8", None) or Var.STRING_SESSION
+MODE-USERBOT9 = (os.environ.get("MODE-USERBOT9", None) or Var.STRING_SESSION
 
 
 
