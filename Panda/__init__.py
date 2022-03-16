@@ -101,7 +101,7 @@ else:
 
         sys_exit()
 
-def DUAL_MODE():
+def dual_mode():
     try:
         BOT_MODE
         return DUAL
