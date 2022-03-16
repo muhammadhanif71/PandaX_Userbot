@@ -59,7 +59,7 @@ try:
         PandaBot = None
     else:
          PandaBot = PandaUserbotSession(
-            session=StringSession(str(Var.STRING_SESSION)),
+            session=StringSession(str(Var.STRING_SESSION and BOT_TOKEN)),
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
             loop=loop,
@@ -114,7 +114,7 @@ def dual_mode():
         sys.exit()
 
 
-PandaBot = PandaBot = PandaBot.tgbot
+
 bot = PandaBot
 pandaub = PandaBot
 botvc = PandaBot
