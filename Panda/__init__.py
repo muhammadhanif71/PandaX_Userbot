@@ -110,11 +110,13 @@ except Exception as e:
 
 if BOT_MODE:
     PandaBot = PandaBot.tgbot = tgbot
-    bot = PandaBot
-    pandaub = PandaBot
-    botvc = PandaBot
-    Stark = PandaBot
-    petercordpanda_bot = pandaub
+    
+
+bot = PandaBot
+pandaub = PandaBot
+botvc = PandaBot
+Stark = PandaBot
+petercordpanda_bot = pandaub
 
 def dual_mode():
     try:
