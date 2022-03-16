@@ -258,10 +258,6 @@ def PandaVc_cmd(dec, **kwargs):
             vc_handler,
             events.NewMessage(**kwargs),
         )
-        asst.add_event_handler(
-            vc_handler,
-            events.NewMessage(**kwargs),
-        )
 
     return ult
 
