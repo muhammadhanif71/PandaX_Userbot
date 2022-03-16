@@ -71,7 +71,6 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             )
-        if BOT_TOKEN is not None:
             PandaBot.tgbot = tgbot = PandaUserbotSession(
                 "BOT_TOKEN",
                 api_id=Var.APP_ID,
@@ -80,7 +79,7 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             ).start(bot_token=BOT_TOKEN)
-        else:
+       else:
             PandaBot.tgbot = tgbot = None
 except Exception as e:
     print(f"STRING_SESSION and TOKEN- {str(e)}")
