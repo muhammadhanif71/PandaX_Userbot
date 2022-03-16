@@ -58,8 +58,8 @@ try:
             DUAL_MODE = False
         PandaBot = None
     else:
-         if Var.STRING_SESSION:
-             PandaBot = PandaUserbotSession(
+         if Var.STRING_SESSION and BOT_TOKEN:
+             PandaBot = PandaBot.tgbot = tgbot = PandaUserbotSession(
                 session=StringSession(str(Var.STRING_SESSION)),
                 api_id=Var.APP_ID,
                 api_hash=Var.API_HASH,
@@ -72,6 +72,7 @@ try:
 except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
+"""
 try:
     if BOT_TOKEN is not None:
         PandaBot.tgbot = tgbot = PandaUserbotSession(
@@ -87,7 +88,7 @@ try:
 except Exception as e:
     print(f"TOKEN EROR - {str(e)}")
     sys.exit()
-
+"""
 
 from .helpers.functions.auto import autobot
 
