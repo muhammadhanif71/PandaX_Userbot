@@ -119,8 +119,8 @@ petercordpanda_bot = pandaub
 from .Config import Config
 
 
-if Config.UPSTREAM_REPO == "NEW_USERBOT":
-    UPSTREAM_REPO_URL = "https://github.com/AftahBagas/New_Userbot"
+if Config.UPSTREAM_REPO == "PANDA_USERBOT":
+    UPSTREAM_REPO_URL = "https://github.com/ilhammansiz/PandaX_Userbot"
 else:
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
 
