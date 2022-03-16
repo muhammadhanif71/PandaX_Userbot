@@ -3,7 +3,7 @@ from platform import python_version
 
 from telethon import version
 import asyncio
-from Panda import StartTime, pandaversion, PandaBot, SqL, Mongodb, redisalive
+from Panda import StartTime, pandaversion, PandaBot, SqL, Mongodb, redisalive, dual_mode
 pandaub = PandaBot
 from ..Config import Config
 from ..helpers.functions import get_readable_time, check_data_base_heal_th
@@ -75,6 +75,7 @@ aliveess = f"""
 ☉ 👾 𝗧𝗲𝗹𝗲𝘁𝗵𝗼𝗻: `𝚅{version.__version__}`
 ☉ 🎙 𝗣𝘆𝘁𝗴𝗰𝗮𝗹𝗹𝘀: `𝚅{__version__}`
 ☉ 🐍 𝗣𝘆𝘁𝗵𝗼𝗻: `𝚅{python_version()}`
+☉ 🎭 Dual-Mode: {dual_mode()}
      
 ⟣✧✧✧✧✧✧✧✧✧✧✧✧✧✧⟢
 ╭━─━─━─━─━─━─━─━─━╮
