@@ -110,8 +110,8 @@ def dual_mode():
             SqL.deldb("DUAL_MODE")
             return False
     except Exception as e:
-    print(f"{str(e)}")
-    sys.exit()
+        print(f"{str(e)}")
+        sys.exit()
 
 
 
