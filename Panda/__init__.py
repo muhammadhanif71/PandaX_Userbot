@@ -112,6 +112,7 @@ if BOT_MODE:
     PandaBot = PandaBot.tgbot = tgbot
     
 
+
 bot = PandaBot
 pandaub = PandaBot
 botvc = PandaBot
@@ -130,6 +131,17 @@ def dual_mode():
         print(f"{str(e)}")
         sys.exit()
 
+def dual_duall():
+    try:
+        if SqL.getdb("DUAL_HNDLR") is not None:
+            duall = SqL.setdb("DUAL_HNDLR", "/") or [!?/]
+            return duall
+        else:
+            duall = SqL.setdb("DUAL_HNDLR", "/") or "/"
+            return duall
+    except Exception as e:
+        print(f"{str(e)}")
+        sys.exit()
 
 from .Config import Config
 
