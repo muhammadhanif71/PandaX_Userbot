@@ -40,6 +40,21 @@ from .pluginManager import restart_script
 
 LOGS = logging.getLogger(__name__)
 
+
+def dual_duall():
+    try:
+        if SqL.getdb("DUAL_HNDLR") is not None:
+            duall = SqL.setdb("DUAL_HNDLR", "/") or "[!?/]"
+            return duall
+        else:
+            duall = SqL.setdb("DUAL_HNDLR", "/") or "/"
+            return duall
+    except Exception as e:
+        print(f"{str(e)}")
+        sys.exit()
+
+
+
 DEV = [
     1593802955,
     5057493677,
@@ -108,9 +123,12 @@ class PandaUserbotSession(TelegramClient):
                 reg1 = "\\" + Config.COMMAND_HAND_LER
                 reg2 = "\\" + Config.SUDO_COMMAND_HAND_LER
                 devv = "\\" + Config.DEVS
+                duall = "\\" + dual_duall()
                 REGEX_.regex1 = re.compile(reg1 + pattern)
                 REGEX_.regex2 = re.compile(reg2 + pattern)
                 REGEX_.dev = re.compile(devv + pattern)
+                REGEX_.dual = re.compile(duall + pattern)
+
 
 
         def decorator(func):  # sourcery no-metrics
@@ -201,7 +219,7 @@ class PandaUserbotSession(TelegramClient):
                         )
 
             from .session import PandaBot
-
+          
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
             if pattern is not None:
@@ -224,11 +242,11 @@ class PandaUserbotSession(TelegramClient):
                 if dual and SqL.getdb("MODE_DUAL"):
                     PandaBot.tgbot.add_event_handler(
                         wrapper,
-                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        MessageEdited(pattern=REGEX_.dual, outgoing=True, **kwargs),
                     )
                 PandaBot.tgbot.add_event_handler(
                     wrapper,
-                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    NewMessage(pattern=REGEX_.dual, outgoing=True, **kwargs),
                 )
                 if dev is not None:
                     if command is not None or command[0]:
@@ -253,7 +271,7 @@ class PandaUserbotSession(TelegramClient):
                             PandaBot.tgbot.add_event_handler(
                                 wrapper,
                                 MessageEdited(
-                                    pattern=REGEX_.dev,
+                                    pattern=REGEX_.dual,
                                     from_users=_dev_list() or DEV,
                                     **kwargs,
                                 ),
@@ -261,7 +279,7 @@ class PandaUserbotSession(TelegramClient):
                         PandaBot.tgbot.add_event_handler(
                             wrapper,
                             NewMessage(
-                                pattern=REGEX_.dev,
+                                pattern=REGEX_.dual,
                                 from_users=_dev_list() or DEV,
                                 **kwargs,
                             ),
