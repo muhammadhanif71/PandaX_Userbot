@@ -53,7 +53,7 @@ from PandaXBahasa import get_string
 from Panda.Config import Config
 from Panda.core.data import _sudousers_list
 
-HNDLR = Config.COMMAND_HAND_LER
+HNDLR = Config.COMMAND_HAND_LER = Config.DEVS
 asst = PandaBot.tgbot
 UltVer = "VcPanda" 
 asstUserName = Config.TG_BOT_USERNAME
@@ -255,6 +255,10 @@ def PandaVc_cmd(dec, **kwargs):
                 )
 
         vcClient.add_event_handler(
+            vc_handler,
+            events.NewMessage(**kwargs),
+        )
+        asst.add_event_handler(
             vc_handler,
             events.NewMessage(**kwargs),
         )
