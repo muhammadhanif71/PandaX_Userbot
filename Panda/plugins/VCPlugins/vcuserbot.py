@@ -14,7 +14,6 @@ from pytgcalls.exceptions import NotConnectedError
 from requests.exceptions import MissingSchema
 from telethon import events
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError
-from Panda.helpers.utils import reply_id
 import requests
 
 def mansiez(**args):
