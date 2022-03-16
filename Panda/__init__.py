@@ -68,7 +68,7 @@ try:
                 connection=ConnectionTcpAbridged,
                 auto_reconnect=True,
                 connection_retries=None,
-            )
+            ).start(bot_token=BOT_TOKEN)
 except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
