@@ -79,8 +79,8 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             ).start(bot_token=BOT_TOKEN)
-       else:
-            PandaBot.tgbot = tgbot = None
+        else:
+             PandaBot.tgbot = tgbot = None
 except Exception as e:
     print(f"STRING_SESSION and TOKEN- {str(e)}")
     sys.exit()
