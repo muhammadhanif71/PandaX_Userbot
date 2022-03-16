@@ -96,21 +96,19 @@ async def play_music_(event):
                 link, song_name, duration, chat, from_user
         )
         try:
-            if:
-               await xx.reply(
-               text,
-               file=thumb,
-               link_preview=False,
-               parse_mode="html",
-               )
-               await xx.delete()
-            else:
-                 await asst.send_message(
-                 text,
-                 file=thumb,
-                 link_preview=False,
-                 parse_mode="html",
-                )
+            await xx.reply(
+            text,
+            file=thumb,
+            link_preview=False,
+            parse_mode="html",
+            )
+            await xx.delete()
+            await asst.send_message(
+            text,
+            file=thumb,
+            link_preview=False,
+            parse_mode="html",
+            )
         except ChatSendMediaForbiddenError:
             await eor(xx, text, link_preview=False)
         if thumb and os.path.exists(thumb):
