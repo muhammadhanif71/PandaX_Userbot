@@ -105,11 +105,11 @@ else:
 def dual_mode():
     try:
         if SqL.getdb("DUAL_MODE") is not None:
-            "[DUAL]" if SqL.setdb("DUAL_MODE", "True")
-            return True
+            mode = SqL.setdb("DUAL_MODE", "DUAL")
+            return mode
         else:
-            SqL.setdb("DUAL_MODE", "False")
-            return False
+            mode = SqL.setdb("DUAL_MODE", "False")
+            return mode
     except Exception as e:
         print(f"{str(e)}")
         sys.exit()
