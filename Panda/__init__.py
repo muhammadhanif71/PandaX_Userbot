@@ -59,16 +59,16 @@ try:
         PandaBot = None
     else:
          if Var.STRING_SESSION and BOT_TOKEN:
-         PandaBot = PandaUserbotSession(
-            session=StringSession(str(Var.STRING_SESSION)),
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH,
-            loop=loop,
-            app_version=__version__,
-            connection=ConnectionTcpAbridged,
-            auto_reconnect=True,
-            connection_retries=None,
-        ).start(bot_token=BOT_TOKEN)  
+             PandaBot = PandaUserbotSession(
+                session=StringSession(str(Var.STRING_SESSION)),
+                api_id=Var.APP_ID,
+                api_hash=Var.API_HASH,
+                loop=loop,
+                app_version=__version__,
+                connection=ConnectionTcpAbridged,
+                auto_reconnect=True,
+                connection_retries=None,
+            ).start(bot_token=BOT_TOKEN)  
 except Exception as e:
     print(f"STRING_SESSION - {str(e)}")
     sys.exit()
