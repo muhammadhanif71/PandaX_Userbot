@@ -97,9 +97,12 @@ async def play_music_(event):
                 link, song_name, duration, chat, from_user
         )
         try:
-            reply_to_id = await reply_id(event)
-            results = await event.client.inline_query(Config.TG_BOT_USERNAME, "inlinevc")
-            await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+            await xx.reply(
+            text,
+            file=thumb,
+            link_preview=False,
+            parse_mode="html",
+            )
             await xx.delete()
         except ChatSendMediaForbiddenError:
             await eor(xx, text, link_preview=False)
