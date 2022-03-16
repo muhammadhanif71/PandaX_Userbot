@@ -105,7 +105,7 @@ else:
 def dual_mode():
     try:
         if SqL.getdb("DUAL_MODE") is not None:
-            SqL.setdb("DUAL_MODE", "True")
+            "[DUAL]" if SqL.setdb("DUAL_MODE", "True")
             return True
         else:
             SqL.setdb("DUAL_MODE", "False")
