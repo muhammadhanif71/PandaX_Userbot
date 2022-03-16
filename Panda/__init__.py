@@ -114,7 +114,7 @@ def dual_mode():
         sys.exit()
 
 
-
+PandaBot = PandaBot = PandaBot.tgbot
 bot = PandaBot
 pandaub = PandaBot
 botvc = PandaBot
