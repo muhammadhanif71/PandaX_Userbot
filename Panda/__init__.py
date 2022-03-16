@@ -52,16 +52,15 @@ BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
 
 ##•••••••••••••••Recode by Ilham mansiz••||||•••
-## Mode Bot
+## Mode Userbot
 try:
     if BOT_MODE:
         if DUAL_MODE:
             SqL.deldb("DUAL_MODE")
             DUAL_MODE = False
         PandaBot = None
-        PandaBot.tgbot = tgbot = None
     else:
-         if Var.STRING_SESSION and BOT_TOKEN:
+         if Var.STRING_SESSION:
              PandaBot = PandaUserbotSession(
                 session=StringSession(str(Var.STRING_SESSION)),
                 api_id=Var.APP_ID,
@@ -72,16 +71,8 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             )
-            PandaBot.tgbot = tgbot = PandaUserbotSession(
-                "BOT_TOKEN",
-                api_id=Var.APP_ID,
-                api_hash=Var.API_HASH,
-                connection=ConnectionTcpAbridged,
-                auto_reconnect=True,
-                connection_retries=None,
-            ).start(bot_token=BOT_TOKEN)
 except Exception as e:
-    print(f"STRING_SESSION and TOKEN- {str(e)}")
+    print(f"STRING_SESSION {str(e)}")
     sys.exit()
 ######################################
 
@@ -98,6 +89,33 @@ else:
 
         sys_exit()
 
+### Mode bot asisten
+
+try:
+    if BOT_TOKEN is not None:
+        PandaBot.tgbot = tgbot = PandaUserbotSession(
+            "BOT_TOKEN",
+            api_id=Var.APP_ID,
+            api_hash=Var.API_HASH,
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None,
+        ).start(bot_token=BOT_TOKEN)
+    else:
+        PandaBot.tgbot = tgbot = None
+except Exception as e:
+    print(f"TOKEN- {str(e)}")
+    sys.exit()
+#########
+
+if BOT_MODE:
+    PandaBot = PandaBot.tgbot = tgbot
+    bot = PandaBot
+    pandaub = PandaBot
+    botvc = PandaBot
+    Stark = PandaBot
+    petercordpanda_bot = pandaub
+
 def dual_mode():
     try:
         if SqL.getdb("DUAL_MODE") is not None:
@@ -109,14 +127,6 @@ def dual_mode():
     except Exception as e:
         print(f"{str(e)}")
         sys.exit()
-
-
-
-bot = PandaBot
-pandaub = PandaBot
-botvc = PandaBot
-Stark = PandaBot
-petercordpanda_bot = pandaub
 
 
 from .Config import Config
