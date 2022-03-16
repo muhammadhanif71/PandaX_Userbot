@@ -13,7 +13,7 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
-from .core.client import PandaUserbotSession
+from .core.client import PandaUserbotSession, dual_duall
 from .sql_helper import sqldb
 from .sql_helper import mongodb
 from .sql_helper.db import BaseDB
@@ -132,17 +132,7 @@ def dual_mode():
         print(f"{str(e)}")
         sys.exit()
 
-def dual_duall():
-    try:
-        if SqL.getdb("DUAL_HNDLR") is not None:
-            duall = SqL.setdb("DUAL_HNDLR", "/") or "[!?/]"
-            return duall
-        else:
-            duall = SqL.setdb("DUAL_HNDLR", "/") or "/"
-            return duall
-    except Exception as e:
-        print(f"{str(e)}")
-        sys.exit()
+
 
 from .Config import Config
 
