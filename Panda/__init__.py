@@ -103,10 +103,14 @@ else:
 
 def dual_mode():
     try:
-        BOT_MODE
-        return DUAL
-    except BaseException:
-        return USER
+        if SqL.getdb("DUAL_MODE") is not None:
+            SqL.setdb("DUAL_MODE", "True")
+        else:
+            SqL.deldb("DUAL_MODE")
+    except Exception as e:
+    print(f"{str(e)}")
+    sys.exit()
+
 
 
 bot = PandaBot
