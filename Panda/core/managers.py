@@ -13,28 +13,59 @@ from Panda.sql_helper.globals import gvarstatus
 # edit or reply
 
 
-async def eor(event, text, **args):
-    link_preview = args.get("link_preview", False)
-    parse_mode = args.get("parse_mode", "md")
+from asyncio import sleep
+
+from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
+from telethon.tl.custom import Message
+from telethon.tl.types import MessageService
+
+import logging
+
+LOGS = logging.getLogger("PandaUserbot")
+
+# edit or reply
+
+
+async def eor(event, text=None, **args):
     time = args.get("time", None)
-    if not event.out:
-        if event.is_reply:
-            event = await event.get_reply_message()
-        ok = await event.reply(text, link_preview=link_preview, parse_mode=parse_mode)
+    edit_time = args.get("edit_time", None)
+    if "edit_time" in args:
+        del args["edit_time"]
+    if "time" in args:
+        del args["time"]
+    if "link_preview" not in args:
+        args.update({"link_preview": False})
+    if event.out and not isinstance(event, MessageService):
+        if edit_time:
+            await sleep(edit_time)
+        ok = await event.edit(text, **args)
     else:
-        ok = await event.edit(text, link_preview=link_preview, parse_mode=parse_mode)
-    ut = gvarstatus("DEL_DELAY_TIME")
-    if time and ut != "None":
-        time = time or ut
-        await asyncio.sleep(int(time))
+        args["reply_to"] = event.reply_to_msg_id or event
+        ok = await event.client.send_message(event.chat_id, text, **args)
+
+    if time:
+        await sleep(time)
         return await ok.delete()
     return ok
 
 
-async def eod(event, text=None, **args):
-    time = args.get("time", 5)
-    return await eor(event, text, time=time)
+async def eod(event, text=None, **kwargs):
+    kwargs["time"] = kwargs.get("time", 8)
+    return await eor(event, text, **kwargs)
 
+
+async def _try_delete(event):
+    try:
+        return await event.delete()
+    except (MessageDeleteForbiddenError):
+        pass
+    except BaseException as er:
+        LOGS.info("Error while Deleting Message..")
+        LOGS.exception(er)
+
+
+setattr(Message, "eor", eor)
+setattr(Message, "try_delete", _try_delete)
 
 
 
