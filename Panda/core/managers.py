@@ -5,9 +5,7 @@
 
 
 
-import asyncio
 
-from Panda.sql_helper.globals import gvarstatus
 
 
 # edit or reply
