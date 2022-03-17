@@ -49,7 +49,7 @@ async def redis(alive):
             logo = LOGO
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
-            msg = await PandaBot.tgbot.send_message(alive.chat_id, file=LOGO, buttons=main_menu())
+            await PandaBot.tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
@@ -60,7 +60,7 @@ async def redis(alive):
             await asyncio.sleep(100)
             await alive.delete()
     else:
-        await alive.edit(output)
+        await alive.edit(aliveess)
         await asyncio.sleep(100)
         await alive.delete()
 
@@ -93,8 +93,7 @@ aliveess = f"""
 """
 
 
-def main_menu():
-    text = f"{aliveess}"
+def menu():
     buttons = [
         (
             Button.url(
@@ -117,4 +116,4 @@ def main_menu():
             ),
         ),
     ]
-    return text, buttons
+    return buttons
