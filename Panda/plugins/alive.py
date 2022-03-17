@@ -1,7 +1,6 @@
 import time
 from platform import python_version
-
-from telethon import version
+from telethon import version, Button, types, events
 import asyncio
 from Panda import StartTime, pandaversion, PandaBot, SqL, Mongodb, redisalive, dual_mode, dual_duall
 pandaub = PandaBot
@@ -50,6 +49,7 @@ async def redis(alive):
             logo = LOGO
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
+            msg = await PandaBot.tgbot.send_file(alive.chat_id, logo, buttons=main_menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
@@ -91,3 +91,30 @@ aliveess = f"""
 ╰━─━─━─━─━─━─━─━─━╯
 ⟣✧✧✧✧✧✧✧✧✧✧✧✧✧✧⟢
 """
+
+
+def main_menu():
+    text = f"{aliveess}"
+    buttons = [
+        (
+            Button.url(
+                "Support",
+                "https://t.me/TEAMSquadUserbotSupport",
+            ),
+            Button.inline(
+                f"💎 𝙸𝚗𝚏𝚘",
+                data="check",
+            ),
+        ),   
+        (
+            Button.url(
+                "Source Code",
+                "https://github.com/ilhammansiz/PandaX_Userbot",
+            ),
+            Button.url(
+                "Deploy",
+                "https://t.me/PandaUserbot/13",
+            ),
+        ),
+    ]
+    return text, buttons
