@@ -326,6 +326,7 @@ class PandaUserbotSession(TelegramClient):
         private_only: bool = False,
         allow_sudo: bool = True,
         dev: bool = True,
+        dual: bool = False,
         edited: bool = True,
         forword=False,
         disable_errors: bool = False,
@@ -368,9 +369,11 @@ class PandaUserbotSession(TelegramClient):
                 reg1 = "\\" + Config.COMMAND_HAND_LER
                 reg2 = "\\" + Config.SUDO_COMMAND_HAND_LER
                 devv = "\\" + Config.DEVS
+                duall = "\\" + dual_duall()
                 REGEX_.regex1 = re.compile(reg1 + pattern)
                 REGEX_.regex2 = re.compile(reg2 + pattern)
                 REGEX_.dev = re.compile(devv + pattern)
+                REGEX_.dual = re.compile(duall + pattern)
 
 
         def decorator(func):  # sourcery no-metrics
@@ -481,6 +484,15 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
+                if dual and SqL.getdb("MODE_DUAL"):
+                    PandaBot.tgbot.add_event_handler(
+                        wrapper,
+                        MessageEdited(pattern=REGEX_.dual, outgoing=True, **kwargs),
+                    )
+                PandaBot.tgbot.add_event_handler(
+                    wrapper,
+                    NewMessage(pattern=REGEX_.dual, outgoing=True, **kwargs),
+                )
                 if dev is not None:
                     if command is not None or command[0]:
                         if edited:
@@ -496,6 +508,23 @@ class PandaUserbotSession(TelegramClient):
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.dev,
+                                from_users=_dev_list() or DEV,
+                                **kwargs,
+                            ),
+                        )
+                        if dual and SqL.getdb("MODE_DUAL"):
+                            PandaBot.tgbot.add_event_handler(
+                                wrapper,
+                                MessageEdited(
+                                    pattern=REGEX_.dual,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
+                        PandaBot.tgbot.add_event_handler(
+                            wrapper,
+                            NewMessage(
+                                pattern=REGEX_.dual,
                                 from_users=_dev_list() or DEV,
                                 **kwargs,
                             ),
