@@ -12,7 +12,7 @@ import traceback
 from pathlib import Path
 from typing import Dict, List, Union
 
-from telethon.sync import TelegramClient, custom, events
+from telethon.sync import TelegramClient, events
 
 from telethon.errors import (
     AlreadyInConversationError,
