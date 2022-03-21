@@ -1,7 +1,9 @@
 from sys import version_info
+repo = Repo()
+
+branch = repo.active_branch.name
 
 
-branch = f"@dev"
 
 
 __Tgl__ = "17"
