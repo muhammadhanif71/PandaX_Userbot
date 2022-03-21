@@ -39,5 +39,9 @@ def start():
 
 if __name__ == "__main__":
     start()
-
-    Panda.PandaBot.tgbot.run()
+    Panda.PandaBot.disconnect()
+else:
+    try:
+        Panda.PandaBot.run_until_disconnected()
+    except ConnectionError:
+        pass
