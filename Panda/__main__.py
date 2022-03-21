@@ -17,7 +17,6 @@ from .utils import P, M, V, A
 
 try:
     LOGS.info("Memulai PandaUserbot")
-    Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
     LOGS.info("Asistant Bot berhasil")
 except Exception as e:
     LOGS.error(f"{e}")
@@ -25,24 +24,21 @@ except Exception as e:
 
 ## Install Modules ••••••√√√√√••••••
 
-async def memulai():
+def memulai():
+    Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
     await utils.loads(f"{P}")
     await utils.loads(f"{M}")
     await utils.buka(f"{V}")
     await utils.buka(f"{A}")
-    
+    Panda.PandaBot.loop.run_until_complete(utils.join())
+
 
 print("🛠 Sedang memperoses.....")
-Panda.PandaBot.loop.run_until_complete(memulai())
 print("Berhasil Mengaktifkan Userbot")
-Panda.PandaBot.loop.run_until_complete(utils.join())
+
 
 LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
 
-if len(sys.argv) not in (1, 3, 4):
-    Panda.PandaBot.disconnect()
-else:
-    try:
-        Panda.PandaBot.run_until_disconnected()
-    except ConnectionError:
-        pass
+if __name__ == "__main__":
+    memulai()
+
