@@ -24,21 +24,19 @@ except Exception as e:
 
 ## Install Modules ••••••√√√√√••••••
 
-def memulai():
-    Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
+async def memulai():
     await utils.loads(f"{P}")
     await utils.loads(f"{M}")
     await utils.buka(f"{V}")
     await utils.buka(f"{A}")
+    
+
+def start():
+    Panda.PandaBot.loop.run_until_complete(Panda.utils.setup_bot())
+    Panda.PandaBot.loop.run_until_complete(utils.memulai())
     Panda.PandaBot.loop.run_until_complete(utils.join())
-
-
-print("🛠 Sedang memperoses.....")
-print("Berhasil Mengaktifkan Userbot")
-
-
-LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
+    LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
 
 if __name__ == "__main__":
-    memulai()
+    start()
 
