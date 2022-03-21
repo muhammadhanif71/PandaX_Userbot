@@ -1,4 +1,5 @@
 from sys import version_info
+from git import repo
 repo = Repo()
 
 branch = repo.active_branch.name
