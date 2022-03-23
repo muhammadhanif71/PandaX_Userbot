@@ -12,7 +12,7 @@ from . import edit_delete, edit_or_reply
 from ..helpers.utils.misc import create_quotly
 plugin_category = "plugins"
 
-from Panda import bot, pandaub
+from Panda import pandaub
 
 from .carbon import all_col
 
