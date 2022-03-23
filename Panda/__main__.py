@@ -8,16 +8,14 @@ import sys
 import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
-print(Panda.__copyright__)
-print("Licensed under the terms of the " + Panda.__license__)
 from .utils import P, M, V, A
 
 
 ## Memulai ••••••••••√√√√√•••••••
 
 try:
-    LOGS.info("Memulai PandaUserbot")
-    LOGS.info("Asistant Bot berhasil")
+    LOGS.info(Panda.__copyright__)
+    LOGS.info("Licensed under the terms of the " + Panda.__license__)
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
