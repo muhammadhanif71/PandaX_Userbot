@@ -40,6 +40,12 @@ def start():
 if __name__ == "__main__":
     start()
     try:
-        Panda.PandaBot.run_until_disconnected()
-    except ConnectionError:
+        if len(sys.argv) not in (1, 3, 4):
+            Panda.PandaBot.disconnect()
+        else:
+            Panda.PandaBot.run_until_disconnected()
+    except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
         pass
+    except BaseException as e:
+        LOGS.info(str(e), exc_info=True)
+        sys.exit(1)
