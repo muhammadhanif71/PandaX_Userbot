@@ -42,8 +42,6 @@ if __name__ == "__main__":
             Panda.PandaBot.disconnect()
         else:
             Panda.PandaBot.run_until_disconnected()
-    except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+    except (ConnectionError):
         pass
-    except BaseException as e:
-        LOGS.info(str(e), exc_info=True)
-        sys.exit(1)
+    
