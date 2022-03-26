@@ -149,26 +149,21 @@ def ilhammansiz_cmd(
                 NewMessage(pattern=panda, outgoing=True, **args),
             )
             if dual is not None:
-                if command[0] in LOADED_CMDS and func in LOADED_CMDS[command[0]]:
-                    return None
+                if command is not None or command[0]
+                    if disable_edited:
+                        PandaBot.add_event_handler(
+                            func,
+                            MessageEdited(pattern=panda, from_users=_dev_list() or DEV, **args),
+                        )
+                    PandaBot.add_event_handler(
+                        func,
+                        NewMessage(pattern=panda, from_users=_dev_list() or DEV, **args),
+                    )
                 try:
-                    LOADED_CMDS[command[0]].append(func)
-                except BaseException:
-                    LOADED_CMDS.update({command[0]: [func]})
-            if disable_edited:
-                PandaBot.add_event_handler(
-                    func,
-                    MessageEdited(pattern=panda, from_users=_dev_list() or DEV, **args),
-                )
-            PandaBot.add_event_handler(
-                func,
-                NewMessage(pattern=panda, from_users=_dev_list() or DEV, **args),
-            )
-        try:
-            LOAD_PLUG[file_test].append(func)
-        except Exception:
-            LOAD_PLUG.update({file_test: [func]})
-        return func
+                    LOAD_PLUG[file_test].append(func)
+                except Exception:
+                    LOAD_PLUG.update({file_test: [func]})
+                return func
 
-    return decorator
+            return decorator
 
