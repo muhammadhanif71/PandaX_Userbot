@@ -72,7 +72,6 @@ REGEX_ = REGEX()
 sudo_enabledcmds = sudo_enabled_cmds()
 
     def ilhammansiz_cmd(
-        self: TelegramClient,
         pattern: str or tuple = None,
         info: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]]
         or tuple = None,
@@ -318,7 +317,6 @@ sudo_enabledcmds = sudo_enabled_cmds()
         return decorator
 
     def register(
-        self: TelegramClient,
         pattern: str or tuple = None,
         help: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]]
         or tuple = None,
