@@ -13,7 +13,7 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
-from .core.client import TelegramClient, dual_duall
+from .core.client import CutePanda, dual_duall
 from .sql_helper import sqldb
 from .sql_helper import mongodb
 from .sql_helper.db import BaseDB
@@ -21,7 +21,7 @@ import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from .Var import Var
-from telethon.sync import custom, events
+from telethon.sync import custom, events, TelegramClient
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
