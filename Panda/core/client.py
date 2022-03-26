@@ -644,7 +644,7 @@ class CutePanda(object):
                 LOGS.debug(e)
         self.running_processes.clear()
 
-PandaUserbotSession.fast_download_file = download_file
-PandaUserbotSession.fast_upload_file = upload_file
-PandaUserbotSession.reload = restart_script
-PandaUserbotSession.check_testcases = checking
+CutePanda.fast_download_file = download_file
+CutePanda.fast_upload_file = upload_file
+CutePanda.reload = restart_script
+CutePanda.check_testcases = checking
