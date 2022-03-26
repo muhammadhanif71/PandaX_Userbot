@@ -114,7 +114,7 @@ if BOT_MODE:
 PandaBot == PandaBot.tgbot
     
 
-bot = PandaBot
+bot = CutePanda = PandaBot
 pandaub = PandaBot
 botvc = PandaBot
 Stark = PandaBot
