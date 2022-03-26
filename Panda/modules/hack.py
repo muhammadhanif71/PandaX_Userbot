@@ -7,11 +7,12 @@ from Panda import PandaBot
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _format
 from . import ALIVE_NAME
+from ..core.test import ilhammansiz_cmd
 
 plugin_category = "modules"
 
 
-@PandaBot.ilhammansiz_cmd(
+@ilhammansiz_cmd(
     pattern="hack$",
     command=("hack", plugin_category),
     info={
@@ -58,7 +59,7 @@ async def _(event):
         )
 
 
-@PandaBot.ilhammansiz_cmd(
+@ilhammansiz_cmd(
     pattern="thack$",
     command=("thack", plugin_category),
     info={
@@ -91,7 +92,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@PandaBot.ilhammansiz_cmd(
+@ilhammansiz_cmd(
     pattern="wahack$",
     command=("wahack", plugin_category),
     info={
