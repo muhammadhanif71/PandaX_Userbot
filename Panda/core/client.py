@@ -3,7 +3,6 @@
 # Recode by Ilham Mansiz
 # ••••••••••••••••••••••√•••••••••••••√√√••••••••
 
-import os
 import asyncio
 import datetime
 import inspect
