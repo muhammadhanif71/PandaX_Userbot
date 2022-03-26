@@ -1,14 +1,15 @@
 import asyncio
 from datetime import datetime
 
-from Panda import CutePanda 
+from Panda import PandaBot 
 from . import mention
 from ..core.managers import edit_or_reply
+from ..core.test import ilhammansiz_cmd
 
 plugin_category = "plugins"
 
 
-@CutePanda.ilhammansiz_cmd(
+@ilhammansiz_cmd(
     pattern="ping( -a|$)",
     command=("ping", plugin_category),
     info={
