@@ -70,7 +70,7 @@ class REGEX:
 REGEX_ = REGEX()
 sudo_enabledcmds = sudo_enabled_cmds()
 
-class CutePanda(object):
+class PandaBot(object):
     def ilhammansiz_cmd(
         pattern: str or tuple = None,
         info: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]]
@@ -644,7 +644,7 @@ class CutePanda(object):
                 LOGS.debug(e)
         self.running_processes.clear()
 
-CutePanda.fast_download_file = download_file
-CutePanda.fast_upload_file = upload_file
-CutePanda.reload = restart_script
-CutePanda.check_testcases = checking
+PandaBot.fast_download_file = download_file
+PandaBot.fast_upload_file = upload_file
+PandaBot.reload = restart_script
+PandaBot.check_testcases = checking
