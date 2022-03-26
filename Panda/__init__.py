@@ -13,7 +13,7 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
-from .core.client import CutePanda, dual_duall
+from .core.client import PandaBot, dual_duall
 from .sql_helper import sqldb
 from .sql_helper import mongodb
 from .sql_helper.db import BaseDB
