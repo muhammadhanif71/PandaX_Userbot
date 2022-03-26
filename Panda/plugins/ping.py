@@ -1,7 +1,6 @@
 import asyncio
 from datetime import datetime
 
-from Panda import PandaBot 
 from . import mention
 from ..core.managers import edit_or_reply
 from ..core.test import ilhammansiz_cmd
