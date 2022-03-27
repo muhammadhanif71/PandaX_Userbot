@@ -40,7 +40,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 <details>
     <summary> <b>🔗 Deploy Panda Userbot</b></summary><br/>
 
-<p align="center"><a href="https://userbotindo.tech"><img src="https://img.shields.io/badge/Deploy%20Lewat%20Web%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200"" /></a></p>
+<p align="center"><a href="https://github.com/ilhammansiz/DEPLOY"><img src="https://img.shields.io/badge/Deploy%20Lewat%20Web%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200"" /></a></p>
 
 <p align="center"><a href="https://t.me/PandaUserbot"><img src="https://img.shields.io/badge/Deploy%20Lewat%20Bot%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200"" /></a></p>
 
@@ -53,8 +53,6 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
    <a href="https://t.me/PandaUserbot"><img src="https://img.shields.io/badge/Channel%20Support%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
    <a href="https://t.me/TEAMSquadUserbotSupport"><img src="https://img.shields.io/badge/Group%20Support%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
 
-<details>
-    <summary>&#127942 <b>Credits</b></summary><br/>
 
 #### Thanks To [Everyone](https://github.com/ilhammansiz/PandaX_Userbot/graphs/contributors) Who Has Helped Make This Userbot Awesome!
 *   [AdekMaulana](https://github.com/adekmaulana) : ProjectBish
@@ -62,7 +60,11 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 *   [TeamUltroid](https://github.com/TeamUltroid/Ultroid) :  UltroidUserbot
 *   [BianSepang](https://github.com/BianSepang/WeebProject) : WeebProject
 *   [Sandy1709](https://github.com/sandy1709/catuserbot) : CatUserbot
-</details>
+
+## © Credits
+* [Lonamiwebs](https://github.com/LonamiWebs) for [Telethon](https://github.com/LonamiWebs/Telethon)
+* [Marshalx](https://github.com/MarshalX) for [PyTgcalls](https://github.com/MarshalX/tgcalls)
+* [Ilham Mansiz](https://github.com/ilhammansiz) for [PandaX_Userbot](https://github.com/ilhammansiz/PandaX_Userbot)
 
 ## License
 Licensed under [Raphielscape Public License](https://github.com/ilhammansiz/PandaX_Userbot/blob/PandaX_Userbot/LICENSE) - Version 1.d, February 2020
