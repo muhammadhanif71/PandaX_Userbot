@@ -14,7 +14,7 @@ from .. import PandaBot
 from ..sql_helper import sqldb as SqL
 from . import BOT_INFO, CMD_INFO, GRP_INFO, LOADED_CMDS, PLG_INFO
 from .cmdinfo import _format_about
-from .data import _dev_list, blacklist_chats_list, sudo_enabled_cmds
+from .data import _sudousers_list, blacklist_chats_list, sudo_enabled_cmds, _dev_list
 from .events import MessageEdited, NewMessage
 from .logger import logging
 
@@ -129,41 +129,31 @@ def ilhammansiz_cmd(
                 CMD_LIST.update({file_test: [cmd1]})
 
     def decorator(func):
-        if not func.__doc__ is None:
-            CMD_INFO[command[0]].append((func.__doc__).strip())
-        if pattern is not None:
-            if command is not None:
-                if command[0] in LOADED_CMDS and func in LOADED_CMDS[command[0]]:
-                    return None
-                try:
-                    LOADED_CMDS[command[0]].append(func)
-                except BaseException:
-                    LOADED_CMDS.update({command[0]: [func]})
-            if disable_edited:
+        if not disable_edited:
+            PandaBot.add_event_handler(
+                func, events.MessageEdited(**args, outgoing=True, pattern=panda)
+            )
+        PandaBot.add_event_handler(
+            func, events.NewMessage(**args, outgoing=True, pattern=panda)
+        )
+        if allow_sudo:
+            if not disable_edited:
                 PandaBot.add_event_handler(
                     func,
-                    MessageEdited(pattern=panda, outgoing=True, **args),
+                    events.MessageEdited(
+                        **args, from_users=_sudousers_list(), pattern=sudo
+                    ),
                 )
             PandaBot.add_event_handler(
                 func,
-                NewMessage(pattern=panda, outgoing=True, **args),
+                events.NewMessage(
+                    **args, from_users=_sudousers_list(), pattern=sudo
+                ),
             )
-            if dual is not None:
-                if command is not None or command[0]
-                    if disable_edited:
-                        PandaBot.add_event_handler(
-                            func,
-                            MessageEdited(pattern=panda, from_users=_dev_list() or DEV, **args),
-                        )
-                    PandaBot.add_event_handler(
-                        func,
-                        NewMessage(pattern=panda, from_users=_dev_list() or DEV, **args),
-                    )
-                try:
-                    LOAD_PLUG[file_test].append(func)
-                except Exception:
-                    LOAD_PLUG.update({file_test: [func]})
-                return func
+        try:
+            LOADED_CMDS[file_test].append(func)
+        except Exception:
+            LOADED_CMDS.update({file_test: [func]})
+        return func
 
-            return decorator
-
+    return decorator
