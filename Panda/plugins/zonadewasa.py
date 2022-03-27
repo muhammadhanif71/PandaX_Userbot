@@ -5,7 +5,6 @@ import urllib
 
 import requests
 
-from Panda import PandaBot
 
 from ..Config import Config
 from . import ilhammansiz_cmd
