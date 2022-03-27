@@ -14,6 +14,7 @@ from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..core.session import PandaBot
+from ..core.cmd_user import ilhammansiz_cmd, register, bot_cmd
 from ..helpers import *
 from ..helpers.utils import _format, _pandatools, _pandautils, install_pip, reply_id
 from telethon import events
@@ -37,6 +38,9 @@ def mansiez(**args):
 
     return decorator
 
+ilhammansiz_cmd = ilhammansiz_cmd
+register = register
+bot_cmd = bot_cmd
 bot = PandaBot
 pandaub = PandaBot
 LOGS = logging.getLogger(__name__)
