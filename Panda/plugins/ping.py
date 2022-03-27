@@ -3,7 +3,7 @@ from datetime import datetime
 
 from . import mention
 from ..core.managers import edit_or_reply
-from ..core.test import ilhammansiz_cmd
+from . import ilhammansiz_cmd
 
 plugin_category = "plugins"
 
