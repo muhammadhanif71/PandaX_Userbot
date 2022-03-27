@@ -14,8 +14,7 @@ from .. import PandaBot
 from ..sql_helper import sqldb as SqL
 from . import BOT_INFO, CMD_INFO, GRP_INFO, LOADED_CMDS, PLG_INFO
 from .cmdinfo import _format_about
-from .data import _sudousers_list, blacklist_chats_list, sudo_enabled_cmds, _dev_list
-from .events import MessageEdited, NewMessage
+from .data import _sudousers_list, blacklist_chats_list, sudo_enabled_cmds
 from .logger import logging
 
 LOGS = logging.getLogger(__name__)
