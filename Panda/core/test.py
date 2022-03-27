@@ -561,3 +561,90 @@ def register(
         return wrapper
 
     return decorator
+
+
+
+
+
+
+def bot_cmd(
+    disable_errors: bool = False,
+    edited: bool = False,
+    **kwargs,
+) -> callable:  # sourcery no-metrics
+    kwargs["func"] = kwargs.get("func", lambda e: e.via_bot_id is None)
+
+    def decorator(func):
+        async def wrapper(check):
+            try:
+                await func(check)
+            except events.StopPropagation:
+                raise events.StopPropagation
+            except KeyboardInterrupt:
+                pass
+            except BaseException as e:
+                # Check if we have to disable error logging.
+                LOGS.exception(e)  # Log the error in console
+                if not disable_errors:
+                    if Config.PRIVATE_GROUP_BOT_API_ID == 0:
+                        return
+                    date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
+                    ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
+                                \nwe logged only fact of error and date,\nwe respect your privacy,\
+                                \nyou may not report this error if you've\
+                                \nany confidential data here, no one will see your data\
+                                \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
+                                \nDate: {date}\nGroup ID: {str(check.chat_id)}\
+                                \nSender ID: {str(check.sender_id)}\
+                                \n\nEvent Trigger:\n{str(check.text)}\
+                                \n\nTraceback info:\n{str(traceback.format_exc())}\
+                                \n\nError text:\n{str(sys.exc_info()[1])}"
+                    new = {
+                        "error": str(sys.exc_info()[1]),
+                        "date": datetime.datetime.now(),
+                    }
+                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                    command = 'git log --pretty=format:"%an: %s" -5'
+                    ftext += "\n\n\nLast 5 commits:\n"
+                    output = (await runcmd(command))[:2]
+                    result = output[0] + output[1]
+                    ftext += result
+                    pastelink = paste_text(ftext)
+                    text = "**PandaUserbot Error report**\n\n"
+                    link = "[Klik](https://t.me/TEAMSquadUserbotSupport)"
+                    text += "If you wanna you can report it"
+                    text += f"- just forward this message {link}.\n"
+                    text += (
+                        "Nothing is logged except the fact of error and date\n\n"
+                    )
+                    text += f"**Error report : ** [{new['error']}]({pastelink})"
+                    await check.client.send_message(
+                       Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
+                    )
+
+        from .session import tgbot
+
+        if edited is True:
+            tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
+        else:
+            tgbot.add_event_handler(func, events.NewMessage(**kwargs))
+
+        return wrapper
+
+    return decorator
+
+    async def get_traceback(self, exc: Exception) -> str:
+        return "".join(
+            traceback.format_exception(etype=type(exc), value=exc, tb=exc.__traceback__)
+        )
+
+    def _kill_running_processes(self) -> None:
+        """Kill all the running asyncio subprocessess"""
+        for _, process in self.running_processes.items():
+            try:
+                process.kill()
+                LOGS.debug("Killed %d which was still running.", process.pid)
+            except Exception as e:
+                LOGS.debug(e)
+        self.running_processes.clear()
+
