@@ -8,7 +8,7 @@ import sys
 import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
-from .utils import P, M, V, A
+from .utils import A, M, P
 
 
 ## Memulai ••••••••••√√√√√•••••••
