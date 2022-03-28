@@ -125,7 +125,7 @@ async def skip_current_song(chat_id: int):
         "header": "Play the song in voice chat.",
         "description": "Play the song in voice chat, or add the song to queue..",
         "usage": "{tr}play <song name/link>",
-        "examples": ["{tr}play pujaan hati"],
+        "examples": "{tr}play pujaan hati",
     },
 )
 async def vc_play(event):
@@ -236,7 +236,7 @@ async def vc_play(event):
         "header": "Stream Videos in chat. you can use remotely toolike {tr}videoplay @chat <input/reply>.....",
         "description": "Stream Videos in chat. you can use remotely ........",
         "usage": "{tr}videoplay <song name/url/m3u8 links/reply to video>",
-        "examples": ["{tr}videoplay pujaan hati"],
+        "examples": "{tr}videoplay pujaan hati",
     },
 )
 async def vc_vplay(event):
@@ -405,7 +405,7 @@ async def vc_vplay(event):
         "header": "Leave vc the voice chat....",
         "description": "Leave vc the voice chat....",
         "usage": "{tr}leavevc",
-        "examples": ["{tr}leavevc"],
+        "examples": "{tr}leavevc",
     },
 )
 async def vc_end(event):
@@ -428,7 +428,7 @@ async def vc_end(event):
         "header": "Skip the current song and play the next in queue, if any...",
         "description": "Skip the current song and play the next in queue, if any......",
         "usage": "{tr}skip",
-        "examples": ["{tr}skip"],
+        "examples": "{tr}skip",
     },
 )
 async def vc_skip(event):
@@ -467,7 +467,7 @@ async def vc_skip(event):
         "header": "Pause playback....",
         "description": "Pause playback.......",
         "usage": "{tr}pausevc",
-        "examples": ["{tr}pausevc"],
+        "examples": "{tr}pausevc",
     },
 )
 async def vc_pause(event):
@@ -490,7 +490,7 @@ async def vc_pause(event):
         "header": "Resume playback....",
         "description": "Resume playback.......",
         "usage": "{tr}resumevc",
-        "examples": ["{tr}resumevc"],
+        "examples": "{tr}resumevc",
     },
 )
 async def vc_resume(event):
@@ -512,7 +512,7 @@ async def vc_resume(event):
         "header": "Put number between 1 to 100....",
         "description": "Put number between 1 to 100.......",
         "usage": "{tr}volume <number>",
-        "examples": ["{tr}volume <70>"],
+        "examples": "{tr}volume <70>",
     },
 )
 async def vc_volume(event):
@@ -545,7 +545,7 @@ async def vc_volume(event):
         "header": "play whole playlist in voice chat...",
         "description": "play whole playlist in voice chat.......",
         "usage": "{tr}playlist",
-        "examples": ["{tr}playlist",
+        "examples": "{tr}playlist",
     },
 )
 async def vc_playlist(event):
