@@ -109,6 +109,7 @@ except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
 #########
+VcBot2 = PyTgCalls(PandaBot.tgbot)
 
 if BOT_MODE:
     PandaBot = PandaBot.tgbot = tgbot
