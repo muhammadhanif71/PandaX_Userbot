@@ -5,8 +5,8 @@
 # Version sql
 #Panda Userbot
 # Yang Ngapus anak anjeng capek lah aku port nya :(
-
-
+## Udh gak kepake
+"""
 
 import asyncio
 import os
@@ -407,3 +407,4 @@ async def file_download(event, reply, fast_download=True):
     return dl, thumb, title, reply.message_link, duration
 
 
+"""
