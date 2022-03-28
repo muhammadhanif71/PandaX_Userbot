@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, VcBot
 
 from ..Config import Config
 from ..core.logger import logging
@@ -31,7 +31,8 @@ pandaub = PandaBot
 
 async def setup_bot():
     try:
-        await PandaBot.start()
+        PandaBot.start()
+        VcBot.start()
         delta = await PandaBot(functions.help.GetConfigRequest())
         for option in delta.dc_options:
             if option.ip_address == PandaBot.session.server_address:
