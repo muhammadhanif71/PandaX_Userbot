@@ -308,7 +308,7 @@ async def get_from_queue(chat_id):
     return song, title, link, thumb, from_user, play_this, duration
 
 
-# --------------------------------------------------
+
 
 
 async def download(query):
