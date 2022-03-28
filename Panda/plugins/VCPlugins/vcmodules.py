@@ -16,25 +16,25 @@ from telethon.tl import types
 from telethon.utils import get_display_name
 from youtubesearchpython import VideosSearch
 
-from Panda import SqL
+from ... import SqL
 fotoplay = SqL.getdb("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png"
 ngantri = SqL.getdb("QUEUE_PIC") or "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
 
-from Panda import VcBot as call_py
-from Panda.utils.tools import bash
-from Panda.core.managers import edit_delete, edit_or_reply
+from ... import VcBot as call_py
+from ...utils.tools import bash
+from ...core.managers import edit_delete, edit_or_reply
 
-from Panda.plugins import ilhammansiz_cmd
+from ...plugins import ilhammansiz_cmd
 
-from Panda.helpers.chattitle import CHAT_TITLE
-from Panda.utils.queues.queues import (
+from ...helpers.chattitle import CHAT_TITLE
+from ...utils.queues.queues import (
     QUEUE,
     add_to_queue,
     clear_queue,
     get_queue,
     pop_an_item,
 )
-from Panda.utils.thumbnail import gen_thumb
+from ...utils.thumbnail import gen_thumb
 
 plugin_category = "music"
 
