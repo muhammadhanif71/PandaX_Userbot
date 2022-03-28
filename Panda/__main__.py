@@ -9,7 +9,6 @@ import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import A, M, P, V
-from pytgcalls import idle
 
 ## Memulai ••••••••••√√√√√•••••••
 
