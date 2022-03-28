@@ -9,6 +9,7 @@ import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import A, M, P, V
+from pytgcalls import idle
 
 ## Memulai ••••••••••√√√√√•••••••
 
@@ -37,6 +38,8 @@ def start():
 
 if __name__ == "__main__":
     start()
+    Panda.VcBot.start()
+    idle()
     try:
         if len(sys.argv) not in (1, 3, 4):
             Panda.PandaBot.disconnect()
