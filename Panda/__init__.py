@@ -72,11 +72,11 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             )
-            VcBot = PyTgCalls(PandaBot)
 except Exception as e:
     print(f"STRING_SESSION {str(e)}")
     sys.exit()
 ######################################
+VcBot = PyTgCalls(PandaBot)
 
 from .helpers.functions.auto import autobot
 
