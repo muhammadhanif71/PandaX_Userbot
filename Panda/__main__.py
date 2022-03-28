@@ -8,7 +8,7 @@ import sys
 import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
-from .utils import A, M, P
+from .utils import A, M, P, V
 from pytgcalls import idle
 
 ## Memulai ••••••••••√√√√√•••••••
@@ -25,6 +25,7 @@ except Exception as e:
 async def memulai():
     await utils.loads(f"{P}")
     await utils.loads(f"{M}")
+    await utils.buka(f"{V}")
     await utils.buka(f"{A}")
     
 
