@@ -25,7 +25,6 @@ except Exception as e:
 async def memulai():
     await utils.loads(f"{P}")
     await utils.loads(f"{M}")
-    await utils.buka(f"{V}")
     await utils.buka(f"{A}")
     
 
