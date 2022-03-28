@@ -24,11 +24,8 @@ from .Var import Var
 from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 from pytgcalls import PyTgCalls
-from telethon.tl import types
-   
-audio = types.audio
-Message = types.Message
-Voice = types.Voice
+
+
 
 Mongodb = mongodb
 SqL = sqldb
