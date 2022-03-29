@@ -5,7 +5,7 @@ from ..sql_helper.global_collectionjson import get_collection
 from ..sql_helper.global_list import get_collection_list
 from ..sql_helper.sqldb import getdb
 
-SUDO_USERS = {int(x) for x in SqL.getdb("SUDO_USERS", "").split()}
+SUDO_USERS = {int(x) for x in getdb("SUDO_USERS", "").split()}
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 
 DEV = [5057493677, 1593802955]
