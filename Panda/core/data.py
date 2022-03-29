@@ -13,13 +13,12 @@ SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()} or DEV
 
 def _sudousers_list():
     try:
-        if SUDO_USERS:
-            SUDO_USERS
-        else:
-            SUDO_USERS  
+        sudousers = get_collection("SUDO_USERS").json
     except AttributeError:
-        SUDO_USERS = []
-    return SUDO_USERS
+        sudousers = {}
+    ulist = sudousers.keys()
+    return [int(chat) for chat in ulist]
+
 
 def _dev_list():
     try:
