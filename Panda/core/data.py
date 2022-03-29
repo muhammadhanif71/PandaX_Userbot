@@ -4,18 +4,19 @@ import os
 from ..sql_helper.global_collectionjson import get_collection
 from ..sql_helper.global_list import get_collection_list
 from ..sql_helper.sqldb import getdb
-
-SUDO_USERS = {int(x) for x in getdb("SUDO_USERS", "").split()}
-SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
-
 DEV = [5057493677, 1593802955]
+
+SUDO_USERS = {int(x) for x in getdb("SUDO_USERS", "").split()} or ""
+SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()} or ""
+
+
 
 def _sudousers_list():
     try:
         if SUDO_USERS:
-            SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+            SUDO_USERS
         else:
-            SUDO_USERS = {int(x) for x in getdb("SUDO_USERS", "").split()}     
+            SUDO_USERS  
     except AttributeError:
         SUDO_USERS = {}
     return SUDO_USERS
