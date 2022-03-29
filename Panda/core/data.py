@@ -1,17 +1,24 @@
 # ILHAM MANSIEZ
 # PANDA USERBOT
-
+import os 
 from ..sql_helper.global_collectionjson import get_collection
 from ..sql_helper.global_list import get_collection_list
+from .. import SqL
+
+SUDO_USERS = {int(x) for x in SqL.getdb("SUDO_USERS", "").split()}
+SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+
 DEV = [5057493677, 1593802955]
 
 def _sudousers_list():
     try:
-        sudousers = get_collection("sudousers_list").json
+        if SUDO_USERS:
+            SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
+        else:
+            SUDO_USERS = {int(x) for x in SqL.getdb("SUDO_USERS", "").split()}     
     except AttributeError:
-        sudousers = {}
-    ulist = sudousers.keys()
-    return [int(chat) for chat in ulist]
+        SUDO_USERS = {}
+    return SUDO_USERS
 
 def _dev_list():
     try:
