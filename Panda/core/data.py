@@ -18,7 +18,7 @@ def _sudousers_list():
         else:
             SUDO_USERS  
     except AttributeError:
-        SUDO_USERS = {}
+        SUDO_USERS = []
     return SUDO_USERS
 
 def _dev_list():
