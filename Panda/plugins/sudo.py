@@ -1,4 +1,3 @@
-import os
 
 import heroku3
 from telethon.tl.functions.users import GetFullUserRequest
