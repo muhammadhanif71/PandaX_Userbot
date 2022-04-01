@@ -1,4 +1,5 @@
 aiofiles
+redis
 aiohttp[speedups]
 async_generator
 asyncurban
