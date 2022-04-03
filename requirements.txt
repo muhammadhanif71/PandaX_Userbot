@@ -45,7 +45,7 @@ nekos.py
 opencv-python-headless
 pafy
 pendulum
-pillow
+Pillow
 psutil
 psycopg2-binary
 py-tgcalls
@@ -54,11 +54,14 @@ pybase64
 pyfiglet
 PyGithub
 pylast
+pymediainfo
 PyPDF2
 pySmartDL
 python-barcode
+python-decouple==3.3
 python-dotenv
 pytz
+lyricsgenius
 qrcode
 rarfile
 randomstuff.py
@@ -80,6 +83,8 @@ urbandict
 validators
 vcsi
 wand
+DateTime
+dataclasses
 wget
 wikipedia
 wordcloud
@@ -87,4 +92,14 @@ youtube-dl
 youtube-search
 youtube-search-python==1.4.9
 zipfile38
+moviepy
+prettytable
+ShazamAPI
+ujson
+TgCrypto
+twitter_scraper
+urlextract
 pymongo[srv]
+countryinfo
+emoji-country-flag
+pyyaml==5.4.1
