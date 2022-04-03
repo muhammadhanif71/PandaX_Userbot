@@ -4,7 +4,6 @@ import os
 import sys
 from ..sql_helper.global_collectionjson import get_collection
 from ..sql_helper.global_list import get_collection_list
-from ..sql_helper.sqldb import getdb
 DEV = [5057493677, 1593802955]
 
 
@@ -18,7 +17,6 @@ def _sudousers_list():
             sudo = SUDO_USERS
             return sudo
         else:
-            duall = SUDO_USERS
             return sudo
     except Exception as e:
         print(f"{str(e)}")
