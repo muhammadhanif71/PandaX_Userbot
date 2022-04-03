@@ -17,6 +17,7 @@ def _sudousers_list():
             sudo = SUDO_USERS
             return sudo
         else:
+            sudo = SUDO_USERS
             return sudo
     except Exception as e:
         print(f"{str(e)}")
