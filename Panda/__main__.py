@@ -48,13 +48,3 @@ if __name__ == "__main__":
         sys.exit()
     
 
-if Panda.PandaBot2:
-    try:
-        if len(sys.argv) not in (1, 3, 4):
-            PandaBot2.disconnect()
-        else:
-            PandaBot2.run_until_disconnected()
-    except Exception as e:
-        LOGS.info(str(e), exc_info=True)
-        sys.exit(1)
-
