@@ -38,36 +38,36 @@ class Sqldb(BASE):
 Sqldb.__table__.create(checkfirst=True)
 
 
-    def getdb(variable):
-        try:
-            return (
-                SESSION.query(Sqldb)
-                .filter(Sqldb.variable == str(variable))
-                .first()
-                .value
-            )
-        except BaseException:
+ def getdb(variable):
+     try:
+         return (
+             SESSION.query(Sqldb)
+             .filter(Sqldb.variable == str(variable))
+             .first()
+             .value
+         )
+     except BaseException:
             return None
-        finally:
-            SESSION.close()
+     finally:
+         SESSION.close()
 
 
-    def setdb(variable, value):
-        if SESSION.query(Sqldb).filter(Sqldb.variable == str(variable)).one_or_none():
-            deldb(variable)
-        adder = Sqldb(str(variable), value)
-        SESSION.add(adder)
-        SESSION.commit()
+ def setdb(variable, value):
+     if SESSION.query(Sqldb).filter(Sqldb.variable == str(variable)).one_or_none():
+         deldb(variable)
+     adder = Sqldb(str(variable), value)
+     SESSION.add(adder)
+     SESSION.commit()
 
 
-    def deldb(variable):
-        rem = (
-            SESSION.query(Sqldb)
-            .filter(Sqldb.variable == str(variable))
-            .delete(synchronize_session="fetch")
-        )
-        if rem:
-            SESSION.commit()
+ def deldb(variable):
+     rem = (
+         SESSION.query(Sqldb)
+         .filter(Sqldb.variable == str(variable))
+         .delete(synchronize_session="fetch")
+     )
+     if rem:
+         SESSION.commit()
 
 
 class MongoDB:
