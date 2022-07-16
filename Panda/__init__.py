@@ -73,6 +73,17 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             )
+        if Var.STRING_SESSION2:
+             PandaBot2 = PandaUserbotSession(
+                session=StringSession(str(Var.STRING_SESSION2)),
+                api_id=Var.APP_ID,
+                api_hash=Var.API_HASH,
+                loop=loop,
+                app_version=__version__,
+                connection=ConnectionTcpAbridged,
+                auto_reconnect=True,
+                connection_retries=None,
+            )
 except Exception as e:
     print(f"STRING_SESSION {str(e)}")
     sys.exit()
