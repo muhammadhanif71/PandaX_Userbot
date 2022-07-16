@@ -38,7 +38,6 @@ def start():
 
 if __name__ == "__main__":
     start()
-    Panda.ModeUserbot2()
     try:
         if len(sys.argv) not in (1, 3, 4):
             Panda.PandaBot.disconnect()
