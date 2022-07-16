@@ -17,7 +17,7 @@ from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot 
+from ..core.session import PandaBot, PandaBot2
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
@@ -233,6 +233,10 @@ async def ongrup():
         if PandaBot:
             if BOTLOG_CHATID != 0:
                 await PandaBot.send_message(
+                    BOTLOG_CHATID,
+                    ON,
+                )
+                await PandaBot2.send_message(
                     BOTLOG_CHATID,
                     ON,
                 )
