@@ -23,7 +23,7 @@ plugin_category = "plugins"
 SUDO = SqL.getdb("sudoenable")
 SUDOuser = _sudousers_list()
 
-LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or "https://telegra.ph/file/6134eb4bf284402c9a7f6.mp4"
+LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or "https://telegra.ph/file/462ea6cf2beab87ef2d9f.jpg"
 
 usernames = Config.TG_BOT_USERNAME
 
