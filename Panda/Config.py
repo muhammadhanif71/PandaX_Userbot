@@ -6,6 +6,7 @@ from telethon.tl.types import ChatBannedRights
 class Config(object):
     LOGGER = True
 
+    STRING_SESSION2 = os.environ.get("SESSION2") or None
     ALIVE_NAME = SqL.getdb("ALIVE_NAME") or os.environ.get("ALIVE_NAME", None)
     APP_ID = int(os.environ.get("API_ID", 6))
     API_HASH = os.environ.get("API_HASH") or None
