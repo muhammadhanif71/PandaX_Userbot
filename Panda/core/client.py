@@ -218,7 +218,7 @@ class PandaUserbotSession(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import PandaBot
+            from .session import PandaBot, PandaBot2
           
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
@@ -236,6 +236,15 @@ class PandaUserbotSession(TelegramClient):
                         MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
                 PandaBot.add_event_handler(
+                    wrapper,
+                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                )
+                if edited:
+                    PandaBot2.add_event_handler(
+                        wrapper,
+                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    )
+                PandaBot2.add_event_handler(
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
