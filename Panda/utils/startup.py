@@ -49,10 +49,13 @@ async def setup_bot():
         PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
         if Config.OWNER_ID == 0:
             Config.OWNER_ID = utils.get_peer_id(PandaBot.me)
+        if Config.STRING_SESSION:
+            await PandaBot2.start()
     except Exception as e:
         LOGS.error(f"STRING_SESSION - {str(e)}")
         sys.exit()
 
+    
 
 # don't know work or not just a try in future will use sleep
 async def ipchange():
