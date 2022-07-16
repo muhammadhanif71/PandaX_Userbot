@@ -276,6 +276,23 @@ class PandaUserbotSession(TelegramClient):
                                 **kwargs,
                             ),
                         )
+                        if edited:
+                            PandaBot2.add_event_handler(
+                                wrapper,
+                                MessageEdited(
+                                    pattern=REGEX_.dev,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
+                        PandaBot2.add_event_handler(
+                            wrapper,
+                            NewMessage(
+                                pattern=REGEX_.dev,
+                                from_users=_dev_list() or DEV,
+                                **kwargs,
+                            ),
+                        )
                         if dual and SqL.getdb("MODE_DUAL"):
                             PandaBot.tgbot.add_event_handler(
                                 wrapper,
