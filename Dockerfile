@@ -1,6 +1,8 @@
+FROM python:3.9
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+COPY . .
+RUN bash install.sh
 
-
-FROM pandauserbotfile/pandauserbot:python202
-
-
-ENTRYPOINT ["bash", "start.sh"]
+# command to run on container start
+ENTRYPOINT [ "bash", "termux_install.sh" ]
