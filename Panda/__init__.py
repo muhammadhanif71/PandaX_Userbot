@@ -16,7 +16,7 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 from .core.client import PandaUserbotSession, dual_duall
 from .sql_helper import sqldb
 from .sql_helper import mongodb
-from .sql_helper.db import BaseDB
+from .sql_helper.database_ import BaseDB
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
