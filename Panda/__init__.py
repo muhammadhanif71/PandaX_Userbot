@@ -92,6 +92,8 @@ try:
            auto_reconnect=True,
            connection_retries=None,
        )
+    else:
+         PandaBot2 = None
 except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
