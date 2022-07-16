@@ -35,7 +35,7 @@ class Sqldb(BASE):
         self.value = value
 
 
-    Sqldb.__table__.create(checkfirst=True)
+Sqldb.__table__.create(checkfirst=True)
 
 
     def getdb(variable):
