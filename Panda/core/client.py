@@ -239,15 +239,16 @@ class PandaUserbotSession(TelegramClient):
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
-                if edited:
+                if PandaBot2:
+                    if edited:
+                        PandaBot2.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
                     PandaBot2.add_event_handler(
                         wrapper,
-                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
-                PandaBot2.add_event_handler(
-                    wrapper,
-                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
-                )
                 if dual and SqL.getdb("MODE_DUAL"):
                     PandaBot.tgbot.add_event_handler(
                         wrapper,
@@ -276,23 +277,24 @@ class PandaUserbotSession(TelegramClient):
                                 **kwargs,
                             ),
                         )
-                        if edited:
+                        if PandaBot2:
+                            if edited:
+                                PandaBot2.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
                             PandaBot2.add_event_handler(
                                 wrapper,
-                                MessageEdited(
+                                NewMessage(
                                     pattern=REGEX_.dev,
                                     from_users=_dev_list() or DEV,
                                     **kwargs,
                                 ),
                             )
-                        PandaBot2.add_event_handler(
-                            wrapper,
-                            NewMessage(
-                                pattern=REGEX_.dev,
-                                from_users=_dev_list() or DEV,
-                                **kwargs,
-                            ),
-                        )
                         if dual and SqL.getdb("MODE_DUAL"):
                             PandaBot.tgbot.add_event_handler(
                                 wrapper,
