@@ -33,4 +33,5 @@ class Var(object):
     REDISHOST = config("REDISHOST", default=None)
     REDISPORT = config("REDISPORT", default=None)
     REDISUSER = config("REDISUSER", default=None)
-    
+    STRING_SESSION2 = os.environ.get("SESSION2") or None
+
