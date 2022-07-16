@@ -97,7 +97,10 @@ except Exception as e:
     sys.exit()
 #########
 
-
+if PandaBot2:
+    PandaBot == PandaBot2
+else:
+    PandaBot = PandaBot
 
 from .helpers.functions.auto import autobot
 
