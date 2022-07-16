@@ -98,6 +98,7 @@ except Exception as e:
 #########
 
 
+PandaBot = [PandaBot for PandaBot in [PandaBot, PandaBot2] if PandaBot]
 
 
 from .helpers.functions.auto import autobot
