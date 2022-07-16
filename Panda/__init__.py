@@ -97,13 +97,6 @@ except Exception as e:
     sys.exit()
 #########
 
-def ModeUserbot2():
-    if Var.STRING_SESSION2:
-        try:
-            PandaBot2.start()
-        except Exception as e:
-            LOGS.info(str(e), exc_info=True)
-            sys.exit(1)
 
 
 
