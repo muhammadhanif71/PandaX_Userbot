@@ -35,39 +35,40 @@ class Sqldb(BASE):
         self.value = value
 
 
+
 Sqldb.__table__.create(checkfirst=True)
 
 
- def getdb(variable):
-     try:
-         return (
-             SESSION.query(Sqldb)
-             .filter(Sqldb.variable == str(variable))
-             .first()
-             .value
-         )
-     except BaseException:
-            return None
-     finally:
-         SESSION.close()
+def getdb(variable):
+    try:
+        return (
+            SESSION.query(Sqldb)
+            .filter(Sqldb.variable == str(variable))
+            .first()
+            .value
+        )
+    except BaseException:
+        return None
+    finally:
+        SESSION.close()
 
 
- def setdb(variable, value):
-     if SESSION.query(Sqldb).filter(Sqldb.variable == str(variable)).one_or_none():
-         deldb(variable)
-     adder = Sqldb(str(variable), value)
-     SESSION.add(adder)
-     SESSION.commit()
+def setdb(variable, value):
+    if SESSION.query(Sqldb).filter(Sqldb.variable == str(variable)).one_or_none():
+        deldb(variable)
+    adder = Sqldb(str(variable), value)
+    SESSION.add(adder)
+    SESSION.commit()
 
 
- def deldb(variable):
-     rem = (
-         SESSION.query(Sqldb)
-         .filter(Sqldb.variable == str(variable))
-         .delete(synchronize_session="fetch")
-     )
-     if rem:
-         SESSION.commit()
+def deldb(variable):
+    rem = (
+        SESSION.query(Sqldb)
+        .filter(Sqldb.variable == str(variable))
+        .delete(synchronize_session="fetch")
+    )
+    if rem:
+        SESSION.commit()
 
 
 class MongoDB:
@@ -138,7 +139,7 @@ class MongoDB:
 
 def BaseDB():
     if Var.DB_URI:
-        return Sqldb(BASE)
+        return getdb, setdb, deldb
 
     if MongoClient and Var.MONGO_URI:
         return MongoDB(Var.MONGO_URI)
