@@ -98,7 +98,7 @@ except Exception as e:
 #########
 
 if PandaBot2:
-    PandaBot == PandaBot2
+    PandaBot = PandaBot2
 else:
     PandaBot = PandaBot
 
