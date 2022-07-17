@@ -98,6 +98,6 @@ def Build_Poll(options):
 
 """
 def deEmojify(inputString: str) -> str:
-    """Remove emojis and other non-safe characters from string"""
+    ##Remove emojis and other non-safe characters from string##
     return get_emoji_regexp().sub("", inputString)
 """
