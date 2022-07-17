@@ -17,7 +17,7 @@ from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot, PandaBot2
+from ..core.session import PandaBot, PandaBot2, PandaBot3
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
@@ -51,6 +51,8 @@ async def setup_bot():
             Config.OWNER_ID = utils.get_peer_id(PandaBot.me)
         if Config.STRING_SESSION2:
             await PandaBot2.start()
+        if Config.STRING_SESSION3:
+            await PandaBot3.start()
     except Exception as e:
         LOGS.error(f"STRING_SESSION - {str(e)}")
         sys.exit()
