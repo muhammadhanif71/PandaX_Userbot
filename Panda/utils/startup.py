@@ -245,6 +245,10 @@ async def ongrup():
                     BOTLOG_CHATID,
                     ON,
                 )
+                await PandaBot3.send_message(
+                    BOTLOG_CHATID,
+                    ON,
+                )
     except BaseException:
         pass
 
