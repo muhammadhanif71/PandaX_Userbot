@@ -218,7 +218,7 @@ class PandaUserbotSession(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import PandaBot, PandaBot2
+            from .session import PandaBot, PandaBot2, PandaBot3
           
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
@@ -246,6 +246,16 @@ class PandaUserbotSession(TelegramClient):
                             MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                         )
                     PandaBot2.add_event_handler(
+                        wrapper,
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    )
+                if PandaBot3:
+                    if edited:
+                        PandaBot3.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
+                    PandaBot3.add_event_handler(
                         wrapper,
                         NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
@@ -288,6 +298,24 @@ class PandaUserbotSession(TelegramClient):
                                     ),
                                 )
                             PandaBot2.add_event_handler(
+                                wrapper,
+                                NewMessage(
+                                    pattern=REGEX_.dev,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
+                        if PandaBot3:
+                            if edited:
+                                PandaBot3.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
+                            PandaBot3.add_event_handler(
                                 wrapper,
                                 NewMessage(
                                     pattern=REGEX_.dev,
