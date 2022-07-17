@@ -6,7 +6,7 @@ from traceback import format_exc
 
 from telethon import events
 
-from Panda import LOGSPAMMER, bot, PandaBot2
+from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3
 
 
 def register(**args):
@@ -139,6 +139,11 @@ def register(**args):
             if not disable_edited:
                 PandaBot2.add_event_handler(wrapper, events.MessageEdited(**args))
             PandaBot2.add_event_handler(wrapper, events.NewMessage(**args))
+        if PandaBot3:
+            if not disable_edited:
+                PandaBot3.add_event_handler(wrapper, events.MessageEdited(**args))
+            PandaBot3.add_event_handler(wrapper, events.NewMessage(**args))
+       
         return wrapper
 
     return decorator
