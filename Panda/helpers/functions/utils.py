@@ -1,9 +1,8 @@
 import time
 from datetime import datetime
-import os
-os.system("pip3 install --no-cache-dir -U -q -r PandaVersion/Panda/emoji.txt")
-    
+"""
 from emoji import get_emoji_regexp
+"""
 from telethon.tl.types import Channel, PollAnswer
 
 
@@ -97,7 +96,8 @@ async def extract_time(panda, time_val):
 def Build_Poll(options):
     return [PollAnswer(option, bytes(i)) for i, option in enumerate(options, start=1)]
 
-
+"""
 def deEmojify(inputString: str) -> str:
     """Remove emojis and other non-safe characters from string"""
     return get_emoji_regexp().sub("", inputString)
+"""
