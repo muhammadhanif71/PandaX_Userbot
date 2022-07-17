@@ -81,9 +81,9 @@ except Exception as e:
 
 
 try:
-    if Var.STRING_SESSION2:
+    if Var.STRING_SESSION2 in Var.STRING_SESSION3:
         PandaBot2 = PandaUserbotSession(
-           session=StringSession(str(Var.STRING_SESSION2)),
+           session=StringSession(str(Var.STRING_SESSION2, Var.STRING_SESSION3)),
            api_id=Var.APP_ID,
            api_hash=Var.API_HASH,
            loop=loop,
@@ -94,6 +94,25 @@ try:
        )
     else:
          PandaBot2 = None
+except Exception as e:
+    print(f"TOKEN- {str(e)}")
+    sys.exit()
+
+
+try:
+    if Var.STRING_SESSION3:
+        PandaBot3 = PandaUserbotSession(
+           session=StringSession(str(Var.STRING_SESSION3)),
+           api_id=Var.APP_ID,
+           api_hash=Var.API_HASH,
+           loop=loop,
+           app_version=__version__,
+           connection=ConnectionTcpAbridged,
+           auto_reconnect=True,
+           connection_retries=None,
+       )
+    else:
+         PandaBot3 = None
 except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
