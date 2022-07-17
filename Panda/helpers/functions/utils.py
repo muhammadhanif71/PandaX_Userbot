@@ -1,6 +1,8 @@
 import time
 from datetime import datetime
-
+import os
+os.system("pip3 install --no-cache-dir -U -q -r PandaVersion/Panda/emoji.txt")
+    
 from emoji import get_emoji_regexp
 from telethon.tl.types import Channel, PollAnswer
 
