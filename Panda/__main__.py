@@ -9,7 +9,7 @@ import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
-
+from .Session.multisession_ import Pyrogram
 
 ## Memulai ••••••••••√√√√√•••••••
 
@@ -38,6 +38,7 @@ def start():
 
 if __name__ == "__main__":
     start()
+    Pyrogram()
     try:
         if len(sys.argv) not in (1, 3, 4):
             Panda.PandaBot.disconnect()
