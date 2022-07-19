@@ -1,5 +1,5 @@
 
-from .pyroclient import pyrotgbot
+from .pyroclient import pyrotgbot, pyrobot
 
 def Pyrogram():
     if pyrotgbot:
