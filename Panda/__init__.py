@@ -46,13 +46,13 @@ __license__ = __license__
 __author__ = __author__
 __copyright__ = __copyright__
 
-"""
+
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
 BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
-
+"""
 ##•••••••••••••••Recode by Ilham mansiz••||||•••
 ## Mode Userbot
 try:
