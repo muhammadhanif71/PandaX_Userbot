@@ -1,6 +1,6 @@
 from telethon.sessions import StringSession
 from ..Var import Var
-from ..core.client import PandaUserbotSession, dual_duall
+from ..core.client import PandaUserbotSession
 
 from ..versions import __version__
 from ..sql_helper import sqldb
