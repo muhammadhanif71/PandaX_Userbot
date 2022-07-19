@@ -28,7 +28,7 @@ from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
 SqL = sqldb
-
+from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
@@ -46,7 +46,7 @@ __license__ = __license__
 __author__ = __author__
 __copyright__ = __copyright__
 
-
+"""
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
@@ -118,7 +118,7 @@ except Exception as e:
     sys.exit()
 #########
 
-
+"""
 from .helpers.functions.auto import autobot
 
 if not BOT_MODE:
