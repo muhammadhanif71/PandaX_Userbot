@@ -1,6 +1,5 @@
 from telethon.sessions import StringSession
-from telethon import TelegramClient
-from ..Var import Database, Var
+from ..Var import Var
 from ..versions import __version__
 from ..sql_helper import sqldb
 import sys
