@@ -38,8 +38,8 @@ try:
                 auto_reconnect=True,
                 connection_retries=None,
             )
-           else:
-               PandaBot = None
+         else:
+             PandaBot = None
 except Exception as e:
     print(f"STRING_SESSION {str(e)}")
     sys.exit()
