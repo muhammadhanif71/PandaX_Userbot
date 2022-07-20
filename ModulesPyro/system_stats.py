@@ -7,7 +7,7 @@ import sys
 import time
 import uuid
 from datetime import datetime
-from os import environ, execle, path, remove
+from os import environ, execle
 
 import psutil
 from pyrogram import __version__
@@ -32,9 +32,9 @@ async def pingy(client, message):
     uptime = get_readable_time((time.time() - start_time))
     myself = client.me
     if not myself.username:
-        mys = myself.id
+        myself.id
     else:
-        mys = f"@{myself.username}"
+        f"@{myself.username}"
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await hmm.edit(
