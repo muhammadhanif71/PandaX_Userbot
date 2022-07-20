@@ -1,25 +1,25 @@
-from .. import SqL
+from . import db_x
 
 
-afk = SqL
+afk = db_x["I_AFK"]
 
 
 async def go_afk(time, reason=""):
-    midhun = afk.getdb({"_id": "AFK"})
+    midhun = await afk.find_one({"_id": "AFK"})
     if midhun:
-        await afk.setdb({"_id": "AFK"}, {"$set": {"time": time, "reason": reason}})
+        await afk.update_one({"_id": "AFK"}, {"$set": {"time": time, "reason": reason}})
     else:
-        await afk.setdb({"_id": "AFK", "time": time, "reason": reason})
+        await afk.insert_one({"_id": "AFK", "time": time, "reason": reason})
 
 
 async def no_afk():
-    midhun = afk.getdb({"_id": "AFK"})
+    midhun = await afk.find_one({"_id": "AFK"})
     if midhun:
-        afk.deldb({"_id": "AFK"})
+        await afk.delete_one({"_id": "AFK"})
 
 
 async def check_afk():
-    midhun = afk.getdb({"_id": "AFK"})
+    midhun = await afk.find_one({"_id": "AFK"})
     if midhun:
         return midhun
     else:
