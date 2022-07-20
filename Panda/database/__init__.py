@@ -7,3 +7,8 @@ def mongodb():
         return motor.motor_asyncio.AsyncIOMotorClient(Database.MONGO_DB)
     else:
         return None
+
+
+db_x = mongodb()
+
+
