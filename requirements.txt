@@ -81,3 +81,4 @@ pyyaml==5.4.1
 countryinfo
 emoji-country-flag
 pyrogram==1.4.16
+tinydb>=4.4.0
