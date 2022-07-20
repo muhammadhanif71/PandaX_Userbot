@@ -65,7 +65,7 @@ async def chnnlzip(client, message):
     )
     shutil.make_archive(str(f"{chnnl}_Zipped By•PandaUserbot"), "zip", dirz)
     await pablo.edit("`Zipped! Uploading Now!`")
-    zip_name = f"{chnnl}_ZippedByPetercordUB.zip"
+    zip_name = f"{chnnl}_Zipped-ByPandaUserbot.zip"
     siz_e = os.stat(zip_name).st_size
     list_ = []
     if siz_e > 2040108421:
