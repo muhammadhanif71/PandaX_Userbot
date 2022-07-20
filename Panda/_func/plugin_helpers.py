@@ -5,10 +5,8 @@ import logging
 import os
 import subprocess
 import textwrap
-from json import JSONDecodeError
 import numpy as np
 from PIL import Image, ImageDraw
-import requests
 from PIL import Image, ImageDraw, ImageFont
 from pymediainfo import MediaInfo
 
