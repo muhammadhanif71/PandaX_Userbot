@@ -1,7 +1,7 @@
-from Panda import CMD_HELP, pyrotgbot as bot
+from Panda import CMD_LIST, pyrotgbot as bot
 from Panda._func.decorators import Config, Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
-
+CMD_HELP = CMD_LIST
 
 @ilhammansiz_on_cmd(
     ["helpme", "helper"],
@@ -69,6 +69,6 @@ def prepare_cmd_list():
     for i in CMD_HELP:
         if i:
             main_l += f"<code>{i}</code>"
-    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}ahelp (cmd-name)</code> To Know More About A Plugin."
+    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help (cmd-name)</code> To Know More About A Plugin."
     return main_l 
     
