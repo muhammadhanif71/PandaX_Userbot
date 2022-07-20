@@ -2,7 +2,7 @@ import os
 
 from telegraph import Telegraph, exceptions, upload_file
 
-from Panda.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.plugin_helpers import convert_to_image
 
