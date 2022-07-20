@@ -7,11 +7,9 @@ from datetime import datetime
 from pyrogram import filters
 
 from Panda._func.decorators import Panda_cmd, listen
-from Panda._func._helpers import edit_or_reply, get_text
-from Panda._func.logger_s import LogIt
 import asyncio
 from datetime import datetime
-from pyrogram.types import Message, User
+from pyrogram.types import Message
 
 import humanize
 from pyrogram import filters, Client
