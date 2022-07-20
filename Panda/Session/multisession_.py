@@ -1,9 +1,9 @@
 
 from .pyroclient import pyrotgbot, pyrobot
-from telethon import functions, types, utils
+from telethon import functions, utils
 
 import logging
-from ..Var import Var, Database
+from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
 from .client import PandaBot, PandaBot2, PandaBot3
@@ -29,7 +29,7 @@ def Telethon():
                     PandaBot.session.save()
                     break
             PandaBot.me = await PandaBot.get_me()
-            bot_details = await PandaBot.tgbot.get_me()
+            await PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
@@ -53,7 +53,7 @@ def Telethon():
                     PandaBot2.session.save()
                     break
             PandaBot2.me = await PandaBot2.get_me()
-            bot_details = await PandaBot.tgbot.get_me()
+            await PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot2.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot2.me)
@@ -76,7 +76,7 @@ def Telethon():
                     PandaBot3.session.save()
                     break
             PandaBot3.me = await PandaBot3.get_me()
-            bot_details = await PandaBot.tgbot.get_me()
+            await PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot3.me)
