@@ -10,6 +10,17 @@ from Panda.database.afk import check_afk, go_afk, no_afk
 from Panda._func.decorators import Panda_cmd, listen
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
+import asyncio
+from datetime import datetime
+from pyrogram.types import Message, User
+
+import humanize
+from pyrogram import filters, Client
+
+def GetChatID(message: Message):
+    """ Get the group id of the incoming message"""
+    return message.chat.id
+
 
 afk_sanity_check: dict = {}
 
@@ -25,6 +36,79 @@ async def is_afk_(f, client, message):
 is_afk = filters.create(func=is_afk_, name="is_afk_")
 
 
+)
+
+
+
+AFK = False
+AFK_REASON = ""
+AFK_TIME = ""
+USERS = {}
+GROUPS = {}
+
+
+def subtract_time(start, end):
+    """Get humanized time"""
+    subtracted = humanize.naturaltime(start - end)
+    return str(subtracted)
+
+
+@listen(
+    ((filters.group & filters.mentioned) | filters.private) & ~filters.me & ~filters.service, group=3
+)
+async def collect_afk_messages(UserBot: Client, message: Message):
+    if AFK:
+        last_seen = subtract_time(datetime.now(), AFK_TIME)
+        is_group = True if message.chat.type in ["supergroup", "group"] else False
+        CHAT_TYPE = GROUPS if is_group else USERS
+
+        if GetChatID(message) not in CHAT_TYPE:
+            text = (
+                f"`Beep boop. This is an automated message.\n"
+                f"I am not available right now.\n"
+                f"Last seen: {last_seen}\n"
+                f"Reason: ```{AFK_REASON.upper()}```\n"
+                f"See you after I'm done doing whatever I'm doing.`"
+            )
+            await UserBot.send_message(
+                chat_id=GetChatID(message),
+                text=text,
+                reply_to_message_id=message.message_id,
+            )
+            CHAT_TYPE[GetChatID(message)] = 1
+            return
+        elif GetChatID(message) in CHAT_TYPE:
+            if CHAT_TYPE[GetChatID(message)] == 50:
+                text = (
+                    f"`This is an automated message\n"
+                    f"Last seen: {last_seen}\n"
+                    f"This is the 10th time I've told you I'm AFK right now..\n"
+                    f"I'll get to you when I get to you.\n"
+                    f"No more auto messages for you`"
+                )
+                await UserBot.send_message(
+                    chat_id=GetChatID(message),
+                    text=text,
+                    reply_to_message_id=message.message_id,
+                )
+            elif CHAT_TYPE[GetChatID(message)] > 50:
+                return
+            elif CHAT_TYPE[GetChatID(message)] % 5 == 0:
+                text = (
+                    f"`Hey I'm still not back yet.\n"
+                    f"Last seen: {last_seen}\n"
+                    f"Still busy: ```{AFK_REASON.upper()}```\n"
+                    f"Try pinging a bit later.`"
+                )
+                await UserBot.send_message(
+                    chat_id=GetChatID(message),
+                    text=text,
+                    reply_to_message_id=message.message_id,
+                )
+
+        CHAT_TYPE[GetChatID(message)] += 1
+
+
 @Panda_cmd(
     ["afk"],
     propagate_to_next_handler=False,
@@ -33,86 +117,65 @@ is_afk = filters.create(func=is_afk_, name="is_afk_")
         "example": "{ch}afk Tidur",
     },
 )
-async def set_afk(client, message):
-    pablo = await edit_or_reply(message, "`Processing..`")
-    msge = None
-    msge = get_text(message)
-    start_1 = datetime.now()
-    afk_start = start_1.replace(microsecond=0)
-    log = LogIt(message)
-    if msge:
-        msg = f"**My Master Seems To Be Too Busy 👀.** \n__He Going Afk Because Of__ `{msge}`"
-        await log.log_msg(
-            client,
-            f"#AfkLogger Afk Is Active And Reason is {msge}",
-        )
-        await go_afk(afk_start, msge)
-    else:
-        msg = f"**I Am Busy And I Am Going Afk**."
-        await log.log_msg(
-            client,
-            f"#AfkLogger Afk Is Active",
-        )
-        await go_afk(afk_start)
-    await pablo.edit(msg)
+async def afk_set(_, message: Message):
+    global AFK_REASON, AFK, AFK_TIME
+
+    cmd = message.command
+    afk_text = ""
+
+    if len(cmd) > 1:
+        afk_text = " ".join(cmd[1:])
+
+    if isinstance(afk_text, str):
+        AFK_REASON = afk_text
+
+    AFK = True
+    AFK_TIME = datetime.now()
+
+    await message.delete()
 
 
-@listen(
-    is_afk
-    & (filters.mentioned | filters.private)
-    & ~filters.me
-    & ~filters.bot
-    & ~filters.edited
-    & filters.incoming
+@Panda_cmd(
+    ["afk"],
+    propagate_to_next_handler=False,
+    cmd_help={
+        "help": "Set AFK!",
+        "example": "{ch}afk Tidur",
+    },
 )
-async def afk_er(client, message):
-    if not message:
-        return
-    if not message.from_user:
-        return
-    use_r = int(message.from_user.id)
-    if use_r not in afk_sanity_check.keys():
-        afk_sanity_check[use_r] = 1
-    else:
-        afk_sanity_check[use_r] += 1
-    if afk_sanity_check[use_r] == 5:
-        await message.reply_text(
-            "`I Told You 5 Times That My Master Isn't Available, Now I Will Not Reply To You. ;(`"
+async def afk_unset(_, message: Message):
+    global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
+
+    if AFK:
+        last_seen = subtract_time(datetime.now(), AFK_TIME).replace("ago", "").strip()
+        await message.edit(
+            f"`While you were away (for {last_seen}), you received {sum(USERS.values()) + sum(GROUPS.values())} "
+            f"messages from {len(USERS) + len(GROUPS)} chats`"
         )
-        afk_sanity_check[use_r] += 1
-        return
-    if afk_sanity_check[use_r] > 5:
-        return
-    lol = await check_afk()
-    reason = lol["reason"]
-    if reason == "":
-        reason = None
-    back_alivee = datetime.now()
-    afk_start = lol["time"]
-    afk_end = back_alivee.replace(microsecond=0)
-    total_afk_time = str((afk_end - afk_start))
-    message_to_reply = (
-        f"I Am **[AFK]** Right Now. \n**Last Seen :** `{total_afk_time}`\n**Reason** : `{reason}`"
-        if reason
-        else f"I Am **[AFK]** Right Now. \n**Last Seen :** `{total_afk_time}`"
-    )
-    await message.reply(message_to_reply)
+        AFK = False
+        AFK_TIME = ""
+        AFK_REASON = ""
+        USERS = {}
+        GROUPS = {}
+        await asyncio.sleep(5)
+
+    await message.delete()
 
 
-@listen(filters.outgoing & filters.me & is_afk)
-async def no_afke(client, message):
-    lol = await check_afk()
-    back_alivee = datetime.now()
-    afk_start = lol["time"]
-    afk_end = back_alivee.replace(microsecond=0)
-    total_afk_time = str((afk_end - afk_start))
-    kk = await message.reply(
-        f"""__Pro is Back Alive__\n**No Longer afk.**\n `I Was afk for:``{total_afk_time}`""",
-    )
-    await kk.delete()
-    await no_afk()
-    log = LogIt(message)
-    await log.log_msg(
-        client,
-        f"#AfkLogger User is Back Alive ! No Longer Afk\n AFK for : {total_afk_time} ",
-    )
+@listen(filters.me, group=3)
+async def auto_afk_unset(_, message: Message):
+    global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
+
+    if AFK:
+        last_seen = subtract_time(datetime.now(), AFK_TIME).replace("ago", "").strip()
+        reply = await message.reply(
+            f"`While you were away (for {last_seen}), you received {sum(USERS.values()) + sum(GROUPS.values())} "
+            f"messages from {len(USERS) + len(GROUPS)} chats`"
+        )
+        AFK = False
+        AFK_TIME = ""
+        AFK_REASON = ""
+        USERS = {}
+        GROUPS = {}
+        await asyncio.sleep(5)
+        await reply.delete()
