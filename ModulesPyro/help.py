@@ -1,6 +1,5 @@
 from Panda import CMD_HELP, pyrotgbot as bot
 from Panda._func.decorators import Config, Panda_cmd as ilhammansiz_on_cmd
-from Panda._func.startup import run_cmd
 from Panda._func._helpers import edit_or_reply, get_text
 
 
