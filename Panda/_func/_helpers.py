@@ -126,8 +126,9 @@ def get_readable_time(seconds: int) -> int:
 async def get_all_pros() -> list:
     """Get All Users , Sudo + Owners + Other Clients"""
     users = list(Config.SUDO_USERS)
-    ujwal = pyrobot.me
-    users.append(ujwal.id)
+    if pyrobot:
+        ujwal = pyrobot.me
+        users.append(ujwal.id)
     if pyrobot2:
         ujwal2 = pyrobot2.me
         users.append(ujwal2.id)
