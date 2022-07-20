@@ -3,7 +3,11 @@ from typing import Set
 from .sql_helper import sqldb as SqL
 from telethon.tl.types import ChatBannedRights
 import heroku3
+from dotenv import load_dotenv
+from distutils.util import strtobool
 
+if os.path.exists("local.env"):
+    load_dotenv("local.env")
 
 def fetch_heroku_git_url(api_key, app_name):
     if not api_key:
