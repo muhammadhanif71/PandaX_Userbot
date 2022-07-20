@@ -16,8 +16,8 @@ LOGS = getLogger(__name__)
 def Telethon():
     if Var.STRING_SESSION:
         try:
-            await PandaBot.start()
-            delta = await PandaBot(functions.help.GetConfigRequest())
+            PandaBot.start()
+            delta = PandaBot(functions.help.GetConfigRequest())
             for option in delta.dc_options:
                 if option.ip_address == PandaBot.session.server_address:
                     if PandaBot.session.dc_id != option.id:
@@ -28,8 +28,8 @@ def Telethon():
                     PandaBot.session.set_dc(option.id, option.ip_address, option.port)
                     PandaBot.session.save()
                     break
-            PandaBot.me = await PandaBot.get_me()
-            await PandaBot.tgbot.get_me()
+            PandaBot.me = PandaBot.get_me()
+            PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
@@ -40,8 +40,8 @@ def Telethon():
 
     if Var.STRING_SESSION2:
         try:
-            await PandaBot2.start()
-            delta = await PandaBot2(functions.help.GetConfigRequest())
+            PandaBot2.start()
+            delta = PandaBot2(functions.help.GetConfigRequest())
             for option in delta.dc_options:
                 if option.ip_address == PandaBot2.session.server_address:
                     if PandaBot2.session.dc_id != option.id:
@@ -52,8 +52,8 @@ def Telethon():
                     PandaBot2.session.set_dc(option.id, option.ip_address, option.port)
                     PandaBot2.session.save()
                     break
-            PandaBot2.me = await PandaBot2.get_me()
-            await PandaBot.tgbot.get_me()
+            PandaBot2.me = PandaBot2.get_me()
+            PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot2.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot2.me)
@@ -63,8 +63,8 @@ def Telethon():
      
     if Var.STRING_SESSION3:
         try:
-            await PandaBot3.start()
-            delta = await PandaBot3(functions.help.GetConfigRequest())
+            PandaBot3.start()
+            delta = PandaBot3(functions.help.GetConfigRequest())
             for option in delta.dc_options:
                 if option.ip_address == PandaBot3.session.server_address:
                     if PandaBot3.session.dc_id != option.id:
@@ -75,8 +75,8 @@ def Telethon():
                     PandaBot3.session.set_dc(option.id, option.ip_address, option.port)
                     PandaBot3.session.save()
                     break
-            PandaBot3.me = await PandaBot3.get_me()
-            await PandaBot.tgbot.get_me()
+            PandaBot3.me = PandaBot3.get_me()
+            PandaBot.tgbot.get_me()
             PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot3.me)
