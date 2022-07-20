@@ -6,7 +6,6 @@ from datetime import datetime
 
 from pyrogram import filters
 
-from Panda.database.afk import check_afk, go_afk, no_afk
 from Panda._func.decorators import Panda_cmd, listen
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
@@ -20,23 +19,6 @@ from pyrogram import filters, Client
 def GetChatID(message: Message):
     """ Get the group id of the incoming message"""
     return message.chat.id
-
-
-afk_sanity_check: dict = {}
-
-
-async def is_afk_(f, client, message):
-    af_k_c = await check_afk()
-    if af_k_c:
-        return bool(True)
-    else:
-        return bool(False)
-
-
-is_afk = filters.create(func=is_afk_, name="is_afk_")
-
-
-)
 
 
 
