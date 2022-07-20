@@ -38,7 +38,7 @@ async def pingy(client, message):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await hmm.edit(
-        f"**┏━《 **𝗣 𝗘 𝗧 𝗘 𝗥 𝗖 𝗢 𝗥 𝗗** 》━\n**┣➠  __Ping:__** `{ms}` \n┗➠ __Uptime:__ `{uptime}`",
+        f"**┏━《 **𝗣 𝗔 𝗡 𝗗 𝗔** 》━\n**┣➠  __Ping:__** `{ms}` \n┗➠ __Uptime:__ `{uptime}`",
     )
 
 
