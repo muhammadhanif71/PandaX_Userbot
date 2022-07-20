@@ -82,3 +82,5 @@ countryinfo
 emoji-country-flag
 pyrogram==1.4.16
 tinydb>=4.4.0
+NoteShrinker>=0.2.0
+img2pdf>=0.4.0
