@@ -85,7 +85,7 @@ def Telethon():
             sys.exit()
 
 
-async def Pyrogram():
+def Pyrogram():
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
