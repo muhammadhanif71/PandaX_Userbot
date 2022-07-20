@@ -35,6 +35,7 @@ class Var(object):
     REDISUSER = config("REDISUSER", default=None)
     STRING_SESSION2 = os.environ.get("SESSION2") or None
     STRING_SESSION3 = os.environ.get("SESSION3") or None
+    OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
 
 
 
