@@ -33,8 +33,15 @@ def subtract_time(start, end):
     return str(subtracted)
 
 
+
 @listen(
-    ((filters.group & filters.mentioned) | filters.private) & ~filters.me & ~filters.service, group=3
+    group=3
+    & (filters.mentioned | filters.private)
+    & ~filters.me
+    & ~filters.bot
+    & ~filters.service
+    & ~filters.edited
+    & filters.incoming
 )
 async def collect_afk_messages(client, message):
     if AFK:
@@ -142,7 +149,7 @@ async def afk_unset(client, message):
     await message.delete()
 
 
-@listen(filters.me, group=3)
+@listen(filters.outgoing & filters.me & group=3)
 async def auto_afk_unset(client, message):
     global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
 
