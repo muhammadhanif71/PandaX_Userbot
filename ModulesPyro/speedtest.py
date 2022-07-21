@@ -1,6 +1,6 @@
 import speedtest
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func._helpers import edit_or_reply
 
 
 @ilhammansiz_on_cmd(['speedtest', 'st'],
