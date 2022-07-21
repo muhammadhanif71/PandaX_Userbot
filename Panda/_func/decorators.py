@@ -209,3 +209,11 @@ def add_handler(filter_s, func_, cmd):
         pyrobot3.add_handler(MessageHandler(func_, filters=filter_s), group=0)
     if pyrobot4:
         pyrobot4.add_handler(MessageHandler(func_, filters=filter_s), group=0)      
+
+
+
+
+
+
+ilhammansiz_cmd = Panda_cmd 
+
