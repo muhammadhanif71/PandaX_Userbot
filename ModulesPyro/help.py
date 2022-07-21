@@ -48,7 +48,7 @@ async def help_(client, message):
     f_ = await edit_or_reply(message, "`Please Wait.`")
     cmd_ = get_text(message)
     if not cmd_:
-        help_t = prepare_cmd_list()            
+        help_t = HELP        
         await f_.edit(help_t)
     else:
         help_s = get_help_str(cmd_)
@@ -80,31 +80,31 @@ def prepare_cmd_list():
 
 
 HELP = 
-"""
-+--------------------------+
+f"""
+`+--------------------------+
 | PandaUserBot Modules  |
 +-------------+------------+
 | admin       | afk        |
-| alive       | animation  |
-| eval        | carbon     |
-| clone       | create     |
-| fakeaction  | globals    |
-| google      | heroku     |
-| invite      | joinleave  |
-| locks       | memes      |
-| misc        | parse      |
-| paste       | pmpermit   |
-| profile     | purge      |
-| quotly      | reverse    |
-| salam       | sangmata   |
-| song        | spam       |
-| start       | stats      |
-| sticker     | system     |
-| tag         | telegraph  |
-| toxic       | translate  |
-| update      | usertools  |
-| vctools     | voice      |
-| webshot     | whois      |
-| www         | youtubedl  |
-+-------------+------------+
+| file        | time_      |
+| eval        | tts        |
+| gps         | webshot    |
+| hash_base64 | usage      |
+| hellperr    | heroku     |
+| listmyuser  | webupload  |
+| paste       | wiki       |
+| rename      | xvideo     |
+| paste       |            |
+| search      |            |
+| shazam      |            |
+| spam        |            |
+| song        |            |
+| speedtest   |            |
+| stickers    |            |
+| stat        |            |
+| subtitles   |            |
+| system_stats|            |
+| tag_alert   |            |
+| telegraph   |            |
+| tgs_to_gif  |            |
++-------------+------------+`
 """
