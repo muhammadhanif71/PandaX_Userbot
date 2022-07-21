@@ -1,8 +1,8 @@
 # 
 
 import base64
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import (
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func._helpers import (
     edit_or_reply,
     edit_or_send_as_file,
     get_text,
