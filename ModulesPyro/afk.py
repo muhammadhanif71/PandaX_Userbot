@@ -35,7 +35,7 @@ def subtract_time(start, end):
 
 
 @listen(
-    & (filters.mentioned | filters.private)
+    (filters.mentioned | filters.private)
     & ~filters.me
     & ~filters.bot
     & ~filters.service
