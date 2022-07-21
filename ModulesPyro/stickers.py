@@ -1,15 +1,10 @@
 # ilham
 
 import asyncio
-import datetime
 import math
 import os
-import zipfile
-from collections import defaultdict
-from io import BytesIO
 
 from PIL import Image
-from pyrogram import emoji
 from pyrogram.errors import StickersetInvalid, YouBlockedUser
 from pyrogram.raw.functions.messages import GetStickerSet
 from pyrogram.raw.types import InputStickerSetShortName
@@ -80,10 +75,9 @@ async def packinfo(client, message):
         nam = message.from_user.username
         name = nam[1:]
     else:
-        name = message.from_user.first_name
+        message.from_user.first_name
     packname = f"@{nm} Kang Pack {pack}"
     packshortname = f"PetercordUserbot_{message.from_user.id}_{pack}"
-    non = [None, "None"]
     emoji = "😁"
     try:
         Hell = Hell.strip()
