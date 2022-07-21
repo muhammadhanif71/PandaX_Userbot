@@ -12,7 +12,7 @@ from datetime import datetime
 from pyrogram.types import Message
 
 import humanize
-from pyrogram import filters, Client
+from pyrogram import filters
 
 def GetChatID(message: Message):
     """ Get the group id of the incoming message"""
