@@ -70,7 +70,7 @@ def prepare_cmd_list():
     main_l = f"<b><u>🐼 PandaUserbot CommandList 🐼</b></u> \n\n<b>Main Command List ({len(CMD_LIST)}) :</b> \n\n"
     for i in CMD_LIST:
         if i:
-            main_l += f"{len(cmds)}    "
+            main_l += f"{len(i)}    "
     main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help (cmd-name)</code> To Know More About A Plugin."
     return main_l 
     
