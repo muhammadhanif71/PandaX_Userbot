@@ -10,7 +10,6 @@ bs4
 cowpy
 dataclasses
 DateTime
-emoji
 fonttools
 geopy
 gitpython
