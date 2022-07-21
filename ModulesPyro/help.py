@@ -49,10 +49,10 @@ async def help_(client, message):
     f_ = await edit_or_reply(message, "`Please Wait.`")
     cmd_ = get_text(message)
     if not cmd_:
-        help_t = get_help_str(cmd_)            
+        help_t = prepare_cmd_list()            
         await f_.edit(help_t)
     else:
-        help_s = prepare_cmd_list()
+        help_s = get_help_str(cmd_)
         if not help_s:
             await f_.edit("<code>404: Plugin Not Found!</code>")
             return
