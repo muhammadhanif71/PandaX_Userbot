@@ -91,7 +91,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 ## © Credits
 * [Lonamiwebs](https://github.com/LonamiWebs) for [Telethon](https://github.com/LonamiWebs/Telethon)
-* [Dan](https://github.com/pyrogram/pyrogram)
+* [Dan](https://github.com/pyrogram) for [Pyrogram](https://github.com/pyrogram/pyrogram)
 * [Laky-64](https://github.com/Laky-64) for [PyTgcalls](https://github.com/pytgcalls/pytgcalls)
 * [Ilham Mansiz](https://github.com/ilhammansiz) for [PandaX_Userbot](https://github.com/ilhammansiz/PandaX_Userbot)
 
