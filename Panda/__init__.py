@@ -234,6 +234,7 @@ USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
 CMD_HELP = {}
+XTRA_CMD_LIST = {}
 ISAFK = False
 AFKREASON = None
 CMD_LIST = {}
