@@ -36,7 +36,7 @@ def subtract_time(start, end):
 @listen(
     ((filters.group & filters.mentioned) | filters.private) & ~filters.me & ~filters.service, group=3
 )
-async def collect_afk_messages(UserBot: Client, message: Message):
+async def collect_afk_messages(client, message):
     if AFK:
         last_seen = subtract_time(datetime.now(), AFK_TIME)
         is_group = True if message.chat.type in ["supergroup", "group"] else False
@@ -50,7 +50,7 @@ async def collect_afk_messages(UserBot: Client, message: Message):
                 f"Reason: ```{AFK_REASON.upper()}```\n"
                 f"See you after I'm done doing whatever I'm doing.`"
             )
-            await UserBot.send_message(
+            await client.send_message(
                 chat_id=GetChatID(message),
                 text=text,
                 reply_to_message_id=message.message_id,
@@ -66,7 +66,7 @@ async def collect_afk_messages(UserBot: Client, message: Message):
                     f"I'll get to you when I get to you.\n"
                     f"No more auto messages for you`"
                 )
-                await UserBot.send_message(
+                await client.send_message(
                     chat_id=GetChatID(message),
                     text=text,
                     reply_to_message_id=message.message_id,
@@ -80,7 +80,7 @@ async def collect_afk_messages(UserBot: Client, message: Message):
                     f"Still busy: ```{AFK_REASON.upper()}```\n"
                     f"Try pinging a bit later.`"
                 )
-                await UserBot.send_message(
+                await client.send_message(
                     chat_id=GetChatID(message),
                     text=text,
                     reply_to_message_id=message.message_id,
@@ -97,7 +97,7 @@ async def collect_afk_messages(UserBot: Client, message: Message):
         "example": "{ch}afk Tidur",
     },
 )
-async def afk_set(_, message: Message):
+async def afk_set(client, message):
     global AFK_REASON, AFK, AFK_TIME
 
     cmd = message.command
@@ -123,7 +123,7 @@ async def afk_set(_, message: Message):
         "example": "{ch}afk Tidur",
     },
 )
-async def afk_unset(_, message: Message):
+async def afk_unset(client, message):
     global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
 
     if AFK:
@@ -143,7 +143,7 @@ async def afk_unset(_, message: Message):
 
 
 @listen(filters.me, group=3)
-async def auto_afk_unset(_, message: Message):
+async def auto_afk_unset(client, message):
     global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
 
     if AFK:
