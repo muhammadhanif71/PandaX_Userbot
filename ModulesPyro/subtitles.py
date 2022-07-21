@@ -6,8 +6,8 @@ import aiohttp
 import requests
 from bs4 import BeautifulSoup as bs
 import shutil
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda_func._helpers import edit_or_reply, get_text
 BASE_URL = "https://isubtitles.org"
 
 async def search_sub(query):
