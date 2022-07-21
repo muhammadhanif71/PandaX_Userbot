@@ -137,7 +137,7 @@ else:
 
 try:
     if BOT_TOKEN is not None:
-        PandaBot.tgbot = tgbot = PandaUserbotSession(
+        PandaBot.tgbot = PandaUserbotSession(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
@@ -146,16 +146,16 @@ try:
             connection_retries=None,
         ).start(bot_token=BOT_TOKEN)
     else:
-        PandaBot.tgbot = tgbot = None
+        PandaBot.tgbot = None
 except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
 #########
 
 if BOT_MODE:
-    PandaBot = PandaBot.tgbot = tgbot
+    tgbot = PandaBot.tgbot
+    PandaBot = PandaBot.tgbot
  
-PandaBot == PandaBot.tgbot
 
 bot = PandaBot
 pandaub = PandaBot
