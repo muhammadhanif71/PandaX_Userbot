@@ -74,6 +74,26 @@ def prepare_cmd_list():
         main_l += f"\n\n<b> XtraCommand List ({len(XTRA_CMD_LIST)}) :</b> \n\n"
         for i in XTRA_CMD_LIST:
             if i:
-                main_l += f"<code>{i}</code>    "
+                main_l += f"{IlhamDiah()}    "
     main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}ahelp (cmd-name)</code> To Know More About A Plugin."
     return main_l 
+
+
+from pathlib import Path
+import glob
+import os
+
+def IlhamDiah():
+    """
+    Help by Ilham
+    """
+    path = f"ModulesPyro*.py"
+    files = glob.glob(path)
+    files.sort()
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+
+    os.remove(Path(f"ModulesPyro/{shortname}.py"))
+             
