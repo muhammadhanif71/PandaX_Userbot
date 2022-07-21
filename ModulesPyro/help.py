@@ -79,21 +79,32 @@ def prepare_cmd_list():
     return main_l 
 
 
-from pathlib import Path
-import glob
-import os
-
-def IlhamDiah():
-    """
-    Help by Ilham
-    """
-    path = f"ModulesPyro*.py"
-    files = glob.glob(path)
-    files.sort()
-    for name in files:
-        with open(name) as f:
-            path1 = Path(f.name)
-            shortname = path1.stem
-
-    os.remove(Path(f"ModulesPyro/{shortname}.py"))
-             
+HELP = 
+"""
++--------------------------+
+| PandaUserBot Modules  |
++-------------+------------+
+| admin       | afk        |
+| alive       | animation  |
+| eval        | carbon     |
+| clone       | create     |
+| fakeaction  | globals    |
+| google      | heroku     |
+| invite      | joinleave  |
+| locks       | memes      |
+| misc        | parse      |
+| paste       | pmpermit   |
+| profile     | purge      |
+| quotly      | reverse    |
+| salam       | sangmata   |
+| song        | spam       |
+| start       | stats      |
+| sticker     | system     |
+| tag         | telegraph  |
+| toxic       | translate  |
+| update      | usertools  |
+| vctools     | voice      |
+| webshot     | whois      |
+| www         | youtubedl  |
++-------------+------------+
+"""
