@@ -63,7 +63,7 @@ def get_help_str(string):
     if string not in CMD_LIST.keys():
         if string not in XTRA_CMD_LIST.keys():
             return None
-        return CMD_HELP[string]
+        return CMD_LIST[string]
     return XTRA_CMD_LIST[string]
     
 def prepare_cmd_list():
