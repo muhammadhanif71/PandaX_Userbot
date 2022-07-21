@@ -85,3 +85,5 @@ tinydb>=4.4.0
 NoteShrinker>=0.2.0
 img2pdf>=0.4.0
 filesplit
+google-trans-new>=1.1.9
+pyshorteners>=1.0.1
