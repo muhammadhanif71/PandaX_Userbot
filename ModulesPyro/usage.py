@@ -6,12 +6,12 @@ All rights reserved.
 import math
 import requests
 from functools import wraps
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import (
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func._helpers import (
     edit_or_reply,
 )
 import heroku3
-from Petercord_Userbot.config_var import Config
+from Panda import Config
 
 heroku_client = None
 if Config.HEROKU_API_KEY:
@@ -72,10 +72,10 @@ async def gib_usage(client, message, hc):
   app_name = Config.HEROKU_APP_NAME or "Not Specified."
   return await msg_.edit(
         "<b><u>Dyno Usage Data</b></u>:\n\n"
-        f"<b>🎗 APP NAME :</b> <code>{app_name}</code> \n"
-        f"<b>🎗 Usage in Hours And Minutes :</b> <code>{AppHours}h {AppMinutes}m</code> \n"
-        f"<b>🎗 Usage Percentage :</b> <code>[{AppPercentage} %]</code> \n\n\n"
-        "<b>🎗 Dyno Remaining This Months 📆: </b>\n"
+        f"<b> APP NAME :</b> <code>{app_name}</code> \n"
+        f"<b> Usage in Hours And Minutes :</b> <code>{AppHours}h {AppMinutes}m</code> \n"
+        f"<b> Usage Percentage :</b> <code>[{AppPercentage} %]</code> \n\n\n"
+        "<b> Dyno Remaining This Months 📆: </b>\n"
         f"<code>{hours}h {minutes}m</code> \n"
-        f"<b>🎗 Percentage :</b> <code>[{percentage}%]</code>",
+        f"<b> Percentage :</b> <code>[{percentage}%]</code>",
     )
