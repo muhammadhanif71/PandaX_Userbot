@@ -48,7 +48,7 @@ async def help_(client, message):
     f_ = await edit_or_reply(message, "`Please Wait.`")
     cmd_ = get_text(message)
     if not cmd_:
-        help_t = HELP        
+        help_t = f"`{HELP}`"   
         await f_.edit(help_t)
     else:
         help_s = get_help_str(cmd_)
@@ -81,7 +81,7 @@ def prepare_cmd_list():
 
 HELP = 
 f"""
-`+--------------------------+
++--------------------------+
 | PandaUserBot Modules  |
 +-------------+------------+
 | admin       | afk        |
@@ -106,5 +106,5 @@ f"""
 | tag_alert   |            |
 | telegraph   |            |
 | tgs_to_gif  |            |
-+-------------+------------+`
++-------------+------------+
 """
