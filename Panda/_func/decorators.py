@@ -171,7 +171,7 @@ def add_help_menu(
 ):
     if not file_name:
         previous_stack_frame = stack[1]
-        if "plugins" in previous_stack_frame.filename:
+        if "ModulesPyro" in previous_stack_frame.filename:
             is_official = False
         file_name = os.path.basename(previous_stack_frame.filename.replace(".py", ""))
     cmd_helpz = example.format(ch=Config.COMMAND_HANDLER)
