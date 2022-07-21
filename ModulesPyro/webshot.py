@@ -1,15 +1,12 @@
 # ilham
 
 from bs4 import BeautifulSoup
-from Petercord_Userbot.config_var import Config
 from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.core.startup_helpers import run_cmd
 from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text, humanbytes
 from hashlib import md5
 import aiofiles
 import os
 import aiohttp
-import urllib
 import validators
 
 async def check_if_url_is_valid(url):

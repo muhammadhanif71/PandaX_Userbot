@@ -1,7 +1,7 @@
 # 
 
 from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text, edit_or_send_as_file
+from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply
 import calendar
 from datetime import datetime
 
@@ -14,7 +14,7 @@ from datetime import datetime
 )
 async def _d(client, message):
     year_ = datetime.now().year
-    date_ = datetime.now().day
+    datetime.now().day
     month_ = datetime.now().month
     mydate = datetime.now()
     da = mydate.strftime("Date : %d \nMonth : %B \nYear : %Y")

@@ -1,6 +1,5 @@
 # 
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd, Config, listen
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text
+from Petercord_Userbot.core.decorators import Config, listen
 from Petercord_Userbot import bot
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import datetime
@@ -20,7 +19,7 @@ if TAG_LOGGER:
             message.continue_propagation()
             return 
         chat_name = message.chat.title
-        chat_id = message.chat.id
+        message.chat.id
         tagged_msg_link = message.link
         user_ = f"@{message.from_user.username}" or message.from_user.mention
         TZ = pytz.timezone(Config.TZ)

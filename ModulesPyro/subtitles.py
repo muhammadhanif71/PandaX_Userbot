@@ -6,9 +6,7 @@ import aiohttp
 import requests
 from bs4 import BeautifulSoup as bs
 import shutil
-from Petercord_Userbot.config_var import Config
 from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.core.startup_helpers import run_cmd
 from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text
 BASE_URL = "https://isubtitles.org"
 

@@ -2,7 +2,6 @@
 
 import base64
 from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.core.startup_helpers import run_cmd
 from Petercord_Userbot.helper_func.basic_helpers import (
     edit_or_reply,
     edit_or_send_as_file,

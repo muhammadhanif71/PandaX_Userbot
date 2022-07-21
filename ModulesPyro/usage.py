@@ -3,23 +3,12 @@ Copyright (C) 2020 Adek Maulana.
 All rights reserved.
 """
 
-import asyncio
 import math
-import os
 import requests
-import asyncio
 from functools import wraps
-import time
-from asyncio import sleep
-from pyrogram.types import ChatPermissions
-import os
 from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
 from Petercord_Userbot.helper_func.basic_helpers import (
     edit_or_reply,
-    edit_or_send_as_file,
-    get_text,
-    get_user,
-    is_admin_or_owner,
 )
 import heroku3
 from Petercord_Userbot.config_var import Config
