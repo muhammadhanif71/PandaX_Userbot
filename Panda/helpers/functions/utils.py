@@ -97,7 +97,7 @@ def Build_Poll(options):
     return [PollAnswer(option, bytes(i)) for i, option in enumerate(options, start=1)]
 
 
-def deEmojify(inputString: str) -> str:
+def deEmojify():
     ##Remove emojis and other non-safe characters from string##
-    return replace_emoji().sub("", inputString)
+    return replace_emoji
 
