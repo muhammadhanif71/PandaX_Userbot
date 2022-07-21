@@ -79,8 +79,7 @@ def prepare_cmd_list():
     return main_l 
 
 
-HELP = 
-f"""
+HELP = f"""
 +--------------------------+
 | PandaUserBot Modules  |
 +-------------+------------+
