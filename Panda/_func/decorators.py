@@ -106,7 +106,7 @@ def Panda_cmd(
                     text += datetime_tz.strftime(
                         "**Date :** `%Y-%m-%d` \n**Time :** `%H:%M:%S`"
                     )
-                    text += "\n\n__You can Forward This to @TEAMSquadUserbotSupport, If You Think This is Serious A Error!__"
+                    text += "\n\n__You can Forward This to @PandaUserbot, If You Think This is Serious A Error!__"
                     try:
                         await client.send_message(Config.LOG_GRP, text)
                     except BaseException:
@@ -137,7 +137,7 @@ def listen(filter_s):
                 datetime_tz = datetime.now(TZ)
                 text = "**!ERROR WHILE HANDLING UPDATES!**\n\n"
                 text += f"\n**Trace Back : ** `{str(format_exc())}`"
-                text += f"\n**PetercordUserbot-Name :** `{func.__module__}`"
+                text += f"\n**PandaUserbot-Name :** `{func.__module__}`"
                 text += f"\n**Function Name :** `{func.__name__}` \n"
                 text += datetime_tz.strftime(
                     "**Date :** `%Y-%m-%d` \n**Time :** `%H:%M:%S`"
