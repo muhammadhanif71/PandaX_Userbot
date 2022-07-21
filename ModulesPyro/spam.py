@@ -1,6 +1,6 @@
 # 
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text
+from Panda._func.decorators Panda_cmd as import ilhammansiz_on_cmd
+from Panda._func._helpers import edit_or_reply, get_text
 
 
 @ilhammansiz_on_cmd(
