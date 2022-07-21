@@ -122,7 +122,8 @@ except Exception as e:
 from .helpers.functions.auto import autobot
 
 if not BOT_MODE:
-    PandaBot.loop.run_until_complete(autobot())
+    if PandaBot:
+        PandaBot.loop.run_until_complete(autobot())
 else:
     if not SqL.getdb("BOT_TOKEN") and BOT_TOKEN:
         SqL.setdb("BOT_TOKEN", BOT_TOKEN)
