@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 
-from emoji import get_emoji_unicode_dict
+from emoji import replace_emoji
 
 from telethon.tl.types import Channel, PollAnswer
 
@@ -99,5 +99,5 @@ def Build_Poll(options):
 
 def deEmojify(inputString: str) -> str:
     ##Remove emojis and other non-safe characters from string##
-    return get_emoji_unicode_dict().sub("", inputString)
+    return replace_emoji().sub("", inputString)
 
