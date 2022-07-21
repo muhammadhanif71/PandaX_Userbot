@@ -2,7 +2,6 @@ from Panda import CMD_LIST, XTRA_CMD_LIST, pyrotgbot as bot
 from Panda._func.decorators import Config, Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
 
-from Panda import config
 
 
 @ilhammansiz_on_cmd(
