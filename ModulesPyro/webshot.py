@@ -1,8 +1,8 @@
 # ilham
 
 from bs4 import BeautifulSoup
-from Petercord_Userbot.core.decorators import ilhammansiz_on_cmd
-from Petercord_Userbot.helper_func.basic_helpers import edit_or_reply, get_text, humanbytes
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func._helpers import edit_or_reply, get_text, humanbytes
 from hashlib import md5
 import aiofiles
 import os
