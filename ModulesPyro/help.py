@@ -67,7 +67,7 @@ def get_help_str(string):
     
 def prepare_cmd_list():
     main_l = f"<b><u> PandaUserbot CommandList</b></u> \n\n<b> Main CommandList ({len(CMD_LIST)}) :</b> \n\n"
-    for i in CMD_LIST:
+    for i in CMD_LIST.keys():
         if i:
             main_l += f"<code>{i}</code>    "
     if Config.LOAD_UNOFFICIAL_PLUGINS:
