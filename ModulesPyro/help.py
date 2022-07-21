@@ -49,10 +49,10 @@ async def help_(client, message):
     f_ = await edit_or_reply(message, "`Please Wait.`")
     cmd_ = get_text(message)
     if not cmd_:
-        help_t = prepare_cmd_list()            
+        help_t = get_help_str(cmd_)            
         await f_.edit(help_t)
     else:
-        help_s = get_help_str(cmd_)
+        help_s = prepare_cmd_list()
         if not help_s:
             await f_.edit("<code>404: Plugin Not Found!</code>")
             return
@@ -70,7 +70,7 @@ def prepare_cmd_list():
     main_l = f"<b><u>🐼 PandaUserbot CommandList 🐼</b></u> \n\n<b>Main Command List ({len(CMD_LIST)}) :</b> \n\n"
     for i in CMD_LIST:
         if i:
-            main_l += f"<code>{i}</code>    "
+            main_l += f"{len(cmds)}    "
     main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help (cmd-name)</code> To Know More About A Plugin."
     return main_l 
     
