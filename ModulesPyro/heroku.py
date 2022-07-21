@@ -50,7 +50,7 @@ async def gib_restart(client, message, hap):
     hap.restart()
 
 
-@friday_on_cmd(
+@ilhammansiz_on_cmd(
     ["logs"], cmd_help={"help": "Get Logs From HEROKU!", "example": "{ch}logs"}
 )
 @_check_heroku
