@@ -32,8 +32,6 @@ async def memulai():
 def start():
     if Panda.PandaBot:
         Panda.PandaBot.loop.run_until_complete(memulai())
-    if Panda.PandaBot.tgbot:
-        Panda.PandaBot.tgbot.start(bot_token=Panda.BOT_TOKEN)
         Panda.PandaBot.loop.run_until_complete(utils.join())
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
