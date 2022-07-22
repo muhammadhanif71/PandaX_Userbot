@@ -134,7 +134,7 @@ else:
         sys_exit()
 
 ### Mode bot asisten
-
+"""
 try:
     if BOT_TOKEN is not None:
         PandaBot.tgbot = PandaUserbotSession(
@@ -150,6 +150,7 @@ try:
 except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
+"""
 #########
 
 if BOT_MODE:
