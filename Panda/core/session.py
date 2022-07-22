@@ -2,7 +2,7 @@
 ## Panda Userbot
 
 
-from Panda import PandaBot, PandaBot2, PandaBot3
+from Panda import PandaBot, PandaBot2, PandaBot3, PandaBot.tgbot
 Bot = PandaBot
 Stark = PandaBot
 tgbot = PandaBot.tgbot
