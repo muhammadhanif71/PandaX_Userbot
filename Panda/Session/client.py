@@ -9,6 +9,7 @@ from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 SqL = sqldb
 
 from ..core.logger import logging
+from telethon import TelegramClient, events
 
 
 
@@ -87,7 +88,7 @@ except Exception as e:
 
 try:
     if Database.BOT_TOKEN is not None:
-        tgbot = PandaUserbotSession(
+        PandaBot.tgbot = tgbot = TelegramClient(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
@@ -96,7 +97,7 @@ try:
             connection_retries=None,
         )
     else:
-        tgbot = None
+        PandaBot.tgbot = tgbot = None
 except Exception as e:
     print(f"BOT_TOKEN- {str(e)}")
     sys.exit()
