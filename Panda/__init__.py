@@ -44,8 +44,6 @@ BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
 """
 ##•••••••••••••••Recode by Ilham mansiz••||||•••
-## Mode Userbot
-try:
 
 
 
