@@ -62,7 +62,7 @@ try:
     else:
          PandaBot2 = None
 except Exception as e:
-    print(f"TOKEN- {str(e)}")
+    print(f"STRING_SESSION2- {str(e)}")
     sys.exit()
 
 
@@ -81,7 +81,7 @@ try:
     else:
          PandaBot3 = None
 except Exception as e:
-    print(f"TOKEN- {str(e)}")
+    print(f"STRING_SESSION3- {str(e)}")
     sys.exit()
 #########
 
@@ -98,5 +98,5 @@ try:
     else:
         PandaBot.tgbot = None
 except Exception as e:
-    print(f"TOKEN- {str(e)}")
+    print(f"BOT_TOKEN- {str(e)}")
     sys.exit()
