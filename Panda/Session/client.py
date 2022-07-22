@@ -91,9 +91,6 @@ try:
             "BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
-            connection=ConnectionTcpAbridged,
-            auto_reconnect=True,
-            connection_retries=None,
         ).start(bot_token=Database.BOT_TOKEN)
     else:
         PandaBot.tgbot = tgbot = None
