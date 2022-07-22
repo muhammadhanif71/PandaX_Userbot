@@ -121,7 +121,3 @@ BOTLOG = Config.BOTLOG
 BOTLOG_CHATID = Config.BOTLOG_CHATID
 PM_LOGGER_GROUP_ID = Config.PM_LOGGER_GROUP_ID
 
-def where_hosted():
-    if os.getenv("DYNO"):
-        return "heroku"
-
