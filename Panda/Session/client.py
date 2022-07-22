@@ -84,3 +84,19 @@ except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
 #########
+
+try:
+    if Database.BOT_TOKEN is not None:
+        PandaBot.tgbot = PandaUserbotSession(
+            "BOT_TOKEN",
+            api_id=Var.APP_ID,
+            api_hash=Var.API_HASH,
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None,
+        )
+    else:
+        PandaBot.tgbot = None
+except Exception as e:
+    print(f"TOKEN- {str(e)}")
+    sys.exit()
