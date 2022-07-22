@@ -1,5 +1,5 @@
 from telethon.sessions import StringSession
-from ..Var import Var
+from ..Var import Var, Database
 from ..core.client import PandaUserbotSession
 
 from ..versions import __version__
