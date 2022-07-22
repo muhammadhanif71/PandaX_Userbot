@@ -1,14 +1,11 @@
 
 from .pyroclient import pyrotgbot, pyrobot
-from telethon import functions, utils
 
 import logging
-from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
 from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
-import sys
 LOGS = getLogger(__name__)
 
 
