@@ -88,7 +88,7 @@ except Exception as e:
 
 try:
     if Database.BOT_TOKEN is not None:
-        PandaBot.tgbot = tgbot = TelegramClient(
+        PandaBot.tgbot = tgbot = PandaUserbotSession(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
