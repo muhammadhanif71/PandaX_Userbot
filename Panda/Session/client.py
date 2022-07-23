@@ -86,7 +86,7 @@ except Exception as e:
 #########
 
 try:
-    if Database.BOT_TOKEN is not None:
+    if Database.BOT_TOKEN:
         PandaBot.tgbot = PandaUserbotSession(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
