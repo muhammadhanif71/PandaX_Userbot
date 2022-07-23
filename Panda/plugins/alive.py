@@ -2,7 +2,7 @@ import time
 from platform import python_version
 from telethon import Button, version
 import asyncio
-from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, redisalive
+from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, redisalive, tgbot
 pandaub = PandaBot
 from ..Config import Config
 from ..helpers.functions import get_readable_time, check_data_base_heal_th
@@ -49,7 +49,7 @@ async def redis(alive):
             logo = LOGO
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
-            await PandaBot.tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
+            await tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
