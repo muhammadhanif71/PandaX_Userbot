@@ -218,7 +218,7 @@ class PandaUserbotSession(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import PandaBot, PandaBot2, PandaBot3
+            from .session import PandaBot, PandaBot2, PandaBot3, tgbot
           
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
@@ -261,11 +261,11 @@ class PandaUserbotSession(TelegramClient):
                         NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
                 if dual and SqL.getdb("MODE_DUAL"):
-                    PandaBot.tgbot.add_event_handler(
+                    tgbot.add_event_handler(
                         wrapper,
                         MessageEdited(pattern=REGEX_.dual, outgoing=True, **kwargs),
                     )
-                PandaBot.tgbot.add_event_handler(
+                tgbot.add_event_handler(
                     wrapper,
                     NewMessage(pattern=REGEX_.dual, outgoing=True, **kwargs),
                 )
@@ -326,7 +326,7 @@ class PandaUserbotSession(TelegramClient):
                                 ),
                             )
                         if dual and SqL.getdb("MODE_DUAL"):
-                            PandaBot.tgbot.add_event_handler(
+                            tgbot.add_event_handler(
                                 wrapper,
                                 MessageEdited(
                                     pattern=REGEX_.dual,
@@ -334,7 +334,7 @@ class PandaUserbotSession(TelegramClient):
                                     **kwargs,
                                 ),
                             )
-                        PandaBot.tgbot.add_event_handler(
+                        tgbot.add_event_handler(
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.dual,
@@ -521,7 +521,7 @@ class PandaUserbotSession(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import PandaBot
+            from .session import PandaBot, tgbot ,PandaBot2, PandaBot3
 
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
@@ -564,11 +564,11 @@ class PandaUserbotSession(TelegramClient):
                         NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
                 if dual and SqL.getdb("MODE_DUAL"):
-                    PandaBot.tgbot.add_event_handler(
+                    tgbot.add_event_handler(
                         wrapper,
                         MessageEdited(pattern=REGEX_.dual, outgoing=True, **kwargs),
                     )
-                PandaBot.tgbot.add_event_handler(
+                tgbot.add_event_handler(
                     wrapper,
                     NewMessage(pattern=REGEX_.dual, outgoing=True, **kwargs),
                 )
@@ -629,7 +629,7 @@ class PandaUserbotSession(TelegramClient):
                                 ),
                             )
                         if dual and SqL.getdb("MODE_DUAL"):
-                            PandaBot.tgbot.add_event_handler(
+                            tgbot.add_event_handler(
                                 wrapper,
                                 MessageEdited(
                                     pattern=REGEX_.dual,
@@ -637,7 +637,7 @@ class PandaUserbotSession(TelegramClient):
                                     **kwargs,
                                 ),
                             )
-                        PandaBot.tgbot.add_event_handler(
+                        tgbot.add_event_handler(
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.dual,
