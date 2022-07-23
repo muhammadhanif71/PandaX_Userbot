@@ -7,7 +7,7 @@ from ..sql_helper import sqldb
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 SqL = sqldb
-
+from telethon import TelegramClient
 from ..core.logger import logging
 
 
@@ -86,7 +86,7 @@ except Exception as e:
 #########
 
 if Database.BOT_TOKEN is not None:
-    PandaBot.tgbot = PandaUserbotSession(
+    PandaBot.tgbot = TelegramClient(
         "TG_BOT_TOKEN",
         api_id=Var.APP_ID,
         api_hash=Var.API_HASH,
