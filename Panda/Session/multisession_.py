@@ -6,7 +6,7 @@ import logging
 from ..Var import Var, Database
 from logging import getLogger
 import pyrogram as pandapyro
-from .client import PandaBot, PandaBot2, PandaBot3, PandaBot.tgbot
+from .client import PandaBot, PandaBot2, PandaBot3, tgbot
 from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
 import sys
@@ -34,7 +34,7 @@ def Telethon():
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
             if Database.BOT_TOKEN:
-                PandaBot.tgbot.start(bot_token=Database.BOT_TOKEN)
+                tgbot.start(bot_token=Database.BOT_TOKEN)
         except Exception as e:
             LOGS.error(f"STRING_SESSION - {str(e)}")
             sys.exit()
