@@ -1,4 +1,4 @@
-from Panda import PandaBot as pandaub
+from Panda import tgbot, PandaBot as pandaub
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.events import InlineQuery
 from telethon.tl.types import (
@@ -17,7 +17,7 @@ def owner_and_sudos():
 
 def in_pattern(pat):
     def don(func):
-        pandaub.tgbot.add_event_handler(func, InlineQuery(pattern=pat))
+        tgbot.add_event_handler(func, InlineQuery(pattern=pat))
 
     return don
 
