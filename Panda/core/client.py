@@ -230,15 +230,16 @@ class PandaUserbotSession(TelegramClient):
                         LOADED_CMDS[command[0]].append(wrapper)
                     except BaseException:
                         LOADED_CMDS.update({command[0]: [wrapper]})
-                if edited:
+                if PandaBot:
+                    if edited:
+                        PandaBot.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
                     PandaBot.add_event_handler(
                         wrapper,
-                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
-                PandaBot.add_event_handler(
-                    wrapper,
-                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
-                )
                 if PandaBot2:
                     if edited:
                         PandaBot2.add_event_handler(
@@ -270,23 +271,24 @@ class PandaUserbotSession(TelegramClient):
                 )
                 if dev is not None:
                     if command is not None or command[0]:
-                        if edited:
+                        if PandaBot:
+                            if edited:
+                                PandaBot.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
                             PandaBot.add_event_handler(
                                 wrapper,
-                                MessageEdited(
+                                NewMessage(
                                     pattern=REGEX_.dev,
                                     from_users=_dev_list() or DEV,
                                     **kwargs,
                                 ),
                             )
-                        PandaBot.add_event_handler(
-                            wrapper,
-                            NewMessage(
-                                pattern=REGEX_.dev,
-                                from_users=_dev_list() or DEV,
-                                **kwargs,
-                            ),
-                        )
                         if PandaBot2:
                             if edited:
                                 PandaBot2.add_event_handler(
