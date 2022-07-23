@@ -32,7 +32,7 @@ except ImportError:
 
 
 from youtubesearchpython import Playlist, ResultMode, Video, VideosSearch
-from Panda import LOGS, PandaBot
+from Panda import LOGS, PandaBot, tgbot
 from Panda.utils.tools import (
     bash,
     downloader,
@@ -53,7 +53,7 @@ from Panda.Config import Config
 from Panda.core.data import _sudousers_list
 
 HNDLR = Config.COMMAND_HAND_LER
-asst = PandaBot.tgbot
+asst = tgbot
 UltVer = "VcPanda" 
 asstUserName = Config.TG_BOT_USERNAME
 LOG_CHANNEL = int(Config.PRIVATE_GROUP_BOT_API_ID)
