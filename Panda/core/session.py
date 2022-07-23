@@ -9,4 +9,4 @@ tgbot = tgbot
 pandaub = PandaBot
 PandaBiT = PandaBot2
 boy = PandaBot3
-PandaBot.tgbot = tgbot
+
