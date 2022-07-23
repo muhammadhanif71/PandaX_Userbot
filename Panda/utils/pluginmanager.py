@@ -7,7 +7,7 @@ from ..Config import Config
 from ..core import LOADED_CMDS, PLG_INFO
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..core.session import PandaBot as pandaub
+from ..core.session import tgbot, PandaBot as pandaub
 from ..helpers.tools import media_type
 from ..helpers.utils import _format, _pandatools, _pandautils, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
@@ -39,9 +39,9 @@ def load_module(shortname, plugin_path=None):
         mod.LOGS = LOGS
         mod.Config = Config
         mod._format = _format
-        mod.tgbot = pandaub.tgbot
-        mod.Stark = pandaub.tgbot
-        mod.asst = pandaub.tgbot
+        mod.tgbot = tgbot
+        mod.Stark = tgbot
+        mod.asst = tgbot
         mod.sudo_cmd = sudo_cmd
         mod.CMD_HELP = CMD_HELP
         mod.reply_id = reply_id
@@ -85,9 +85,9 @@ def load_modules(shortname, plugin_path=None):
         mod.LOGS = LOGS
         mod.Config = Config
         mod._format = _format
-        mod.tgbot = pandaub.tgbot
-        mod.Stark = pandaub.tgbot
-        mod.asst = pandaub.tgbot
+        mod.tgbot = tgbot
+        mod.Stark = tgbot
+        mod.asst = tgbot
         mod.sudo_cmd = sudo_cmd
         mod.CMD_HELP = CMD_HELP
         mod.reply_id = reply_id
