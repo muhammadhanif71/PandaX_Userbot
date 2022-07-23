@@ -29,8 +29,8 @@ def Telethon():
                     PandaBot.session.save()
                     break
             PandaBot.me = PandaBot.get_me()
-            PandaBot.tgbot.get_me()
-            PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
+            tgbot.get_me()
+            PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
             if Database.BOT_TOKEN:
@@ -55,8 +55,8 @@ def Telethon():
                     PandaBot2.session.save()
                     break
             PandaBot2.me = PandaBot2.get_me()
-            PandaBot.tgbot.get_me()
-            PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot2.me)
+            tgbot.get_me()
+            PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot2.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot2.me)
         except Exception as e:
@@ -78,8 +78,8 @@ def Telethon():
                     PandaBot3.session.save()
                     break
             PandaBot3.me = PandaBot3.get_me()
-            PandaBot.tgbot.get_me()
-            PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
+            tgbot.get_me()
+            PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot3.me)
         except Exception as e:
