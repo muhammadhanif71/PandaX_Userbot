@@ -86,7 +86,7 @@ except Exception as e:
 #########
 
 if Database.BOT_TOKEN is not None:
-    .tgbot = TelegramClient(
+    tgbot = TelegramClient(
         "TG_BOT_TOKEN",
         api_id=Var.APP_ID,
         api_hash=Var.API_HASH,
