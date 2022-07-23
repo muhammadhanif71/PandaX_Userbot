@@ -17,7 +17,7 @@ from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot, PandaBot2, PandaBot3
+from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
@@ -44,9 +44,9 @@ async def setup_bot():
                 PandaBot.session.save()
                 break
         PandaBot.me = await PandaBot.get_me()
-        bot_details = await PandaBot.tgbot.get_me()
+        bot_details = await tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
-        PandaBot.uid = PandaBot.tgbot.uid = utils.get_peer_id(PandaBot.me)
+        PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
         if Config.OWNER_ID == 0:
             Config.OWNER_ID = utils.get_peer_id(PandaBot.me)
         if Config.STRING_SESSION2:
