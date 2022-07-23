@@ -533,15 +533,36 @@ class PandaUserbotSession(TelegramClient):
                         LOADED_CMDS[command[0]].append(wrapper)
                     except BaseException:
                         LOADED_CMDS.update({command[0]: [wrapper]})
-                if edited:
+                if PandaBot:
+                    if edited:
+                        PandaBot.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
                     PandaBot.add_event_handler(
                         wrapper,
-                        MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
-                PandaBot.add_event_handler(
-                    wrapper,
-                    NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
-                )
+                if PandaBot2:
+                    if edited:
+                        PandaBot2.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
+                    PandaBot2.add_event_handler(
+                        wrapper,
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    )
+                if PandaBot3:
+                    if edited:
+                        PandaBot3.add_event_handler(
+                            wrapper,
+                            MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                        )
+                    PandaBot3.add_event_handler(
+                        wrapper,
+                        NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
+                    )
                 if dual and SqL.getdb("MODE_DUAL"):
                     PandaBot.tgbot.add_event_handler(
                         wrapper,
@@ -553,23 +574,60 @@ class PandaUserbotSession(TelegramClient):
                 )
                 if dev is not None:
                     if command is not None or command[0]:
-                        if edited:
+                        if PandaBot:
+                            if edited:
+                                PandaBot.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
                             PandaBot.add_event_handler(
                                 wrapper,
-                                MessageEdited(
+                                NewMessage(
                                     pattern=REGEX_.dev,
                                     from_users=_dev_list() or DEV,
                                     **kwargs,
                                 ),
                             )
-                        PandaBot.add_event_handler(
-                            wrapper,
-                            NewMessage(
-                                pattern=REGEX_.dev,
-                                from_users=_dev_list() or DEV,
-                                **kwargs,
-                            ),
-                        )
+                        if PandaBot2:
+                            if edited:
+                                PandaBot2.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
+                            PandaBot2.add_event_handler(
+                                wrapper,
+                                NewMessage(
+                                    pattern=REGEX_.dev,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
+                        if PandaBot3:
+                            if edited:
+                                PandaBot3.add_event_handler(
+                                    wrapper,
+                                    MessageEdited(
+                                        pattern=REGEX_.dev,
+                                        from_users=_dev_list() or DEV,
+                                        **kwargs,
+                                    ),
+                                )
+                            PandaBot3.add_event_handler(
+                                wrapper,
+                                NewMessage(
+                                    pattern=REGEX_.dev,
+                                    from_users=_dev_list() or DEV,
+                                    **kwargs,
+                                ),
+                            )
                         if dual and SqL.getdb("MODE_DUAL"):
                             PandaBot.tgbot.add_event_handler(
                                 wrapper,
@@ -619,7 +677,6 @@ class PandaUserbotSession(TelegramClient):
             return wrapper
 
         return decorator
-
 
 
     def bot_cmd(
@@ -679,11 +736,11 @@ class PandaUserbotSession(TelegramClient):
                         )
 
             from .session import tgbot
-
-            if edited is True:
-                tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
-            else:
-                tgbot.add_event_handler(func, events.NewMessage(**kwargs))
+            if tgbot:
+                if edited is True:
+                    tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
+                else:
+                    tgbot.add_event_handler(func, events.NewMessage(**kwargs))
 
             return wrapper
 
