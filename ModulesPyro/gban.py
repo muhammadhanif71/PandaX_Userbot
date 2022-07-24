@@ -79,7 +79,7 @@ async def gmute_him(client, message):
     if userz.id in Config.AFS:
         await ug.edit("`Sudo Users Can't Be Un-Gmutted! Remove Him And Try Again!`")
         return
-    if not await is_gmuted(userz.id):
+    if not is_gmuted(userz.id):
         await ug.edit("`Un-Gmute A Non Gmutted User? Seriously? :/`")
         return
     ungmute(userz.id)
@@ -120,7 +120,7 @@ async def gbun_him(client, message):
     if userz.id in Config.AFS:
         await gbun.edit("`Sudo Users Can't Be Gbanned! Remove Him And Try Again!`")
         return
-    if await gban_info(userz.id):
+    if gban_info(userz.id):
         await gbun.edit("`Re-Gban? Seriously? :/`")
         return
     await gbun.edit("`Please, Wait Fectching Your Chats!`")
@@ -165,7 +165,7 @@ async def ungbun_him(client, message):
     if userz.id == (client.me).id:
         await ungbun.edit("`Oh, This is So Funny Btw :/`")
         return
-    if not await gban_info(userz.id):
+    if not gban_info(userz.id):
         await ungbun.edit("`Un-Gban A Ungbanned User? Seriously? :/`")
         return
     await ungbun.edit("`Please, Wait Fectching Your Chats!`")
