@@ -48,7 +48,7 @@ def ongruppyro():
     try:
         if Panda.pyrobot:
             if Panda.BOTLOG_CHATID != 0:
-                await Panda.pyrobot.send_message(
+                Panda.pyrobot.send_message(
                     Panda.BOTLOG_CHATID,
                     Copy,
                 )
