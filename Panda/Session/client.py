@@ -1,7 +1,7 @@
 from telethon.sessions import StringSession
 from ..Var import Var, Database
 from ..core.client import PandaUserbotSession
-
+import os
 from ..versions import __version__
 from ..sql_helper import sqldb
 import sys
@@ -9,6 +9,7 @@ from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 SqL = sqldb
 from ..core.logger import logging
 
+BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
 
 LOGS = logging.getLogger("PandaUserbot")
@@ -93,7 +94,7 @@ try:
             connection=ConnectionTcpAbridged,
             auto_reconnect=True,
             connection_retries=None,
-        ).start(bot_token=Database.BOT_TOKEN)
+        ).start(bot_token=BOT_TOKEN)
     else:
         PandaBot.tgbot = tgbot = None
 except Exception as e:
