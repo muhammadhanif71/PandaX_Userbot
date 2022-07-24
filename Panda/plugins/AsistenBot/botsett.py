@@ -17,7 +17,7 @@ from telethon.utils import get_display_name
 
 from Panda import Config
 from Panda import PandaBot 
-
+from Panda.core.client import bot_cmd
 from Panda.core import check_owner, pool
 from Panda.core.logger import logging
 from Panda.core.session import tgbot
@@ -73,7 +73,7 @@ async def check_bot_started_users(user, event):
         await event.client.send_message(BOTLOG_CHATID, notification)
 
 
-@PandaBot.bot_cmd(
+@bot_cmd(
     pattern=f"^/start({botusername})?([\s]+)?$",
     incoming=True,
     func=lambda e: e.is_private,
@@ -131,7 +131,7 @@ async def bot_start(event):
         await check_bot_started_users(chat, event)
 
 
-@PandaBot.bot_cmd(incoming=True, func=lambda e: e.is_private)
+@bot_cmd(incoming=True, func=lambda e: e.is_private)
 async def bot_pms(event):  # sourcery no-metrics
     chat = await event.get_chat()
     if check_is_black_list(chat.id):
@@ -188,7 +188,7 @@ async def bot_pms(event):  # sourcery no-metrics
                     )
 
 
-@PandaBot.bot_cmd(edited=True)
+@bot_cmd(edited=True)
 async def bot_pms_edit(event):  # sourcery no-metrics
     chat = await event.get_chat()
     if check_is_black_list(chat.id):
@@ -277,7 +277,7 @@ async def handler(event):
                 LOGS.error(str(e))
 
 
-@PandaBot.bot_cmd(
+@bot_cmd(
     pattern=f"^/uinfo$",
     from_users=Config.OWNER_ID,
 )
@@ -356,7 +356,7 @@ async def send_flood_alert(user_) -> None:
                     "Is Flooding your bot !, Check `.help delsudo` to remove the user from Sudo."
                 )
                 if BOTLOG:
-                    await pandaub.tgbot.send_message(BOTLOG_CHATID, sudo_spam)
+                    await tgbot.send_message(BOTLOG_CHATID, sudo_spam)
             else:
                 await ban_user_from_bot(
                     user_,
@@ -370,7 +370,7 @@ async def send_flood_alert(user_) -> None:
         if not fa_id:
             return
         try:
-            msg_ = await pandaub.tgbot.get_messages(BOTLOG_CHATID, fa_id)
+            msg_ = await tgbot.get_messages(BOTLOG_CHATID, fa_id)
             if msg_.text != flood_msg:
                 await msg_.edit(flood_msg, buttons=buttons)
         except Exception as fa_id_err:
@@ -378,20 +378,20 @@ async def send_flood_alert(user_) -> None:
             return
     else:
         if BOTLOG:
-            fa_msg = await pandaub.tgbot.send_message(
+            fa_msg = await tgbot.send_message(
                 BOTLOG_CHATID,
                 flood_msg,
                 buttons=buttons,
             )
         try:
-            chat = await pandaub.tgbot.get_entity(BOTLOG_CHATID)
-            await pandaub.tgbot.send_message(
+            chat = await tgbot.get_entity(BOTLOG_CHATID)
+            await tgbot.send_message(
                 Config.OWNER_ID,
                 f"🚷  **[Bot Flood Peringatan !](https://t.me/c/{chat.id}/{fa_msg.id})**",
             )
         except UserIsBlockedError:
             if BOTLOG:
-                await pandaub.tgbot.send_message(
+                await tgbot.send_message(
                     BOTLOG_CHATID, "**Unblock your bot !**"
                 )
     if FloodConfig.ALERT[user_.id].get("fa_id") is None and fa_msg:
@@ -440,7 +440,7 @@ def is_flood(uid: int) -> Optional[bool]:
         return True
 
 
-@PandaBot.tgbot.on(CallbackQuery(data=re.compile(b"toggle_bot-antiflood_off$")))
+@tgbot.on(CallbackQuery(data=re.compile(b"toggle_bot-antiflood_off$")))
 @check_owner
 async def settings_toggle(c_q: CallbackQuery):
     if gvarstatus("bot_antif") is None:
@@ -450,8 +450,8 @@ async def settings_toggle(c_q: CallbackQuery):
     await c_q.edit("BOT_ANTIFLOOD batal sekarang !")
 
 
-@PandaBot.bot_cmd(incoming=True, func=lambda e: e.is_private)
-@PandaBot.bot_cmd(edited=True, func=lambda e: e.is_private)
+@bot_cmd(incoming=True, func=lambda e: e.is_private)
+@bot_cmd(edited=True, func=lambda e: e.is_private)
 async def antif_on_msg(event):
     if gvarstatus("bot_antif") is None:
         return
