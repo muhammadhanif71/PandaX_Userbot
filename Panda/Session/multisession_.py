@@ -33,8 +33,6 @@ def Telethon():
             PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
-            if Database.BOT_TOKEN:
-                tgbot.start(bot_token=Database.BOT_TOKEN)
         except Exception as e:
             LOGS.error(f"STRING_SESSION - {str(e)}")
             sys.exit()
