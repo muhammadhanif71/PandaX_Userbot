@@ -12,7 +12,6 @@ from Panda import tgbot, PandaBot as pandaub
 
 from Panda.Config import Config
 from Panda.core.logger import logging
-from Panda.core.client import bot_cmd
 from Panda.helpers import reply_id
 from Panda.helpers.utils import _format
 from Panda.sql_helper.bot_blacklists import add_user_to_bl, rem_user_from_bl
