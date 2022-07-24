@@ -1,23 +1,24 @@
-from . import db_x
-
-gbun = db_x["GBAN"]
+from .. import SqL
 
 
-async def gban_user(user, reason="#GBanned"):
-    await gbun.insert_one({"user": user, "reason": reason})
+def gban_list():
+    return SqL.getdb("GBAN") or {}
 
 
-async def ungban_user(user):
-    await gbun.delete_one({"user": user})
+def gban_user(user, reason):
+    ok = list_gbanned()
+    ok.update({int(user): reason or "No Reason. "})
+    return SqL.setdb("GBAN", ok)
 
 
-async def gban_list():
-    return [lo async for lo in gbun.find({})]
+def ungban_user(user):
+    ok = gban_list()
+    if ok.get(int(user)):
+        del ok[int(user)]
+        return SqL.getdb("GBAN", ok)
 
 
-async def gban_info(user):
-    kk = await gbun.find_one({"user": user})
-    if not kk:
-        return False
-    else:
-        return kk["reason"]
+def gban_info(user):
+    ok = gban_list()
+    if ok.get(int(user)):
+        return ok[int(user)]
