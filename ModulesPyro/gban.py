@@ -44,7 +44,7 @@ async def gmute_him(client, message):
     if userz.id in Config.AFS:
         await g.edit("`Sudo Users Can't Be Gmutted! Remove Him And Try Again!`")
         return
-    if await is_gmuted(userz.id):
+    if is_gmuted(userz.id):
         await g.edit("`Re-Gmute? Seriously? :/`")
         return
     await gmute(userz.id, reason)
@@ -82,7 +82,7 @@ async def gmute_him(client, message):
     if not await is_gmuted(userz.id):
         await ug.edit("`Un-Gmute A Non Gmutted User? Seriously? :/`")
         return
-    await ungmute(userz.id)
+    ungmute(userz.id)
     ugmu = f"**#Un-Gmutted** \n**User :** `{userz.id}`"
     await ug.edit(ugmu)
     log = LogIt(message)
@@ -135,7 +135,7 @@ async def gbun_him(client, message):
             await client.kick_chat_member(ujwal, int(userz.id))
         except:
             failed += 1
-    await gban_user(userz.id, reason)
+    gban_user(userz.id, reason)
     gbanned = f"**#GBanned** \n**User :** [{userz.first_name}](tg://user?id={userz.id}) \n**Reason :** `{reason}` \n**Affected Chats :** `{chat_len-failed}`"
     await gbun.edit(gbanned)
     log = LogIt(message)
@@ -180,7 +180,7 @@ async def ungbun_him(client, message):
             await client.unban_chat_member(ujwal, int(userz.id))
         except:
             failed += 1
-    await ungban_user(userz.id)
+    ungban_user(userz.id)
     ungbanned = f"**#Un_GBanned** \n**User :** [{userz.first_name}](tg://user?id={userz.id}) \n**Affected Chats :** `{chat_len-failed}`"
     await ungbun.edit(ungbanned)
     log = LogIt(message)
@@ -194,12 +194,12 @@ async def watch(client, message):
     if not message.from_user:
         return
     user = message.from_user.id
-    if await is_gmuted(user):
+    if is_gmuted(user):
         try:
             await message.delete()
         except:
             return
-    if await gban_info(user):
+    if gban_info(user):
         if message.chat.type != "supergroup":
             return
         try:
@@ -229,7 +229,7 @@ async def watch(client, message):
 async def give_glist(client, message):
     oof = "**#GBanList** \n\n"
     glist = await edit_or_reply(message, "`Processing..`")
-    list_ = await gban_list()
+    list_ = gban_list()
     if len(list_) == 0:
         await glist.edit("`No User is Gbanned Till Now!`")
         return
