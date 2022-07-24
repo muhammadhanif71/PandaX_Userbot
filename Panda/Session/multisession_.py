@@ -15,7 +15,7 @@ LOGS = getLogger(__name__)
 def mongo_check():
     """Check Mongo Client"""
     try:
-        await dbx.server_info()
+        dbx.server_info()
     except BaseException as e:
         logging.error("Something Isn't Right With Mongo! Please Check Your URL")
         logging.error(str(e))
