@@ -3,7 +3,7 @@ from .pyroclient import pyrotgbot, pyrobot
 from telethon import functions, utils
 
 import logging
-from ..Var import Var, Database
+from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
 from .client import PandaBot, PandaBot2, PandaBot3, tgbot
