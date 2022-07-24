@@ -7,7 +7,6 @@ from ..sql_helper import sqldb
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 SqL = sqldb
-from telethon import TelegramClient
 from ..core.logger import logging
 
 
