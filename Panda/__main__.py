@@ -37,7 +37,7 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
 
-ON = f"""
+Copy = f"""
 **Panda-Userbot**
 **Version -** `{pyrover}`
 **Berbasis Pyrogram**
@@ -50,7 +50,7 @@ def ongruppyro():
             if Panda.BOTLOG_CHATID != 0:
                 await Panda.pyrobot.send_message(
                     Panda.BOTLOG_CHATID,
-                    ON,
+                    Copy,
                 )
     except BaseException:
         pass
