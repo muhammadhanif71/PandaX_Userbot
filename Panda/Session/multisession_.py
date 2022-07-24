@@ -12,7 +12,7 @@ from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
 import sys
 LOGS = getLogger(__name__)
 
-async def mongo_check():
+def mongo_check():
     """Check Mongo Client"""
     try:
         await dbx.server_info()
@@ -96,7 +96,7 @@ def Telethon():
 
 def Pyrogram():
     if dbx:
-        await mongo_check()
+        mongo_check()
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
