@@ -10,7 +10,7 @@ from datetime import datetime
 
 from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 
-from Panda import PandaBot ,tgbot
+from Panda import PandaBot
 
 from Panda.Config import Config
 from Panda.core.logger import logging
