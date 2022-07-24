@@ -1,4 +1,4 @@
-from Panda import PandaBot, tgbot
+from Panda import tgbot
 from telethon import events, Button
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
