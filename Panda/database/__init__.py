@@ -31,10 +31,10 @@ logbot.edit_last_msg("Connecting to Database ...", _LOG.info, _LOG_STR)
 _MGCLIENT: AgnosticClient = AsyncIOMotorClient(Database.MONGO_DB)
 _RUN = asyncio.get_event_loop().run_until_complete
 
-if "Userge" in _RUN(_MGCLIENT.list_database_names()):
-    _LOG.info(_LOG_STR, "Petercord-X Database Found :) => Now Logging to it...")
+if "Panda" in _RUN(_MGCLIENT.list_database_names()):
+    _LOG.info(_LOG_STR, "Panda Database Found :) => Now Logging to it...")
 else:
-    _LOG.info(_LOG_STR, "Petercord-X Database Not Found :( => Creating New Database...")
+    _LOG.info(_LOG_STR, "Panda Database Not Found :( => Creating New Database...")
 
 _DATABASE: AgnosticDatabase = _MGCLIENT["Petercord"]
 _COL_LIST: List[str] = _RUN(_DATABASE.list_collection_names())
@@ -56,4 +56,11 @@ def _close_db() -> None:
 logbot.del_last_msg()
 
 
-db_x = get_collection
+def mongodb():
+    if Database.MONGO_DB:
+        return get_collection
+    else:
+        return None
+
+
+db_x = mongodb()
