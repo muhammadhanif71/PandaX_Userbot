@@ -21,12 +21,11 @@ from typing import List
 from motor.motor_asyncio import AsyncIOMotorClient
 from motor.core import AgnosticClient, AgnosticDatabase, AgnosticCollection
 
-from . import logbot
+
 
 _LOG = logging.getLogger(__name__)
 _LOG_STR = "$$$>>> %s <<<$$$"
 
-logbot.edit_last_msg("Connecting to Database ...", _LOG.info, _LOG_STR)
 
 _MGCLIENT: AgnosticClient = AsyncIOMotorClient(Database.MONGO_DB)
 _RUN = asyncio.get_event_loop().run_until_complete
@@ -53,7 +52,6 @@ def _close_db() -> None:
     _MGCLIENT.close()
 
 
-logbot.del_last_msg()
 
 
 def mongodb():
