@@ -12,6 +12,9 @@ def _log(func):
     return wrapper
 
 
+def _send_data(*args) -> None:
+    with open("logs/logbot.stdin", 'a') as l_b:
+        l_b.write(f"{' '.join(args)}\n")
 
 
 @_log
