@@ -8,10 +8,11 @@ from math import floor
 
 from telethon.utils import get_display_name
 
-from Panda import PandaBot as pandaub
+from Panda import tgbot, PandaBot as pandaub
 
 from Panda.Config import Config
 from Panda.core.logger import logging
+from Panda.core.client import bot_cmd
 from Panda.helpers import reply_id
 from Panda.helpers.utils import _format
 from Panda.sql_helper.bot_blacklists import add_user_to_bl, rem_user_from_bl
@@ -71,7 +72,7 @@ async def ban_user_from_bot(user, reason, reply_to=None):
     banned_msg = (
         f"**Anda telah Dilarang Selamanya menggunakan bot ini.\nReason** : {reason}"
     )
-    await pandaub.tgbot.send_message(user.id, banned_msg)
+    await tgbot.send_message(user.id, banned_msg)
     info = f"**#Banned_Bot_PM_User**\
             \n\n🐼 {_format.mentionuser(get_display_name(user) , user.id)}\
             \n**Nama Pengguna:** {user.first_name}\
@@ -90,7 +91,7 @@ async def unban_user_from_bot(user, reason, reply_to=None):
     banned_msg = f"**🐼 Anda telah dibatalkan pemblokirannya dari bot ini. Mulai sekarang Anda dapat mengirim pesan ke sini untuk menghubungi tuan saya 🐼.**"
     if reason is not None:
         banned_msg += f"\n**Reason:** __{reason}__"
-    await pandaub.tgbot.send_message(user.id, banned_msg)
+    await tgbot.send_message(user.id, banned_msg)
     info = f"**#Unbanned_Bot_PM_User**\
             \n\n🐼 {_format.mentionuser(get_display_name(user) , user.id)}\
             \n**First Name:** {user.first_name}\
