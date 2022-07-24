@@ -1,20 +1,23 @@
-from . import db_x
-
-gmuteh = db_x["GMUTE"]
+from .. import SqL
 
 
-async def is_gmuted(sender_id):
-    kk = await gmuteh.find_one({"sender_id": sender_id})
-    if not kk:
-        return False
-    else:
-        return True
+def list_gmuted():
+    return SqL.getdb("GMUTE") or []
+
+def gmute(user):
+    ok = list_gmuted()
+    ok.append(int(user))
+    return SqL.getdb("GMUTE", ok)
 
 
-async def gmute(sender_id, reason="#GMuted"):
-    await gmuteh.insert_one({"sender_id": sender_id, "reason": reason})
+def ungmute(user):
+    ok = list_gmuted()
+    if user in ok:
+        ok.remove(int(user))
+        return SqL.getdb("GMUTE", ok)
+
+def is_gmuted(user):
+    return int(user) in list_gmuted()
 
 
-async def ungmute(sender_id):
-    await gmuteh.delete_one({"sender_id": sender_id})
 
