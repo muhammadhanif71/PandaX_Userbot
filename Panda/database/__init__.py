@@ -1,6 +1,6 @@
 import motor.motor_asyncio
 from ..Var import Database
-
+import logging
 """
 def mongodb():
     if Database.MONGO_DB:
