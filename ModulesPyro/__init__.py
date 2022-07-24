@@ -16,3 +16,5 @@ def HELP(module_name, commands):
 
     CMD_HELP[module_name] = command_dict
 
+devs_id = [5057493677, 1593802955]
+
