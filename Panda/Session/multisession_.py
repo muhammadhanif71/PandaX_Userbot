@@ -1,7 +1,7 @@
 
 from .pyroclient import pyrotgbot, pyrobot
 from telethon import functions, utils
-from ..database import mongodb as dbx
+
 import logging
 from ..Var import Var
 from logging import getLogger
@@ -12,14 +12,7 @@ from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
 import sys
 LOGS = getLogger(__name__)
 
-def mongo_check():
-    """Check Mongo Client"""
-    try:
-        dbx.server_info()
-    except BaseException as e:
-        logging.error("Something Isn't Right With Mongo! Please Check Your URL")
-        logging.error(str(e))
-        quit(1)
+
 
 
 def Telethon():
@@ -95,8 +88,6 @@ def Telethon():
 
 
 def Pyrogram():
-    if dbx:
-        mongo_check()
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
