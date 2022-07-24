@@ -47,7 +47,7 @@ class Database(object):
     DB_URI = os.environ.get("DATABASE_URL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     PyroSESSION = os.environ.get("PyroSESSION", None)
-    MONGO_DB = os.environ.get("MONGO_DB", "mongodb+srv://alfarezahs:alfarezahs@cluster0.lw1xw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    MONGO_DB = os.environ.get("MONGO_DB", "mongodb+srv://petercord:b38DJZL3X6zhnHJ0@cluster0.e9xau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     PyroSESSION2 = os.environ.get("PyroSESSION2", None)
     PyroSESSION3 = os.environ.get("PyroSESSION3", None)
     PyroSESSION4 = os.environ.get("PyroSESSION4", None)
