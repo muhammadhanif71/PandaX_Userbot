@@ -30,7 +30,7 @@ from Panda._func.startup import run_cmd
 from Panda import CMD_LIST, pyrobot, pandaversion, pyrotgbot as bot
 from Panda import Config
 from youtubesearchpython import SearchVideos
-from Panda_func._helpers import (
+from Panda._func._helpers import (
     cb_wrapper,
     humanbytes,
     get_all_pros,
