@@ -10,6 +10,7 @@ from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
 from .Session.multisession_ import Pyrogram, Telethon
+from pyrogram import __version__ as pyrover
 
 ## Memulai ••••••••••√√√√√•••••••
 
@@ -36,10 +37,29 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
 
+ON = f"""
+**Panda-Userbot**
+**Version -** `{pyrover}`
+**Berbasis Pyrogram**
+Dev by Ilham Mansiz
+"""
+
+def ongruppyro():
+    try:
+        if Panda.pyrobot:
+            if Panda.BOTLOG_CHATID != 0:
+                await Panda.pyrobot.send_message(
+                    Panda.BOTLOG_CHATID,
+                    ON,
+                )
+    except BaseException:
+        pass
+
 if __name__ == "__main__":
     Telethon()
     start()
     Pyrogram()
+    ongruppyro()
   
 if Panda.PandaBot:
     try:
