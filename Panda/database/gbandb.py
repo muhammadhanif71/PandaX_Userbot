@@ -6,7 +6,7 @@ def gban_list():
 
 
 def gban_user(user, reason):
-    ok = list_gbanned()
+    ok = gban_list()
     ok.update({int(user): reason or "No Reason. "})
     return SqL.setdb("GBAN", ok)
 
