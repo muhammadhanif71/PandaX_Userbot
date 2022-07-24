@@ -22,9 +22,9 @@ def load_modulesPyro(plugin_name, assistant=False):
                 plugin_path = "assistant." + plugin_name
             else:
                 plugin_path = "ModulesPyro." + plugin_name
-            loader_type = "[Assistant]" if assistant else "[User]"
+            loader_type = "[🤖 Assistant]" if assistant else "[👤 User]"
             importlib.import_module(plugin_path)
-            logging.info(f"{loader_type} - Loaded : " + str(plugin_name))
+            logging.info(f"{loader_type} - Connection : " + str(plugin_name))
 
 
 def plugin_collecter(path):
