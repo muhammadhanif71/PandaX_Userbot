@@ -10,10 +10,11 @@ from datetime import datetime
 
 from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 
-from Panda import PandaBot 
+from Panda import PandaBot ,tgbot
 
 from Panda.Config import Config
 from Panda.core.logger import logging
+from Panda.core.client import bot_cmd
 from Panda.core.managers import edit_delete, edit_or_reply
 from Panda.helpers import reply_id, time_formatter
 from Panda.helpers.utils import _format
@@ -38,7 +39,7 @@ cmhd = Config.COMMAND_HAND_LER
 
 
 
-@PandaBot.bot_cmd(
+@bot_cmd(
     pattern=f"^/broadcast$",
     from_users=Config.OWNER_ID,
 )
@@ -116,7 +117,7 @@ async def ban_starters(event):
     await edit_or_reply(event, msg)
 
 
-@PandaBot.bot_cmd(
+@bot_cmd(
     pattern=f"^/ban\s+(.*)",
     from_users=Config.OWNER_ID,
 )
@@ -151,7 +152,7 @@ async def ban_botpms(event):
     await event.reply(msg)
 
 
-@PandaBot.bot_cmd(
+@bot_cmd(
     pattern=f"^/unban(?: |$)(.*)",
     from_users=Config.OWNER_ID,
 )
