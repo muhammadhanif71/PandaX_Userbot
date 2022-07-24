@@ -36,7 +36,7 @@ if "Panda" in _RUN(_MGCLIENT.list_database_names()):
 else:
     _LOG.info(_LOG_STR, "Panda Database Not Found :( => Creating New Database...")
 
-_DATABASE: AgnosticDatabase = _MGCLIENT["Petercord"]
+_DATABASE: AgnosticDatabase = _MGCLIENT["Panda"]
 _COL_LIST: List[str] = _RUN(_DATABASE.list_collection_names())
 
 
