@@ -1,10 +1,10 @@
-from Panda import PandaBot
+from Panda import PandaBot, tgbot
 from telethon import events, Button
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 from Panda.status import is_admin
 from . import closed
-Stark = PandaBot.tgbot
+Stark = tgbot
 BANS_TEXT = """
 **✘ Some people need to be publicly banned; spammers, annoyances, or just trolls.**
 
