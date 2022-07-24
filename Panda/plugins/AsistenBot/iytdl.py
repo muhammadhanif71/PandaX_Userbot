@@ -17,7 +17,7 @@ from telethon.events import CallbackQuery
 from telethon.utils import get_attributes
 from wget import download
 
-from Panda import PandaBot
+from Panda import PandaBot, tgbot
 
 from Panda.Config import Config
 from Panda.core import check_owner, pool
@@ -74,7 +74,7 @@ async def iytdl_inline(event):
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
 
 
-@PandaBot.tgbot.on(
+@tgbot.on(
     CallbackQuery(
         data=re.compile(b"^ytdl_download_(.*)_([\d]+|mkv|mp4|mp3)(?:_(a|v))?")
     )
@@ -169,7 +169,7 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     )
 
 
-@PandaBot.tgbot.on(
+@tgbot.on(
     CallbackQuery(data=re.compile(b"^ytdl_(listall|back|next|detail)_([a-z0-9]+)_(.*)"))
 )
 @check_owner
