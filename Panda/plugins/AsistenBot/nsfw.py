@@ -8,7 +8,7 @@ from telethon import Button
 from telethon.errors import MessageNotModifiedError
 from telethon.events import CallbackQuery
 
-from Panda import tgbot, PandaBot as pandaub
+from Panda import tgbot
 
 from Panda.Config import Config
 from Panda.core.logger import logging
