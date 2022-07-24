@@ -1,7 +1,7 @@
 
 # ILHAM MANSIEZ
 # PANDA USERBOT
-from Panda import PandaBot as pandaub
+from Panda import tgbot, PandaBot as pandaub
 
 from Panda.Config import Config
 from Panda.core.inlinebot import *
@@ -22,10 +22,10 @@ from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
 from time import gmtime, strftime
 from traceback import format_exc
-bot = pandaub.tgbot
-Stark = pandaub.tgbot
-telethn = pandaub.tgbot
-bot = pandaub.tgbot
+bot = tgbot
+Stark = tgbot
+telethn = tgbot
+bot = tgbot
 
 import inspect
 import re
