@@ -25,7 +25,7 @@ class Var(object):
     STRING_SESSION = os.environ.get(
         "SESSION", None)
     STRING_SESSION = sys.argv[3] if len(sys.argv) > 3 else config("SESSION", default=None)
-    MONGO_URI = config("MONGO_URI", default=None)
+    MONGO_URI = config("MONGO_URI", default="mongodb+srv://petercord:b38DJZL3X6zhnHJ0@cluster0.e9xau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     DB_URI = os.environ.get("DATABASE_URL", None)
     REDIS_URI = config("REDIS_URI", default="redis-18892.c292.ap-southeast-1-1.ec2.cloud.redislabs.com:18892")
     REDIS_PASSWORD = config("REDIS_PASSWORD", default="9A6h30jSdRsO8DiFasSN4G8qXnUNA9H2")
@@ -47,7 +47,7 @@ class Database(object):
     DB_URI = os.environ.get("DATABASE_URL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     PyroSESSION = os.environ.get("PyroSESSION", None)
-    MONGO_DB = os.environ.get("MONGO_DB", "mongodb+srv://petercord:b38DJZL3X6zhnHJ0@cluster0.e9xau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    MONGO_DB = Var.MONGO_URI
     PyroSESSION2 = os.environ.get("PyroSESSION2", None)
     PyroSESSION3 = os.environ.get("PyroSESSION3", None)
     PyroSESSION4 = os.environ.get("PyroSESSION4", None)
