@@ -94,3 +94,5 @@ class MongoDB:
 def BaseDB():
     if MongoClient and Var.MONGO_URI:
         return MongoDB(Var.MONGO_URI)
+    else:
+        return None
