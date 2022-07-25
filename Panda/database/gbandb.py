@@ -1,4 +1,4 @@
-from .. import SqL
+from . import db_x as SqL
 
 
 def gban_list():
