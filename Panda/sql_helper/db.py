@@ -188,7 +188,7 @@ class SqlDB:
         if key in self._cache:
             del self._cache[key]
         try:
-            self._cursor.execute(f"ALTER TABLE Ultroid DROP COLUMN {key}")
+            self._cursor.execute(f"ALTER TABLE Panda DROP COLUMN {key}")
         except psycopg2.errors.UndefinedColumn:
             return False
         return True
