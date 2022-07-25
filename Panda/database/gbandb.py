@@ -15,7 +15,7 @@ def ungban_user(user):
     ok = gban_list()
     if ok.get(int(user)):
         del ok[int(user)]
-        return SqL.getdb("GBAN", ok)
+        return SqL.setdb("GBAN", ok)
 
 
 def gban_info(user):
