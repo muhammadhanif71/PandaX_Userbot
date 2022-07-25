@@ -9,7 +9,6 @@
 
 
 import sys
-import os
 
 from Panda.Var import Var
 from Panda.core.logger import logging
