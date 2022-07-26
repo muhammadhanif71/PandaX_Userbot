@@ -23,12 +23,19 @@ except Exception as e:
 
 ## Install Modules ••••••√√√√√••••••
 
+LOGS.info(f"Connecting to {Panda.SqL.name}...")
+    if Panda.SqL.ping():
+        LOGS.info(f"Connected to {Panda.SqL.name} Successfully!")
+
+
 async def memulai():
     await utils.loads(f"{P}")
     await utils.loads(f"{M}")
     await utils.buka(f"{V}")
     await utils.buka(f"{A}")
     
+
+
 
 def start():
     if Panda.PandaBot:
@@ -37,29 +44,13 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
 
-Copy = f"""
-**Panda-Userbot**
-**Version -** `{pyrover}`
-**Berbasis Pyrogram**
-Dev by Ilham Mansiz
-"""
 
-def ongruppyro():
-    try:
-        if Panda.pyrobot:
-            if Panda.BOTLOG_CHATID != 0:
-                Panda.pyrobot.send_message(
-                    Panda.BOTLOG_CHATID,
-                    Copy,
-                )
-    except BaseException:
-        pass
 
 if __name__ == "__main__":
     Telethon()
     start()
     Pyrogram()
-    ongruppyro()
+    
   
 if Panda.PandaBot:
     try:
