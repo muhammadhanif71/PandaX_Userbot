@@ -1,7 +1,5 @@
-from Panda.sql_helper.db import BaseDB 
+from Panda.sql_helper import sqldb as SqL 
 
-
-SqL = BaseDB()
 
 
 gvarstatus = SqL.getdb 
