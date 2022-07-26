@@ -1,6 +1,6 @@
-from Panda.sql_helper import sqldb as SqL 
+from Panda.sql_helper.db import BaseDB()
 
-
+SqL = BaseDB()
 
 gvarstatus = SqL.getdb 
 addgvar = SqL.setdb 
