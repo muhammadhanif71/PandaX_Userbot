@@ -5,7 +5,7 @@ import asyncio
 from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, redisalive, tgbot
 pandaub = PandaBot
 from ..Config import Config
-from ..helpers.functions import get_readable_time, check_data_base_heal_th
+from ..helpers.functions import get_readable_time
 from pytgcalls import __version__
 from ..core.data import _sudousers_list
 from . import mention
