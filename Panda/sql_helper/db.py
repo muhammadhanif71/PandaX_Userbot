@@ -77,6 +77,16 @@ except ImportError:
         LOGS.warning("'psycopg2' not found!\nInstall psycopg2 to use SQL database..")
 
 
+def get_data(self_, key):
+    data = self_.get(str(key))
+    if data:
+        try:
+            data = eval(data)
+        except BaseException:
+            pass
+    return data
+
+
 class MongoDB:
     def __init__(self, key):
         self.dB = MongoClient(key, serverSelectionTimeoutMS=5000)
