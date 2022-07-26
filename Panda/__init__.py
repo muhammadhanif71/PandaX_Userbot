@@ -52,6 +52,10 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
+LOGS.info(f"Connecting to {SqL.name}...")
+LOGS.info(f"Connected to {SqL.name} Successfully!")
+
+
 BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
 """
