@@ -57,4 +57,6 @@ def deldb(variable):
     if rem:
         SESSION.commit()
 
+def name(self):
+        return "SqLDB"
 
