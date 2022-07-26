@@ -16,9 +16,9 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 from .core.client import PandaUserbotSession, dual_duall
 from .sql_helper import sqldb
 from .sql_helper import mongodb
-"""
-from .sql_helper.database_ import BaseDB
-"""
+
+from .sql_helper.db import BaseDB
+
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
@@ -27,7 +27,7 @@ from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
-SqL = sqldb
+SqL = BaseDB
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
