@@ -25,13 +25,32 @@ class RunningAsFunctionLibError(pyUltroidError):
     ...
 
 import sys
-
+import os
 from Panda.Var import Var
 from Panda.core.logger import logging
 
 LOGS = logging.getLogger("PandaUserbot")
 
 run_as_module = False
+
+
+def where_hosted():
+    if os.getenv("DYNO"):
+        return "heroku"
+    if os.getenv("RAILWAY_STATIC_URL"):
+        return "railway"
+    if os.getenv("OKTETO_TOKEN"):
+        return "okteto"
+    if os.getenv("KUBERNETES_PORT"):
+        return "qovery | kubernetes"
+    if os.getenv("RUNNER_USER") or os.getenv("HOSTNAME"):
+        return "github actions"
+    if os.getenv("ANDROID_ROOT"):
+        return "termux"
+    return "local"
+
+
+HOSTED_ON = where_hosted()
 
 if sys.argv[0] == "-m":
     run_as_module = True
@@ -345,4 +364,17 @@ def BaseDB():
     else:
         return None
     
+    if Var.REDIS_URI or Var.REDISHOST:
+
+        return RedisDB(
+            host=Var.REDIS_URI or Var.REDISHOST,
+            password=Var.REDIS_PASSWORD or Var.REDISPASSWORD,
+            port=Var.REDISPORT,
+            platform=HOSTED_ON,
+            decode_responses=True,
+            socket_timeout=5,
+            retry_on_timeout=True,
+        )
+     else:
+        return None
  
