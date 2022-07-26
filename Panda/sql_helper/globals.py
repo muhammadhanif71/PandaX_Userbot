@@ -1,4 +1,4 @@
-from Panda.sql_helper.db import BaseDB()
+from Panda.sql_helper.db import BaseDB
 
 SqL = BaseDB()
 
