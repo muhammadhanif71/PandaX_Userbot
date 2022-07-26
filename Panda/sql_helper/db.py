@@ -97,7 +97,7 @@ class MongoDB:
     def re_cache(self):
         self._cache = {}
         for key in self.keys():
-            self._cache.update({key: self.get_key(key)})
+            self._cache.update({key: self.getdb(key)})
 
     def ping(self):
         if self.dB.server_info():
@@ -185,7 +185,7 @@ class SqlDB:
     def re_cache(self):
         self._cache = {}
         for key in self.keys():
-            self._cache.update({key: self.get_key(key)})
+            self._cache.update({key: self.getdb(key)})
 
     def keys(self):
         self._cursor.execute(
@@ -249,10 +249,10 @@ class SqlDB:
         return True
 
     def rename(self, key1, key2):
-        _ = self.get_key(key1)
+        _ = self.getdb(key1)
         if _:
-            self.del_key(key1)
-            self.set_key(key2, _)
+            self.deldb(key1)
+            self.setdb(key2, _)
             return 0
         return 1
 
@@ -317,7 +317,7 @@ class RedisDB:
     def re_cache(self):
         self._cache = {}
         for keys in self.keys():
-            self._cache.update({keys: self.get_key(keys)})
+            self._cache.update({keys: self.getdb(keys)})
 
     @property
     def name(self):
