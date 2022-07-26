@@ -60,3 +60,5 @@ def deldb(variable):
 def name(self):
         return "SqLDB"
 
+def ping(self):
+        return True
