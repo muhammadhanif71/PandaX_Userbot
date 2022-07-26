@@ -22,8 +22,6 @@ except Exception as e:
 
 ## Install Modules ••••••√√√√√••••••
 
-LOGS.info(f"Connecting to {Panda.SqL.name}...")
-LOGS.info(f"Connected to {Panda.SqL.name} Successfully!")
 
 
 async def memulai():
