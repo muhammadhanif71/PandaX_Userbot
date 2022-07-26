@@ -365,15 +365,7 @@ def BaseDB():
         return None
     
     if Var.REDIS_URI or Var.REDISHOST:
-        return RedisDB(
-            host=Var.REDIS_URI or Var.REDISHOST,
-            password=Var.REDIS_PASSWORD or Var.REDISPASSWORD,
-            port=Var.REDISPORT,
-            platform=HOSTED_ON,
-            decode_responses=True,
-            socket_timeout=5,
-            retry_on_timeout=True,
-         )
-     else:
+        return RedisDB(host=Var.REDIS_URI or Var.REDISHOST, password=Var.REDIS_PASSWORD or Var.REDISPASSWORD, port=Var.REDISPORT, platform=HOSTED_ON, decode_responses=True, socket_timeout=5, retry_on_timeout=True,)
+    else:
          return None
  
