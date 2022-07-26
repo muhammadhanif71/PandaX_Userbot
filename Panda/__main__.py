@@ -10,7 +10,6 @@ from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
 from .Session.multisession_ import Pyrogram, Telethon
-from pyrogram import __version__ as pyrover
 
 ## Memulai ••••••••••√√√√√•••••••
 
