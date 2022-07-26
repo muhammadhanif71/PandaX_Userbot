@@ -21,7 +21,7 @@ class DependencyMissingError(ImportError):
     ...
 
 
-class RunningAsFunctionLibError(pyUltroidError):
+class RunningAsFunctionLibError(PandaUserbotError):
     ...
 
 import sys
