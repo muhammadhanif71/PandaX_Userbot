@@ -12,7 +12,6 @@ import heroku3
 from redis import StrictRedis
 
 from .core.logger import logging
-from .sql_helper.globals import addgvar, delgvar, gvarstatus
 from .core.client import PandaUserbotSession, dual_duall
 """
 from .sql_helper import sqldb
@@ -36,6 +35,8 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
+
+from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 
 
