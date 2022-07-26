@@ -195,7 +195,7 @@ class Config(object):
         "UPSTREAM_REPO", "https://github.com/ilhammansiz/PandaX_Userbot"
     )
     ALIVE_IMG = os.environ.get(
-        "ALIVE_IMG", "https://telegra.ph/file/336d811bce4f1d1053fbf.jpg"
+        "ALIVE_IMG", "https://telegra.ph/file/8f0e9e25427f9da09e08a.jpg"
     )
     U_BRANCH = "PandaUserbot"
     HEROKU_URL = fetch_heroku_git_url(HEROKU_API_KEY, HEROKU_APP_NAME)
