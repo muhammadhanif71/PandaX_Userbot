@@ -14,7 +14,7 @@ from sqlalchemy import Column, String, UnicodeText
 
 
 class Sqldb(BASE):
-    __tablename__ = "sqldb"
+    __tablename__ = "SqLDB"
     variable = Column(String, primary_key=True, nullable=False)
     value = Column(UnicodeText, primary_key=True, nullable=False)
 
@@ -58,7 +58,7 @@ def deldb(variable):
         SESSION.commit()
 
 def name(self):
-        return "SqLDB"
+        return __tablename__
 
 def ping(self):
         return True
