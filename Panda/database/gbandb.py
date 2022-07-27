@@ -1,24 +1,15 @@
-from . import db_x as SqL
+from ..sql_helper import gban_sql_helper as gban_sql
+
+from ..sql_helper.mute_sql import is_muted, mute, unmute
 
 
-def gban_list():
-    return SqL.getdb("GBAN") or {}
+gban_list = gban_sql.get_all_gbanned
 
 
-def gban_user(user, reason):
-    ok = gban_list()
-    ok.update({int(user): reason or "No Reason. "})
-    return SqL.setdb("GBAN", ok)
+gban_user = gban_sql.pandagban
+   
 
+ungban_user = gban_sql.pandaungban
 
-def ungban_user(user):
-    ok = gban_list()
-    if ok.get(int(user)):
-        del ok[int(user)]
-        return SqL.setdb("GBAN", ok)
-
-
-def gban_info(user):
-    ok = gban_list()
-    if ok.get(int(user)):
-        return ok[int(user)]
+gban_info = gban_sql.is_gbanned
+    
