@@ -25,7 +25,7 @@ class Var(object):
     STRING_SESSION = os.environ.get(
         "SESSION", None)
     STRING_SESSION = sys.argv[3] if len(sys.argv) > 3 else config("SESSION", default=None)
-    MONGO_URI = config("MONGO_URI", default="mongodb+srv://petercord:b38DJZL3X6zhnHJ0@cluster0.e9xau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    MONGO_URI = config("MONGO_URI", default=None)
     DB_URI = os.environ.get("DATABASE_URL", None)
     REDIS_URI = config("REDIS_URI", default=None)
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
