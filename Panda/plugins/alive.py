@@ -9,7 +9,7 @@ from ..helpers.functions import get_readable_time
 from pytgcalls import __version__
 from ..core.data import _sudousers_list
 from . import mention
-from .sql_helper.db import BaseDB
+from ..sql_helper.db import BaseDB
 
 Mongoredis = BaseDB()
 
