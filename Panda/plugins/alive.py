@@ -9,6 +9,9 @@ from ..helpers.functions import get_readable_time
 from pytgcalls import __version__
 from ..core.data import _sudousers_list
 from . import mention
+from .sql_helper.db import BaseDB
+
+Mongoredis = BaseDB()
 
 CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT = SqL.getdb("CUSTOM_ALIVE_TEXT") or "PandaX-Userbot"
 
@@ -84,8 +87,8 @@ aliveess = f"""
                𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲:
 
 ☉ 🐘 𝗗𝗕_𝗦𝗾𝗟: `{SqL.ping()}`
-☉ 🗺 𝗠𝗼𝗻𝗴𝗼_𝗗𝗕: "`{SqL.ping()}`"
-☉ 🚀 𝗥𝗲𝗱𝗶𝘀_𝗗𝗕: `{SqL.ping()}`
+☉ 🗺 𝗠𝗼𝗻𝗴𝗼_𝗗𝗕: "`{Mongoredis.ping()}`"
+☉ 🚀 𝗥𝗲𝗱𝗶𝘀_𝗗𝗕: `{Mongoredis.ping()}`
 ☉ 👥 𝗦𝘂𝗱𝗼: {SUDO}
 
 ╰━─━─━─━─━─━─━─━─━╯
