@@ -13,6 +13,7 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .core.client import PandaUserbotSession, dual_duall
+from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 from .sql_helper import sqldb
 
@@ -24,6 +25,7 @@ import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from .Var import Var
+
 from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
@@ -35,9 +37,6 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-
-from .sql_helper.globals import addgvar, delgvar, gvarstatus
-
 
 
 
