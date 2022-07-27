@@ -52,15 +52,15 @@ async def amialive(client, message):
     du = psutil.disk_usage(client.workdir)
     disk = f"{humanbytes(du.used)} / {humanbytes(du.total)} " f"({du.percent}%)"
     alive = f"""
-`**{me_} PandaUserbot**`
+**{me_} PandaUserbot**
 
- `**Version :** __{pandaversion}__`\n
- `**Uptime :** __{get_readable_time((time.time() - start_time))}__`
-` **Pyrogram Version :** __{__version__}__`
- `**Python Version :** __{platform.python_version()}__`
- `**OS :** __{platform.system()}__`
-` **CPU :** __{len(psutil.Process().cpu_affinity())}__`
- `**DISK USAGE :** __{disk}__`
+ **Version :** __{pandaversion}__\n
+ **Uptime :** __{get_readable_time((time.time() - start_time))}__
+ **Pyrogram Version :** __{__version__}__
+ **Python Version :** __{platform.python_version()}__
+ **OS :** __{platform.system()}__
+ **CPU :** __{len(psutil.Process().cpu_affinity())}__
+ **DISK USAGE :** __{disk}__
 """
     if message.reply_to_message:
         await client.send_photo(
