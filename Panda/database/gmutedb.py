@@ -1,4 +1,4 @@
-"""
+
 from . import db_x as SqL
 
 
@@ -20,13 +20,3 @@ def ungmute(user):
 def is_gmuted(user):
     return int(user) in list_gmuted()
 
-"""
-
-from ..sql_helper.mute_sql import is_muted, mute, unmute
-from ..sql_helper.gban_sql_helper import get_all_gbanned
-
-
-is_gmuted = is_muted
-ungmute = unmute
-gmute = mute
-list_gmuted = get_all_gbanned
