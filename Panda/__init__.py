@@ -13,9 +13,9 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .core.client import PandaUserbotSession, dual_duall
-"""
+
 from .sql_helper import sqldb
-"""
+
 from .sql_helper import mongodb
 
 from .sql_helper.db import BaseDB
@@ -28,20 +28,18 @@ from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
-SqL = BaseDB()
+SqL = sqldb
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-"""
-from .sql_helper.globals import addgvar, delgvar, gvarstatus
-"""
 
-addgvar = SqL.setdb
-delgvar = SqL.deldb
-gvarstatus = SqL.getdb
+from .sql_helper.globals import addgvar, delgvar, gvarstatus
+
+
+
 
 StartTime = time.time()
 pandaversion = __version__
