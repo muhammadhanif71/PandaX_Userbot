@@ -54,7 +54,7 @@ async def amialive(client, message):
     alive = f"""
 **{me_} PandaUserbot**
 
- **Version :** __{pandaversion}__\n
+ **Version :** `{pandaversion}`\n
  **Uptime :** __{get_readable_time((time.time() - start_time))}__
  **Pyrogram Version :** __{__version__}__
  **Python Version :** __{platform.python_version()}__
