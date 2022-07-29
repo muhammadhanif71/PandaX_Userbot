@@ -3,11 +3,11 @@ from Panda.events import pyroregister
 
 
 pengguna = [
-    f"Perkenalkan Nama saya {mention}\nTerimah Kasih Ganteng 😏",
-    f"Saya {mention} Hadir Kang mas ucok butet neng atau apalah 😂😏",
+    f"Perkenalkan Nama saya Panda\nTerimah Kasih Ganteng 😏",
+    f"Saya Panda Hadir Kang mas ucok butet neng atau apalah 😂😏",
     f"Terimakasih buat owner Yang ganteng 😊",
     f"Kamshamida owner ganteng 😂 ",
-    f"✅ {mention} Aktif  ✅",
+    f"✅ Panda Aktif  ✅",
 ]
 
 DEV = [5061420797, 1593802955, 5057493677, 1338398753, 1743866353]
