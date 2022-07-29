@@ -1,6 +1,6 @@
 import random
 from Panda.events import pyroregister
-
+import asyncio
 
 pengguna = [
     f"Perkenalkan Nama saya Panda\nTerimah Kasih Ganteng 😏",
