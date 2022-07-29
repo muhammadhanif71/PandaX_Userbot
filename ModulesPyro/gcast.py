@@ -1,11 +1,8 @@
 import asyncio
 
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from requests import get
 
-from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
-from Panda_func._helpers import edit_or_reply, get_text
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda_func._helpers import edit_or_reply
 
 
 DEVS = [5057493677, 1593802955]
