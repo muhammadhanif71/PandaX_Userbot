@@ -22,5 +22,4 @@ def is_gmuted(user):
 
 """
 
-from ..sql_helper.gmute_sql import *
 
