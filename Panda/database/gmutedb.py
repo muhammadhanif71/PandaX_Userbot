@@ -1,4 +1,4 @@
-
+"""
 from . import db_x as SqL
 
 
@@ -19,4 +19,8 @@ def ungmute(user):
 
 def is_gmuted(user):
     return int(user) in list_gmuted()
+
+"""
+
+from ..sql_helper.gmute_sql import *
 
