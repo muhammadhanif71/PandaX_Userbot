@@ -211,10 +211,75 @@ def pyroregister(**args):
 
             try:
                 await func(check)
-    if pyrobot:
-        if not disable_edited:
-                pyrobot.add_handler(EditedMessageHandler(wrap, filter))
-            pyrobot.add_handler(MessageHandler(wrap, filter))
-    return wrapper
 
-return decorator
+            # Thanks to @kandnub for this HACK.
+            # Raise StopPropagation to Raise StopPropagation
+            # This needed for AFK to working properly
+
+            except StopPropagation:
+                raise StopPropagation
+            # This is a gay exception and must be passed out. So that it doesnt
+            # spam chats
+            except KeyboardInterrupt:
+                pass
+            except BaseException:
+
+                # Check if we have to disable it.
+                # If not silence the log spam on the console,
+                # with a dumb except.
+
+                if not disable_errors:
+                    date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+
+                    text = "**Panda User ERROR**\n"
+                    link = "Silahkan chat: @ilhammansiez"
+                    text += "Untuk melaporkan kesalahan"
+                    text += f"- tinggal teruskan pesan ini {link}.\n"
+                    text += "ILham Mansiezz Siap Membantu Kamu\n"
+
+                    ftext = "========== DISCLAIMER =========="
+                    ftext += "\nThis file uploaded ONLY here,"
+                    ftext += "\nwe logged only fact of error and date,"
+                    ftext += "\nwe respect your privacy,"
+                    ftext += "\nyou may not report this error if you've"
+                    ftext += "\nany confidential data here, no one will see your data\n"
+                    ftext += "================================\n\n"
+                    ftext += "--------BEGIN USERBOT TRACEBACK LOG--------\n"
+                    ftext += "\nDate: " + date
+                    ftext += "\nChat ID: " + str(check.chat_id)
+                    ftext += "\nSender ID: " + str(check.sender_id)
+                    ftext += "\n\nEvent Trigger:\n"
+                    ftext += str(check.text)
+                    ftext += "\n\nTraceback info:\n"
+                    ftext += str(format_exc())
+                    ftext += "\n\nError text:\n"
+                    ftext += str(sys.exc_info()[1])
+                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+
+                    command = 'git log --pretty=format:"%an: %s" -10'
+
+                    ftext += "\n\n\nLast 10 commits:\n"
+
+                    process = await asyncsubshell(
+                        command, stdout=asyncsub.PIPE, stderr=asyncsub.PIPE
+                    )
+                    stdout, stderr = await process.communicate()
+                    result = str(stdout.decode().strip()) + str(stderr.decode().strip())
+
+                    ftext += result
+
+                    file = open("error.log", "w+")
+                    file.write(ftext)
+                    file.close()
+
+            else:
+                pass
+
+        if pyrobot:
+            if not disable_edited:
+                pyrobot.add_handler(EditedMessageHandler(wrapper, filter(**args))
+            pyrobot.add_handler(MessageHandler(wrapper, filter(**args))
+         
+        return wrapper
+
+    return decorator
