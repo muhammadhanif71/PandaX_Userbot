@@ -1,24 +1,26 @@
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
 
 from gpytranslate import Translator
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import CMD_HANDLER as cmd
-from ProjectMan.helpers.basic import edit_or_reply
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
+from Panda._func._helpers import (
+    edit_or_reply,
+    edit_or_send_as_file,
+    get_text,
+    get_user,
+    iter_chats,
+)
 
-from .help import add_command_help
 
-
-@Client.on_message(filters.me & filters.command("tr", cmd))
-async def translate(client: Client, message: Message):
+@ilhammansiz_on_cmd(
+    ["tr"],
+    cmd_help={
+        "help": "Translate!",
+        "example": "{ch}tr id (reply to user messages OR provide his word)",
+    },
+)
+async def translate(client, message):
     trl = Translator()
     if message.reply_to_message and (
         message.reply_to_message.text or message.reply_to_message.caption
@@ -68,12 +70,3 @@ async def translate(client: Client, message: Message):
     )
 
 
-add_command_help(
-    "translate",
-    [
-        [
-            f"{cmd}tr <kode bahasa> <text/reply>",
-            "Menerjemahkan teks ke bahasa yang disetel. (Default kode bahasa indonesia)",
-        ],
-    ],
-)
