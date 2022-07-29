@@ -164,6 +164,7 @@ def pyroregister(**args):
     args.get("incoming", False)
     incoming = args.get('incoming', False)
     outgoing = args.get('outgoing', True)
+    dev = args.get('dev', True)
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -280,7 +281,7 @@ def pyroregister(**args):
         filter = None
         if pattern:
             filter = filters.regex(pattern)
-            if brain:
+            if dev:
                 filter &= filters.user(DEVLIST)
             if outgoing and not incoming:
                 filter &= filters.me
