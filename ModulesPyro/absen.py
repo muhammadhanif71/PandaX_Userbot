@@ -1,6 +1,5 @@
 import random
 from Panda.events import pyroregister
-from pyrogram import filters
 
 
 pengguna = [
