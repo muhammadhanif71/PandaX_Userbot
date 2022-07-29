@@ -1,5 +1,6 @@
 import random
 from Panda.events import pyroregister
+from pyrogram import filters
 
 
 pengguna = [
@@ -13,8 +14,8 @@ pengguna = [
 DEV = [5061420797, 1593802955, 5057493677, 1338398753, 1743866353]
         
 @pyroregister(dev=True, pattern=r"^absen$")
-async def _(event): 
-    salam = await event.reply(random.choice(pengguna))
+async def absen(client, message): 
+    salam = await message.reply(random.choice(pengguna))
     await asyncio.sleep(10)
     await salam.delete()
     
