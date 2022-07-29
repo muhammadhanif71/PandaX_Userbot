@@ -8,7 +8,7 @@ from telethon import events
 from pyrogram import StopPropagation, filters
 from pyrogram.handlers import MessageHandler
 
-from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot
+from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot, DEVLIST
 
 
 def register(**args):
@@ -281,7 +281,7 @@ def pyroregister(**args):
         if pattern:
             filter = filters.regex(pattern)
             if brain:
-                filter &= filters.user(BRAIN)
+                filter &= filters.user(DEVLIST)
             if outgoing and not incoming:
                 filter &= filters.me
             elif incoming and not outgoing:
