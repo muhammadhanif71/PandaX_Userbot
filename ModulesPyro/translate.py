@@ -1,15 +1,9 @@
 
 from gpytranslate import Translator
-from pyrogram import Client, filters
-from pyrogram.types import Message
 
-from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import (
     edit_or_reply,
-    edit_or_send_as_file,
-    get_text,
-    get_user,
-    iter_chats,
 )
 
 
