@@ -6,7 +6,7 @@ from traceback import format_exc
 
 from telethon import events
 from pyrogram import StopPropagation
-from pyrogram.handlers import MessageHandler, EditedMessageHandler
+from pyrogram.handlers import MessageHandler
 
 from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot
 
@@ -276,7 +276,7 @@ def pyroregister(**args):
 
         if pyrobot:
             if not disable_edited:
-                pyrobot.add_handler(wrapper, EditedMessageHandler(**args))
+                pyrobot.add_handler(wrapper, MessageHandler(**args))
             pyrobot.add_handler(wrapper, MessageHandler(**args))
          
         return wrapper
