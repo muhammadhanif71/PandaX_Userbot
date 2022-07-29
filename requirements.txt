@@ -88,3 +88,4 @@ google-trans-new>=1.1.9
 pyshorteners>=1.0.1
 langdetect>=1.0.8
 faker>=6.6.2
+gpytranslate
