@@ -5,7 +5,7 @@ from time import gmtime, strftime
 from traceback import format_exc
 
 from telethon import events
-from pyrogram import StopPropagation
+from pyrogram import StopPropagation, filters
 from pyrogram.handlers import MessageHandler
 
 from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot
@@ -162,6 +162,8 @@ def pyroregister(**args):
     disable_errors = args.get("disable_errors", False)
     insecure = args.get("insecure", False)
     args.get("incoming", False)
+    incoming = args.get('incoming', False)
+    outgoing = args.get('outgoing', True)
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -275,10 +277,28 @@ def pyroregister(**args):
             else:
                 pass
 
+        filter = None
+        if pattern:
+            filter = filters.regex(pattern)
+            if brain:
+                filter &= filters.user(BRAIN)
+            if outgoing and not incoming:
+                filter &= filters.me
+            elif incoming and not outgoing:
+                filter &= filters.incoming & ~filters.bot & ~filters.me
+        else:
+            if outgoing and not incoming:
+                filter = filters.me
+            elif incoming and not outgoing:
+                filter = filters.incoming & ~filters.bot & ~filters.me
+            else:
+                filter = (filters.me | filters.incoming) & ~filters.bot
+
+
         if pyrobot:
             if not disable_edited:
-                pyrobot.add_handler(wrapper, MessageHandler(**args))
-            pyrobot.add_handler(wrapper, MessageHandler(**args))
+                pyrobot.add_handler(MessageHandler(wrapper, filter))
+            pyrobot.add_handler(MessageHandler(wrapper, filter))
          
         return wrapper
 
