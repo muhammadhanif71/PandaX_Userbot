@@ -152,9 +152,6 @@ def register(**args):
     return decorator
 
 
-
-
-
 def pyroregister(**args):
     """Register a new event."""
     pattern = args.get("pattern", None)
@@ -218,3 +215,6 @@ def pyroregister(**args):
         if not disable_edited:
                 pyrobot.add_handler(EditedMessageHandler(wrap, filter))
             pyrobot.add_handler(MessageHandler(wrap, filter))
+        return wrapper
+
+    return decorator
