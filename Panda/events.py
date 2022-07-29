@@ -276,8 +276,8 @@ def pyroregister(**args):
 
         if pyrobot:
             if not disable_edited:
-                pyrobot.add_handler(EditedMessageHandler(wrapper, filter)(**args))
-            pyrobot.add_handler(MessageHandler(wrapper, filter)(**args))
+                pyrobot.add_handler(wrapper, EditedMessageHandler(**args))
+            pyrobot.add_handler(wrapper, MessageHandler(**args))
          
         return wrapper
 
