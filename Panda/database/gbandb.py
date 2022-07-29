@@ -1,4 +1,6 @@
+"""
 from . import db_x as SqL
+
 
 def gban_list():
     return SqL.getdb("GBAN") or {}
@@ -23,3 +25,12 @@ def gban_info(user):
     ok = gban_list()
     if ok.get(int(user)):
         return ok[int(user)]
+"""
+
+
+from ..sql_helper.gban_sql_helper import gbanned_users, is_gbanned, pandagban, pandaungban
+
+gban_list = gbanned_users
+gban_info = is_gbanned
+gban_user = pandagban
+ungban_user = pandaungban
