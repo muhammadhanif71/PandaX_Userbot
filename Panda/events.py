@@ -5,9 +5,8 @@ from time import gmtime, strftime
 from traceback import format_exc
 
 from telethon import events
-from pyrogram import ContinuePropagation, StopPropagation, enums, filters
+from pyrogram import StopPropagation
 from pyrogram.handlers import MessageHandler, EditedMessageHandler
-from pyrogram.raw.types import MessageActionContactSignUp
 
 from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot
 
