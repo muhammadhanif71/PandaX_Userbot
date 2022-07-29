@@ -155,7 +155,7 @@ def register(**args):
 
 
 
-def register(**args):
+def pyroregister(**args):
     """Register a new event."""
     pattern = args.get("pattern", None)
     disable_edited = args.get("disable_edited", False)
