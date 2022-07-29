@@ -28,9 +28,9 @@ def gban_info(user):
 """
 
 
-from ..sql_helper.gban_sql_helper import gbanned_users, is_gbanned, pandagban, pandaungban
+from ..sql_helper.gban_sql_helper import get_gbanuser, is_gbanned, pandagban, pandaungban
 
-gban_list = gbanned_users
+gban_list = get_gbanuser
 gban_info = is_gbanned
 gban_user = pandagban
 ungban_user = pandaungban
