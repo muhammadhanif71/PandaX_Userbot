@@ -68,7 +68,7 @@ def ping():
     try:
         SESSION.execute("SELECT 1")
     except Exception as e:
-        output = f"❌ {str(e)}"
+        f"❌ {str(e)}"
         is_database_working = False
     else:
         is_database_working = True
