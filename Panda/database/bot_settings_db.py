@@ -2,6 +2,8 @@ from sqlalchemy import Column, String
 
 from ..sql_helper import BASE, SESSION
 
+default_thumb = "https://icon-icons.com/downloadimage.php?id=106660&root=1527/PNG/512/&file=shield_106660.png"
+default_text = "PandaUserbot"
 
 class Autopost(BASE):
     __tablename__ = "autopost"
