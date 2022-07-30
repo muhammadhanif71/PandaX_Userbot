@@ -84,7 +84,7 @@ async def rmautopost(client, message):
 )
 async def autoposterz(client, message):
     chat_id = str(message.chat.id).replace("-100", "")
-    if not await get_autopost(int(chat_id)):
+    if not get_autopost(int(chat_id)):
         
         return
     channels_set = get_autopost(int(chat_id))
