@@ -6,7 +6,7 @@
 
 
 try:
-    from . import BASE, SESSION
+    from . import BASE, SESSION, Var
 except ImportError:
     raise AttributeError
 from sqlalchemy import Column, String, UnicodeText
@@ -18,10 +18,10 @@ class Sqldb(BASE):
     variable = Column(String, primary_key=True, nullable=False)
     value = Column(UnicodeText, primary_key=True, nullable=False)
 
-    def __init__(self, variable, value):
+    def __init__(self, name, variable, value):
         self.variable = str(variable)
         self.value = value
-
+        self.name = __tablename__
 
 Sqldb.__table__.create(checkfirst=True)
 
@@ -57,8 +57,19 @@ def deldb(variable):
     if rem:
         SESSION.commit()
 
-def name(self):
-        return __tablename__
+def name(self, name):
+        return self.name
 
-def ping(self):
-        return True
+def ping():
+    is_database_working = False
+    if not Var.DB_URI:
+        return is_database_working
+    
+    try:
+        SESSION.execute("SELECT 1")
+    except Exception as e:
+        output = f"❌ {str(e)}"
+        is_database_working = False
+    else:
+        is_database_working = True
+    return is_database_working
