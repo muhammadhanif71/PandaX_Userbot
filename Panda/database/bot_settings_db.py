@@ -5,8 +5,8 @@ from ..sql_helper import BASE, SESSION
 default_thumb = "https://icon-icons.com/downloadimage.php?id=106660&root=1527/PNG/512/&file=shield_106660.png"
 default_text = "PandaUserbot"
 
-class Autopost(BASE):
-    __tablename__ = "autopost"
+class pmdb(BASE):
+    __tablename__ = "pmdb"
     chat_id = Column(String(14), primary_key=True)
     reason = Column(String(127))
 
@@ -16,23 +16,23 @@ class Autopost(BASE):
         self.psl = psl
 
 
-Autopost.__table__.create(checkfirst=True)
+pmdb.__table__.create(checkfirst=True)
 
 
 
 def add_pm_text(thumb=default_thumb, text=default_text):
-    adder = Autopost(thumb, text)
+    adder = pmdb(thumb, text)
     SESSION.add(adder)
     SESSION.commit()
 
 def add_pm_thumb(thumb=default_thumb, text=default_text):
-    adder = Autopost(text, thumb)
+    adder = pmdb(text, thumb)
     SESSION.add(adder)
     SESSION.commit()
 
 def get_thumb(text):
     try:
-        return SESSION.query(Autopost).filter(Autopost.text == thumb).one()
+        return SESSION.query(pmdb).filter(pmdb.text == thumb).one()
     except BaseException:
         return None
     finally:
@@ -40,7 +40,7 @@ def get_thumb(text):
 
 def get_pm_text(thumb):
     try:
-        return SESSION.query(Autopost).filter(Autopost.text == thumb).one()
+        return SESSION.query(pmdb).filter(pmdb.text == thumb).one()
     except BaseException:
         return None
     finally:
@@ -50,13 +50,13 @@ def get_pm_text(thumb):
 
 
 def set_pm_spam_limit(psl=3):
-    adder = Autopost(int(psl), int(psl))
+    adder = pmdb(int(psl), int(psl))
     SESSION.add(adder)
     SESSION.commit()
 
 def get_pm_spam_limit(pls=3):
     try:
-        return SESSION.query(Autopost).filter(Autopost.psl == int(psl)).one()
+        return SESSION.query(pmdb).filter(pmdb.psl == int(psl)).one()
     except BaseException:
         return None
     finally:
