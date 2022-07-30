@@ -54,7 +54,7 @@ def set_pm_spam_limit(psl=3):
     SESSION.add(adder)
     SESSION.commit()
 
-def get_thumb(psl=3):
+def get_pm_spam_limit(pls=3):
     try:
         return SESSION.query(Autopost).filter(Autopost.psl == int(psl)).one()
     except BaseException:
