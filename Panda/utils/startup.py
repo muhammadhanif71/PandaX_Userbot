@@ -17,7 +17,7 @@ from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot
+from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot, Telethonbot
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
@@ -217,26 +217,17 @@ async def verifyLoggerGroup():
 
 
 ON = f"""
-**Panda-Userbot**
-👤 Owner {Config.ALIVE_NAME}
-💻 **Version -** `{botvers}`
-❕ **Ketik** `{cmdhr}alive` **untuk Mengecheck Bot apakah sudah aktif
-Dev by Ilham Mansiz
+__Panda-Userbot__
+__Owner {Config.ALIVE_NAME}_
+__Version - `{botvers}`__
+__Ketik `{cmdhr}alive` untuk Mengecheck Bot apakah sudah aktif__
 """
 
 async def ongrup():
     try:
-        if PandaBot:
+        if Telethonbot:
             if BOTLOG_CHATID != 0:
-                await PandaBot.send_message(
-                    BOTLOG_CHATID,
-                    ON,
-                )
-                await PandaBot2.send_message(
-                    BOTLOG_CHATID,
-                    ON,
-                )
-                await PandaBot3.send_message(
+                await Telethonbot.send_message(
                     BOTLOG_CHATID,
                     ON,
                 )
