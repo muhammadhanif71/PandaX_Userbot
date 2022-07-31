@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL, pyrobot, pyrobot2, pyrobot3, pyrobot4
 
 from ..Config import Config
 from ..core.logger import logging
@@ -224,6 +224,14 @@ __Databse__ {SqL.name}
 __Ketik `{cmdhr}alive` untuk Mengecheck Bot apakah sudah aktif__
 """
 
+MSG_ON = """
+__Panda-Userbot__
+━━
+__Version - `{}`__
+__Ketik `{}alive` untuk Mengecheck Bot_
+━━
+"""
+
 async def ongrup():
     try:
         if PandaBot:
@@ -240,6 +248,16 @@ async def ongrup():
                     BOTLOG_CHATID,
                     ON,
                 )
+    except BaseException:
+        pass
+
+
+async def ongruppyro():
+    try:
+        await pyrobot.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot2.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot3.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot4.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
     except BaseException:
         pass
 
