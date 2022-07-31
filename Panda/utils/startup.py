@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL
 
 from ..Config import Config
 from ..core.logger import logging
@@ -225,9 +225,17 @@ __Ketik `{cmdhr}alive` untuk Mengecheck Bot apakah sudah aktif__
 
 async def ongrup():
     try:
-        if Telethonbot:
+        if PandaBot:
             if BOTLOG_CHATID != 0:
-                await Telethonbot.send_message(
+                await PandaBot.send_message(
+                    BOTLOG_CHATID,
+                    ON,
+                )
+                await PandaBot2.send_message(
+                    BOTLOG_CHATID,
+                    ON,
+                )
+                await PandaBot3.send_message(
                     BOTLOG_CHATID,
                     ON,
                 )
