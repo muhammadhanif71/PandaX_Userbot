@@ -1,5 +1,5 @@
 
-from ..sql_helper.pmpermit_sql import *
+from ..sql_helper.no_log_pms_sql import *
 
 approve_user = approve
 disapprove_user = disapprove
