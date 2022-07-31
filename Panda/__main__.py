@@ -48,7 +48,6 @@ def start():
 
 
 if __name__ == "__main__":
-    #Telethon()
     start()
     Pyrogram()
     
