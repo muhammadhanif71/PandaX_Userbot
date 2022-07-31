@@ -279,7 +279,7 @@ Pyrogrambot = [Pyrogrambot for Pyrogrambot in [pyrobot, pyrobot2, pyrobot3, pyro
 try:
     if Telethonbot:
         if BOTLOG_CHATID != 0:
-            await Telethonbot.send_message(
+            Telethonbot.send_message(
                 BOTLOG_CHATID,
                     f"Starting Menggunakan {SqL.name}",
             )
@@ -291,7 +291,7 @@ except BaseException:
 try:
     if Pyrogrambot:
         if BOTLOG_CHATID != 0:
-            await Pyrogrambot.send_message(
+            Pyrogrambot.send_message(
                 BOTLOG_CHATID,
                     f"Starting Menggunakan {SqL.name}",
             )
