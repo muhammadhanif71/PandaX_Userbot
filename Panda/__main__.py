@@ -31,15 +31,14 @@ async def memulai():
     await utils.buka(f"{A}")
     
 
-async def onbot():
+def Telethon():
     for Telethonbase in Panda.Telethonbot:
         try:
-            await Telethonbase.start()
+            Telethonbase.start()
             Telethonbase.me = await Telethonbase.get_me()
      
 def start():
     if Panda.PandaBot:
-        Panda.PandaBot.loop.run_until_complete(Telethonbase())
         Panda.PandaBot.loop.run_until_complete(memulai())
         Panda.PandaBot.loop.run_until_complete(utils.join())
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
@@ -48,6 +47,7 @@ def start():
 
 
 if __name__ == "__main__":
+    Telethon()
     start()
     Pyrogram()
     
