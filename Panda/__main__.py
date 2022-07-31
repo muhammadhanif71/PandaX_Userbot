@@ -38,6 +38,8 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.join())
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
+    if Panda.pyrobot:
+        pyrobot.PandaBot.loop.run_until_complete(utils.ongruppyro())
 
 
 
