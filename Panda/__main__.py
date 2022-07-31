@@ -9,7 +9,7 @@ import Panda
 from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
-from .Session.multisession_ import Pyrogram #Telethon
+from .Session.multisession_ import Pyrogram, Telethon
 
 ## Memulai ••••••••••√√√√√•••••••
 
@@ -31,12 +31,7 @@ async def memulai():
     await utils.buka(f"{A}")
     
 
-def Telethon():
-    for Telethonbase in Panda.Telethonbot:
-        try:
-            Telethonbase.start()
-            Telethonbase.me = await Telethonbase.get_me()
-     
+
 def start():
     if Panda.PandaBot:
         Panda.PandaBot.loop.run_until_complete(memulai())
