@@ -270,3 +270,31 @@ def redisalive():
         return True
     except BaseException:
         return False
+
+
+Telethonbot = [Telethonbot for Telethonbot in [PandaBot, PandaBot2, PandaBot3] if Telethonbot]
+Pyrogrambot = [Pyrogrambot for Pyrogrambot in [pyrobot, pyrobot2, pyrobot3, pyrobot4] if Pyrogrambot]
+ 
+
+try:
+    if Telethonbot:
+        if BOTLOG_CHATID != 0:
+            await Telethonbot.send_message(
+                BOTLOG_CHATID,
+                    f"Starting Menggunakan {SqL.name}",
+            )
+                
+except BaseException:
+    pass
+
+
+try:
+    if Pyrogrambot:
+        if BOTLOG_CHATID != 0:
+            await Pyrogrambot.send_message(
+                BOTLOG_CHATID,
+                    f"Starting Menggunakan {SqL.name}",
+            )
+                
+except BaseException:
+    pass
