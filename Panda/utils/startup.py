@@ -13,11 +13,11 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot, Telethonbot
+from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
