@@ -3,27 +3,25 @@ import os
 
 from pyrogram import filters
 
-from Panda.database.bot_settings_db import (
-    add_pm_text,
-    add_pm_thumb,
-    get_pm_spam_limit,
-    get_pm_text,
-    get_thumb,
-    set_pm_spam_limit,
-)
+
 from Panda.database.pmdb import approve_user, disapprove_user, is_user_approved
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
 from Panda import Config
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
 from Panda._func.plugin_helpers import convert_to_image
-
+from Panda import SqL
 PM_WARNS = {}
 OLD_MSG = {}
 
 from . import devs_id
 
-
+SqL.getdb("add_pm_text") or ""
+SqL.getdb("add_pm_thumb") or ""
+SqL.getdb("get_pm_spam_limit") or 3
+SqL.getdb("get_pm_text") or ""
+SqL.getdb("get_thumb") or ""
+SqL.getdb("set_pm_spam_limit") or ""
 
 @ilhammansiz_on_cmd(
     ["setpmtext"],
@@ -49,9 +47,9 @@ async def set_custom_pm_texts(client, message):
         )
         return
     if ptext == "default":
-        add_pm_text()
+        SqL.setdb("add_pm_text, ptext")
     else:
-        add_pm_text(ptext)
+        SqL.setdb("add_pm_text, ptext")
     await message.edit(f"PM-Message Sucessfully Changed To `{ptext}`")
 
 
@@ -79,7 +77,7 @@ async def set_custom_pm_texts(client, message):
     if int(ptext) >= 20:
         await message.edit("`Pm Limit Should Be In Numbers From 3-20`")
         return
-    set_pm_spam_limit(int(ptext))
+    SqL.setdb("set_pm_spam_limit, int(ptext)")
     await message.edit(f"PM-Message-Limit Sucessfully Changed To `{ptext}`")
 
 
@@ -277,7 +275,7 @@ async def set_my_pic(client, message):
             os.remove(file_)
     else:
         copied_msg = await message.reply_to_message.copy(int(Config.LOG_GRP), caption="")
-    add_pm_thumb(copied_msg.message_id)
+    SqL.setdb("add_pm_thumb, copied_msg.message_id")
     await ms_.edit("`Sucessfully Set This Image As Pm Permit Media!`")
 
 async def is_media(message):
