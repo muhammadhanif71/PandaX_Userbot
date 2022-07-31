@@ -57,8 +57,10 @@ def deldb(variable):
     if rem:
         SESSION.commit()
 
-def name(self):
-        return "SqLDB"
+def name():
+    name = "Database SQL https://elephantsql.com/"
+    if name:
+    return name
 
 def ping():
     is_database_working = False
