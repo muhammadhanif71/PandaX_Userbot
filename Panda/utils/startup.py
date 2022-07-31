@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL
 
 from ..Config import Config
 from ..core.logger import logging
@@ -220,6 +220,7 @@ ON = f"""
 __Panda-Userbot__
 __Owner {Config.ALIVE_NAME}_
 __Version - `{botvers}`__
+__Databse__ {SqL.name}
 __Ketik `{cmdhr}alive` untuk Mengecheck Bot apakah sudah aktif__
 """
 
