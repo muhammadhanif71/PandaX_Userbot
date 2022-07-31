@@ -220,7 +220,7 @@ ON = f"""
 __Panda-Userbot__
 __Owner_ {Config.ALIVE_NAME}
 __Version - {botvers}__
-__Databse__ {SqL.name}
+__Database__ {SqL.usname}
 __Ketik {cmdhr}alive untuk Mengecheck Bot apakah sudah aktif__
 """
 
