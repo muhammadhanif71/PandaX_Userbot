@@ -18,10 +18,10 @@ class Sqldb(BASE):
     variable = Column(String, primary_key=True, nullable=False)
     value = Column(UnicodeText, primary_key=True, nullable=False)
 
-    def __init__(self, name, variable, value):
+    def __init__(self, name, variable):
         self.variable = str(variable)
         self.value = value
-        self.name = __tablename__
+        
 
 Sqldb.__table__.create(checkfirst=True)
 
@@ -57,8 +57,8 @@ def deldb(variable):
     if rem:
         SESSION.commit()
 
-def name(self, name):
-        return self.name
+def name(self):
+        return "SqLDB"
 
 def ping():
     is_database_working = False
