@@ -57,7 +57,7 @@ def deldb(variable):
     if rem:
         SESSION.commit()
 
-def name():
+def usname():
     name = "Database SQL https://elephantsql.com/"
     return name
 
