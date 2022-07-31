@@ -18,8 +18,12 @@ def start() -> scoped_session:
         BASE.metadata.create_all(engine)
         return scoped_session(sessionmaker(bind=engine, autoflush=False))
     else:
-        return None
-
+        if Var.MONGO_URI:
+            engines = create_engine(Var.MONGO_URI)
+            BASE.metadata.bind = engines
+            BASE.metadata.create_all(engines)
+            return scoped_session(sessionmaker(bind=engines, autoflush=False))
+        
 
 try:
     BASE = declarative_base()
