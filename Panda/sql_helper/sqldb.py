@@ -59,7 +59,6 @@ def deldb(variable):
 
 def name():
     name = "Database SQL https://elephantsql.com/"
-    if name:
     return name
 
 def ping():
