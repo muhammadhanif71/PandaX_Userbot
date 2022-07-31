@@ -47,9 +47,9 @@ async def set_custom_pm_texts(client, message):
         )
         return
     if ptext == "default":
-        SqL.setdb("add_pm_text, ptext")
+        SqL.setdb("add_pm_text", ptext)
     else:
-        SqL.setdb("add_pm_text, ptext")
+        SqL.setdb("add_pm_text", ptext)
     await message.edit(f"PM-Message Sucessfully Changed To `{ptext}`")
 
 
@@ -77,7 +77,7 @@ async def set_custom_pm_texts(client, message):
     if int(ptext) >= 20:
         await message.edit("`Pm Limit Should Be In Numbers From 3-20`")
         return
-    SqL.setdb("set_pm_spam_limit, int(ptext)")
+    SqL.setdb("set_pm_spam_limit", int(ptext))
     await message.edit(f"PM-Message-Limit Sucessfully Changed To `{ptext}`")
 
 
@@ -275,7 +275,7 @@ async def set_my_pic(client, message):
             os.remove(file_)
     else:
         copied_msg = await message.reply_to_message.copy(int(Config.LOG_GRP), caption="")
-    SqL.setdb("add_pm_thumb, copied_msg.message_id")
+    SqL.setdb("add_pm_thumb", copied_msg.message_id)
     await ms_.edit("`Sucessfully Set This Image As Pm Permit Media!`")
 
 async def is_media(message):
