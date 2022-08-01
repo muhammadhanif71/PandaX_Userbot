@@ -5,6 +5,12 @@ from Panda._func._helpers import edit_or_reply
 import calendar
 from datetime import datetime
 
+from . import HELP
+
+
+HELP(
+    "time_",
+)
 
 @ilhammansiz_on_cmd(['time'],
                cmd_help={
