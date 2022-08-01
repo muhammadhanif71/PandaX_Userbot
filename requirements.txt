@@ -89,4 +89,3 @@ pyshorteners>=1.0.1
 langdetect>=1.0.8
 faker>=6.6.2
 gpytranslate
-emoji==1.7.0
