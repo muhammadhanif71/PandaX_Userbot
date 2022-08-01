@@ -2,6 +2,12 @@ import speedtest
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply
 
+from . import HELP
+
+
+HELP(
+    "speedtest",
+)
 
 @ilhammansiz_on_cmd(['speedtest', 'st'],
                cmd_help={
