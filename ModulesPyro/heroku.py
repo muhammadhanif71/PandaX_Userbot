@@ -10,6 +10,13 @@ from Panda._func._helpers import (
     get_text,
 )
 
+from . import HELP
+
+
+HELP(
+    "heroku",
+)
+
 heroku_client = None
 if Config.HEROKU_API_KEY:
     heroku_client = heroku3.from_key(Config.HEROKU_API_KEY)
