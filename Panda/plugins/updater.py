@@ -7,8 +7,8 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from Panda import UPSTREAM_REPO_URL, pandaub
-
+from Panda import pandaub
+UPSTREAM_REPO_URL = "https://github.com/ilhammansiz/DEPLOY"
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
@@ -203,8 +203,9 @@ async def upstream(event):
     try:
         txt = "`Oops.. Updater cannot continue due to "
         txt += "some problems occured`\n\n**LOGTRACE:**\n"
-        repo = Repo()
-    except NoSuchPathError as error:
+        repo = Repo.clone_from("https://github.com/ilhammansiz/DEPLOY","./DEPLOY/", branch="PandaUserbot")
+
+    except NoSuchPathErrRepoor as error:
         await event.edit(f"{txt}\n`directory {error} is not found`")
         return repo.__del__()
     except GitCommandError as error:
@@ -218,7 +219,8 @@ async def upstream(event):
                 "But we can fix that by force updating the userbot using "
                 ".update now.`"
             )
-        repo = Repo.init()
+
+        repo = Repo.clone_from("https://github.com/ilhammansiz/DEPLOY","./DEPLOY/", branch="PandaUserbot")
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
