@@ -17,6 +17,13 @@ from Panda._func.logger_s import LogIt
 from Panda._func.plugin_helpers import (
     convert_to_image,
 )
+from . import HELP
+
+
+HELP(
+    "admin",
+)
+
 
 
 @ilhammansiz_on_cmd(
