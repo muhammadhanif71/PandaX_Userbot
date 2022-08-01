@@ -10,7 +10,12 @@ from Panda._func._helpers import (
 import hashlib
 
 
+from . import HELP
 
+
+HELP(
+    "hash_base64",
+)
 
 def hasher(string_to_hash: str):
     a = hashlib.md5(string_to_hash.encode())
