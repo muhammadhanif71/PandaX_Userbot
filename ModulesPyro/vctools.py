@@ -1,12 +1,7 @@
-import asyncio
-import os
-from datetime import datetime, timedelta
-from Panda._func.decorators import Panda_cmd, listen
+from datetime import datetime
 from Panda import pyrobot
 # noinspection PyPackageRequirements
-import ffmpeg
-from pyrogram import Client, filters, emoji
-from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
+from pyrogram import emoji, filters
 from pyrogram.types import Message
 from pyrogram.utils import MAX_CHANNEL_ID
 from pytgcalls import GroupCallFactory, GroupCallFileAction
