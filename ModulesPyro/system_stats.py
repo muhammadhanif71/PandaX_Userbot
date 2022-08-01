@@ -21,6 +21,12 @@ from Panda._func._helpers import (
     humanbytes,
 )
 
+from . import HELP
+
+
+HELP(
+    "system_stats",
+)
 
 @ilhammansiz_on_cmd(
     ["ping", "pong"],
