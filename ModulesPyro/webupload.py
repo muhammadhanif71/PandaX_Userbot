@@ -14,7 +14,12 @@ from Panda._func._helpers import (
     get_text,
     progress,
 )
+from . import HELP
 
+
+HELP(
+    "webupload",
+)
 
 @ilhammansiz_on_cmd(
     ["fakegen", "fakedata"],
