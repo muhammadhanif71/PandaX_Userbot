@@ -3,7 +3,12 @@ import os
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func.startup import load_modulesPyro as load_plugin
 from Panda._func._helpers import edit_or_reply
+from . import HELP
 
+
+HELP(
+    "install",
+)
 
 @ilhammansiz_on_cmd(
     ["install"],
