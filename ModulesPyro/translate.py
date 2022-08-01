@@ -6,6 +6,12 @@ from Panda._func._helpers import (
     edit_or_reply,
 )
 
+from . import HELP
+
+
+HELP(
+    "translate",
+)
 
 @ilhammansiz_on_cmd(
     ["tr"],
