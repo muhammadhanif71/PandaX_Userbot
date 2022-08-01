@@ -217,18 +217,17 @@ async def verifyLoggerGroup():
 
 
 ON = f"""
-__Panda-Userbot__
-__Owner_ {Config.ALIVE_NAME}
-__Version - {botvers}__
-__Database__ {SqL.usname}
-__Ketik {cmdhr}alive untuk Mengecheck Bot apakah sudah aktif__
+Panda-Userbot
+Owner {Config.ALIVE_NAME}
+Version - `{botvers}`
+Ketik `{cmdhr}alive` untuk Mengecheck Bot apakah sudah aktif
 """
 
 MSG_ON = """
-__Panda-Userbot__
+Panda-Userbot
 ━━
-__Version_ - `{}'
-__Ketik_ `{}alive` untuk Mengecheck Bot
+Version - `{}'
+Ketik `{}alive` untuk Mengecheck Bot
 ━━
 """
 
