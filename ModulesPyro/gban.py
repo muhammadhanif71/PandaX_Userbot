@@ -12,7 +12,12 @@ from Panda._func._helpers import (
 )
 from Panda._func.logger_s import LogIt
 from . import devs_id
+from . import HELP
 
+
+HELP(
+    "gban",
+)
 
 @ilhammansiz_on_cmd(
     ["gmute"],
