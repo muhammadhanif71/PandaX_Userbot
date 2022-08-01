@@ -15,6 +15,12 @@ PM_WARNS = {}
 OLD_MSG = {}
 
 from . import devs_id
+from . import HELP
+
+
+HELP(
+    "pmpermit",
+)
 
 SqL.getdb("add_pm_text") or ""
 SqL.getdb("add_pm_thumb") or ""
