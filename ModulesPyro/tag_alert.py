@@ -6,6 +6,12 @@ from datetime import datetime
 import pytz
 from pyrogram import filters
 
+from . import HELP
+
+
+HELP(
+    "tag_alert",
+)
 
 TAG_LOGGER = Config.TAG_LOGGER
 
