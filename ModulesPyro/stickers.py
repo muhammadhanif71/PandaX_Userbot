@@ -12,7 +12,12 @@ from pyrogram.raw.types import InputStickerSetShortName
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.plugin_helpers import convert_to_image
+from . import HELP
 
+
+HELP(
+    "stickers",
+)
 
 @ilhammansiz_on_cmd(
     ["packinfo"],
