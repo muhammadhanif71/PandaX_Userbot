@@ -49,7 +49,7 @@ async def _(event):
         return await edit_delete(
             event, "`.tl LanguageCode` as reply to a message", time=5
         )
-    text = deEmojify(text.strip())
+    text = text.strip()
     lan = lan.strip()
     Translator()
     try:
@@ -88,7 +88,7 @@ async def translateme(trans):
         )
     TRT_LANG = gvarstatus("TRT_LANG") or "id"
     try:
-        reply_text = await getTranslate(deEmojify(message), dest=TRT_LANG)
+        reply_text = await getTranslate(message, dest=TRT_LANG)
     except ValueError:
         return await edit_delete(trans, "`Invalid destination language.`", time=5)
     source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
