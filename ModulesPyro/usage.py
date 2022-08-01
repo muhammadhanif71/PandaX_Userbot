@@ -12,6 +12,12 @@ from Panda._func._helpers import (
 )
 import heroku3
 from Panda import Config
+from . import HELP
+
+
+HELP(
+    "usage",
+)
 
 heroku_client = None
 if Config.HEROKU_API_KEY:
