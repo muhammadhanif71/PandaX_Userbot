@@ -5,6 +5,7 @@ from pyrogram import emoji, filters
 from pyrogram.types import Message
 from pyrogram.utils import MAX_CHANNEL_ID
 from pytgcalls import GroupCallFactory, GroupCallFileAction
+from pyrogram import Client, filters, emoji
 
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
