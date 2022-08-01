@@ -24,9 +24,9 @@ HELP(
 
 SqL.getdb("add_pm_text") or ""
 SqL.getdb("add_pm_thumb") or ""
-SqL.getdb("get_pm_spam_limit") or 3
-SqL.getdb("get_pm_text") or ""
-SqL.getdb("get_thumb") or ""
+pmlimited = SqL.getdb("get_pm_spam_limit") or 3
+pmtext = SqL.getdb("get_pm_text") or ""
+pmthumb = SqL.getdb("get_thumb") or ""
 SqL.getdb("set_pm_spam_limit") or ""
 
 @ilhammansiz_on_cmd(
@@ -315,10 +315,10 @@ async def pmPermit(client, message):
         return
     if user_.is_support:
         return
-    text = get_pm_text()
+    text = pmtext
     log = LogIt(message)
-    capt = get_thumb()
-    pm_s_ = get_pm_spam_limit()
+    capt = pmthumb
+    pm_s_ = pmlimited
     if int(message.chat.id) not in PM_WARNS:
         PM_WARNS[int(message.chat.id)] = 0
     else:
