@@ -10,6 +10,13 @@ from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
 BASE_URL = "https://isubtitles.org"
 
+from . import HELP
+
+
+HELP(
+    "subtitles",
+)
+
 async def search_sub(query):
     BASE_URL = "https://isubtitles.org"
     final_url = f"{BASE_URL}/search?kwd={query}"
