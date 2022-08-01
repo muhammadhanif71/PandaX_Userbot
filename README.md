@@ -1,5 +1,4 @@
 
-# <p align="center">Panda Userbot</p>
 # Based Telethon
 <img src="https://telegra.ph/file/799266d7af500c100dbee.jpg">
 
@@ -101,3 +100,4 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 ## License
 Licensed under [Raphielscape Public License](https://github.com/ilhammansiz/PandaX_Userbot/blob/PandaUserbot/LICENSE) - Version 1.d, February 2020
 
+# <p align="center">Panda Userbot</p>
