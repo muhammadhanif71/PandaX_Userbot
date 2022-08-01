@@ -6,6 +6,12 @@ from pyrogram.types import Message
 from pyrogram.utils import MAX_CHANNEL_ID
 from pytgcalls import GroupCallFactory, GroupCallFileAction
 from pyrogram import Client, filters, emoji
+import ffmpeg
+from pyrogram import Client, filters, emoji
+from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
+from pyrogram.types import Message
+from pyrogram.utils import MAX_CHANNEL_ID
+from pytgcalls import GroupCallFactory, GroupCallFileAction
 
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
