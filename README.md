@@ -2,7 +2,7 @@
 # Based Telethon
 <img src="https://telegra.ph/file/799266d7af500c100dbee.jpg">
 
-# Based Program
+# Based Pyrogram
 <img src="https://telegra.ph/file/5b3284c33b1099ec4518f.jpg">
 
 <p align="center">
