@@ -6,7 +6,7 @@ from Panda import pandaub
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, gvarstatus
-from . import BOTLOG, BOTLOG_CHATID, deEmojify
+from . import BOTLOG, BOTLOG_CHATID
 
 plugin_category = "plugins"
 
