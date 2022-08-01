@@ -14,6 +14,13 @@ from pyrogram.types import Message
 import humanize
 from pyrogram import filters
 
+from . import HELP
+
+
+HELP(
+    "afk",
+)
+
 def GetChatID(message: Message):
     """ Get the group id of the incoming message"""
     return message.chat.id
