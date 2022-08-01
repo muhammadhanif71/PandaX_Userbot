@@ -10,7 +10,12 @@ from Panda.sql_helper.autopost_sql import (
 )
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
 from Panda._func._helpers import edit_or_reply, get_text
+from . import HELP
 
+
+HELP(
+    "autopost",
+)
 
 @ilhammansiz_on_cmd(
     ["autopost"],
