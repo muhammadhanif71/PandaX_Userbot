@@ -11,6 +11,11 @@ DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
 
+import asyncio
+import os
+from datetime import datetime, timedelta
+
+# noinspec
 
 main_filter = (filters.group
                & filters.text
