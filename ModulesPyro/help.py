@@ -53,7 +53,7 @@ async def help_(client, message):
     f_ = await edit_or_reply(message, "`Please Wait.`")
     cmd_ = get_text(message)
     if not cmd_:
-        help_t = f"`{HELP}`"   
+        help_t = prepare_cmd_list()
         await f_.edit(help_t)
     else:
         help_s = get_help_str(cmd_)
