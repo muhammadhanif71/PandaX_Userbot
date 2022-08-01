@@ -12,6 +12,13 @@ from Panda._func._helpers import (
     get_text,
 )
 
+from . import HELP
+
+
+HELP(
+    "eval",
+)
+
 langs = [
     "c#",
     "vb.net",
