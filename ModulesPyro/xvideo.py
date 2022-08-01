@@ -3,7 +3,12 @@ import bs4
 
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
+from . import HELP
 
+
+HELP(
+    "xvideo",
+)
 
 @ilhammansiz_on_cmd(
     ["xvideo"],
