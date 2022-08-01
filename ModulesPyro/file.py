@@ -18,6 +18,12 @@ from Panda._func._helpers import (
     progress,
 )
 
+from . import HELP
+
+
+HELP(
+    "file",
+)
 
 @ilhammansiz_on_cmd(
     ["chnnlzip", "channelzip"],
