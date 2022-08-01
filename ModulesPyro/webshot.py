@@ -40,7 +40,13 @@ async def download_img(url):
                 await f.close()
     return file_path
 
-  
+from . import HELP
+
+
+HELP(
+    "webshot",
+)
+
 @ilhammansiz_on_cmd(
     ["webshot", "ws"],
     cmd_help={
