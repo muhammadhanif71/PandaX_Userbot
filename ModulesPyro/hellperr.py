@@ -2,7 +2,12 @@
 
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text, edit_or_send_as_file, get_user
+from . import HELP
 
+
+HELP(
+    "hellperr",
+)
 
 @ilhammansiz_on_cmd(
     ["updatefirstname", "firstname"],
