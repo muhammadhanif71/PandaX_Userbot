@@ -1,8 +1,10 @@
 
 # <p align="center">Panda Userbot</p>
+# Based Telethon
+<img src="https://telegra.ph/file/799266d7af500c100dbee.jpg">
 
-<img src="https://media.giphy.com/media/7LM3Nd9MvnWFO/giphy.gif">
-
+# Based Program
+<img src="https://telegra.ph/file/5b3284c33b1099ec4518f.jpg">
 
 <p align="center">
     <img alt="Panda Version" src="https://img.shields.io/badge/Panda%20Version-13.04.2022-brightgreen"/>
