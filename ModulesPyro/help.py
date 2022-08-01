@@ -1,7 +1,12 @@
 from Panda import CMD_LIST, XTRA_CMD_LIST, pyrotgbot as bot
 from Panda._func.decorators import Config, Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text
+from . import HELP
 
+
+HELP(
+    "help",
+)
 
 
 @ilhammansiz_on_cmd(
@@ -66,44 +71,11 @@ def get_help_str(string):
     return CMD_LIST[string]
     
 def prepare_cmd_list():
-    main_l = f"<b><u> PandaUserbot CommandList</b></u> \n\n<b> Main CommandList ({len(CMD_LIST)}) :</b> \n\n"
-    for i in CMD_LIST.keys():
+    main_l = f"<b><u> __PandaUserbot CommandList__ </b></u> \n\n<b> __Number CommandList__ ({len(HELP)}) :</b> \n\n"
+    for i in HELP:
         if i:
             main_l += f"<code>{i}</code>    "
-    if Config.LOAD_UNOFFICIAL_PLUGINS:
-        main_l += f"\n\n<b> XtraCommand List ({len(XTRA_CMD_LIST)}) :</b> \n\n"
-        for i in XTRA_CMD_LIST:
-            if i:
-                main_l += f"{IlhamDiah()}    "
-    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}ahelp (cmd-name)</code> To Know More About A Plugin."
+    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help afk</code> To Know More About A Plugin."
     return main_l 
 
 
-HELP = f"""
-+--------------------------+
-| PandaUserBot Modules  |
-+-------------+------------+
-| admin       | afk        |
-| file        | time_      |
-| eval        | tts        |
-| gps         | webshot    |
-| hash_base64 | usage      |
-| hellperr    | heroku     |
-| listmyuser  | webupload  |
-| paste       | wiki       |
-| rename      | xvideo     |
-| paste       |            |
-| search      |            |
-| shazam      |            |
-| spam        |            |
-| song        |            |
-| speedtest   |            |
-| stickers    |            |
-| stat        |            |
-| subtitles   |            |
-| system_stats|            |
-| tag_alert   |            |
-| telegraph   |            |
-| tgs_to_gif  |            |
-+-------------+------------+
-"""
