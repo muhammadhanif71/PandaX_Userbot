@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, SqL, pyrobot, pyrobot2, pyrobot3, pyrobot4
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, pyrobot, pyrobot2, pyrobot3, pyrobot4
 
 from ..Config import Config
 from ..core.logger import logging
