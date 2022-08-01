@@ -10,6 +10,12 @@ telegraph = Telegraph()
 r = telegraph.create_account(short_name="PandaUserBot")
 auth_url = r["auth_url"]
 
+from . import HELP
+
+
+HELP(
+    "telegraph",
+)
 
 @ilhammansiz_on_cmd(
     ["telegraph"],
