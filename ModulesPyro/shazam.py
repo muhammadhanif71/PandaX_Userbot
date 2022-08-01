@@ -5,6 +5,12 @@ import requests
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, fetch_audio
 
+from . import HELP
+
+
+HELP(
+    "shazam",
+)
 
 @ilhammansiz_on_cmd(
     ["shazam", "sreverse", "identify"],
