@@ -1,4 +1,4 @@
-from .. import SqL
+from ..sql_helper.db import BaseDB as SqL
 
 
 def get_stuff():
