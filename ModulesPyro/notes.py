@@ -81,7 +81,7 @@ async def notes(client, message):
 )
 async def noteses(client, message):
     pablo = await edit_or_reply(message, "`Processing..`")
-    poppy = await all_note(message.chat.id)
+    poppy = all_note(message.chat.id)
     if poppy is False:
         await pablo.edit("`No Notes Found In This Chat...`")
         return
