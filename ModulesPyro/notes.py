@@ -39,7 +39,7 @@ async def notes(client, message):
 
 @listen(filters.incoming & filters.regex("\#(\S+)"))
 async def lmao(client, message):
-    if await all_note(message.chat.id):
+    if all_note(message.chat.id):
         pass
     else:
         return
