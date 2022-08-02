@@ -1,4 +1,4 @@
-from ..sql_helper.db import BaseDB as SqL
+from .. import SqL
 
 def get_stuff(key=None):
     return SqL.getdb(key) or {}
