@@ -34,7 +34,7 @@ def note_info(chat_id, keyword):
         return ok[int(chat_id)][keyword]
 
 
-def all_note(chat):
+def all_note(chat_id):
     ok = get_stuff()
     if ok.get(int(chat_id)):
         return "".join(f"🤗 #{z}\n" for z in ok[chat_id])
