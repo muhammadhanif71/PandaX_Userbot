@@ -1,15 +1,6 @@
 import random
-from Panda.events import pyroregister
 import asyncio
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
-from Panda._func._helpers import (
-    edit_or_reply,
-    edit_or_send_as_file,
-    get_text,
-    get_user,
-    is_admin_or_owner,
-)
-from pyrogram import filters
 
 pengguna = [
     f"Perkenalkan Nama saya Panda\nTerimah Kasih Ganteng 😏",
