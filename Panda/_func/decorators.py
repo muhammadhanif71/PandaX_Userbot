@@ -212,7 +212,92 @@ def add_handler(filter_s, func_, cmd):
 
 
 
+def ilhammansiz_cmd(
+    cmd: list,
+    group: int = 0,
+    pm_only: bool = False,
+    group_only: bool = False,
+    chnnl_only: bool = False,
+    only_if_admin: bool = False,
+    ignore_errors: bool = False,
+    propagate_to_next_handler: bool = True,
+    file_name: str = None,
+    is_official: bool = True,
+    cmd_help: dict = {"help": "No One One Gonna Help You", "example": "{ch}what"},
+):
+    """- Main Decorator To Register Commands. -"""
+    filterm = (
+        (filters.me | filters.user(Config.AFS))
+        & filters.command(cmd, Config.COMMAND_HANDLER)
+        & ~filters.via_bot
+        & ~filters.forwarded
+    )
+    add_help_menu(
+        cmd=cmd[0],
+        stack=inspect.stack(),
+        is_official=is_official,
+        cmd_help=cmd_help["help"],
+        example=cmd_help["example"],
+    )
 
+    def decorator(func):
+        async def wrapper(client, message):
+            message.client = client
+            chat_type = message.chat.type
+            if only_if_admin and not await is_admin_or_owner(
+                message, (client.me).id
+            ):
+                await edit_or_reply(
+                    message, "`This Command Only Works, If You Are Admin Of The Chat!`"
+                )
+                return
+            if group_only and chat_type != "supergroup":
+                await edit_or_reply(message, "`Are you sure this is a group?`")
+                return
+            if chnnl_only and chat_type != "channel":
+                await edit_or_reply(message, "This Command Only Works In Channel!")
+                return
+            if pm_only and chat_type != "private":
+                await edit_or_reply(message, "`This Cmd Only Works On PM!`")
+                return
+            if ignore_errors:
+                await func(client, message)
+            else:
+                try:
+                    await func(client, message)
+                except StopPropagation:
+                    raise StopPropagation
+                except KeyboardInterrupt:
+                    pass
+                except MessageNotModified:
+                    pass
+                except MessageIdInvalid:
+                    logging.warning(
+                        "Please Don't Delete Commands While it's Processing.."
+                    )
+                except UserNotParticipant:
+                    pass
+                except ContinuePropagation:
+                    raise ContinuePropagation
+                except BaseException:
+                    logging.error(
+                        f"Exception - {func.__module__} - {func.__name__}"
+                    )
+                    TZ = pytz.timezone(Config.TZ)
+                    datetime_tz = datetime.now(TZ)
+                    text = "**!ERROR - REPORT!**\n\n"
+                    text += f"\n**Trace Back : ** `{str(format_exc())}`"
+                    text += f"\n**Plugin-Name :** `{func.__module__}`"
+                    text += f"\n**Function Name :** `{func.__name__}` \n"
+                    text += datetime_tz.strftime(
+                        "**Date :** `%Y-%m-%d` \n**Time :** `%H:%M:%S`"
+                    )
+                    text += "\n\n__You can Forward This to @PandaUserbot, If You Think This is Serious A Error!__"
+                    try:
+                        await client.send_message(Config.LOG_GRP, text)
+                    except BaseException:
+                        logging.error(text)
+        add_handler(filterm, wrapper, cmd)
+        return wrapper
 
-ilhammansiz_cmd = Panda_cmd 
-
+    return decorator
