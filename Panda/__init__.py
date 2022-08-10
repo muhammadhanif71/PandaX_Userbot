@@ -30,7 +30,7 @@ from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
-SqL = sqldb
+SqL = PDB = BaseDB()
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
