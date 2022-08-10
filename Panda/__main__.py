@@ -11,6 +11,7 @@ LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
 from .Session.multisession_ import Pyrogram, Telethon
 
+
 ## Memulai ••••••••••√√√√√•••••••
 
 try:
@@ -21,8 +22,15 @@ except Exception as e:
     sys.exit()
 
 ## Install Modules ••••••√√√√√••••••
+cmdhr = Panda.Config.Config.COMMAND_HAND_LER
 
-
+MSG_ON = """
+Panda-Userbot
+━━
+Pyrogram Version - `{}'
+Ketik `{}alive` untuk Mengecheck Bot
+━━
+"""
 
 async def memulai():
     await utils.loads(f"{P}")
@@ -38,6 +46,19 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.join())
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
+
+
+async def ongruppyro():
+    if Panda.pyrobot:
+        try:
+            await Panda.pyrobot.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+            await Panda.pyrobot2.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+            await Panda.pyrobot3.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+            await Panda.pyrobot4.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+            LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
+        except Exception:
+            pass
+                  
     
 def startpyro():
     if Panda.pyrobot:
