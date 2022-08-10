@@ -2,7 +2,7 @@
 # Import Panda Userbot
 # Recode by Ilham Mansiz
 # ••••••••••••••••••••••√•••••••••••••√√√••••••••
-
+from pyrogram import __version__ as pyrover
 import asyncio
 import sys
 import Panda
@@ -38,15 +38,19 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.join())
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
+    
+def startpyro():
     if Panda.pyrobot:
         asyncio.get_event_loop_policy().get_event_loop().run_until_complete(utils.ongruppyro())
-
-
+        LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
+                   
+      
 
 if __name__ == "__main__":
     Telethon()
-    Pyrogram()
     start()
+    Pyrogram()
+    startpyro()
     
     
   
