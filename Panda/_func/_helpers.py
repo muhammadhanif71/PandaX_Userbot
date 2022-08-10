@@ -142,7 +142,7 @@ async def get_all_pros() -> list:
     return users
 
 
-def paginate_help(page_number, loaded_modules, prefix):
+def paginate_help(page_number, loaded_modules, prefix, is_official=True):
     """Paginate Buttons"""
     number_of_rows = 3
     number_of_cols = 2
@@ -175,14 +175,14 @@ def paginate_help(page_number, loaded_modules, prefix):
                 InlineKeyboardButton(
                     text="⏪ Previous",
                     callback_data="{}_prev({})_{}".format(
-                        prefix, modulo_page
+                        prefix, modulo_page, is_official
                     ),
                 ),
                 InlineKeyboardButton(text="Back 🔙", callback_data=f"backO_to_help_menu"),
                 InlineKeyboardButton(
                     text="Next ⏩",
                     callback_data="{}_next({})_{}".format(
-                        prefix, modulo_page
+                        prefix, modulo_page, is_official
                     ),
                 ),
             )
