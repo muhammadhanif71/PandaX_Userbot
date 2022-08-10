@@ -62,7 +62,7 @@ async def ongruppyro():
     
 def startpyro():
     if Panda.pyrobot:
-        asyncio.get_event_loop_policy().get_event_loop().run_until_complete(utils.ongruppyro())
+        asyncio.get_event_loop_policy().get_event_loop().run_until_complete(ongruppyro())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
                    
       
