@@ -3,7 +3,7 @@
 # Recode by Ilham Mansiz
 # ••••••••••••••••••••••√•••••••••••••√√√••••••••
 
-
+import asyncio
 import sys
 import Panda
 from Panda import utils
@@ -39,7 +39,7 @@ def start():
         Panda.PandaBot.loop.run_until_complete(utils.ongrup())
         LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ Version:{Panda.__version__} [TELAH DIAKTIFKAN]")
     if Panda.Pyrogrambot:
-        Panda.Pyrogrambot.loop.run_until_complete(utils.ongruppyro())
+        asyncio.get_event_loop_policy().get_event_loop().run_until_complete(utils.ongruppyro())
 
 
 
