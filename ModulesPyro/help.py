@@ -24,7 +24,7 @@ async def help(client, message):
         try:
             nice = await client.get_inline_bot_results(bot=bot_username, query="help")
             await client.send_inline_bot_result(
-                message.chat.id, nice.query_id, nice.results[0].id, hide_via=True
+                message.chat.id, nice.query_id, nice.results[0].id
             )
         except BaseException as e:
             return await f_.edit(f"`Unable To Open Help Menu Here.` \n**ERROR :** `{e}`")
