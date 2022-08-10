@@ -47,6 +47,7 @@ def Panda_cmd(
     )
     add_help_menu(
         cmd=cmd[0],
+        group=group,
         stack=inspect.stack(),
         is_official=is_official,
         cmd_help=cmd_help["help"],
@@ -234,6 +235,7 @@ def ilhammansiz_cmd(
     )
     add_help_menu(
         cmd=cmd[0],
+        group=group,
         stack=inspect.stack(),
         is_official=is_official,
         cmd_help=cmd_help["help"],
