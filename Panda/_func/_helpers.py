@@ -128,16 +128,16 @@ async def get_all_pros() -> list:
     """Get All Users , Sudo + Owners + Other Clients"""
     users = list(Config.SUDO_USERS)
     if pyrobot:
-        ujwal = pyrobot.get_me()
+        ujwal = await pyrobot.get_me()
         users.append(ujwal.id)
     if pyrobot2:
-        ujwal2 = pyrobot2.get_me()
+        ujwal2 = await pyrobot2.get_me()
         users.append(ujwal2.id)
     if pyrobot3:
-        ujwal3 = pyrobot3.get_me()
+        ujwal3 = await pyrobot3.get_me()
         users.append(ujwal3.id)
     if pyrobot4:
-        ujwal4 = pyrobot3.get_me()
+        ujwal4 = await pyrobot3.get_me()
         users.append(ujwal4.id)
     return users
 
