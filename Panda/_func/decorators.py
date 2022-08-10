@@ -110,7 +110,7 @@ def Panda_cmd(
                         await client.send_message(Config.LOG_GRP, text)
                     except BaseException:
                         logging.error(text)
-        add_handler(filterm, wrapper, cmd), group=0)
+        add_handler(filterm, wrapper, cmd, group=0)
         return wrapper
 
     return decorator
@@ -297,7 +297,7 @@ def ilhammansiz_cmd(
                         await client.send_message(Config.LOG_GRP, text)
                     except BaseException:
                         logging.error(text)
-        add_handler(filterm, wrapper, cmd), group=0)
+        add_handler(filterm, wrapper, cmd, group=0)
         return wrapper
 
     return decorator
