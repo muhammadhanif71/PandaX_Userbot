@@ -142,7 +142,7 @@ async def get_all_pros() -> list:
     return users
 
 
-def paginate_help(page_number, loaded_modules, prefix, is_official=True):
+def paginate_help(page_number, loaded_modules, prefix):
     """Paginate Buttons"""
     number_of_rows = 3
     number_of_cols = 2
