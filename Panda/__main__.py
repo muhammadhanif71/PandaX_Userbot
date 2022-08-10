@@ -22,7 +22,7 @@ except Exception as e:
     sys.exit()
 
 ## Install Modules ••••••√√√√√••••••
-cmdhr = Panda.Config.Config.COMMAND_HAND_LER
+cmdhr = Panda.Config.COMMAND_HAND_LER
 
 MSG_ON = """
 Panda-Userbot
