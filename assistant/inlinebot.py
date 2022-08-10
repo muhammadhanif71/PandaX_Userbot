@@ -241,7 +241,7 @@ async def owo(client, inline_query):
             ],
         ]
         if Config.LOAD_UNOFFICIAL_PLUGINS:
-            total_ = len(XTRA_CMD_LIST) + len(CMD_LIST)
+            total_ = len(CMD_LIST)
         nice_text = f"**🐼 PandaUserBot Commands** \n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{total_}__"
         await client.answer_inline_query(
             inline_query.id,
@@ -384,7 +384,7 @@ async def black_menu(client, cb):
             ],
         ]
     if Config.LOAD_UNOFFICIAL_PLUGINS:
-        total_ = len(XTRA_CMD_LIST) + len(CMD_LIST)
+        total_ = len(CMD_LIST)
     nice_text = f"**🐼 PandaUserBot Commands** \n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{total_}__"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
 
@@ -437,7 +437,7 @@ async def roaststart(client, cb):
             ]
     ]
     await cb.edit_message_text("`Please Wait, Restarting... This May Take A While`", reply_markup=InlineKeyboardMarkup(bttn))
-    args = [sys.executable, "-m", "Petercord_Userbot"]
+    args = [sys.executable, "-m", "Panda"]
     execle(sys.executable, *args, environ)
     exit()
 
@@ -597,7 +597,7 @@ async def get_back_vro(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "False":
         is_official = False
-    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
+    cmd_list = CMD_LIST if is_official else CMD_LIST
     buttons = paginate_help(page_number, cmd_list, "helpme", is_official=is_official)
     nice_text = f"**🐼 PandaUserBot Commands & Help Menu!** \n\n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{len(CMD_LIST)}__"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(buttons))
@@ -610,7 +610,7 @@ async def give_plugin_cmds(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "False":
         is_official = False
-    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
+    cmd_list = CMD_LIST if is_official else CMD_LIST
     help_string = f"**📗 PLUGIN NAME 📗 :** `{plugin_name}` \n{cmd_list[plugin_name]}"
     help_string += "\n\n**(C) @diemmmmmmmmmm** ".format(plugin_name)
     await cb.edit_message_text(
@@ -635,7 +635,7 @@ async def give_next_page(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "False":
         is_official = False
-    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
+    cmd_list = CMD_LIST if is_official else CMD_LIST
     buttons = paginate_help(
         current_page_number + 1, cmd_list, "helpme", is_official=is_official
     )
@@ -649,7 +649,7 @@ async def give_old_page(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "False":
         is_official = False
-    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
+    cmd_list = CMD_LIST if is_official else CMD_LIST
     buttons = paginate_help(
         current_page_number - 1, cmd_list, "helpme", is_official=is_official
     )
