@@ -210,7 +210,7 @@ class Config(object):
     CHROME_BIN_PATH = os.environ.get("CHROME_BIN_PATH", "/usr/bin/google-chrome-stable")
     TZ = os.environ.get("TZ", "Asia/Jakarta")
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
-    LOAD_UNOFFICIAL_PLUGINS = bool(strtobool(str(os.environ.get("LOAD_UNOFFICIAL_PLUGINS", False))))
+    LOAD_UNOFFICIAL_PLUGINS = bool(strtobool(str(os.environ.get("LOAD_UNOFFICIAL_PLUGINS", True))))
 
 
 
