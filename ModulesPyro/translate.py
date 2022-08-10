@@ -112,7 +112,7 @@ async def translate(client, message):
         lan, text = input_str.split(";")
     else:
         return await edit_delete(
-            event, "`.tl LanguageCode` as reply to a message", time=5
+            message, "`.tl LanguageCode` as reply to a message", time=5
         )
     text = text.strip()
     lan = lan.strip()
@@ -171,25 +171,25 @@ async def translateme(client, message):
         "example": "{ch}lang trt id",
     },
 )
-async def lang(client, value):
+async def lang(client, message):
     "To set language for trt comamnd."
-    arg = value.matches.group(2).lower()
-    input_str = value.matches.group(1)
+    arg = message.matches.group(2).lower()
+    input_str = message.matches.group(1)
     if arg not in LANGUAGES:
         return await edit_or_reply(
-            value,
+            message,
             f"`Invalid Language code !!`\n`Available language codes for TRT`:\n\n`{LANGUAGES}`",
         )
     LANG = LANGUAGES[arg]
     if input_str == "trt":
         addgvar("TRT_LANG", arg)
         await edit_or_reply(
-            value, f"`Language for Translator changed to {LANG.title()}.`"
+            message, f"`Language for Translator changed to {LANG.title()}.`"
         )
     else:
         addgvar("AI_LANG", arg)
         await edit_or_reply(
-            value, f"`Language for chatbot is changed to {LANG.title()}.`"
+            message, f"`Language for chatbot is changed to {LANG.title()}.`"
         )
     LANG = LANGUAGES[arg]
 
@@ -199,7 +199,7 @@ async def lang(client, value):
                 BOTLOG_CHATID, f"`Language for Translator changed to {LANG.title()}.`"
             )
         if input_str == "ai":
-            await value.client.send_message(
+            await client.send_message(
                 BOTLOG_CHATID, f"`Language for chatbot is changed to {LANG.title()}.`"
             )
 
