@@ -13,7 +13,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 import requests
 from telethon import functions, types, utils
 
-from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, pyrobot, pyrobot2, pyrobot3, pyrobot4
 
 from ..Config import Config
 from ..core.logger import logging
@@ -251,12 +251,12 @@ async def ongrup():
         pass
 
 
-async def ongruppyro(client, message):
+async def ongruppyro():
     try:
-        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot2.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot3.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await pyrobot4.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
     except BaseException:
         pass
 
