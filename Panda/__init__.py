@@ -30,7 +30,7 @@ from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
 
 Mongodb = mongodb
-SqL = PDB = BaseDB()
+SqL = sqldb
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
@@ -52,8 +52,8 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-LOGS.info(f"Memeriksa {SqL.name}...")
-LOGS.info(f"Terkoneksi {SqL.name} Successfully!")
+LOGS.info(f"Memeriksa {SqL.usname}...")
+LOGS.info(f"Terkoneksi {SqL.usname} Successfully!")
 
 
 BOT_MODE = SqL.getdb("MODE_DUAL")
