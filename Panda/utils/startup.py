@@ -251,12 +251,12 @@ async def ongrup():
         pass
 
 
-async def ongruppyro():
+async def ongruppyro(client, message):
     try:
-        await pyrobot.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await pyrobot2.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await pyrobot3.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
-        await pyrobot4.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
+        await client.send_message(BOTLOG_CHATID, MSG_ON.format(botvers, cmdhr))
     except BaseException:
         pass
 
