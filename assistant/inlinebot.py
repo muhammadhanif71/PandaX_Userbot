@@ -56,7 +56,7 @@ db_s = TinyDB("./PandaVersion/Panda/not4u.json")
 Petercord_version = pandaversion
 REPO_ = Config.UPSTREAM_REPO
 BRANCH_ = Config.U_BRANCH
-CMD_LIST = XRA_CMD_LIST = CMD_HELP
+CMD_LIST = XTRA_CMD_LIST = CMD_HELP
 
 @bot.on_inline_query()
 async def owo(client, inline_query):
