@@ -1,13 +1,11 @@
 # ilham mansiz
 # ilham mansiz
 
-import time
 import logging
 import re
 import string
 from random import choice
 import sys
-import datetime
 from os import environ, execle
 import platform
 import re
