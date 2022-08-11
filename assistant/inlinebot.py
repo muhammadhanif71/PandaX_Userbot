@@ -36,6 +36,17 @@ from Panda._func._helpers import (
     paginate_help,
 )
 import os
+
+import platform
+import re
+import socket
+import sys
+import time
+import uuid
+from datetime import datetime
+from os import environ, execle
+
+import psutil
 from Panda._func.assistant_helpers import download_yt
 from pyrogram.types import InputMediaAudio, InputMediaVideo
 
