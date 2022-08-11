@@ -23,9 +23,9 @@ from ..Session.pyroclient import (
 from ..Config import Config
 from ._helpers import is_admin_or_owner, edit_or_reply
 
-from .. import CMD_HELP
+from .. import CMD_HELP, CMD_LIST, XTRA_CMD_LIST
 
-XTRA_CMD_LIST = CMD_LIST = CMD_HELP
+
 
 def Panda_cmd(
     cmd: list,
@@ -173,7 +173,7 @@ def add_help_menu(
     if not file_name:
         previous_stack_frame = stack[1]
         if "ModulesPyro" in previous_stack_frame.filename:
-            is_official = False
+            is_official = True
         file_name = os.path.basename(previous_stack_frame.filename.replace(".py", ""))
     cmd_helpz = example.format(ch=Config.COMMAND_HANDLER)
     cmd_helper = f"**Module Name :** `{file_name.replace('_', ' ').title()}` \n\n**Command :** `{Config.COMMAND_HANDLER}{cmd}` \n**Help :** `{cmd_help}` \n**Example :** `{cmd_helpz}`"
