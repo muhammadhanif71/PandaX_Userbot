@@ -31,10 +31,8 @@ from Panda import CMD_LIST, pyrobot, pandaversion, pyrotgbot as bot
 from Panda import Config
 from youtubesearchpython import SearchVideos
 from Panda._func._helpers import (
-    cb_wrapper,
     humanbytes,
     get_all_pros,
-    inline_wrapper,
     paginate_help,
 )
 from Panda._func.ownership import check_owner
