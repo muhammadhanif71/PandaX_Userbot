@@ -23,7 +23,9 @@ from ..Session.pyroclient import (
 from ..Config import Config
 from ._helpers import is_admin_or_owner, edit_or_reply
 
-from .. import XTRA_CMD_LIST, CMD_LIST
+from .. import CMD_HELP
+
+XTRA_CMD_LIST = CMD_LIST = CMD_HELP
 
 def Panda_cmd(
     cmd: list,
