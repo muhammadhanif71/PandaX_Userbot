@@ -27,7 +27,7 @@ from pyrogram.types import (
 )
 from tinydb import Query, TinyDB
 from Panda._func.startup import run_cmd
-from Panda import pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot
+from Panda import pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot, XTRA_CMD_LIST, CMD_LIST
 from Panda import Config
 from youtubesearchpython import SearchVideos
 from Panda._func._helpers import (
@@ -39,7 +39,6 @@ from Panda._func._helpers import (
 import os
 from Panda._func.assistant_helpers import download_yt
 from pyrogram.types import InputMediaAudio, InputMediaVideo
-XTRA_CMD_LIST = CMD_LIST = CMD_HELP
 
 ilhammansiz = "https://telegra.ph/file/336d811bce4f1d1053fbf.jpg"
 Petercord_Userbot = pyrobot
@@ -547,8 +546,8 @@ async def wow_nice(client, cb):
     if cb.matches[0].group(1) == "True":
         nice = True
     if nice is True:
-        v_t = CMD_LIST
-        bttn = paginate_help(0, CMD_LIST, "helpme", is_official=nice)
+        v_t = XTRA_CMD_LIST
+        bttn = paginate_help(0, XTRA_CMD_LIST, "helpme", is_official=nice)
     else:
         v_t = CMD_LIST
         bttn = paginate_help(0, CMD_LIST, "helpme", is_official=nice)
@@ -579,17 +578,18 @@ async def close_it_please(client, cb):
 @bot.on_callback_query(filters.regex(pattern="mansiz"))
 @cb_wrapper
 async def close_it_please(client, cb):
-    await cb.delete()
+    await cb.edit_message_text("Closed Menu")
 
 
 @bot.on_callback_query(filters.regex(pattern="backme_(.*)_(True|False)"))
 @cb_wrapper
 async def get_back_vro(client, cb):
+    total_ = len(CMD_HELP)
     page_number = int(cb.matches[0].group(1))
     is_official = True
     if cb.matches[0].group(2) == "True":
         is_official = True
-    cmd_list = CMD_LIST if is_official else CMD_HELP
+    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
     buttons = paginate_help(page_number, cmd_list, "helpme", is_official=is_official)
     nice_text = f"**PandaUserbot Inline** \n\n**Version :** `{pandaversion}` \n**Pyrogram Version :** `{__version__}` \n**Modules :** `{total_}`"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(buttons))
@@ -602,7 +602,7 @@ async def give_plugin_cmds(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "True":
         is_official = True
-    cmd_list = CMD_LIST if is_official else CMD_HELP
+    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
     help_string = f"**Modules :** `{plugin_name}` \n{cmd_list[plugin_name]}"
     help_string += "\n\n**(C) @diemmmmmmmmmm** ".format(plugin_name)
     await cb.edit_message_text(
@@ -627,7 +627,7 @@ async def give_next_page(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "True":
         is_official = True
-    cmd_list = CMD_LIST if is_official else CMD_HELP
+    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
     buttons = paginate_help(
         current_page_number + 1, cmd_list, "helpme", is_official=is_official
     )
@@ -641,7 +641,7 @@ async def give_old_page(client, cb):
     is_official = True
     if cb.matches[0].group(2) == "True":
         is_official = True
-    cmd_list = CMD_LIST if is_official else CMD_HELP
+    cmd_list = CMD_LIST if is_official else XTRA_CMD_LIST
     buttons = paginate_help(
         current_page_number - 1, cmd_list, "helpme", is_official=is_official
     )
