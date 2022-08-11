@@ -1,5 +1,6 @@
 # ilham mansiz
-# ilham mansiz
+# Panda Userbott
+# Ported by ilham from Friday Userbot
 
 import logging
 import re
@@ -352,11 +353,6 @@ async def cmd_buutton(client, cb):
             [
                 InlineKeyboardButton(
                     text="📳 Restart Now 📳", callback_data=f"restart_bot"
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    text="📶 Sys info 📶", callback_data=f"sys_info"
                 )
             ],
             [
