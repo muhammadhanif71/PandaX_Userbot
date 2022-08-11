@@ -383,8 +383,8 @@ async def black_menu(client, cb):
         ]
     if Config.LOAD_UNOFFICIAL_PLUGINS:
         total_ = len(CMD_HELP)
-  nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
-  await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
+    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
+    await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="make_cmd_buttons"))
 @check_owner
