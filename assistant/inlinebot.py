@@ -27,7 +27,7 @@ from pyrogram.types import (
 )
 from tinydb import Query, TinyDB
 from Panda._func.startup import run_cmd
-from Panda import CMD_LIST, pyrobot, pandaversion, pyrotgbot as bot
+from Panda import CMD_LIST, pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot
 from Panda import Config
 from youtubesearchpython import SearchVideos
 from Panda._func._helpers import (
@@ -61,7 +61,7 @@ async def owo(client, inline_query):
         user, msg = ok.split(";")
         fu = int(user) if user.isdigit() else user
         try:
-            ui = await Petercord_Userbot.get_users(fu)
+            ui = await pyrobot.get_users(fu)
         except BaseException as e:
             logging.error(str(e))
             return
@@ -187,7 +187,7 @@ async def owo(client, inline_query):
         user, msg = ok.split(";")
         fu = int(user) if user.isdigit() else user
         try:
-            ui = await Petercord_Userbot.get_users(fu)
+            ui = await pyrobot.get_users(fu)
         except BaseException as e:
             logging.error(str(e))
             return
@@ -220,7 +220,7 @@ async def owo(client, inline_query):
         ]
         await client.answer_inline_query(inline_query.id, cache_time=0, results=ok_s)
     elif string_given.startswith("help"):
-        total_ = len(CMD_LIST)
+        total_ = len(CMD_HELP)
         bttn = [
             [
                 InlineKeyboardButton(
@@ -229,7 +229,7 @@ async def owo(client, inline_query):
             ],
             [
                 InlineKeyboardButton(
-                    text="🏧 Data PandaUserbot 🏧", callback_data=f"make_ilham_bot"
+                    text="🔃 System 🔃", callback_data=f"make_ilham_bot"
                 )
             ],
             [
@@ -239,8 +239,8 @@ async def owo(client, inline_query):
             ],
         ]
         if Config.LOAD_UNOFFICIAL_PLUGINS:
-            total_ = len(CMD_LIST)
-        nice_text = f"**🐼 PandaUserBot Commands** \n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{total_}__"
+            total_ = len(CMD_HELP)
+        nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
         await client.answer_inline_query(
             inline_query.id,
             cache_time=0,
@@ -363,7 +363,7 @@ async def cmd_buutton(client, cb):
 @bot.on_callback_query(filters.regex(pattern="backO_to_help_menu"))
 @check_owner
 async def black_menu(client, cb):
-    total_ = len(CMD_LIST)
+    total_ = len(CMD_HELP)
     bttn = [
             [
                 InlineKeyboardButton(
@@ -382,9 +382,9 @@ async def black_menu(client, cb):
             ],
         ]
     if Config.LOAD_UNOFFICIAL_PLUGINS:
-        total_ = len(CMD_LIST)
-    nice_text = f"**🐼 PandaUserBot Commands** \n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{total_}__"
-    await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
+        total_ = len(CMD_HELP)
+  nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
+  await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="make_cmd_buttons"))
 @check_owner
@@ -402,14 +402,8 @@ async def cmd_buutton(client, cb):
             ]
         ]
     if Config.LOAD_UNOFFICIAL_PLUGINS:
-        len(XTRA_CMD_LIST) + len(CMD_LIST)
+        len(CMD_HELP)
         bttn = [
-                [
-                    InlineKeyboardButton(
-                        text="📗 Plugins 📗",
-                        callback_data=f"make_basic_button_False",
-                    )
-                ],
                 [
                     InlineKeyboardButton(
                         text="📙 Modules 📙",
@@ -464,9 +458,9 @@ async def update_it(client, cb):
         else:
             origin = repo.create_remote("upstream", REPO_)
         origin.fetch()
-        repo.create_head(Config.U_BRANCH, origin.refs.Petercord_Userbot)
-        repo.heads.Petercord_Userbot.set_tracking_branch(origin.refs.Petercord_Userbot)
-        repo.heads.Petercord_Userbot.checkout(True)
+        repo.create_head(Config.U_BRANCH, origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
     if repo.active_branch.name != Config.U_BRANCH:
         return await cb.edit_message_text(
             f"`Seems Like You Are Using Custom Branch - {repo.active_branch.name}! Please Switch To {Config.U_BRANCH} To Make This Updater Function!`", reply_markup=InlineKeyboardMarkup(bttn))
@@ -495,7 +489,7 @@ async def update_it(client, cb):
         else:
             remote = repo.create_remote("heroku", Config.HEROKU_URL)
         try:
-            remote.push(refspec="HEAD:refs/heads/Petercord_Userbot", force=True)
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
         except BaseException as error:
             return await cb.edit_message_text(f"**Updater Error** \nTraceBack : `{error}`", reply_markup=InlineKeyboardMarkup(bttn))
 
@@ -550,9 +544,9 @@ async def fuck_arch_btw(client, cb):
 @check_owner
 async def wow_nice(client, cb):
     nice = True
-    if cb.matches[0].group(1) == "False":
-        nice = False
-    if nice is False:
+    if cb.matches[0].group(1) == "True":
+        nice = True
+    if nice is True:
         v_t = CMD_LIST
         bttn = paginate_help(0, CMD_LIST, "helpme", is_official=nice)
     else:
@@ -593,11 +587,11 @@ async def close_it_please(client, cb):
 async def get_back_vro(client, cb):
     page_number = int(cb.matches[0].group(1))
     is_official = True
-    if cb.matches[0].group(2) == "False":
-        is_official = False
-    cmd_list = CMD_LIST if is_official else CMD_LIST
+    if cb.matches[0].group(2) == "True":
+        is_official = True
+    cmd_list = CMD_LIST if is_official else CMD_HELP
     buttons = paginate_help(page_number, cmd_list, "helpme", is_official=is_official)
-    nice_text = f"**🐼 PandaUserBot Commands & Help Menu!** \n\n**🤖 Version :** __{Petercord_version}__ \n**✡ PyroGram Version :** __{__version__}__ \n**🏧 Total Plugins Loaded :** __{len(CMD_LIST)}__"
+    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(buttons))
 
 
@@ -606,10 +600,10 @@ async def get_back_vro(client, cb):
 async def give_plugin_cmds(client, cb):
     plugin_name, page_number = cb.matches[0].group(1).split("|", 1)
     is_official = True
-    if cb.matches[0].group(2) == "False":
-        is_official = False
-    cmd_list = CMD_LIST if is_official else CMD_LIST
-    help_string = f"**📗 PLUGIN NAME 📗 :** `{plugin_name}` \n{cmd_list[plugin_name]}"
+    if cb.matches[0].group(2) == "True":
+        is_official = True
+    cmd_list = CMD_LIST if is_official else CMD_HELP
+    help_string = f"**Modules :** `{plugin_name}` \n{cmd_list[plugin_name]}"
     help_string += "\n\n**(C) @diemmmmmmmmmm** ".format(plugin_name)
     await cb.edit_message_text(
         help_string,
@@ -631,9 +625,9 @@ async def give_plugin_cmds(client, cb):
 async def give_next_page(client, cb):
     current_page_number = int(cb.matches[0].group(1))
     is_official = True
-    if cb.matches[0].group(2) == "False":
-        is_official = False
-    cmd_list = CMD_LIST if is_official else CMD_LIST
+    if cb.matches[0].group(2) == "True":
+        is_official = True
+    cmd_list = CMD_LIST if is_official else CMD_HELP
     buttons = paginate_help(
         current_page_number + 1, cmd_list, "helpme", is_official=is_official
     )
@@ -645,9 +639,9 @@ async def give_next_page(client, cb):
 async def give_old_page(client, cb):
     current_page_number = int(cb.matches[0].group(1))
     is_official = True
-    if cb.matches[0].group(2) == "False":
-        is_official = False
-    cmd_list = CMD_LIST if is_official else CMD_LIST
+    if cb.matches[0].group(2) == "True":
+        is_official = True
+    cmd_list = CMD_LIST if is_official else CMD_HELP
     buttons = paginate_help(
         current_page_number - 1, cmd_list, "helpme", is_official=is_official
     )
