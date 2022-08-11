@@ -554,8 +554,8 @@ async def wow_nice(client, cb):
     if cb.matches[0].group(1) == "True":
         nice = True
     if nice is True:
-        v_t = XTRA_CMD_LIST
-        bttn = paginate_help(0, XTRA_CMD_LIST, "helpme", is_official=nice)
+        v_t = CMD_HELP
+        bttn = paginate_help(0, CMD_HELP, "helpme", is_official=nice)
     else:
         v_t = CMD_LIST
         bttn = paginate_help(0, CMD_LIST, "helpme", is_official=nice)
