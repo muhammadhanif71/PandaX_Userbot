@@ -240,7 +240,7 @@ async def owo(client, inline_query):
         ]
         if Config.LOAD_UNOFFICIAL_PLUGINS:
             total_ = len(CMD_HELP)
-        nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
+        nice_text = f"**PandaUserbot Inline** \n\n**Version :** `{pandaversion}` \n**Pyrogram Version :** `{__version__}` \n**Modules :** {total_}"
         await client.answer_inline_query(
             inline_query.id,
             cache_time=0,
@@ -383,7 +383,7 @@ async def black_menu(client, cb):
         ]
     if Config.LOAD_UNOFFICIAL_PLUGINS:
         total_ = len(CMD_HELP)
-    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
+    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `{pandaversion}` \n**Pyrogram Version :** `{__version__}` \n**Modules :** {total_}"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="make_cmd_buttons"))
@@ -591,7 +591,7 @@ async def get_back_vro(client, cb):
         is_official = True
     cmd_list = CMD_LIST if is_official else CMD_HELP
     buttons = paginate_help(page_number, cmd_list, "helpme", is_official=is_official)
-    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `__{pandaversion}__` \n**Pyrogram Version :** `__{__version__}__` \n**Modules :** __{total_}__"
+    nice_text = f"**PandaUserbot Inline** \n\n**Version :** `{pandaversion}` \n**Pyrogram Version :** `{__version__}` \n**Modules :** `{total_}`"
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(buttons))
 
 
