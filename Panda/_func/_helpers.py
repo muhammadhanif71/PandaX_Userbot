@@ -174,7 +174,6 @@ def paginate_help(page_number, loaded_modules, prefix, is_official=True):
                     text="⏪ Previous",
                     callback_data="{}_prev({})_{}".format(prefix, modulo_page, is_official),
                 ),
-                InlineKeyboardButton(text="Close", callback_data="cleuse"),
                 InlineKeyboardButton(
                     text="Next ⏩",
                     callback_data="{}_next({})_{}".format(prefix, modulo_page, is_official),
