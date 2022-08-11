@@ -144,7 +144,7 @@ async def get_all_pros() -> list:
 
 def paginate_help(page_number, loaded_modules, prefix, is_official=True):
     """Paginate Buttons"""
-    number_of_rows = 3
+    number_of_rows = 6
     number_of_cols = 2
     helpable_modules = []
     for p in loaded_modules:
@@ -154,11 +154,9 @@ def paginate_help(page_number, loaded_modules, prefix, is_official=True):
     modules = [
         InlineKeyboardButton(
             text="{} {} {}".format(
-                Config.CUSTOM_HELP_EMOJI,
-                x.replace("_", " ").title(),
-                Config.CUSTOM_HELP_EMOJI,
+                Config.CUSTOM_HELP_EMOJI, x, Config.CUSTOM_HELP_EMOJI
             ),
-            callback_data="us_plugin_{}|{}_{}".format(x, page_number),
+            callback_data="us_plugin_{}|{}_{}".format(x, page_number, is_official),
         )
         for x in helpable_modules
     ]
@@ -174,16 +172,12 @@ def paginate_help(page_number, loaded_modules, prefix, is_official=True):
             (
                 InlineKeyboardButton(
                     text="⏪ Previous",
-                    callback_data="{}_prev({})_{}".format(
-                        prefix, modulo_page, is_official
-                    ),
+                    callback_data="{}_prev({})_{}".format(prefix, modulo_page, is_official),
                 ),
-                InlineKeyboardButton(text="Back 🔙", callback_data=f"backO_to_help_menu"),
+                InlineKeyboardButton(text="Close", callback_data="cleuse"),
                 InlineKeyboardButton(
                     text="Next ⏩",
-                    callback_data="{}_next({})_{}".format(
-                        prefix, modulo_page, is_official
-                    ),
+                    callback_data="{}_next({})_{}".format(prefix, modulo_page, is_official),
                 ),
             )
         ]
