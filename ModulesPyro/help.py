@@ -10,10 +10,10 @@ HELP(
 
 
 @ilhammansiz_on_cmd(
-    ["helpme", "helper"],
+    ["inline", "helper"],
     cmd_help={
         "help": "Gets Help Menu",
-        "example": "{ch}helpme",
+        "example": "{ch}inline",
     },
 )
 async def help(client, message):
@@ -46,7 +46,7 @@ async def help(client, message):
     ["help", "ahelper"],
     cmd_help={
         "help": "Gets Help List & Info",
-        "example": "{ch}ahelp (cmd_name)",
+        "example": "{ch}help (cmd_name)",
     },
 )
 async def help_(client, message):
@@ -75,7 +75,7 @@ def prepare_cmd_list():
     for i in CMD_HELP:
         if i:
             main_l += f"<code>{i}</code>    "
-    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help afk</code> To Know More About A Plugin."
+    main_l += f"\n\nUse <code>{Config.COMMAND_HANDLER}help afk</code> to know more about a modules."
     return main_l 
 
 
