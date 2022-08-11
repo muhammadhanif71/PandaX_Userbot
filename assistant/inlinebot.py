@@ -36,7 +36,6 @@ from Panda._func._helpers import (
     get_all_pros,
     paginate_help,
 )
-from Panda._func.ownership import check_owner
 import os
 from Panda._func.assistant_helpers import download_yt
 from pyrogram.types import InputMediaAudio, InputMediaVideo
