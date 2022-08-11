@@ -27,7 +27,7 @@ from pyrogram.types import (
 )
 from tinydb import Query, TinyDB
 from Panda._func.startup import run_cmd
-from Panda import CMD_LIST, pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot
+from Panda import pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot
 from Panda import Config
 from youtubesearchpython import SearchVideos
 from Panda._func._helpers import (
@@ -39,7 +39,7 @@ from Panda._func._helpers import (
 import os
 from Panda._func.assistant_helpers import download_yt
 from pyrogram.types import InputMediaAudio, InputMediaVideo
-XTRA_CMD_LIST = CMD_LIST
+XTRA_CMD_LIST = CMD_LIST = CMD_HELP
 
 ilhammansiz = "https://telegra.ph/file/336d811bce4f1d1053fbf.jpg"
 Petercord_Userbot = pyrobot
