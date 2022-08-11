@@ -23,7 +23,7 @@ from ..Session.pyroclient import (
 from ..Config import Config
 from ._helpers import is_admin_or_owner, edit_or_reply
 
-from .. import CMD_HELP, CMD_LIST, XTRA_CMD_LIST
+from .. import CMD_LIST, XTRA_CMD_LIST
 
 
 
