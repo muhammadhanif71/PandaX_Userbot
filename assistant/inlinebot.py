@@ -26,7 +26,7 @@ from pyrogram.types import (
 )
 from tinydb import Query, TinyDB
 from Panda._func.startup import run_cmd
-from Panda import pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot
+from Panda import pyrobot, pandaversion, CMD_HELP, pyrotgbot as bot, XTRA_CMD_LIST, CMD_LIST
 from Panda import Config
 from youtubesearchpython import SearchVideos
 from Panda._func._helpers import (
@@ -56,7 +56,7 @@ db_s = TinyDB("./PandaVersion/Panda/not4u.json")
 Petercord_version = pandaversion
 REPO_ = Config.UPSTREAM_REPO
 BRANCH_ = Config.U_BRANCH
-CMD_LIST = XTRA_CMD_LIST = CMD_HELP
+
 
 @bot.on_inline_query()
 async def owo(client, inline_query):
