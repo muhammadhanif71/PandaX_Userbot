@@ -37,6 +37,7 @@ from Panda._func._helpers import (
     inline_wrapper,
     paginate_help,
 )
+from Panda._func.ownership import check_owner
 import os
 from Panda._func.assistant_helpers import download_yt
 from pyrogram.types import InputMediaAudio, InputMediaVideo
@@ -53,7 +54,6 @@ BRANCH_ = Config.U_BRANCH
 
 
 @bot.on_inline_query()
-@inline_wrapper
 async def owo(client, inline_query):
     string_given = inline_query.query.lower()
     if string_given.startswith("not4u"):
@@ -336,7 +336,7 @@ async def nothing_here(client, cb):
     
 
 @bot.on_callback_query(filters.regex(pattern="make_ilham_bot"))
-@cb_wrapper
+@check_owner
 async def cmd_buutton(client, cb):
     bttn = [
             [
@@ -363,7 +363,7 @@ async def cmd_buutton(client, cb):
     await cb.edit_message_text("🎗 Data PandaUserbot 🎗", reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="backO_to_help_menu"))
-@cb_wrapper
+@check_owner
 async def black_menu(client, cb):
     total_ = len(CMD_LIST)
     bttn = [
@@ -389,7 +389,7 @@ async def black_menu(client, cb):
     await cb.edit_message_text(nice_text, reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="make_cmd_buttons"))
-@cb_wrapper
+@check_owner
 async def cmd_buutton(client, cb):
     bttn = [
             [
@@ -427,7 +427,7 @@ async def cmd_buutton(client, cb):
     await cb.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="restart_bot"))
-@cb_wrapper
+@check_owner
 async def roaststart(client, cb):
     bttn = [
         [
@@ -442,7 +442,7 @@ async def roaststart(client, cb):
     exit()
 
 @bot.on_callback_query(filters.regex(pattern="updTe_bot"))
-@cb_wrapper
+@check_owner
 async def update_it(client, cb):
     bttn = [
         [
@@ -502,7 +502,7 @@ async def update_it(client, cb):
             return await cb.edit_message_text(f"**Updater Error** \nTraceBack : `{error}`", reply_markup=InlineKeyboardMarkup(bttn))
 
 @bot.on_callback_query(filters.regex(pattern="sys_info"))
-@cb_wrapper
+@check_owner
 async def fuck_arch_btw(client, cb):
     bttn = [
         [
@@ -549,7 +549,7 @@ async def fuck_arch_btw(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="make_basic_button_(True|False)"))
-@cb_wrapper
+@check_owner
 async def wow_nice(client, cb):
     nice = True
     if cb.matches[0].group(1) == "False":
@@ -567,7 +567,7 @@ async def wow_nice(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="cleuse"))
-@cb_wrapper
+@check_owner
 async def close_it_please(client, cb):
     bttn = [
         [
@@ -585,13 +585,13 @@ async def close_it_please(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="mansiz"))
-@cb_wrapper
+@check_owner
 async def close_it_please(client, cb):
     await cb.delete()
 
 
 @bot.on_callback_query(filters.regex(pattern="backme_(.*)_(True|False)"))
-@cb_wrapper
+@check_owner
 async def get_back_vro(client, cb):
     page_number = int(cb.matches[0].group(1))
     is_official = True
@@ -604,7 +604,7 @@ async def get_back_vro(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="us_plugin_(.*)_(True|False)"))
-@cb_wrapper
+@check_owner
 async def give_plugin_cmds(client, cb):
     plugin_name, page_number = cb.matches[0].group(1).split("|", 1)
     is_official = True
@@ -629,7 +629,7 @@ async def give_plugin_cmds(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="helpme_next\((.+?)\)_(True|False)"))
-@cb_wrapper
+@check_owner
 async def give_next_page(client, cb):
     current_page_number = int(cb.matches[0].group(1))
     is_official = True
@@ -643,7 +643,7 @@ async def give_next_page(client, cb):
 
 
 @bot.on_callback_query(filters.regex(pattern="helpme_prev\((.+?)\)_(True|False)"))
-@cb_wrapper
+@check_owner
 async def give_old_page(client, cb):
     current_page_number = int(cb.matches[0].group(1))
     is_official = True
