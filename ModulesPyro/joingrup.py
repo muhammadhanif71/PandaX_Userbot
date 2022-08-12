@@ -1,8 +1,6 @@
-from pyrogram import Client, filters
-from pyrogram.types import Message
 
-from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
-from Panda._func._helpers import edit_or_reply, get_text
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
+from Panda._func._helpers import edit_or_reply
 from . import HELP
 
 
