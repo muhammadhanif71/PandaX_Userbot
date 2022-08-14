@@ -52,7 +52,7 @@ async def impostor(client, message):
 
     LOGS.info(STORAGE.userObj)
     await xx.edit("**Mencuri identitas orang ini...**")
-    await updateProfile(message, userObj)
+    await updateProfile(client, message, userObj)
     await xx.edit("**Aku adalah kamu dan kamu adalah aku. asekk 🥴**")
 
 
