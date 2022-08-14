@@ -111,7 +111,7 @@ async def joinvc(client, message):
     try:
         await client.group_call.start(chat_id)
     except Exception as e:
-        return await Man.edit(f"**ERROR:** `{e}`")
+        return await panda.edit(f"**ERROR:** `{e}`")
     await panda.edit(f"❏ **Berhasil Join Ke Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
     await sleep(5)
     await client.group_call.set_is_mute(True)
