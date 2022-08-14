@@ -84,7 +84,7 @@ async def updateProfile(client, message, userObj, restore=False):
             userPfp = userObj.profile_photo
             pfpImage = await client.download_media(userPfp)
             await client(
-                UploadProfilePhotoRequest(await event.client.upload_file(pfpImage))
+                UploadProfilePhotoRequest(await client.upload_file(pfpImage))
             )
         except BaseException:
             pass
