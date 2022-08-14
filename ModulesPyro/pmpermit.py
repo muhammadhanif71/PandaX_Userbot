@@ -22,12 +22,24 @@ HELP(
     "pmpermit",
 )
 
+
+msg = (
+    "❏ 𝐏𝐞𝐫𝐢𝐧𝐠𝐚𝐭𝐚𝐧!\n"
+    "• Saya belum menyetujui anda untuk Cht.\n"
+    "• Tunggu sampai sy menyetujui chat anda.\n"
+    "• Jangan Spam Chat atau anda akan otomatis di blokir.\n"
+    "┌━━━━━━━━━━━━\n"
+    "├❏ 𝐏𝐞𝐬𝐚𝐧 𝐨𝐭𝐨𝐦𝐚𝐭𝐢𝐬 𝐁𝐲 𝐔𝐬𝐞𝐫𝐛𝐨𝐭\n"
+    "└━━━━━━━━━━━━\n"
+)
+
+
 SqL.getdb("add_pm_text") or ""
 SqL.getdb("add_pm_thumb") or ""
 pmlimited = SqL.getdb("get_pm_spam_limit") or 3
-pmtext = SqL.getdb("get_pm_text") or ""
-pmthumb = SqL.getdb("get_thumb") or ""
-SqL.getdb("set_pm_spam_limit") or ""
+pmtext = SqL.getdb("get_pm_text") or msg
+pmthumb = SqL.getdb("get_thumb") or "https://telegra.ph/file/5b3284c33b1099ec4518f.jpg"
+SqL.getdb("set_pm_spam_limit") or 3
 
 @ilhammansiz_on_cmd(
     ["setpmtext"],
