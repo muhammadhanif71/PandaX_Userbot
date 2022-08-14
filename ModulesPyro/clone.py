@@ -7,13 +7,7 @@ DeletePhotosRequest = DeletePhotos
 UploadProfilePhotoRequest = UploadProfilePhoto
 
 from Panda import LOGS, STORAGE, DEVLIST as DEVS
-from Panda.sql_helper.autopost_sql import (
-    add_new_autopost,
-    check_if_autopost_in_db,
-    del_autopost,
-    get_autopost,
-)
-from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
+from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
