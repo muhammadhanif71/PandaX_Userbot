@@ -18,7 +18,7 @@
 
 from typing import Callable
 
-from pyrogram.handler import Handler
+from pyrogram.handlers.handler import Handler
 
 
 class EditedMessageHandler(Handler):
