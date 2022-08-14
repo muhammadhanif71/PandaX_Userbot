@@ -1,6 +1,6 @@
 from pyrogram.raw.functions.account import UpdateProfile as UpdateProfileRequest
 from pyrogram.raw.functions.photos import DeletePhotos, UploadProfilePhoto
-from pyrogram.raw.functions.users import GetFullUserRequest
+from pyrogram.raw.functions.users import GetFullUser as GetFullUserRequest
 from pyrogram.raw.types import InputPhoto
 
 DeletePhotosRequest = DeletePhotos
