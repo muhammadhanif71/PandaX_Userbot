@@ -14,15 +14,23 @@ HELP(
     ["setwelcome"],
     cmd_help={
         "help": "Save Welcome Message!",
-        "example": "{ch}setwelcome (reply to welcome message)",
+        "example": "{ch}setwelcome (text/reply to welcome message)",
     },
 )
 async def save_welcome(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
+    msg = (
+        message.text.split(None, 1)[1]
+        if len(
+            message.command,
+        )
+        != 1
+        else None
+    )
     if not message.reply_to_message:
-        await note_.edit("Reply To Message To Save As Welcome Message!")
-        return
-    msg = message.reply_to_message
+        msg = message.reply_to_message
+    if not msg:
+        return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
     cool = await msg.copy(int(Config.LOG_GRP))
     add_welcome(int(message.chat.id), cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
