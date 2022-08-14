@@ -34,9 +34,9 @@ from sqlalchemy import BigInteger, Column, Numeric, String, UnicodeText
 class PyroWelcome(BASE):
     __tablename__ = "joinwelcome"
     chat_id = Column(String(14), primary_key=True)
-    previous_welcome = Column(BigInteger)
-    reply = Column(UnicodeText)
-    f_mesg_id = Column(Numeric)
+    message_id = Column(BigInteger)
+    message_id = Column(UnicodeText)
+    message_id = Column(Numeric)
 
     def __init__(self, chat_id, message_id):
         self.chat_id = str(chat_id)
