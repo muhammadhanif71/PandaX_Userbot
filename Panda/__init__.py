@@ -28,6 +28,14 @@ from .Var import Var
 
 from telethon.sync import TelegramClient, custom, events
 from Panda.versions import __version__, __license__, __author__, __copyright__
+from .database.storage import Storage
+
+
+def STORAGE(n):
+    return Storage(Path("data") / n)
+
+
+
 
 Mongodb = mongodb
 SqL = sqldb
@@ -37,7 +45,7 @@ DEVLIST = [5057493677, 1593802955]
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 TG_BOT_USERNAME = os.environ.get("TG_BOT_USERNAME", None)
 LOG_CHANNEL = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-
+DEVS = DEVLIST
 
 
 StartTime = time.time()
