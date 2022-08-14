@@ -27,7 +27,7 @@ async def impostor(client, message):
         await message.edit("**Kembali ke identitas asli...**")
         if not STORAGE.userObj:
             return await xx.edit("**Anda harus mengclone orang dulu sebelum kembali!**")
-        await updateProfile(message, STORAGE.userObj, restore=True)
+        await updateProfile(client, message, STORAGE.userObj, restore=True)
         return await xx.edit("**Berhasil Mengembalikan Akun Anda dari clone**")
     if inputArgs:
         try:
