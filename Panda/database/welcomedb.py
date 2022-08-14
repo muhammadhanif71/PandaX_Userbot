@@ -55,7 +55,7 @@ def welcome_info(chat_id):
 def getcurrent_welcome_settings(chat_id):
     try:
         return (
-            SESSION.query(PyroWelcome).filter(JoinWelcome.chat_id == str(chat_id)).one()
+            SESSION.query(PyroWelcome).filter(PyroWelcome.chat_id == str(chat_id)).one()
         )
     except BaseException:
         return None
