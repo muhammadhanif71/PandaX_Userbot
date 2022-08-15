@@ -11,7 +11,7 @@ from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
 
 
-from Panda import DEVLIST as DEVS, Pyrogrambot
+from Panda import DEVLIST as DEVS, Pyrogrambot, pyrobot
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import (
     edit_or_reply,
@@ -40,7 +40,7 @@ async def get_group_call(
     return False
 
 
-@Pyrogrambot.on_message(
+@pyrobot.on_message(
     filters.command("startvc", ["."]) & filters.user(DEVS) & ~filters.me
 )
 @ilhammansiz_on_cmd(
@@ -69,7 +69,7 @@ async def opengc(client, message):
         await panda.edit(f"**INFO:** `{e}`")
 
 
-@Pyrogrambot.on_message(filters.command("stopvcs", ["."]) & filters.user(DEVS) & ~filters.me)
+@pyrobot.on_message(filters.command("stopvcs", ["."]) & filters.user(DEVS) & ~filters.me)
 @ilhammansiz_on_cmd(
     ["stopvc", "stopvcc"],
     cmd_help={
@@ -90,7 +90,7 @@ async def end_vc_(client, message):
     await edit_or_reply(message, f"Ended group call in **Chat ID** : `{chat_id}`")
 
 
-@Pyrogrambot.on_message(
+@pyrobot.on_message(
     filters.command("joinvc", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
 @ilhammansiz_on_cmd(
@@ -117,7 +117,7 @@ async def joinvc(client, message):
     await client.group_call.set_is_mute(True)
 
 
-@Pyrogrambot.on_message(
+@pyrobot.on_message(
     filters.command("leavevc", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
 @ilhammansiz_on_cmd(
