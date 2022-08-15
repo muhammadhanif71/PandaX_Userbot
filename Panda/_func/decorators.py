@@ -3,7 +3,6 @@ import logging
 import os
 from datetime import datetime
 from traceback import format_exc
-import asyncio
 import pytz
 from pyrogram import ContinuePropagation, StopPropagation, filters
 from pyrogram.errors.exceptions.bad_request_400 import (
