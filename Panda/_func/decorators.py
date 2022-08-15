@@ -109,9 +109,7 @@ def Panda_cmd(
                     )
                     text += "\n\n__You can Forward This to @PandaUserbot, If You Think This is Serious A Error!__"
                     try:
-                        a = await client.send_message(Config.LOG_GRP, text)
-                        await asyncio.sleep(3)
-                        await a.delete()
+                        await client.send_message(Config.LOG_GRP, text)
                     except BaseException:
                         logging.error(text)
         add_handler(filterm, wrapper, cmd)
@@ -147,9 +145,7 @@ def listen(filter_s):
                 )
                 text += "\n\n__You can Forward This to @PandaUserbot, If You Think This is A Error!__"
                 try:
-                    a = await client.send_message(Config.LOG_GRP, text)
-                    await asyncio.sleep(3)
-                    await a.delete()
+                    await client.send_message(Config.LOG_GRP, text)
                 except BaseException:
                     logging.error(text)
             message.continue_propagation()
