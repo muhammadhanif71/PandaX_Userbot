@@ -27,7 +27,7 @@ async def save_welcome(client, message):
         != 1
         else None
     )
-    if not message.reply_to_message:
+    if message.reply_to_message:
         msg = message.reply_to_message
     if not msg:
         return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
