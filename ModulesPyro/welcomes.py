@@ -31,7 +31,7 @@ async def save_welcome(client, message):
         msg = message.reply_to_message
     if not msg:
         return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
-    cool = await msg.copy(int(Config.LOG_GRP))
+    cool = await client.forward_messages(int(Config.LOG_GRP))
     add_welcome(int(message.chat.id), cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
@@ -106,7 +106,7 @@ async def show_welcome(client, message):
         await pablo.edit("`No Welcome Found In This Chat...`")
         return
     mag = f""" Welcome Message In Correct Chat Is :"""
-    await client.copy_message(
+    await client.forward_messages(
         from_chat_id=int(Config.LOG_GRP),
         chat_id=int(message.chat.id),
         message_id=sed["msg_id"],
