@@ -10,6 +10,32 @@ HELP(
     "welcomes",
 )
 
+def get_arg(message):
+    msg = message.text
+    msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
+    split = msg[1:].replace("\n", " \n").split(" ")
+    if " ".join(split[1:]).strip() == "":
+        return ""
+    return " ".join(split[1:])
+
+def get_args(message):
+    try:
+        message = message.text
+    except AttributeError:
+        pass
+    if not message:
+        return False
+    message = message.split(maxsplit=1)
+    if len(message) <= 1:
+        return []
+    message = message[1]
+    try:
+        split = shlex.split(message)
+    except ValueError:
+        return message  # Cannot split, let's assume that it's just one long message
+    return list(filter(lambda x: len(x) > 0, split))
+
+
 @ilhammansiz_on_cmd(
     ["setwelcome"],
     cmd_help={
@@ -31,12 +57,12 @@ async def save_welcome(client, message):
         msg = message.reply_to_message
     if not msg:
         return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
-    cool = await client.copy_message(int(Config.LOG_GRP))
+    cool = await client.copy_message(Config.LOG_GRP, message.chat.id, msg.message_id)
     add_welcome(int(message.chat.id), cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
-@listen(filters.new_chat_members & filters.group)
+@listen(filters.create(welcome_chat), filters.new_chat_members & filters.group)
 async def welcomenibba(client, message):
     if not message:
         
