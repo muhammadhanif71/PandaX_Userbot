@@ -58,7 +58,7 @@ async def save_welcome(client, message):
     if not msg:
         return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
     cool = await client.copy_message(Config.LOG_GRP, message.chat.id, msg.message_id)
-    add_welcome(int(message.chat.id), cool.message_id)
+    add_welcome(str(message.chat.id), cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
