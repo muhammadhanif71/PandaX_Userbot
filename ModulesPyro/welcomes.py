@@ -62,12 +62,12 @@ async def save_welcome(client, message):
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
-@listen(filters.create(welcome_chat), filters.new_chat_members & filters.group)
+@listen(filters.new_chat_members & filters.group)
 async def welcomenibba(client, message):
     if not message:
         
         return
-    if not welcome_info(int(message.chat.id)):
+    if not welcome_info(str(message.chat.id)):
         
         return
     if not message.chat:
@@ -75,7 +75,7 @@ async def welcomenibba(client, message):
         return
     is_m = False
     sed = welcome_info(str(message.chat.id))
-    m_s = await client.get_messages(int(Config.LOG_GRP), sed["msg_id"])
+    m_s = await client.get_messages(Config.LOG_GRP, sed["msg_id"])
     if await is_media(m_s):
         text_ = m_s.caption or ""
         is_m = True
@@ -114,7 +114,7 @@ async def is_media(message):
 )
 async def del_welcomez(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
-    if not welcome_info(int(message.chat.id)):
+    if not welcome_info(str(message.chat.id)):
         await note_.edit("`Welcome Message Not Found In This Chat!`")
         return
     del_welcome(str(message.chat.id))
