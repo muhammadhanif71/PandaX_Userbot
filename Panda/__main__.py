@@ -3,7 +3,6 @@
 # Recode by Ilham Mansiz
 # ••••••••••••••••••••••√•••••••••••••√√√••••••••
 from pyrogram import __version__ as pyrover
-import asyncio
 import sys
 import Panda
 from Panda import utils
