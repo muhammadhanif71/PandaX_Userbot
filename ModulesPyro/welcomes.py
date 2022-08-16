@@ -74,7 +74,7 @@ async def welcomenibba(client, message):
         
         return
     is_m = False
-    sed = welcome_info(int(message.chat.id))
+    sed = welcome_info(str(message.chat.id))
     m_s = await client.get_messages(int(Config.LOG_GRP), sed["msg_id"])
     if await is_media(m_s):
         text_ = m_s.caption or ""
@@ -95,7 +95,7 @@ async def welcomenibba(client, message):
             reply_to_message_id=message.message_id)
     else:
         await m_s.copy(
-            chat_id=int(message.chat.id),
+            chat_id=str(message.chat.id),
             caption=text_,
             reply_to_message_id=message.message_id,
         )
@@ -117,7 +117,7 @@ async def del_welcomez(client, message):
     if not welcome_info(int(message.chat.id)):
         await note_.edit("`Welcome Message Not Found In This Chat!`")
         return
-    del_welcome(int(message.chat.id))
+    del_welcome(str(message.chat.id))
     await note_.edit(f"`Welcome Message Deleted Successfully!`")
 
 
@@ -127,14 +127,14 @@ async def del_welcomez(client, message):
 )
 async def show_welcome(client, message):
     pablo = await edit_or_reply(message, "`Processing..`")
-    sed = welcome_info(int(message.chat.id))
+    sed = welcome_info(str(message.chat.id))
     if sed is False:
         await pablo.edit("`No Welcome Found In This Chat...`")
         return
     mag = f""" Welcome Message In Correct Chat Is :"""
     await client.copy_message(
-        from_chat_id=int(Config.LOG_GRP),
-        chat_id=int(message.chat.id),
+        from_chat_id=Config.LOG_GRP,
+        chat_id=str(message.chat.id),
         message_id=sed["msg_id"],
         reply_to_message_id=message.message_id,
     )
