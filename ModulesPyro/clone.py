@@ -28,7 +28,7 @@ async def impostor(client, message):
         await message.edit("**Kembali ke identitas asli...**")
         if not STORAGE.userObj:
             return await xx.edit("**Anda harus mengclone orang dulu sebelum kembali!**")
-        await updateProfile(client, message, STORAGE.userObj, restore=True)
+        await updateProfile(client, STORAGE.userObj, restore=True)
         return await xx.edit("**Berhasil Mengembalikan Akun Anda dari clone**")
     if inputArgs:
         try:
@@ -37,7 +37,7 @@ async def impostor(client, message):
             return await xx.edit("**Username/ID tidak valid.**")
         userObj = await client(GetFullUserRequest(user))
     elif event.reply_to_msg_id:
-        replyMessage = await event.get_reply_message()
+        replyMessage = await client.get_reply_message()
         if replyMessage.sender_id in DEVS:
             return await xx.edit(
                 "**Tidak dapat menyamar sebagai developer PandaUserbot 😡**"
@@ -53,11 +53,11 @@ async def impostor(client, message):
 
     LOGS.info(STORAGE.userObj)
     await xx.edit("**Mencuri identitas orang ini...**")
-    await updateProfile(client, message, userObj)
+    await updateProfile(client, userObj)
     await xx.edit("**Aku adalah kamu dan kamu adalah aku. asekk 🥴**")
 
 
-async def updateProfile(client, message, userObj, restore=False):
+async def updateProfile(client, userObj, restore=False):
     firstName = (
         "Deleted Account"
         if userObj.user.first_name is None
