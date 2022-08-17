@@ -8,7 +8,7 @@ UploadProfilePhotoRequest = UploadProfilePhoto
 
 from Panda import LOGS, STORAGE, DEVLIST as DEVS
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
-from Panda._func._helpers import edit_or_reply, get_text
+from Panda._func._helpers import edit_or_reply
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
