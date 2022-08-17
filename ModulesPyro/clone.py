@@ -22,7 +22,14 @@ if not hasattr(STORAGE, "userObj"):
     },
 )
 async def impostor(client, message):
-    inputArgs = get_text(message)
+    inputArgs = (
+        message.text.split(None, 1)[1]
+        if len(
+            message.command,
+        )
+        != 1
+        else None
+    )
     xx = await edit_or_reply(message, "`Processing...`")
     if "restore" in inputArgs:
         await message.edit("**Kembali ke identitas asli...**")
