@@ -36,8 +36,8 @@ async def impostor(client, message):
         except BaseException:
             return await xx.edit("**Username/ID tidak valid.**")
         userObj = await client(GetFullUserRequest(user))
-    elif event.reply_to_msg_id:
-        replyMessage = await client.get_reply_message()
+    elif message.reply_to_msg_id:
+        replyMessage = await message.get_reply_message()
         if replyMessage.sender_id in DEVS:
             return await xx.edit(
                 "**Tidak dapat menyamar sebagai developer PandaUserbot 😡**"
