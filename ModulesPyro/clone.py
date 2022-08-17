@@ -8,7 +8,7 @@ UploadProfilePhotoRequest = UploadProfilePhoto
 
 from Panda import LOGS, STORAGE, DEVLIST as DEVS
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
-from Panda._func._helpers import edit_or_reply
+from Panda._func._helpers import edit_or_reply, get_text, get_user
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
@@ -22,14 +22,7 @@ if not hasattr(STORAGE, "userObj"):
     },
 )
 async def impostor(client, message):
-    inputArgs = (
-            message.text.split(None, 1)[1]
-            if len(
-                message.command,
-            )
-            != 1
-            else None
-        )
+    inputArgs = get_text(message)
     xx = await edit_or_reply(message, "`Processing...`")
     if "restore" in inputArgs:
         await message.edit("**Kembali ke identitas asli...**")
@@ -39,7 +32,8 @@ async def impostor(client, message):
         return await xx.edit("**Berhasil Mengembalikan Akun Anda dari clone**")
     if inputArgs:
         try:
-            user = await client.get_entity(inputArgs)
+            userk = get_user(message, text)[0]
+            user = await client.get_users(userk)
         except BaseException:
             return await xx.edit("**Username/ID tidak valid.**")
         userObj = await client(GetFullUserRequest(user))
