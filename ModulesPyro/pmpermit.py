@@ -38,7 +38,7 @@ SqL.getdb("add_pm_text") or ""
 SqL.getdb("add_pm_thumb") or ""
 pmlimited = SqL.getdb("get_pm_spam_limit") or 3
 pmtext = SqL.getdb("get_pm_text") or msg
-pmthumb = SqL.getdb("get_thumb") or "https://telegra.ph/file/5b3284c33b1099ec4518f.jpg"
+pmthumb = SqL.getdb("get_thumb") or ""
 SqL.getdb("set_pm_spam_limit") or 3
 
 @ilhammansiz_on_cmd(
