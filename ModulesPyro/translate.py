@@ -3,7 +3,7 @@ from gpytranslate import Translator
 
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import (
-    edit_or_reply,
+    edit_or_reply, get_text,
 )
 
 from . import HELP
@@ -103,7 +103,7 @@ async def getTranslate(text, **kwargs):
 )
 async def translate(client, message):
     "To translate the text."
-    input_str = message.matches.group(1)
+    input_str = get_text(message)
     if message.reply_to_msg_id:
         previous_message = await message.get_reply_message()
         text = previous_message.message
@@ -137,7 +137,7 @@ async def translate(client, message):
 async def translateme(client, message):
     "To translate the text to required language."
     textx = await message.get_reply_message()
-    message = message.matches.group(1)
+    message = get_text(message)
     if message:
         pass
     elif textx:
@@ -165,7 +165,7 @@ async def translateme(client, message):
 
 
 @ilhammansiz_on_cmd(
-    ["tl"],
+    ["lang"],
     cmd_help={
         "help": "default language for trt command",
         "example": "{ch}lang trt id",
@@ -173,8 +173,8 @@ async def translateme(client, message):
 )
 async def lang(client, message):
     "To set language for trt comamnd."
-    arg = message.matches.group(2).lower()
-    input_str = message.matches.group(1)
+    arg = get_text(message)
+    input_str = get_text(message)
     if arg not in LANGUAGES:
         return await edit_or_reply(
             message,
