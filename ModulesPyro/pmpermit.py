@@ -398,45 +398,25 @@ async def terimapmmm(client, cb):
     if not Config.PM_PSW:
         await ms_.edit("`Pm Permit Is Disabled. Whats The Use Of Approving User?`")
         return
-    if cb.chat.type == "private":
-        if int(cb.chat.id) in OLD_MSG:
-            await OLD_MSG[int(cb.chat.id)].delete()
-        user_ = await client.get_users(int(cb.chat.id))
-        firstname = user_.first_name
-        if not is_user_approved(int(cb.chat.id)):
-            approve_user(int(cb.chat.id))
-        else:
-            await cb.edit("`User is Already Approved!`")
-            await asyncio.sleep(3)
-            await message.delete()
-            return
-        await cb.edit(
-            "Approved to pm [{}](tg://user?id={})".format(
-                firstname, int(cb.chat.id)
-            )
-        )
+    if int(cb.chat.id) in OLD_MSG:
+        await OLD_MSG[int(cb.chat.id)].delete()
+    user_ = await client.get_users(int(cb.chat.id))
+    firstname = user_.first_name
+    if not is_user_approved(int(cb.chat.id)):
+        approve_user(int(cb.chat.id))
+    else:
+        await cb.edit("`User is Already Approved!`")
         await asyncio.sleep(3)
-        await cb.delete()
-    elif cb.chat.type == "supergroup":
-        if not cb.reply_to_message:
-            await cb.edit("`Reply To User To Approve Him !`")
-            return
-        user_ = await client.get_users(cb.reply_to_message.from_user.id)
-        firstname = user_.first_name
-        if not is_user_approved(cb.reply_to_message.from_user.id):
-            approve_user(cb.reply_to_message.from_user.id)
-        else:
-            await cb.edit("`User is Already Approved!`")
-            await asyncio.sleep(3)
-            await message.delete()
-            return
-        await cb.edit(
-            "Approved to pm [{}](tg://user?id={})".format(
-                firstname, cb.reply_to_message.from_user.id
-            )
+        await message.delete()
+        return
+    await cb.edit(
+        "Approved to pm [{}](tg://user?id={})".format(
+            firstname, int(cb.chat.id)
         )
-        await asyncio.sleep(3)
-        await cb.delete()
+    )
+    await asyncio.sleep(3)
+    await cb.delete()
+    
 
 
 
@@ -446,44 +426,22 @@ async def tolakpmm(client, message):
     if not Config.PM_PSW:
         await ms_.edit("`Pm Permit Is Disabled. Whats The Use Of Dis-Approving Users?`")
         return
-    if message.chat.type == "private":
-        user_ = await client.get_users(int(message.chat.id))
-        firstname = user_.first_name
-        if is_user_approved(int(message.chat.id)):
-            disapprove_user(int(message.chat.id))
-        else:
-            await message.edit(
-                "`This User Was Never Approved. How Should I Disapprove?`"
-            )
-            await asyncio.sleep(3)
-            await message.delete()
-            return
+    user_ = await client.get_users(int(message.chat.id))
+    firstname = user_.first_name
+    if is_user_approved(int(message.chat.id)):
+        disapprove_user(int(message.chat.id))
+    else:
         await message.edit(
-            "DisApproved to pm [{}](tg://user?id={})".format(
-                firstname, int(message.chat.id)
-            )
+            "`This User Was Never Approved. How Should I Disapprove?`"
         )
         await asyncio.sleep(3)
         await message.delete()
-    elif message.chat.type == "supergroup":
-        if not message.reply_to_message:
-            await message.edit("`Reply To User To DisApprove Him !`")
-            return
-        user_ = await client.get_users(message.reply_to_message.from_user.id)
-        firstname = user_.first_name
-        if is_user_approved(message.reply_to_message.from_user.id):
-            disapprove_user(message.reply_to_message.from_user.id)
-        else:
-            await message.edit(
-                "`This User Was Never Approved. How Should I Disapprove?`"
-            )
-            await asyncio.sleep(3)
-            await message.delete()
-            return
-        await message.edit(
-            "DisApproved to pm [{}](tg://user?id={})".format(
-                firstname, message.reply_to_message.from_user.id
-            )
+        return
+    await message.edit(
+        "DisApproved to pm [{}](tg://user?id={})".format(
+            firstname, int(message.chat.id)
         )
-        await asyncio.sleep(3)
-        await message.delete()
+    )
+    await asyncio.sleep(3)
+    await message.delete()
+    
