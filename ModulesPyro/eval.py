@@ -73,7 +73,7 @@ EVAL = "**▶ Code :** \n`{code}` \n\n**▶ Output / TraceBack :** \n`{result}`"
 @ilhammansiz_on_cmd(
     cmd=["exec", "eval"],
     ignore_errors=True,
-    cmd_help={"help": "Run Python Code!", "example": '{ch}eval print("Petercord_UserBot")'},
+    cmd_help={"help": "Run Python Code!", "example": '{ch}eval print("PandaX_UserBot")'},
 )
 async def eval(client, message):
     stark = await edit_or_reply(message, "`Running Code... Please Wait!`")
@@ -127,7 +127,7 @@ async def aexec(code, client, message):
     cmd=["rc", "run"],
     cmd_help={
         "help": "Reply To Any Programming Language's Code To Eval In Telegram!",
-        "example": "{ch}run python print('FridayUserBot')",
+        "example": "{ch}run python print('PandaX_Userbot')",
     },
 )
 async def any_lang_cmd_runner(client, message):
@@ -218,7 +218,7 @@ async def sed_terminal(client, message):
 **▶ Return Code :** 
 `{ret}`
 """
-    await edit_or_send_as_file(Petercord, stark, client, cmd, "bash-result")
+    await edit_or_send_as_file(Panda, stark, client, cmd, "bash-result")
 
 
 async def run_command(cmd):
