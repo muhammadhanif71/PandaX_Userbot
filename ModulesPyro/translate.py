@@ -105,8 +105,8 @@ async def getTranslate(text, **kwargs):
 async def translate(client, message):
     "To translate the text."
     input_str = get_text(message)
-    if message.reply_to_msg_id:
-        previous_message = await client.get_reply_message()
+    if message.reply_to_message:
+        previous_message = message.reply_to_message.text
         text = previous_message.message
         lan = input_str or "id"
     elif ";" in input_str:
@@ -137,7 +137,7 @@ async def translate(client, message):
 )
 async def translateme(client, message):
     "To translate the text to required language."
-    textx = await client.get_reply_message()
+    textx = message.reply_to_message.text
     message = get_text(message)
     if message:
         pass
