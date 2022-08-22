@@ -106,7 +106,7 @@ async def translate(client, message):
     "To translate the text."
     input_str = get_text(message)
     if message.reply_to_msg_id:
-        previous_message = await message.get_reply_message()
+        previous_message = await client.get_reply_message()
         text = previous_message.message
         lan = input_str or "id"
     elif ";" in input_str:
@@ -137,7 +137,7 @@ async def translate(client, message):
 )
 async def translateme(client, message):
     "To translate the text to required language."
-    textx = await message.get_reply_message()
+    textx = await client.get_reply_message()
     message = get_text(message)
     if message:
         pass
