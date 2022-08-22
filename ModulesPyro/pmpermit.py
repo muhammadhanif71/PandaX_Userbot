@@ -6,7 +6,7 @@ from pyrogram import filters
 
 from Panda.database.pmdb import approve_user, disapprove_user, is_user_approved
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
-from Panda import Config
+from Panda import Config, pyrotgbot as bot
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
 from Panda._func.plugin_helpers import convert_to_image
@@ -360,6 +360,16 @@ async def pmPermit(client, message):
                 caption=text.format(user_firstname=user_firstname, warns=warnings_got, boss_firstname=me_f, mention=user_mention),
                 reply_to_message_id=message.message_id
         )
+    if bot:
+        starkbot = bot.me
+        bot_username = starkbot.username
+        try:
+            nice = await client.get_inline_bot_results(bot=bot_username, query="pmpandauserbot")
+            await client.send_inline_bot_result(
+                message.chat.id, nice.query_id, nice.results[0].id
+            )
+        except BaseException as e:
+            return await message.reply_text(f"`Unable To Menu Here.` \n**ERROR :** `{e}`")
     else:
         holy = await message.reply_photo(
         de_pic,
@@ -372,4 +382,13 @@ async def pmPermit(client, message):
         except:
             pass
     OLD_MSG[int(message.chat.id)] = holy
+
+
+
+
+
+
+
+
+
 
