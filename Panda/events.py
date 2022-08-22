@@ -8,7 +8,7 @@ from telethon import events
 from pyrogram import StopPropagation, filters
 from pyrogram.handlers import MessageHandler
 
-from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot, DEVLIST
+from Panda import LOGSPAMMER, bot, PandaBot2, PandaBot3, pyrobot, DEVLIST, pyrobot2, pyrobot3, pyrobot4
 
 
 def register(**args):
@@ -150,6 +150,8 @@ def register(**args):
 
     return decorator
 
+
+from ._editedpyrogram import EditedMessageHandler
 
 def pyroregister(**args):
     """Register a new event."""
@@ -298,9 +300,27 @@ def pyroregister(**args):
 
         if pyrobot:
             if not disable_edited:
-                pyrobot.add_handler(MessageHandler(wrapper, filter))
+                pyrobot.add_handler(EditedMessageHandler(wrapper, filter))
             pyrobot.add_handler(MessageHandler(wrapper, filter))
          
         return wrapper
+
+    return decorator
+
+
+
+def handler(
+    **args,
+):
+    def decorator(func):
+        if pyrobot:
+            pyrobot.add_handler(func, MessageHandler(**args))
+        if pyrobot2:
+            pyrobot2.add_handler(func, MessageHandler(**args))
+        if pyrobot3:
+            pyrobot3.add_handler(func, MessageHandler(**args))
+        if pyrobot4:
+            pyrobot4.add_handler(func, MessageHandler(**args))
+        return func
 
     return decorator
