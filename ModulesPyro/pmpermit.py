@@ -360,6 +360,20 @@ async def pmPermit(client, message):
                 caption=text.format(user_firstname=user_firstname, warns=warnings_got, boss_firstname=me_f, mention=user_mention),
                 reply_to_message_id=message.message_id
         )
+    else:
+        holy = await message.reply_photo(
+        de_pic,
+        caption=text.format(
+            user_firstname=user_firstname, warns=warnings_got, boss_firstname=me_f, mention=user_mention),
+    )      
+    
+    if int(message.chat.id) in OLD_MSG:
+        try:
+            await OLD_MSG[int(message.chat.id)].delete()
+        except:
+            pass
+    OLD_MSG[int(message.chat.id)] = holy
+
     if bot:
         starkbot = bot.me
         bot_username = starkbot.username
@@ -370,20 +384,7 @@ async def pmPermit(client, message):
             )
         except BaseException as e:
             return await message.reply_text(f"`Unable To Menu Here.` \n**ERROR :** `{e}`")
-    else:
-        holy = await message.reply_photo(
-        de_pic,
-        caption=text.format(
-            user_firstname=user_firstname, warns=warnings_got, boss_firstname=me_f, mention=user_mention),
-    )      
-    if int(message.chat.id) in OLD_MSG:
-        try:
-            await OLD_MSG[int(message.chat.id)].delete()
-        except:
-            pass
-    OLD_MSG[int(message.chat.id)] = holy
-
-
+   
 
 
 
