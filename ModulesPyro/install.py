@@ -27,7 +27,7 @@ async def installer(client, message):
         return
     file_name = message.reply_to_message.document.file_name
     ext = file_name.split(".")[1]
-    if os.path.exists(os.path.join("./PetercordUserbot/", file_name)):
+    if os.path.exists(os.path.join("./ModulesPyro/", file_name)):
         await pablo.edit("`This Plugin is Already Installed!`")
         return
     if not ext.lower() == "py":
