@@ -6,7 +6,7 @@ from pyrogram.raw.types import InputPhoto
 DeletePhotosRequest = DeletePhotos
 UploadProfilePhotoRequest = UploadProfilePhoto
 
-from Panda import LOGS, STORAGE, DEVLIST as DEVS, pyrobot, pyrobot2, pyrobot3, pyrobot4
+from Panda import DEVLIST as DEVS, LOGS, STORAGE, pyrobot
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text, get_user
 
