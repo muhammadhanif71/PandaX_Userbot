@@ -9,6 +9,7 @@ from Panda._func._helpers import (
 
 from . import HELP
 
+edit_delete = edit_or_reply
 
 HELP(
     "translate",
