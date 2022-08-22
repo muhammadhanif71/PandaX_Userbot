@@ -235,7 +235,7 @@ async def owo(client, inline_query):
               "• Jangan Spam Chat atau anda akan otomatis di blokir.\n"
               "┌━━━━━━━━━━━━\n"
               "├❏ 𝐏𝐞𝐬𝐚𝐧 𝐨𝐭𝐨𝐦𝐚𝐭𝐢𝐬 𝐁𝐲 𝐔𝐬𝐞𝐫𝐛𝐨𝐭\n"
-              "└━━━━━━━━━━━━\n"
+              "└━━━━━━━━━━━━\n")
         bttn = [
             [
                 InlineKeyboardButton(
