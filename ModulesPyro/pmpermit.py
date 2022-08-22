@@ -6,7 +6,7 @@ from pyrogram import filters
 
 from Panda.database.pmdb import approve_user, disapprove_user, is_user_approved
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
-from Panda import Config, pyrotgbot as bot
+from Panda import Config, pyrotgbot as bot, pyrobot
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
 from Panda._func.plugin_helpers import convert_to_image
@@ -398,12 +398,13 @@ async def terimapmmm(client, cb):
     if not Config.PM_PSW:
         await ms_.edit("`Pm Permit Is Disabled. Whats The Use Of Approving User?`")
         return
-    if int(cb.chat.id) in OLD_MSG:
-        await OLD_MSG[int(cb.chat.id)].delete()
-    user_ = await client.get_users(int(cb.chat.id))
+    userp = await pyrobot.get_me()
+    if int(userp.chat.id) in OLD_MSG:
+        await OLD_MSG[int(userp.chat.id)].delete()
+    user_ = await client.get_users(int(userp.chat.id))
     firstname = user_.first_name
-    if not is_user_approved(int(cb.chat.id)):
-        approve_user(int(cb.chat.id))
+    if not is_user_approved(int(userp.chat.id)):
+        approve_user(int(userp.chat.id))
     else:
         await cb.edit("`User is Already Approved!`")
         await asyncio.sleep(3)
@@ -411,7 +412,7 @@ async def terimapmmm(client, cb):
         return
     await cb.edit(
         "Approved to pm [{}](tg://user?id={})".format(
-            firstname, int(cb.chat.id)
+            firstname, int(userp.chat.id)
         )
     )
     await asyncio.sleep(3)
@@ -426,10 +427,11 @@ async def tolakpmm(client, message):
     if not Config.PM_PSW:
         await ms_.edit("`Pm Permit Is Disabled. Whats The Use Of Dis-Approving Users?`")
         return
-    user_ = await client.get_users(int(message.chat.id))
+    userp = await pyrobot.get_me()
+    user_ = await pyrobot.get_users(int(userp.chat.id))
     firstname = user_.first_name
-    if is_user_approved(int(message.chat.id)):
-        disapprove_user(int(message.chat.id))
+    if is_user_approved(int(userp.chat.id)):
+        disapprove_user(int(userp.chat.id))
     else:
         await message.edit(
             "`This User Was Never Approved. How Should I Disapprove?`"
@@ -439,7 +441,7 @@ async def tolakpmm(client, message):
         return
     await message.edit(
         "DisApproved to pm [{}](tg://user?id={})".format(
-            firstname, int(message.chat.id)
+            firstname, int(userp.chat.id)
         )
     )
     await asyncio.sleep(3)
