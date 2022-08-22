@@ -389,10 +389,7 @@ async def pmPermit(client, message):
 
 
 from Panda._func._helpers import (
-    humanbytes,
     cb_wrapper,
-    get_all_pros,
-    paginate_help,
 )
 
 @bot.on_callback_query(filters.regex(pattern="terimapm"))
