@@ -248,14 +248,7 @@ async def owo(client, inline_query):
                 )
             ],
         ]
-        msg = (
-              "❏ 𝐏𝐞𝐫𝐢𝐧𝐠𝐚𝐭𝐚𝐧!\n"
-              "• Saya belum menyetujui anda untuk Cht.\n"
-              "• Tunggu sampai sy menyetujui chat anda.\n"
-              "• Jangan Spam Chat atau anda akan otomatis di blokir.\n"
-              "┌━━━━━━━━━━━━\n"
-              "├❏ 𝐏𝐞𝐬𝐚𝐧 𝐨𝐭𝐨𝐦𝐚𝐭𝐢𝐬 𝐁𝐲 𝐔𝐬𝐞𝐫𝐛𝐨𝐭\n"
-              "└━━━━━━━━━━━━\n"
+       
         await client.answer_inline_query(
             inline_query.id,
             cache_time=0,
