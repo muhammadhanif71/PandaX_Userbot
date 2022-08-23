@@ -7,23 +7,15 @@
 # All rights reserved.
 
 import os
-import math
 import os
-import shlex
 import time
-from math import ceil
 import logging
 import ffmpeg
-from Panda import pyrobot
-import functools
 import threading
-from concurrent.futures import ThreadPoolExecutor
 from pyrogram.errors import FloodWait, MessageNotModified
-import multiprocessing
 import time
-import calendar
 from Panda._func.decorators import ilhammansiz_on_cmd
-from Pamda._func._helpers import edit_or_reply, get_text, humanbytes, time_formatter, run_in_exc
+from Pamda._func._helpers import edit_or_reply, get_text, humanbytes, run_in_exc
 from pytgcalls import GroupCallFactory, GroupCallFileAction
 import signal
 import random
@@ -31,7 +23,6 @@ import string
 import asyncio
 import os
 import time
-import requests
 import datetime
 from youtube_dl import YoutubeDL
 from youtubesearchpython import SearchVideos
@@ -180,7 +171,7 @@ async def play_m(client, message):
         url = result_s[0]["link"]
         dur = result_s[0]["duration"]
         vid_title = result_s[0]["title"]
-        yt_id = result_s[0]["id"]
+        result_s[0]["id"]
         uploade_r = result_s[0]["channel"]
         start = time.time()
         try:
