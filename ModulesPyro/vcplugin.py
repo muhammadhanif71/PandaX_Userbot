@@ -7,21 +7,13 @@
 # All rights reserved.
 
 import os
-import math
 import os
-import shlex
 import time
-from math import ceil
 import logging
 import ffmpeg
-from Panda import pyrobot
-import functools
 import threading
-from concurrent.futures import ThreadPoolExecutor
 from pyrogram.errors import FloodWait, MessageNotModified
-import multiprocessing
 import time
-import calendar
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text, humanbytes, run_in_exc
 from pytgcalls import GroupCallFactory, GroupCallFileAction
@@ -31,7 +23,6 @@ import string
 import asyncio
 import os
 import time
-import requests
 import datetime
 from youtube_dl import YoutubeDL
 from youtubesearchpython import SearchVideos
