@@ -8,9 +8,9 @@ def get_stuff():
 def add_note(keyword, chat_id, message_id):
     ok = get_stuff()
     if ok.get(int(chat_id)):
-        ok[int(chat_id)].update({"keyword": keyword, "chat_id": chat_id, "msg_id": message_id})
+        ok[int(chat_id)].update({"keyword": keyword, "chat_id": chat_id, "message_id": message_id})
     else:
-        ok.update({"keyword": keyword, "chat_id": chat_id, "msg_id": message_id})
+        ok.update({"keyword": keyword, "chat_id": chat_id, "message_id": message_id})
     SqL.setdb("NOTE", ok)
 
 
