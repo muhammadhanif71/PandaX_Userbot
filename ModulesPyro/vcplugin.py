@@ -14,7 +14,7 @@ import ffmpeg
 import threading
 from pyrogram.errors import FloodWait, MessageNotModified
 import time
-from Panda._func.decorators import ilhammansiz_on_cmd
+from Panda._func.decorators import Panda_on_cmd as ilhammansiz_on_cmd
 from Pamda._func._helpers import edit_or_reply, get_text, humanbytes, run_in_exc
 from pytgcalls import GroupCallFactory, GroupCallFileAction
 import signal
