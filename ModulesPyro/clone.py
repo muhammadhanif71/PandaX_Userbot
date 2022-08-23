@@ -1,22 +1,15 @@
-from pyrogram.raw.functions.account import UpdateProfile as UpdateProfileRequest
 from pyrogram.raw.functions.photos import DeletePhotos, UploadProfilePhoto
-from pyrogram.raw.functions.users import GetFullUser as GetFullUserRequest
-from pyrogram.raw.types import InputPhoto
 
 DeletePhotosRequest = DeletePhotos
 UploadProfilePhotoRequest = UploadProfilePhoto
 
-from Panda import DEVLIST as DEVS, LOGS, STORAGE, pyrobot, SqL
+from Panda import STORAGE, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text, get_user
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
 
-import os
-from pyrogram import *
-from handlers.help import *
-from pyrogram.types import *
 
 
 OWNER = SqL.getdb("OWNERS") or ""
