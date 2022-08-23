@@ -6,90 +6,73 @@ from pyrogram.raw.types import InputPhoto
 DeletePhotosRequest = DeletePhotos
 UploadProfilePhotoRequest = UploadProfilePhoto
 
-from Panda import DEVLIST as DEVS, LOGS, STORAGE, pyrobot
+from Panda import DEVLIST as DEVS, LOGS, STORAGE, pyrobot, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import edit_or_reply, get_text, get_user
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
 
+import os
+from pyrogram import *
+from handlers.help import *
+from pyrogram.types import *
+
+
+OWNER = SqL.getdb("OWNERS") or ""
+BIO = SqL.getdb("BIO") or ""
+
+
+
 
 @ilhammansiz_on_cmd(
     ["clone"],
     cmd_help={
-        "help": "Absen",
+        "help": "Cloning",
         "example": "{ch}clone username/reply to user",
     },
 )
-async def impostor(client, message):
-    inputArgs = get_text(message)
-    xx = await edit_or_reply(message, "`Processing...`")
-    if "restore" in inputArgs:
-        await message.edit("**Kembali ke identitas asli...**")
-        if not STORAGE.userObj:
-            return await xx.edit("**Anda harus mengclone orang dulu sebelum kembali!**")
-        await updateProfile(client, STORAGE.userObj, restore=True)
-        return await xx.edit("**Berhasil Mengembalikan Akun Anda dari clone**")
-    if inputArgs:
-        try:
-            userk = get_user(message, inputArgs)[0]
-            user = await pyrobot.get_users(userk)
-        except BaseException:
-            return await xx.edit("**Username/ID tidak valid.**")
-        userObj = await pyrobot(GetFullUserRequest(user))
-    elif message.reply_to_message:
-        replyMessage = message.reply_to_message.text
-        if replyMessage.sender_id in DEVS:
-            return await xx.edit(
-                "**Tidak dapat menyamar sebagai developer PandaUserbot 😡**"
-            )
-        if replyMessage.sender_id is None:
-            return await xx.edit("**Tidak dapat menyamar sebagai admin anonim 🥺**")
-        userObj = await pyrobot(GetFullUserRequest(replyMessage.sender_id))
-    else:
-        return await xx.edit("**Ketik** `.help clone` **bila butuh bantuan.**")
+async def clone(client, message):
+  text = get_text(message)
+  op = await edit_or_reply(message, "`Cloning`")
+  userk = get_user(message, text)[0]
+  user_ = await client.get_users(userk)
+  if not user_:
+    await op.edit("`Whom i should clone:(`")
+    return
+    
+  get_bio = await client.get_chat(user_.id)
+  f_name = user_.first_name
+  c_bio = get_bio.bio
+  pic = user_.photo.big_file_id
+  poto = await client.download_media(pic)
 
-    if not STORAGE.userObj:
-        STORAGE.userObj = await pyrobot(GetFullUserRequest(message.sender_id))
+  await client.set_profile_photo(photo=poto)
+  await client.update_profile(
+       first_name=f_name,
+       bio=c_bio,
+  )
+  await message.edit(f"**From now I'm** __{f_name}__")
+    
 
-    LOGS.info(STORAGE.userObj)
-    await xx.edit("**Mencuri identitas orang ini...**")
-    await updateProfile(client, userObj)
-    await xx.edit("**Aku adalah kamu dan kamu adalah aku. asekk 🥴**")
+@ilhammansiz_on_cmd(
+    ["unclone"],
+    cmd_help={
+        "help": "Cloning",
+        "example": "{ch}unclone username/reply to user",
+    },
+)
+async def revert(client, message):
+ await message.edit("`Reverting`")
+ r_bio = BIO
+	
+	#Get ur Name back
+ await client.update_profile(
+	  first_name=OWNER,
+	  bio=r_bio,
+	)
+	#Delte first photo to get ur identify
+ photos = await client.get_profile_photos("me")
+ await client.delete_profile_photos(photos[0].file_id)
+ await message.edit("`I am back!`")
 
-
-async def updateProfile(client, userObj, restore=False):
-    firstName = (
-        "Deleted Account"
-        if userObj.user.first_name is None
-        else userObj.user.first_name
-    )
-    lastName = "" if userObj.user.last_name is None else userObj.user.last_name
-    userAbout = userObj.about if userObj.about is not None else ""
-    userAbout = "" if len(userAbout) > 70 else userAbout
-    if restore:
-        userPfps = await pyrobot.get_profile_photos("me")
-        userPfp = userPfps[0]
-        await pyrobot(
-            DeletePhotosRequest(
-                id=[
-                    InputPhoto(
-                        id=userPfp.id,
-                        access_hash=userPfp.access_hash,
-                        file_reference=userPfp.file_reference,
-                    )
-                ]
-            )
-        )
-    else:
-        try:
-            userPfp = userObj.profile_photo
-            pfpImage = await pyrobot.download_media(userPfp)
-            await pyrobot(
-                UploadProfilePhotoRequest(await client.upload_file(pfpImage))
-            )
-        except BaseException:
-            pass
-    await pyrobot(
-        UpdateProfileRequest(about=userAbout, first_name=firstName, last_name=lastName)
-    )
