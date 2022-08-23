@@ -373,7 +373,7 @@ async def pmPermit(client, message):
         except:
             pass
     OLD_MSG[int(message.chat.id)] = holy
-
+"""
     if bot:
         starkbot = bot.me
         bot_username = starkbot.username
@@ -385,7 +385,7 @@ async def pmPermit(client, message):
         except BaseException as e:
             return await message.reply_text(f"`Unable To Menu Here.` \n**ERROR :** `{e}`")
    
-
+"""
 
 
 from Panda._func._helpers import (
