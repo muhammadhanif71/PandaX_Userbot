@@ -27,6 +27,12 @@ import datetime
 from youtube_dl import YoutubeDL
 from youtubesearchpython import SearchVideos
 
+from . import HELP
+
+HELP(
+    "vcplugin",
+)
+
 s_dict = {}
 GPC = {}
 
