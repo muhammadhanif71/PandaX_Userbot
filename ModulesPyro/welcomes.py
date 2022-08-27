@@ -1,6 +1,5 @@
 from pyrogram import filters
 
-from Panda.database.welcomedb import add_welcome, del_welcome, welcome_info
 from Panda import Config, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
 from Panda._func._helpers import edit_or_reply
