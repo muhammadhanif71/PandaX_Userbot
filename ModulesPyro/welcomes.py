@@ -111,7 +111,7 @@ async def show_welcome(client, message):
     await client.copy_message(
         from_chat_id=Config.LOG_GRP,
         chat_id=str(message.chat.id),
-        message_id=sed["msg_id"],
+        message_id=sed,
         reply_to_message_id=message.message_id,
     )
     await pablo.edit(mag)
