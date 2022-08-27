@@ -51,7 +51,7 @@ async def welcomenibba(client, message):
         return
     is_m = False
     sed = WELCOME
-    m_s = await client.get_messages(Config.LOG_GRP, sed["msg_id"])
+    m_s = await client.get_messages(Config.LOG_GRP, sed)
     if await is_media(m_s):
         text_ = m_s.caption or ""
         is_m = True
