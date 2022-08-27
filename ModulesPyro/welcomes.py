@@ -1,7 +1,7 @@
 from pyrogram import filters
 
 from Panda.database.welcomedb import add_welcome, del_welcome, welcome_info
-from Panda import Config
+from Panda import Config, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
 from Panda._func._helpers import edit_or_reply
 from . import HELP
@@ -10,6 +10,8 @@ HELP(
     "welcomes",
 )
 
+
+WELCOME = SqL.getdb("Welcomes") or "Hello How AR U?"
 
 @ilhammansiz_on_cmd(
     ["setwelcome"],
@@ -33,7 +35,7 @@ async def save_welcome(client, message):
     if not msg:
         return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
     cool = await client.copy_message(Config.LOG_GRP, message.chat.id, msg.message_id)
-    add_welcome(str(message.chat.id), cool.message_id)
+    SqL.setdb("Welcomes", cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
@@ -42,14 +44,14 @@ async def welcomenibba(client, message):
     if not message:
         
         return
-    if not welcome_info(str(message.chat.id)):
+    if not WELCOME:
         
         return
     if not message.chat:
         
         return
     is_m = False
-    sed = welcome_info(str(message.chat.id))
+    sed = WELCOME
     m_s = await client.get_messages(Config.LOG_GRP, sed["msg_id"])
     if await is_media(m_s):
         text_ = m_s.caption or ""
@@ -89,10 +91,10 @@ async def is_media(message):
 )
 async def del_welcomez(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
-    if not welcome_info(str(message.chat.id)):
+    if not WELCOME:
         await note_.edit("`Welcome Message Not Found In This Chat!`")
         return
-    del_welcome(str(message.chat.id))
+    SqL.deldb("Welcomes")
     await note_.edit(f"`Welcome Message Deleted Successfully!`")
 
 
@@ -102,7 +104,7 @@ async def del_welcomez(client, message):
 )
 async def show_welcome(client, message):
     pablo = await edit_or_reply(message, "`Processing..`")
-    sed = welcome_info(str(message.chat.id))
+    sed = WELCOME
     if sed is False:
         await pablo.edit("`No Welcome Found In This Chat...`")
         return
