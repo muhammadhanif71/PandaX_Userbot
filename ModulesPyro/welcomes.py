@@ -110,7 +110,7 @@ async def show_welcome(client, message):
     mag = f""" Welcome Message In Correct Chat Is :"""
     await client.copy_message(
         from_chat_id=Config.LOG_GRP,
-        chat_id=str(message.chat.id),
+        chat_id=message.chat.id,
         message_id=sed,
         reply_to_message_id=message.message_id,
     )
