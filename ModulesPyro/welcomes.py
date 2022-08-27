@@ -71,7 +71,7 @@ async def welcomenibba(client, message):
             reply_to_message_id=message.message_id)
     else:
         await m_s.copy(
-            chat_id=str(message.chat.id),
+            chat_id=message.chat.id,
             caption=text_,
             reply_to_message_id=message.message_id,
         )
