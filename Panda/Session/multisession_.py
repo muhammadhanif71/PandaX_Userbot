@@ -19,10 +19,10 @@ PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
 cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
     
 MSG_ON = """
-Panda-Userbot
+꧁༺ Panda Userbot ༻꧂
 ━━
-Pyrogram Version - `{}'
-Ketik `{}alive` untuk Mengecheck Bot
+⚙️ Pyrogram Version - `{}'
+°Ketik `{}alive` untuk Mengecheck Bot
 ━━
 """
 
