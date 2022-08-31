@@ -11,9 +11,20 @@ from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
 import sys
 LOGS = getLogger(__name__)
+import os
+from pyrogram import __version__ as pyrover
 
-
-
+PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
+    
+cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
+    
+MSG_ON = """
+Panda-Userbot
+━━
+Pyrogram Version - `{}'
+Ketik `{}alive` untuk Mengecheck Bot
+━━
+"""
 
 def Telethon():
     if Var.STRING_SESSION:
@@ -120,3 +131,13 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     pandapyro.idle()
+    if pyrobot:
+        pyrobot.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+    if pyrobot2:
+        pyrobot2.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+    if pyrobot3:
+        pyrobot3.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+    if ptrobot4:
+        pyrobot4.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+    LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
+   
