@@ -41,13 +41,10 @@ async def save_welcome(client, message):
 @listen(filters.new_chat_members & filters.group)
 async def welcomenibba(client, message):
     if not message:
-        
         return
     if not WELCOME:
-        
         return
     if not message.chat:
-        
         return
     is_m = False
     sed = WELCOME
