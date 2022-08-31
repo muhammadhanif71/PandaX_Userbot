@@ -35,7 +35,7 @@ msg = (
 
 
 SqL.getdb("add_pm_text") or ""
-SqL.getdb("add_pm_thumb") or ""
+pmpicc = SqL.getdb("add_pm_thumb") or "https://telegra.ph/file/5b3284c33b1099ec4518f.jpg"
 pmlimited = SqL.getdb("get_pm_spam_limit") or 3
 pmtext = SqL.getdb("get_pm_text") or msg
 pmthumb = SqL.getdb("get_thumb") or ""
@@ -351,7 +351,7 @@ async def pmPermit(client, message):
     user_firstname = message.from_user.first_name
     user_mention = message.from_user.mention
     me_f = client.me.first_name
-    de_pic = "https://telegra.ph/file/5b3284c33b1099ec4518f.jpg"
+    de_pic = pmpicc
     if capt:
         holy = await client.copy_message(
                 from_chat_id=int(Config.LOG_GRP),
