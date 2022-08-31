@@ -22,6 +22,7 @@ MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
 ━━
 ⚙️ Pyrogram Version - `{}'
+`[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
 ━━
 """
