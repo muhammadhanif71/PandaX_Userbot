@@ -50,13 +50,13 @@ def start():
 async def ongruppyro():
     if Panda.pyrobot:
         try:
-            await Panda.pyrobot.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+            await Panda.pyrobot.send_message(Panda.BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
             if Panda.pyrobot2:
-                await Panda.pyrobot2.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+                await Panda.pyrobot2.send_message(Panda.BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
             if Panda.pyrobot3:
-                await Panda.pyrobot3.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+                await Panda.pyrobot3.send_message(Panda.BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
             if Panda.pyrobot4:
-                await Panda.pyrobot4.send_message(BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
+                await Panda.pyrobot4.send_message(Panda.BOTLOG_CHATID, MSG_ON.format(pyrover, cmdhr))
             LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
         except Exception:
             pass
