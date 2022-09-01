@@ -191,7 +191,7 @@ class SqlDB(_BaseDatabase):
             self._connection.autocommit = True
             self._cursor = self._connection.cursor()
             self._cursor.execute(
-                "CREATE TABLE IF NOT EXISTS Panda ( varchar(70))"
+                "CREATE TABLE IF NOT EXISTS Panda (varchar(70))"
             )
         except Exception as error:
             LOGS.exception(error)
