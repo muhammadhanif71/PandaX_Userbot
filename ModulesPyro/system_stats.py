@@ -12,7 +12,7 @@ from os import environ, execle
 import psutil
 from pyrogram import __version__
 
-from Panda import Config, pandaversion, StartTime as start_time
+from Panda import Config, pandaversion, StartTime as start_time, DB
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import (
     delete_or_pass,
@@ -67,6 +67,7 @@ async def amialive(client, message):
  **OS :** __{platform.system()}__
  **CPU :** __{len(psutil.Process().cpu_affinity())}__
  **DISK USAGE :** __{disk}__
+ **Database :** {DB.name}
 """
     if message.reply_to_message:
         await client.send_photo(
