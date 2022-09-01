@@ -60,8 +60,11 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-LOGS.info(f"Memeriksa {SqL.usname}...")
-LOGS.info(f"Terkoneksi {SqL.usname} Successfully!")
+from ._database import DatabaseCute
+DB = DatabaseCute()
+
+LOGS.info(f"Memeriksa {DB.name}...")
+LOGS.info(f"Terkoneksi {DB.name} Successfully!")
 
 
 BOT_MODE = SqL.getdb("MODE_DUAL")
