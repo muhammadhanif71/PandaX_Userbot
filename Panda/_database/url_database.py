@@ -35,6 +35,7 @@ HOSTED_ON = where_hosted()
 if run_as_module:
     from ..Var import Var
 
+from ..Var import Var
 
 Redis = MongoClient = psycopg2 = Database = None
 if (Var.REDIS_URI or Var.REDISHOST):
