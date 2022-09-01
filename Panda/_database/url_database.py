@@ -10,7 +10,7 @@
 import ast
 import os
 import sys
-
+from .. import *
 run_as_module = False
 
 def where_hosted():
