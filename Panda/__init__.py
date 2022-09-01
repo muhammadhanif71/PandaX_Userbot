@@ -17,9 +17,7 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 from .sql_helper import sqldb
 
-from .sql_helper import mongodb
 
-from .sql_helper.db import BaseDB
 
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
@@ -35,9 +33,6 @@ def STORAGE(n):
     return Storage(Path("data") / n)
 
 
-
-
-Mongodb = mongodb
 SqL = sqldb
 from .Session import *
 
