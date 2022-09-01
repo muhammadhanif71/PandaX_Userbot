@@ -11,6 +11,10 @@ from .utils import P, M, V, A
 from .Session.multisession_ import Pyrogram, Telethon
 
 
+import ast
+
+ast = ast
+
 ## Memulai ••••••••••√√√√√•••••••
 
 try:
