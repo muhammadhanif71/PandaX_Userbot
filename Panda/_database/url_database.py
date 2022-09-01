@@ -6,11 +6,11 @@
 # Recode by @robotrakitangakbagus, @diemmmmmmmmmm
 # Import PandaX_Userbot <https://github.com/ilhammansiz/PandaX_Userbot>
 # t.me/PandaUserbot & t.me/TeamSquadUserbotSupport
-
+import logging
 import ast
 import os
 import sys
-from .. import *
+
 run_as_module = False
 
 def where_hosted():
@@ -31,6 +31,8 @@ def where_hosted():
 
 HOSTED_ON = where_hosted()
 
+LOGS = logging.getLogger("PandaUserbot")
+loop = None
 
 if run_as_module:
     from ..Var import Var
