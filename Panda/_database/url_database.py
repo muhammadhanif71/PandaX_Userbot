@@ -256,7 +256,7 @@ class SqlDB(_BaseDatabase):
         self._cache.clear()
         self._cursor.execute("DROP TABLE Panda")
         self._cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Panda ( varchar(70))"
+            "CREATE TABLE IF NOT EXISTS Panda (varchar(70))"
         )
         return True
 
