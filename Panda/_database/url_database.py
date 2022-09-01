@@ -127,7 +127,7 @@ class _BaseDatabase:
 
 
 class MongoDB(_BaseDatabase):
-    def __init__(self, key, dbname="Database_"):
+    def __init__(self, key, dbname="DatabaseCute"):
         self.dB = MongoClient(key, serverSelectionTimeoutMS=5000)
         self.db = self.dB[dbname]
         super().__init__()
@@ -323,17 +323,17 @@ class RedisDB(_BaseDatabase):
 
 class LocalDB(_BaseDatabase):
     def __init__(self):
-        self.db = Database("ultroid")
+        self.db = Database("panda")
         super().__init__()
 
     def keys(self):
         return self._cache.keys()
 
     def __repr__(self):
-        return f"<Database_.LocalDB\n -total_keys: {len(self.keys())}\n>"
+        return f"<DatabaseCute.LocalDB\n -total_keys: {len(self.keys())}\n>"
 
 
-def Database_():
+def DatabaseCute():
     _er = False
     try:
         if Redis:
