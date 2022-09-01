@@ -13,16 +13,15 @@ import sys
 LOGS = getLogger(__name__)
 import os
 from pyrogram import __version__ as pyrover
-from .._database import DatabaseCute
+
 PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
-DB = DatabaseCute()   
+
 cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
     
 MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
 ━━
 ⚙️ Pyrogram Version - `{}'
-🖥 Database {DB.name}
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
 ━━
