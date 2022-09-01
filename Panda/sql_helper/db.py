@@ -1,3 +1,3 @@
-from ._database import DatabaseCute
+from .._database import DatabaseCute
 
 BaseDB = DatabaseCute
