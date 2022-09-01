@@ -1,1 +1,1 @@
-from .url_database import *
+from .url_database import DadatabaseCute
