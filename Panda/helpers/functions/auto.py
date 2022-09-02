@@ -62,11 +62,24 @@ class Config(object):
     HEROKU_API_KEY = os.environ.get("HEROKU_API", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     
-
-Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
-app = Heroku.app(Config.HEROKU_APP_NAME)
-var = app.config()
+
+try:
+    if Config.HEROKU_API_KEY is not None or Config.HEROKU_APP_NAME is not None:
+        Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+    else:
+        Heroku = None
+except Exception:
+    Heroku = None
+
+if Heroku:
+    app = Heroku.app(Config.HEROKU_APP_NAME)
+    heroku_var = app.config()
+else:
+    app = None
+    heroku_var = None
+
+var = heroku_var
 ilhammansiezzzz = "BOT_TOKEN"
 botusername = "TG_BOT_USERNAME"
 ilhammansiezzzzzz = "PRIVATE_GROUP_BOT_API_ID"
