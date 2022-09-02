@@ -7,6 +7,8 @@ import heroku3
 from decouple import config
 from dotenv import find_dotenv, load_dotenv
 load_dotenv(find_dotenv())
+from ..._database import DatabaseCute
+SqL = DatabaseCute()
 
 
 from telethon.errors.rpcerrorlist import ChannelsTooMuchError
@@ -131,10 +133,10 @@ async def autobot():
     from Panda import PandaBot as mansizbot
 
     await mansizbot.start()
-    if BOT_TOKEN:
-        (BOT_TOKEN, str(BOT_TOKEN))
+    if SqL.getdb("BOT_TOKEN"):
+        SqL.setdb("BOT_TOKEN", str(BOT_TOKEN))
         return
-    if BOT_TOKEN:
+    if SqL.getdb("BOT_TOKEN"):
         return
     LOGS.info("🛠 MEMBUAT BOT UNTUK ANDA DI @BotFather, HARAP TUNGU !!")
     who = await mansizbot.get_me()
@@ -248,6 +250,9 @@ async def autobot():
             await mansizbot(EditPhotoRequest(chat_id, InputChatUploadedPhoto(ll)))
             os.remove(photo)
             if not str(chat_id).startswith("-100"):
+               SqL.setdb(f"{ilhammansiezzzzzz}", "-100" + str(chat_id))
+               SqL.setdb(f"{ilhammansiezzzzzz}", token)
+               SqL.setdb(f"{botusername}", f"@{username}")
                var[ilhammansiezzzzzz] = "-100" + str(chat_id)
                var[ilhammansiezzzz] = token
                var[botusername] = f"@{username}"
@@ -326,6 +331,9 @@ async def autobot():
         await mansizbot(EditPhotoRequest(chat_id, InputChatUploadedPhoto(ll)))
         os.remove(photo)
         if not str(chat_id).startswith("-100"):
+            SqL.setdb(f"{ilhammansiezzzzzz}", "-100" + str(chat_id))
+            SqL.setdb(f"{ilhammansiezzzzzz}", token)
+            SqL.setdb(f"{botusername}", f"@{username}")  
             var[ilhammansiezzzzzz] = "-100" + str(chat_id)
             var[ilhammansiezzzz] = token
             var[botusername] = f"@{username}"
