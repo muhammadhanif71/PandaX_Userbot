@@ -18,9 +18,6 @@ DB = DatabaseCute()
 
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
-from .sql_helper import sqldb
-
-
 
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
