@@ -736,6 +736,7 @@ if Heroku:
     heroku_var = app.config()
 else:
     app = None
+    heroku_var = None
 
 async def setting(event, name, value):
     try:
