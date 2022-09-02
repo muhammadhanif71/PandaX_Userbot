@@ -1,6 +1,9 @@
-# ILHAM MANSIEZ
-# PANDA USERBOT
-# Copyright cat userbot
+# Copyright (C) 2021 PandaUserbot <https://github.com/ilhammansiz/PandaX_Userbot>
+# Import Panda Userbot
+# Recode by Ilham Mansiz
+# t.me/PandaUserbot
+# ••••••••••••••••••••••√•••••••••••••√√√••••••••
+
 import asyncio
 from concurrent.futures import Future, ThreadPoolExecutor
 from functools import partial, wraps
