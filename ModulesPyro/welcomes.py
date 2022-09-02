@@ -44,7 +44,7 @@ async def welcomenibba(client, message):
         return
     is_m = False
     sed = welcome_info(int(message.chat.id))
-    m_s = await client.get_messages(int(Config.LOG_GRP), sed["msg_id"])
+    m_s = await client.get_messages(int(Config.LOG_GRP), sed)
     if await is_media(m_s):
         text_ = m_s.caption or ""
         is_m = True
@@ -104,7 +104,7 @@ async def show_welcome(client, message):
     await client.copy_message(
         from_chat_id=int(Config.LOG_GRP),
         chat_id=int(message.chat.id),
-        message_id=sed["msg_id"],
+        message_id=sed,
         reply_to_message_id=message.message_id,
     )
     await pablo.edit(mag)
