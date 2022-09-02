@@ -79,7 +79,7 @@ def main_menu():
         (
             Button.url(
                 "Support",
-                "https://t.me/TEAMSquadUserbotSupport",
+                "https://t.me/PandaUserbot",
             ),
             Button.inline(
                 f"💎 𝙸𝚗𝚏𝚘",
@@ -100,10 +100,6 @@ def main_menu():
             Button.inline(
                 f"VC Music ({len(GRP_INFO['music'])})",
                 data=f"music_menu",
-            ),
-            Button.inline(
-                f"Menu Asisten",
-                data="bothelp",
             ),
         ),
         (
@@ -725,10 +721,17 @@ async def on_plugin_callback_query_handler(event):
 
 
 ## Bot setting var
-
 heroku_api = "https://api.heroku.com"
-if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
-    Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+
+try:
+    if Config.HEROKU_API_KEY is not None or Config.HEROKU_APP_NAME is not None:
+        Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+    else:
+        Heroku = None
+except Exception:
+    Heroku = None
+
+if Heroku:
     app = Heroku.app(Config.HEROKU_APP_NAME)
     heroku_var = app.config()
 else:
