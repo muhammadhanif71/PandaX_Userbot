@@ -2,7 +2,7 @@ import time
 from platform import python_version
 from telethon import Button, version
 import asyncio
-from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, tgbot, localdbsql
+from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, tgbot
 pandaub = PandaBot
 from ..Config import Config
 from ..helpers.functions import get_readable_time
@@ -87,7 +87,6 @@ aliveess = f"""
                𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲:
 
 ☉ 🐘 𝗗𝗕_𝗦𝗾𝗟: `{SqL.ping()}`
-☉ 🏷 **Total Key DB**: `{localdbsql.keys()}`
 ☉ 👥 𝗦𝘂𝗱𝗼: {SUDO}
 
 ╰━─━─━─━─━─━─━─━─━╯
