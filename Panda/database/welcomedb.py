@@ -10,7 +10,7 @@ def get_stuff(key=None):
 
 def add_welcome(chat_id, message_id):
     ok = get_stuff("WELCOME")
-    ok.update({chat_id: {"welcome": message_id}})
+    ok.update({chat_id: {"msg_id": message_id}})
     return SqL.setdb("WELCOME", ok)
 
 
