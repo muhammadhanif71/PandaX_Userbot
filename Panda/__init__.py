@@ -180,12 +180,3 @@ PM_LOGGER_GROUP_ID = Config.PM_LOGGER_GROUP_ID
 def where_hosted():
     if os.getenv("DYNO"):
         return "heroku"
-
-Redisdb = StrictRedis(host='localhost', port=6379, db=0)
-
-def redisalive():
-    try:
-        Redisdb.ping()
-        return True
-    except BaseException:
-        return False
