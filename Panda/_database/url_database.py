@@ -76,7 +76,7 @@ class _BaseDatabase:
     def __init__(self, *args, **kwargs):
         self._cache = {}
 
-    def get_key(self, key):
+    def getdb(self, key):
         if key in self._cache:
             return self._cache[key]
         value = self._get_data(key)
@@ -86,7 +86,7 @@ class _BaseDatabase:
     def re_cache(self):
         self._cache.clear()
         for key in self.keys():
-            self._cache.update({key: self.get_key(key)})
+            self._cache.update({key: self.getdb(key)})
 
     def ping(self):
         return 1
@@ -98,7 +98,7 @@ class _BaseDatabase:
     def keys(self):
         return []
 
-    def del_key(self, key):
+    def deldb(self, key):
         if key in self._cache:
             del self._cache[key]
         self.delete(key)
@@ -114,16 +114,16 @@ class _BaseDatabase:
                 pass
         return data
 
-    def set_key(self, key, value):
+    def setdb(self, key, value):
         value = self._get_data(data=value)
         self._cache[key] = value
         return self.set(str(key), str(value))
 
     def rename(self, key1, key2):
-        _ = self.get_key(key1)
+        _ = self.getdb(key1)
         if _:
-            self.del_key(key1)
-            self.set_key(key2, _)
+            self.deldb(key1)
+            self.setdb(key2, _)
             return 0
         return 1
 
@@ -152,7 +152,7 @@ class MongoDB(_BaseDatabase):
     def keys(self):
         return self.db.list_collection_names()
 
-    def set_key(self, key, value):
+    def setdb(self, key, value):
         if key in self.keys():
             self.db[key].replace_one({"_id": key}, {"value": str(value)})
         else:
