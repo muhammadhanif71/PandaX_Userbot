@@ -3,7 +3,7 @@ from ..Var import Var, Database
 from ..core.client import PandaUserbotSession
 import os
 from ..versions import __version__
-from ._database import DatabaseCute
+from .._database import DatabaseCute
 DB = DatabaseCute()
 
 import sys
