@@ -1,6 +1,9 @@
-# Ilham Mansiez
-# Panda Userbot
-# Copyright catuserbot
+# Copyright (C) 2021 PandaUserbot <https://github.com/ilhammansiz/PandaX_Userbot>
+# Import Panda Userbot
+# Recode by Ilham Mansiz
+# t.me/PandaUserbot
+# ••••••••••••••••••••••√•••••••••••••√√√••••••••
+
 import asyncio
 import os
 import re
