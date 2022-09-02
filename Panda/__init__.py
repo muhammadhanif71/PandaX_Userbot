@@ -13,6 +13,9 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .core.client import PandaUserbotSession, dual_duall
+from ._database import DatabaseCute
+DB = DatabaseCute()
+
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 from .sql_helper import sqldb
@@ -33,7 +36,7 @@ def STORAGE(n):
     return Storage(Path("data") / n)
 
 
-SqL = sqldb
+SqL = DB
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
@@ -55,8 +58,6 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-from ._database import DatabaseCute
-DB = DatabaseCute()
 
 LOGS.info(f"Memeriksa {DB.name}...")
 LOGS.info(f"Terkoneksi {DB.name} Successfully!")
