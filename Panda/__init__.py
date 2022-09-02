@@ -13,9 +13,6 @@ from redis import StrictRedis
 
 from .core.logger import logging
 from .core.client import PandaUserbotSession, dual_duall
-from ._database import DatabaseCute
-DB = DatabaseCute()
-
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 
@@ -55,6 +52,8 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
+from ._database import DatabaseCute
+DB = DatabaseCute()
 
 LOGS.info(f"Memeriksa {DB.name}...")
 LOGS.info(f"Terkoneksi {DB.name} Successfully!")
@@ -62,7 +61,7 @@ LOGS.info(f"Terkoneksi {DB.name} Successfully!")
 
 BOT_MODE = SqL.getdb("MODE_DUAL")
 DUAL_MODE = SqL.getdb("DUAL_MODE")
-"""
+
 
 from .helpers.functions.auto import autobot
 
