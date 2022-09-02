@@ -10,7 +10,7 @@ import os
 import time
 import heroku3
 from redis import StrictRedis
-from ._database import DatabaseCute, LocalDB
+from ._database import DatabaseCute
 DB = DatabaseCute()
 
 from .core.logger import logging
@@ -33,7 +33,6 @@ def STORAGE(n):
 
 
 SqL = DB
-localdbsql = LocalDB()
 from .Session import *
 
 DEVLIST = [5057493677, 1593802955]
