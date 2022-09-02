@@ -14,19 +14,14 @@ def add_welcome(chat_id, message_id):
     return SqL.setdb("WELCOME", ok)
 
 
-def get_welcome(chat_id):
+def welcome_info(chat_id):
     ok = get_stuff("WELCOME")
     return ok.get(chat_id)
 
-
-def welcome_info(chat_id):
-    ok = get_stuff("WELCOME")
-    if ok.get(chat_id):
-        ok.pop(chat_id)
-        return SqL.setdb("WELCOME", ok)
 
 def delete_welcome(chat_id):
     ok = get_stuff("WELCOME")
     if ok.get(chat_id):
         ok.pop(chat_id)
         return SqL.setdb("WELCOME", ok)
+
