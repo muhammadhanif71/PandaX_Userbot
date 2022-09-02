@@ -10,6 +10,8 @@ import os
 import time
 import heroku3
 from redis import StrictRedis
+from ._database import DatabaseCute
+DB = DatabaseCute()
 
 from .core.logger import logging
 from .core.client import PandaUserbotSession, dual_duall
@@ -52,8 +54,6 @@ __copyright__ = __copyright__
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
 
-from ._database import DatabaseCute
-DB = DatabaseCute()
 
 LOGS.info(f"Memeriksa {DB.name}...")
 LOGS.info(f"Terkoneksi {DB.name} Successfully!")
