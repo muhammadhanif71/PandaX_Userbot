@@ -1,5 +1,6 @@
 
-from Panda.sql_helper import sqldb as SqL
+from .._database import DatabaseCute
+SqL = DatabaseCute()
 
 
 
