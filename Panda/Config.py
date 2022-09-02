@@ -1,6 +1,7 @@
 import os
 from typing import Set
-from .sql_helper import sqldb as SqL
+from ._database import DatabaseCute
+SqL = DatabaseCute()
 from telethon.tl.types import ChatBannedRights
 import heroku3
 from dotenv import load_dotenv
@@ -46,10 +47,10 @@ class Config(object):
     STRING_SESSION = os.environ.get(
         "SESSION", None
     )
-    TG_BOT_TOKEN = os.environ.get("BOT_TOKEN") or os.environ.get(
+    TG_BOT_TOKEN = SqL.setdb("BOT_TOKEN") = os.environ.get("BOT_TOKEN") or os.environ.get(
         "TG_BOT_TOKEN_BF_HER", None
     )
-    TG_BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
+    TG_BOT_USERNAME = SqL.getdb("BOT_USERNAME") = os.environ.get("BOT_USERNAME", None)
     TZ = SqL.getdb("TZ") or os.environ.get("TZ", "Asia/Jakarta") 
     UPSTREAM_REPO = os.environ.get(
         "UPSTREAM_REPO", "https://github.com/ilhammansiz/PandaX_Userbot.git"
