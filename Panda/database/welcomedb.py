@@ -24,3 +24,9 @@ def welcome_info(chat_id):
     if ok.get(chat_id):
         ok.pop(chat_id)
         return SqL.setdb("WELCOME", ok)
+
+def delete_welcome(chat_id):
+    ok = get_stuff("WELCOME")
+    if ok.get(chat_id):
+        ok.pop(chat_id)
+        return SqL.setdb("WELCOME", ok)
