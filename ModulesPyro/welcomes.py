@@ -4,6 +4,7 @@ from Panda import Config, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
 from Panda._func._helpers import edit_or_reply
 from . import HELP
+from Panda.database.welcomedb import add_welcome, del_welcome, welcome_info
 
 HELP(
     "welcomes",
@@ -16,39 +17,34 @@ WELCOME = SqL.getdb("Welcomes") or "Hello How AR U?"
     ["setwelcome"],
     cmd_help={
         "help": "Save Welcome Message!",
-        "example": "{ch}setwelcome (text/reply to welcome message)",
+        "example": "{ch}setwelcome (reply to welcome message)",
     },
 )
 async def save_welcome(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
-    msg = (
-        message.text.split(None, 1)[1]
-        if len(
-            message.command,
-        )
-        != 1
-        else None
-    )
-    if message.reply_to_message:
-        msg = message.reply_to_message
-    if not msg:
-        return await edit_or_reply(message, "**Berikan Sebuah Pesan atau Reply**")
-    cool = await client.copy_message(Config.LOG_GRP, message.chat.id, msg.message_id)
-    SqL.setdb("Welcomes", cool.message_id)
+    if not message.reply_to_message:
+        await note_.edit("Reply To Message To Save As Welcome Message!")
+        return
+    msg = message.reply_to_message
+    cool = await msg.copy(int(Config.LOG_GRP))
+    add_welcome(int(message.chat.id), cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
 @listen(filters.new_chat_members & filters.group)
 async def welcomenibba(client, message):
     if not message:
+        
         return
-    if not WELCOME:
+    if not welcome_info(int(message.chat.id)):
+        
         return
     if not message.chat:
+        
         return
     is_m = False
-    sed = WELCOME
-    m_s = await client.get_messages(Config.LOG_GRP, sed)
+    sed = welcome_info(int(message.chat.id))
+    m_s = await client.get_messages(int(Config.LOG_GRP), sed["msg_id"])
     if await is_media(m_s):
         text_ = m_s.caption or ""
         is_m = True
@@ -68,7 +64,7 @@ async def welcomenibba(client, message):
             reply_to_message_id=message.message_id)
     else:
         await m_s.copy(
-            chat_id=message.chat.id,
+            chat_id=int(message.chat.id),
             caption=text_,
             reply_to_message_id=message.message_id,
         )
@@ -87,10 +83,10 @@ async def is_media(message):
 )
 async def del_welcomez(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
-    if not WELCOME:
+    if not welcome_info(int(message.chat.id)):
         await note_.edit("`Welcome Message Not Found In This Chat!`")
         return
-    SqL.deldb("Welcomes")
+    del_welcome(int(message.chat.id))
     await note_.edit(f"`Welcome Message Deleted Successfully!`")
 
 
@@ -100,15 +96,15 @@ async def del_welcomez(client, message):
 )
 async def show_welcome(client, message):
     pablo = await edit_or_reply(message, "`Processing..`")
-    sed = WELCOME
+    sed = welcome_info(int(message.chat.id))
     if sed is False:
         await pablo.edit("`No Welcome Found In This Chat...`")
         return
     mag = f""" Welcome Message In Correct Chat Is :"""
     await client.copy_message(
-        from_chat_id=Config.LOG_GRP,
-        chat_id=message.chat.id,
-        message_id=sed,
+        from_chat_id=int(Config.LOG_GRP),
+        chat_id=int(message.chat.id),
+        message_id=sed["msg_id"],
         reply_to_message_id=message.message_id,
     )
     await pablo.edit(mag)
