@@ -3,13 +3,15 @@ from ..Var import Var, Database
 from ..core.client import PandaUserbotSession
 import os
 from ..versions import __version__
-from ..sql_helper import sqldb
+from ._database import DatabaseCute
+DB = DatabaseCute()
+
 import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
-SqL = sqldb
+SqL = DB
 from ..core.logger import logging
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+BOT_TOKEN = SqL.getdb("BOT_TOKEN") = os.environ.get("BOT_TOKEN", None)
 
 
 LOGS = logging.getLogger("PandaUserbot")
