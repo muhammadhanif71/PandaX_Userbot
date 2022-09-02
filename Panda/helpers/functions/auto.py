@@ -146,7 +146,7 @@ async def autobot():
     from Panda import PandaBot as mansizbot
 
     await mansizbot.start()
-    if SqL.getdb("BOT_TOKEN"):
+    if BOT_TOKEN:
         SqL.setdb("BOT_TOKEN", str(BOT_TOKEN))
         return
     if SqL.getdb("BOT_TOKEN"):
