@@ -189,7 +189,3 @@ def redisalive():
         return True
     except BaseException:
         return False
-
-
-
-
