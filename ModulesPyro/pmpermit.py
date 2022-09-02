@@ -6,7 +6,7 @@ from pyrogram import filters
 
 from Panda.database.pmdb import approve_user, disapprove_user, is_user_approved
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd, listen
-from Panda import Config, pyrotgbot as bot, pyrobot
+from Panda import Config
 from Panda._func._helpers import edit_or_reply, get_text
 from Panda._func.logger_s import LogIt
 from Panda._func.plugin_helpers import convert_to_image
