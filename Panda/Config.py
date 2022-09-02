@@ -50,13 +50,13 @@ class Config(object):
     TG_BOT_TOKEN = os.environ.get("BOT_TOKEN") or os.environ.get(
         "TG_BOT_TOKEN_BF_HER", None
     )
-    TG_BOT_USERNAME = SqL.getdb("BOT_USERNAME") = os.environ.get("BOT_USERNAME", None)
+    TG_BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     TZ = SqL.getdb("TZ") or os.environ.get("TZ", "Asia/Jakarta") 
     UPSTREAM_REPO = os.environ.get(
         "UPSTREAM_REPO", "https://github.com/ilhammansiz/PandaX_Userbot.git"
     ) 
     BOT_TOKEN = TG_BOT_TOKEN = SqL.setdb("BOT_TOKEN")
-    BOT_USERNAME = TG_BOT_USERNAME
+    BOT_USERNAME = TG_BOT_USERNAME = SqL.getdb("BOT_USERNAME")
     AUTONAME = os.environ.get("AUTONAME", None)
     PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
     PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID") or 0)
