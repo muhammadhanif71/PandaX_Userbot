@@ -19,7 +19,7 @@ def welcome_info(chat_id):
     return ok.get(chat_id)
 
 
-def delete_welcome(chat_id):
+def del_welcome(chat_id):
     ok = get_stuff("WELCOME")
     if ok.get(chat_id):
         ok.pop(chat_id)
