@@ -4,23 +4,21 @@ from .. import SqL
 
 
 
-def get_stuff(key=None):
-    return SqL.getdb(key) or {}
-
-
 def add_welcome(chat_id, message_id):
-    ok = get_stuff("WELCOME")
-    ok.update({chat_id: {"msg_id": message_id}})
-    return SqL.setdb("WELCOME", ok)
+    stark = SqL.getdb("chat_id")
+    if stark:
+        SqL.setdb("chat_id", message_id)
+    else:
+        SqL.setdb("chat_id", message_id)
 
 
-def welcome_info(chat):
-    ok = get_stuff("WELCOME")
-    return ok.get(chat)
+def del_welcome(chat_id):
+    SqL.deldb("chat_id")
 
 
-def del_welcome(chat):
-    ok = get_stuff("WELCOME")
-    if ok.get(chat):
-        ok.pop(chat)
-        return SqL.setdb("WELCOME", ok)
+def welcome_info(chat_id):
+    r = SqL.getdb("chat_id")
+    if r:
+        return r
+    else:
+        return False
