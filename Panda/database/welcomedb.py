@@ -10,7 +10,7 @@ except BaseException:
 
 
 
-def add_welcome(chat_id, msg, media):
+def add_welcome(chat_id, message_id):
     ok = eval(SqL.getdb("WELCOME"))
     ok.update({chat_id: {"msg_id": message_id}})
     return SqL.setdb("WELCOME", str(ok))
