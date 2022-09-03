@@ -26,8 +26,8 @@ async def save_welcome(client, message):
         await note_.edit("Reply To Message To Save As Welcome Message!")
         return
     msg = message.reply_to_message
-    cool = await msg.copy(int(Config.LOG_GRP))
-    add_welcome(int(message.chat.id), cool.message_id)
+    cool = await msg.copy(Config.LOG_GRP)
+    add_welcome(message.chat.id, cool.message_id)
     await note_.edit(f"`Done! Welcome Message Saved!`")
 
 
@@ -36,15 +36,15 @@ async def welcomenibba(client, message):
     if not message:
         
         return
-    if not welcome_info(int(message.chat.id)):
+    if not welcome_info(message.chat.id):
         
         return
     if not message.chat:
         
         return
     is_m = False
-    sed = welcome_info(int(message.chat.id))
-    m_s = await client.get_messages(int(Config.LOG_GRP), sed)
+    sed = welcome_info(message.chat.id)
+    m_s = await client.get_messages(Config.LOG_GRP, sed["msg_id"])
     if await is_media(m_s):
         text_ = m_s.caption or ""
         is_m = True
@@ -83,10 +83,10 @@ async def is_media(message):
 )
 async def del_welcomez(client, message):
     note_ = await edit_or_reply(message, "`Processing..`")
-    if not welcome_info(int(message.chat.id)):
+    if not welcome_info(message.chat.id):
         await note_.edit("`Welcome Message Not Found In This Chat!`")
         return
-    del_welcome(int(message.chat.id))
+    del_welcome(message.chat.id)
     await note_.edit(f"`Welcome Message Deleted Successfully!`")
 
 
@@ -96,7 +96,7 @@ async def del_welcomez(client, message):
 )
 async def show_welcome(client, message):
     pablo = await edit_or_reply(message, "`Processing..`")
-    sed = welcome_info(int(message.chat.id))
+    sed = welcome_info(message.chat.id)
     if sed is False:
         await pablo.edit("`No Welcome Found In This Chat...`")
         return
@@ -104,7 +104,7 @@ async def show_welcome(client, message):
     await client.copy_message(
         from_chat_id=int(Config.LOG_GRP),
         chat_id=int(message.chat.id),
-        message_id=sed,
+        message_id=sed["msg_id"],
         reply_to_message_id=message.message_id,
     )
     await pablo.edit(mag)
