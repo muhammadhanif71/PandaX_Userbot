@@ -5,7 +5,7 @@
 
 
 
-from pyrogram.types import Message, User
+from pyrogram.types import Message
 
 import asyncio
 import math
