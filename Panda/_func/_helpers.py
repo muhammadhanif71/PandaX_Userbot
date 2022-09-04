@@ -127,6 +127,16 @@ def send_log_doc(doc, caption='', fix_markdown=False, remove_file=False):
     if remove_file:
         remove(doc)
 
+
+def reply_msg(message: Message, message2: Message, delete_orig=False):
+    try:
+        message2.copy(chat_id=message.chat.id, reply_to_message_id=message.id)
+
+        if delete_orig:
+            message.delete()
+    except Exception as e:
+        raise e
+
 def get_user(message: Message, text: str) -> [int, str, None]:
     """Get User From Message"""
     if text is None:
