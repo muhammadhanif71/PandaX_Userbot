@@ -5,6 +5,7 @@
 
 
 
+from pyrogram.types import Message, User
 
 import asyncio
 import math
@@ -59,6 +60,20 @@ def extract_args(message, markdown=True):
 def extract_args_arr(message, markdown=True):
     return extract_args(message, markdown).split()
 
+
+def forward(message, chat_id):
+    try:
+        return message.forward(chat_id or 'me')
+    except Exception as e:
+        raise e
+
+
+def get_messages(chat_id, msg_ids=None, client=pyrobot):
+    try:
+        ret = client.get_messages(chat_id=(chat_id or 'me'), message_ids=msg_ids)
+        return [ret] if ret and isinstance(ret, Message) else ret
+    except BaseException:
+        return []
 
 
 def get_user(message: Message, text: str) -> [int, str, None]:
