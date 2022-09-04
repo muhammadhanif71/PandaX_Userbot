@@ -40,6 +40,27 @@ def guess_mime_type(file_):
         return s[0]
 
 
+
+def extract_args(message, markdown=True):
+    if not (message.text or message.caption):
+        return ''
+
+    text = message.text or message.caption
+
+    text = text.markdown if markdown else text
+    if ' ' not in text:
+        return ''
+
+    text = sub(r'\s+', ' ', text)
+    text = text[text.find(' ') :].strip()
+    return text
+
+
+def extract_args_arr(message, markdown=True):
+    return extract_args(message, markdown).split()
+
+
+
 def get_user(message: Message, text: str) -> [int, str, None]:
     """Get User From Message"""
     if text is None:
