@@ -2,11 +2,11 @@ from sys import version_info
 
 
 
-branch = f"@PandaUserbot"
+branch = f"Telethon"
 
 
-__Tgl__ = "17"
-__Bln__ = "03"
+__Tgl__ = "05"
+__Bln__ = "09"
 __Thn__ = "2022"
 
 
