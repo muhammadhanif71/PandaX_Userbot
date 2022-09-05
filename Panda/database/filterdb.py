@@ -12,7 +12,7 @@ except BaseException:
 def add_filters(keyword, chat_id, message_id) -> None:
     ok = eval(SqL.getdb("FILTER"))
     ok.update({chat_id: {"keyword": keyword, "chat_id": chat_id, "msg_id": message_id}})
-    return SqL.setdb("FILTER", str(ok))
+    return SqL.setdb("FILTER", ok)
 
 
 def filters_info(keyword, chat_id):
@@ -28,7 +28,7 @@ def del_filters(keyword, chat_id):
     wl = ok.get(chat_id)
     if wl:
         ok.pop(chat_id)
-        return SqL.setdb("FILTER", str(ok))
+        return SqL.setdb("FILTER", ok)
     return
 
 
