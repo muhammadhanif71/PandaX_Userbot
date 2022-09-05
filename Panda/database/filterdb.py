@@ -34,9 +34,11 @@ def del_filters(keyword, chat_id):
 
 def filters_del(chat_id)
     ok = eval(SqL.getdb("FILTER"))
-    if ok.get(chat_id):
+    panda = ok.get(chat_id)
+    if panda:
         ok.pop(chat_id)
-        SqL.setdb("FILTER", ok)
+        return SqL.setdb("FILTER", ok)
+    return
 
 def all_filters(chat_id):
     ok = eval(SqL.getdb("FILTER"))
