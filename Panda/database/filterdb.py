@@ -41,7 +41,7 @@ def filters_del(chat_id):
     return
 
 def all_filters(chat_id):
-    ok = SqL.getdb("FILTER")
+    ok = eval(SqL.getdb("FILTER"))
     if ok.get(chat_id):
         return ok
     else:
