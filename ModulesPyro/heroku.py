@@ -48,12 +48,12 @@ def _check_heroku(func):
 
 
 @ilhammansiz_on_cmd(
-    ["reboot"],
-    cmd_help={"help": "Restart Your Userbot On HEROKU!", "example": "{ch}restart"},
+    ["update"],
+    cmd_help={"help": "Update Your Userbot On HEROKU!", "example": "{ch}restart"},
 )
 @_check_heroku
 async def gib_restart(client, message, hap):
-    await edit_or_reply(message, "`[HEROKU] - 🔁 Restarting 🔁`")
+    await edit_or_reply(message, "`[HEROKU] - Update..`")
     hap.restart()
 
 
