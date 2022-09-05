@@ -2,7 +2,7 @@ from functools import wraps
 
 import heroku3
 
-from Panda import Config
+from Panda import Config, SqL
 from Panda._func.decorators import Panda_cmd as ilhammansiz_on_cmd
 from Panda._func._helpers import (
     edit_or_reply,
@@ -115,3 +115,27 @@ async def del_varr(client, message, app_):
         return
     await msg_.edit(f"`Sucessfully Deleted {_var} Var!`")
     del heroku_var[_var]
+
+
+@ilhammansiz_on_cmd(
+    ["getdb"],
+    cmd_help={
+        "help": "Delete Var From telegram Itself",
+        "example": "{ch}getdb ALIVE_NAME",
+    },
+)
+async def getdb(client, message, app_):
+    msg_ = await edit_or_reply(message, "`Please Wait!`")
+    _var = get_text(message)
+    if not _var:
+        await msg_.edit("`Give Var Name As Input!`")
+        return
+    if not " " in _var:
+        _var = _var.split(" ", 1)
+    if len(_var) > 1:
+        await msg_.edit("`Here is Usage Syntax : .getdb KEY VALUE`")
+        return
+    _varname = _var
+    var = SqL.getdb(_varname)
+    await msg_.edit(f"`Database SqL {var} Var!`")
+    
