@@ -2,7 +2,7 @@ from sys import version_info
 
 
 
-branch = f"Telethon"
+branch = f"Python"
 
 
 __Tgl__ = "05"
