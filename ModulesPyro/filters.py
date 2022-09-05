@@ -46,7 +46,7 @@ async def show_filters(client, message):
         return
     kk = ""
     for Escobar in poppy:
-        kk += f"\n > `{Escobar.get('keyword')}`"
+        kk += f"\n > `{Escobar}`"
     X = await client.get_chat(message.chat.id)
     grp_nme = X.title
     mag = f"List Of Filters In {grp_nme}: \n{kk}"
