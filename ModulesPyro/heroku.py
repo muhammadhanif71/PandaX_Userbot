@@ -124,7 +124,7 @@ async def del_varr(client, message, app_):
         "example": "{ch}getdb ALIVE_NAME",
     },
 )
-async def getdb(client, message, app_):
+async def getdb(client, message):
     msg_ = await edit_or_reply(message, "`Please Wait!`")
     _var = get_text(message)
     if not _var:
