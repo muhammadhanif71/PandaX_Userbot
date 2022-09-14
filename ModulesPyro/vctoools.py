@@ -3,12 +3,11 @@ from contextlib import suppress
 from random import randint
 from typing import Optional
 
-from pyrogram import Client, filters
+from pyrogram import filters
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
-from pyrogram.types import Message
 
 
 from Panda import DEVLIST as DEVS, pyrobot
