@@ -71,6 +71,14 @@ class ParticipantJoinMissingError(ForbiddenError):
     def __reduce__(self):
         return type(self), (self.request,)
 
+class ChatSendMediaForbiddenError(ForbiddenError):
+    def __init__(self, request):
+        self.request = request
+        super(Exception, self).__init__("You can't send media in this chat" + self._fmt_request(self.request))
+
+    def __reduce__(self):
+        return type(self), (self.request,)
+
 
 
 
