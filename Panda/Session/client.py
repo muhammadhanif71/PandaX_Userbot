@@ -12,7 +12,7 @@ SqL = DB
 from ..core.logger import logging
 
 BOT_TOKEN = SqL.getdb("BOT_TOKEN") or os.environ.get("BOT_TOKEN", None)
-
+CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
 
 LOGS = logging.getLogger("PandaUserbot")
 loop = None
@@ -99,6 +99,22 @@ try:
         ).start(bot_token=BOT_TOKEN)
     else:
         tgbot = None
+except Exception as e:
+    print(f"TOKEN- {str(e)}")
+    sys.exit()
+
+try:
+    if CEKBOT is not None:
+        cekbot = PandaUserbotSession(
+            "BOT_TOKEN",
+            api_id=Var.APP_ID,
+            api_hash=Var.API_HASH,
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None,
+        ).start(bot_token=CEKBOT)
+    else:
+        cekbot = None
 except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
