@@ -23,6 +23,7 @@ MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
 
 👿 Pengguna - @{}
+
 ⚙️ Pyrogram Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
@@ -33,6 +34,7 @@ THON_ON = """
 ꧁༺ Panda Userbot ༻꧂
 
 👿 Pengguna - @{}
+
 ⚙️ Telethon Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
