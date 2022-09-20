@@ -7,7 +7,7 @@ import logging
 from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
-from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot
+from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot, CEKBOT
 from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
 import sys
@@ -42,7 +42,7 @@ def Telethon():
     if Var.STRING_SESSION:
         try:
             PandaBot.start()
-            cekbot.start()
+            cekbot.start(bot_token=CEKBOT)
             delta = PandaBot(functions.help.GetConfigRequest())
             for option in delta.dc_options:
                 if option.ip_address == PandaBot.session.server_address:
