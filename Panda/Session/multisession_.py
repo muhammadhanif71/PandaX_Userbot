@@ -100,9 +100,10 @@ def Telethon():
 
 
 def Pyrogram():
+    if cekbotpyro:
+        cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
-        cekbotpyro.start()
         pyrotgbot.me = pyrotgbot.get_me()
         assistant_mods = plugin_collecter("./assistant/")
         for mods in assistant_mods:
@@ -132,13 +133,13 @@ def Pyrogram():
             load_modulesPyro(nm)
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
-    if cekbotpyro:
+    if pyrobot:
         cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot2:
-        pyrobot2.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot3:
-        pyrobot3.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot4:
-        pyrobot4.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
