@@ -33,7 +33,7 @@ THON_ON = """
 ꧁༺ Panda Userbot ༻꧂
 
 👿 Pengguna - @{}
-⚙️ Pyrogram Version - `{}'
+⚙️ Telethon Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
 """
