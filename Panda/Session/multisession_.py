@@ -120,7 +120,7 @@ def Telethon():
 
 
 def Pyrogram():
-    if pyrobot:
+    if CEKBOT:
         cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
