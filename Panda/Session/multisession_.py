@@ -8,7 +8,7 @@ from logging import getLogger
 import pyrogram as pandapyro
 from .client import PandaBot, PandaBot2, PandaBot3, tgbot
 from .._func.startup import load_modulesPyro, plugin_collecter
-from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
+from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
 import sys
 LOGS = getLogger(__name__)
 import os
@@ -102,6 +102,7 @@ def Telethon():
 def Pyrogram():
     if pyrotgbot:
         pyrotgbot.start()
+        cekbotpyro.start()
         pyrotgbot.me = pyrotgbot.get_me()
         assistant_mods = plugin_collecter("./assistant/")
         for mods in assistant_mods:
@@ -132,12 +133,12 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        pyrobot.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot2:
-        pyrobot2.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot3:
-        pyrobot3.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot4:
-        pyrobot4.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
