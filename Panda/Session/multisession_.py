@@ -1,4 +1,4 @@
-from telethon import Button, version
+from telethon import version
 
 from .pyroclient import pyrotgbot, pyrobot
 from telethon import functions, utils
