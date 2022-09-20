@@ -7,7 +7,7 @@ import logging
 from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
-from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot, CEKBOT
+from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot
 from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
 import sys
@@ -120,7 +120,7 @@ def Telethon():
 
 
 def Pyrogram():
-    if cekbotpyro:
+    if pyrobot:
         cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
