@@ -52,3 +52,19 @@ if Database.BOT_TOKEN:
     )
 else:
     pyrotgbot = None
+
+
+
+CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
+
+if CEKBOT:
+    cekbotpyro = Client(
+        "MyAssistant",
+        api_id=Database.APP_ID,
+        api_hash=Database.API_HASH,
+        bot_token=CEKBOT,
+        sleep_threshold=180,
+    )
+else:
+    cekbotpyro = None
+
