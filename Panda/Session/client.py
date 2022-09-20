@@ -100,7 +100,7 @@ try:
     else:
         tgbot = None
 except Exception as e:
-    print(f"TOKEN- {str(e)}")
+    print(f"BOT-TOKEN- {str(e)}")
     sys.exit()
 
 
