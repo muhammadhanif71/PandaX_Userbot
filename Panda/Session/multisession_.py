@@ -22,7 +22,7 @@ cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
 MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
 
-👿 Pengguna - {}
+👿 Pengguna - @{}
 ⚙️ Pyrogram Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
@@ -32,7 +32,7 @@ MSG_ON = """
 THON_ON = """
 ꧁༺ Panda Userbot ༻꧂
 
-👿 Pengguna - {}
+👿 Pengguna - @{}
 ⚙️ Pyrogram Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
