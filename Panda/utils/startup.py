@@ -246,7 +246,7 @@ async def ongrup():
                     CHATID,
                     ON,
                 )
-                await PandaBot3.send_message(
+                await cekbot.send_message(
                     CHATID,
                     ON,
                 )
