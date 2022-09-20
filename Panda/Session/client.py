@@ -104,7 +104,7 @@ except Exception as e:
     sys.exit()
 
 try:
-    if CEKBOT is not None:
+    if CEKBOT:
         cekbot = TelegramClient(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
