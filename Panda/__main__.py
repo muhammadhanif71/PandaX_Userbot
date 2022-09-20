@@ -9,7 +9,7 @@ from Panda import utils
 LOGS = Panda.core.logger.logging.getLogger("PandaUserbot")
 from .utils import P, M, V, A
 from .Session.multisession_ import Pyrogram, Telethon
-
+from .Var import Database
 import ast
 
 ast = ast
@@ -64,20 +64,17 @@ async def ongruppyro():
             pass
                   
     
-def startpyro():
-    if Panda.pyrobot:
-        Panda.pyrobot.loop.run_until_complete(ongruppyro())
-        LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
                    
       
 
 if __name__ == "__main__":
-    if SESSION:
+    if Database.SESSION:
         Telethon()
         start()
-    if PyroSESSION:
+    if Database.PyroSESSION:
         Pyrogram()
-        startpyro()
+        LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
+                  
     
     
   
