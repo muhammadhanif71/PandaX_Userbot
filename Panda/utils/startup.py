@@ -236,7 +236,7 @@ CHATID = "-1001718757023"
 
 async def ongrup():
     try:
-        if PandaBot:
+        if cekbot:
             if CHATID != 0:
                 await cekbot.send_message(
                     CHATID,
