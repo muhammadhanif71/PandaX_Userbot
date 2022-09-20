@@ -20,6 +20,7 @@ cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
 
 MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
+👿 Pengguna - {}
 ━━
 ⚙️ Pyrogram Version - `{}'
 `[TELAH DIAKTIFKAN]`
@@ -134,12 +135,12 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
     if pyrobot2:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
     if pyrobot3:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
     if pyrobot4:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
