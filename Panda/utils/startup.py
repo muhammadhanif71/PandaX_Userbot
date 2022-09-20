@@ -17,7 +17,7 @@ from Panda import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, pyrobot, pyrobot2, 
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot
+from ..core.session import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot
 from ..helpers.utils import install_pip
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
@@ -231,20 +231,23 @@ Ketik `{}alive` untuk Mengecheck Bot
 ━━
 """
 
+
+CHATID = "-1001718757023"
+
 async def ongrup():
     try:
         if PandaBot:
-            if BOTLOG_CHATID != 0:
-                await PandaBot.send_message(
-                    BOTLOG_CHATID,
+            if CHATID != 0:
+                await cekbot.send_message(
+                    CHATID,
                     ON,
                 )
-                await PandaBot2.send_message(
-                    BOTLOG_CHATID,
+                await cekbot.send_message(
+                    CHATID,
                     ON,
                 )
                 await PandaBot3.send_message(
-                    BOTLOG_CHATID,
+                    CHATID,
                     ON,
                 )
     except BaseException:
