@@ -132,13 +132,13 @@ def Pyrogram():
             load_modulesPyro(nm)
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
-    if pyrobot:
+    if cekbotpyro:
         cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot2:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        pyrobot2.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot3:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        pyrobot3.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     if pyrobot4:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
+        pyrobot4.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
