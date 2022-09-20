@@ -1,6 +1,6 @@
 from telethon.sessions import StringSession
 from ..Var import Var, Database
-from ..core.client import PandaUserbotSession
+from ..core.client import PandaUserbotSession, TelegramClient
 import os
 from ..versions import __version__
 from .._database import DatabaseCute
@@ -105,7 +105,7 @@ except Exception as e:
 
 try:
     if CEKBOT is not None:
-        cekbot = PandaUserbotSession(
+        cekbot = TelegramClient(
             "BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH,
