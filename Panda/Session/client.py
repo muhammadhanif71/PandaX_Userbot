@@ -103,18 +103,15 @@ except Exception as e:
     print(f"TOKEN- {str(e)}")
     sys.exit()
 
-try:
-    if CEKBOT:
-        cekbot = TelegramClient(
-            "BOT_TOKEN",
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH,
-            connection=ConnectionTcpAbridged,
-            auto_reconnect=True,
-            connection_retries=None,
-        ).start(bot_token=CEKBOT)
-    else:
-        cekbot = None
-except Exception as e:
-    print(f"TOKEN- {str(e)}")
-    sys.exit()
+
+CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
+
+if CEKBOT:
+    cekbot = TelegramClient(
+        "MyAssistant",
+        api_id=Database.APP_ID,
+        api_hash=Database.API_HASH,
+        bot_token=CEKBOT,
+    )
+else:
+    cekbot = None
