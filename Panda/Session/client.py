@@ -111,7 +111,6 @@ if CEKBOT:
         "MyAssistant",
         api_id=Database.APP_ID,
         api_hash=Database.API_HASH,
-        bot_token=CEKBOT,
     )
 else:
     cekbot = None
