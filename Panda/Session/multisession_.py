@@ -14,7 +14,7 @@ LOGS = getLogger(__name__)
 import os
 from pyrogram import __version__ as pyrover
 
-PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or 0)
+PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or "-1001718757023")
 
 cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
 
