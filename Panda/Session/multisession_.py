@@ -1,3 +1,4 @@
+from telethon import Button, version
 
 from .pyroclient import pyrotgbot, pyrobot
 from telethon import functions, utils
@@ -6,7 +7,7 @@ import logging
 from ..Var import Var
 from logging import getLogger
 import pyrogram as pandapyro
-from .client import PandaBot, PandaBot2, PandaBot3, tgbot
+from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot
 from .._func.startup import load_modulesPyro, plugin_collecter
 from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
 import sys
@@ -20,12 +21,21 @@ cmdhr = os.environ.get("COMMAND_HAND_LER") or "."
 
 MSG_ON = """
 ꧁༺ Panda Userbot ༻꧂
+
 👿 Pengguna - {}
-━━
 ⚙️ Pyrogram Version - `{}'
 `[TELAH DIAKTIFKAN]`
 °Ketik `{}alive` untuk Mengecheck Bot
-━━
+"""
+
+
+THON_ON = """
+꧁༺ Panda Userbot ༻꧂
+
+👿 Pengguna - {}
+⚙️ Pyrogram Version - `{}'
+`[TELAH DIAKTIFKAN]`
+°Ketik `{}alive` untuk Mengecheck Bot
 """
 
 def Telethon():
@@ -48,6 +58,8 @@ def Telethon():
             PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot.me)
+            if PandaBot:
+                cekbot.send_message(PRIVATE_GROUP_BOT_API_ID, THON_ON.format(PandaBot.me.username, version.__version__, cmdhr))
         except Exception as e:
             LOGS.error(f"STRING_SESSION - {str(e)}")
             sys.exit()
@@ -72,6 +84,8 @@ def Telethon():
             PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot2.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot2.me)
+            if PandaBot:
+                cekbot.send_message(PRIVATE_GROUP_BOT_API_ID, THON_ON.format(PandaBot.me.username, version.__version__, cmdhr))
         except Exception as e:
             LOGS.error(f"STRING_SESSION - {str(e)}")
             sys.exit()
@@ -95,6 +109,8 @@ def Telethon():
             PandaBot.uid = tgbot.uid = utils.get_peer_id(PandaBot.me)
             if Var.OWNER_ID == 0:
                 Var.OWNER_ID = utils.get_peer_id(PandaBot3.me)
+            if PandaBot:
+                cekbot.send_message(PRIVATE_GROUP_BOT_API_ID, THON_ON.format(PandaBot.me.username, version.__version__, cmdhr))
         except Exception as e:
             LOGS.error(f"STRING_SESSION - {str(e)}")
             sys.exit()
@@ -135,12 +151,12 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot2:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot3:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot4:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.first_name, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
