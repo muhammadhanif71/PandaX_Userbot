@@ -120,8 +120,6 @@ def Telethon():
 
 
 def Pyrogram():
-    if cekbotpyro:
-        cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
@@ -154,12 +152,20 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        pyrobot.join_chat("PandaUserbot")
+        pyrotgbot.join_chat("Aktifkannbot")
+        pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot2:
-        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot2.me.username, pyrover, cmdhr))
+        pyrobot2.join_chat("PandaUserbot")
+        pyrotgbot.join_chat("Aktifkannbot")
+        pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot2.me.username, pyrover, cmdhr))
     if pyrobot3:
-        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot3.me.username, pyrover, cmdhr))
+        pyrobot3.join_chat("PandaUserbot")
+        pyrotgbot.join_chat("Aktifkannbot")
+        pyrobot3.send_message(PRIVATE, MSG_ON.format(pyrobot3.me.username, pyrover, cmdhr))
     if pyrobot4:
-        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot4.me.username, pyrover, cmdhr))
+        pyrobot4.join_chat("PandaUserbot")
+        pyrotgbot.join_chat("Aktifkannbot")
+        pyrobot4.send_message(PRIVATE, MSG_ON.format(pyrobot4.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
