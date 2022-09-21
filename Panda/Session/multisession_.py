@@ -9,7 +9,7 @@ from logging import getLogger
 import pyrogram as pandapyro
 from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot, CEKBOT
 from .._func.startup import load_modulesPyro, plugin_collecter
-from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekpyrobot
+from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
 import sys
 LOGS = getLogger(__name__)
 import os
@@ -151,12 +151,12 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        cekpyrobot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot2:
-        cekpyrobot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot3:
         cekpyrobot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot4:
-        cekpyrobot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        cekbotpyro.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
