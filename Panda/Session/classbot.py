@@ -14,16 +14,16 @@ class Pyrobot(Client):
         )
 
     async def start(self):
-        await super().start()
-        get_me = await self.get_me()
+        super().start()
+        get_me = self.get_me()
         self.username = get_me.username
         self.id = get_me.id
         try:
-            await self.send_message(
+            self.send_message(
                 PRIVATE_GROUP_BOT_API_ID, "Starting Bot"
             )
         except:
-            await self.send_message(
+            self.send_message(
                 PRIVATE_GROUP_BOT_API_ID, "Bot has failed to access the log Group."
             )
             sys.exit()
@@ -44,16 +44,16 @@ class Cekbot(Client):
         )
 
     async def start(self):
-        await super().start()
-        get_me = await self.get_me()
+        super().start()
+        get_me = self.get_me()
         self.username = get_me.username
         self.id = get_me.id
         try:
-            await self.send_message(
+            self.send_message(
                 GROUP_BOT_API_ID, "Starting Bot"
             )
         except:
-            await self.send_message(
+            self.send_message(
                 GROUP_BOT_API_ID, "Bot has failed to access the log Group."
             )
             sys.exit()
