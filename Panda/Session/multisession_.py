@@ -122,7 +122,6 @@ def Telethon():
 def Pyrogram():
     if pyrotgbot:
         pyrotgbot.start()
-        pyrotgbot.me = pyrotgbot.get_me()
         assistant_mods = plugin_collecter("./assistant/")
         for mods in assistant_mods:
             try:
