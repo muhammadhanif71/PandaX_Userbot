@@ -1,5 +1,5 @@
 from pyrogram import Client
-
+import os
 PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID") or "-1001718757023")
 
 from ..Var import Database
