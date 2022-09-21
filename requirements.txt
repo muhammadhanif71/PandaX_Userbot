@@ -79,7 +79,7 @@ psycopg2-binary
 pyyaml==5.4.1
 countryinfo
 emoji-country-flag
-pyrogram
+pyrogram==1.4.16
 tinydb>=4.4.0
 NoteShrinker>=0.2.0
 img2pdf>=0.4.0
