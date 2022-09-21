@@ -13,6 +13,7 @@ class Pyrobot(Client):
             bot_token=Database.BOT_TOKEN,
         )
 
+"""
     async def start(self):
         super().start()
         get_me = self.get_me()
@@ -27,7 +28,7 @@ class Pyrobot(Client):
                 PRIVATE_GROUP_BOT_API_ID, "Bot has failed to access the log Group."
             )
             sys.exit()
-
+"""
 
 CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
 
@@ -43,6 +44,7 @@ class Cekbot(Client):
             bot_token=CEKBOT,
         )
 
+"""
     async def start(self):
         super().start()
         get_me = self.get_me()
@@ -57,3 +59,4 @@ class Cekbot(Client):
                 GROUP_BOT_API_ID, "Bot has failed to access the log Group."
             )
             sys.exit()
+"""
