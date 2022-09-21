@@ -30,7 +30,8 @@ class Pyrobot(Client):
 
 
 CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
-GROUP_BOT_API_ID = "-1001718757023"
+
+GROUP_BOT_API_ID = int(os.environ.get("GROUP_BOT_API_ID") or "-1001718757023")
 
 
 class Cekbot(Client):
