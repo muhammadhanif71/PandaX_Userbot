@@ -9,7 +9,7 @@ from logging import getLogger
 import pyrogram as pandapyro
 from .client import PandaBot, PandaBot2, PandaBot3, tgbot, cekbot, CEKBOT
 from .._func.startup import load_modulesPyro, plugin_collecter
-from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot, cekbotpyro
+from .pyroclient import pyrobot, pyrobot2, pyrobot3, pyrobot4, pyrotgbot
 import sys
 LOGS = getLogger(__name__)
 import os
