@@ -165,7 +165,7 @@ def Pyrogram():
         pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot3.me.username, pyrover, cmdhr))
     if pyrobot4:
         pyrobot4.join_chat("PandaUserbot")
-        pyrobot2.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
+        pyrobot4.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
         pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot4.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
