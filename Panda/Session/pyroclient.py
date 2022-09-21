@@ -1,5 +1,5 @@
 from pyrogram import Client
-
+from .classbot import Pyrobot
 from ..Var import Database
 
 loop = None
@@ -43,6 +43,9 @@ else:
     pyrobot4 = None
 
 if Database.BOT_TOKEN:
+    pyrotgbot = Pyrobot()
+
+"""
     pyrotgbot = Client(
         "MyAssistant",
         api_id=Database.APP_ID,
@@ -53,7 +56,7 @@ if Database.BOT_TOKEN:
 else:
     pyrotgbot = None
 
-
+"""
 
 CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
 
