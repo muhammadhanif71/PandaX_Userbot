@@ -153,19 +153,19 @@ def Pyrogram():
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
         pyrobot.join_chat("PandaUserbot")
-        pyrotgbot.join_chat("Aktifkannbot")
+        pyrobot.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
         pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot2:
         pyrobot2.join_chat("PandaUserbot")
-        pyrotgbot.join_chat("Aktifkannbot")
+        pyrobot2.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
         pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot2.me.username, pyrover, cmdhr))
     if pyrobot3:
         pyrobot3.join_chat("PandaUserbot")
-        pyrotgbot.join_chat("Aktifkannbot")
-        pyrobot3.send_message(PRIVATE, MSG_ON.format(pyrobot3.me.username, pyrover, cmdhr))
+        pyrobot3.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
+        pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot3.me.username, pyrover, cmdhr))
     if pyrobot4:
         pyrobot4.join_chat("PandaUserbot")
-        pyrotgbot.join_chat("Aktifkannbot")
-        pyrobot4.send_message(PRIVATE, MSG_ON.format(pyrobot4.me.username, pyrover, cmdhr))
+        pyrobot2.add_chat_members(PRIVATE, f"@{pyrotgbot.me.username}")
+        pyrotgbot.send_message(PRIVATE, MSG_ON.format(pyrobot4.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
