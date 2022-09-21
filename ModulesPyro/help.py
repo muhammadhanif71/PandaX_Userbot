@@ -19,7 +19,7 @@ HELP(
 async def help(client, message):
     f_ = await edit_or_reply(message, "`Please Wait!`")
     if bot:
-        starkbot = bot
+        starkbot = bot.me
         bot_username = starkbot.username
         try:
             nice = await client.get_inline_bot_results(bot=bot_username, query="help")
