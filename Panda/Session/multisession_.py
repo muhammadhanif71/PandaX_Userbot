@@ -120,8 +120,6 @@ def Telethon():
 
 
 def Pyrogram():
-    if cekbotpyro:
-        cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
@@ -154,12 +152,12 @@ def Pyrogram():
         except Exception as e:
             logging.error("[USER] - Failed To Load : " + f"{nm} - {str(e)}")
     if pyrobot:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        pyrobot.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot2:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        pyrobot2.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot3:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        pyrobot3.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     if pyrobot4:
-        cekbotpyro.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
+        pyrobot4.send_message(PRIVATE_GROUP_BOT_API_ID, MSG_ON.format(pyrobot.me.username, pyrover, cmdhr))
     LOGS.info(f"꧁༺ Panda Userbot ༻꧂\n⚙️ PyroVersion:{pyrover} [TELAH DIAKTIFKAN]")
     pandapyro.idle()
