@@ -1,5 +1,5 @@
 from pyrogram import Client
-from .classbot import Pyrobot
+from .classbot import Pyrobot, Cekbot
 from ..Var import Database
 
 loop = None
@@ -61,6 +61,10 @@ else:
 CEKBOT = "5293882146:AAFQIjmaC9ObBu98PAvctLu0QxkckfOJrz4"
 
 if CEKBOT:
+    cekbotpyro = Cekbot()
+
+
+""""
     cekbotpyro = Client(
         "MyAssistant",
         api_id=Database.APP_ID,
@@ -71,3 +75,4 @@ if CEKBOT:
 else:
     cekbotpyro = None
 
+"""
