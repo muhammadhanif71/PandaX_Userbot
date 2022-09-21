@@ -121,7 +121,7 @@ def Telethon():
 
 def Pyrogram():
     if cekbotpyro:
-        cekbotpyro()
+        cekbotpyro.start()
     if pyrotgbot:
         pyrotgbot.start()
         assistant_mods = plugin_collecter("./assistant/")
