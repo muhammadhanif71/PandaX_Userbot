@@ -122,7 +122,6 @@ def Telethon():
 def Pyrogram():
     if cekbotpyro:
         cekbotpyro.start()
-        cekbotpyro.send_message(PRIVATE, f"Starting Panda Userbot Pyrogram {pyrover}")
     if pyrotgbot:
         pyrotgbot.start()
         pyrotgbot.me = pyrotgbot.get_me()
