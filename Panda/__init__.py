@@ -71,7 +71,7 @@ if not BOT_MODE:
 else:
     if not SqL.getdb("BOT_TOKEN") and BOT_TOKEN:
         SqL.setdb("BOT_TOKEN", BOT_TOKEN)
-    if not SqL.setdb("BOT_TOKEN"):
+    if not SqL.getdb("BOT_TOKEN"):
         LOGS.info('"BOT_TOKEN" not Found! Please add it, in order to use "MODE BoT"')
         import sys
 
