@@ -34,7 +34,6 @@ Pillow
 prettytable
 prsaw
 psutil
-psycopg2
 pyfiglet
 PyGithub
 pygments
