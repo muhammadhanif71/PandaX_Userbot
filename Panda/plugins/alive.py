@@ -1,3 +1,4 @@
+import random
 import time
 from platform import python_version
 from telethon import Button, version
