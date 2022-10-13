@@ -2,7 +2,7 @@ import time
 from platform import python_version
 from telethon import Button, version
 import asyncio
-from Panda import PandaBot, SqL, StartTime, dual_duall, dual_mode, pandaversion, tgbot
+from Panda import PandaBot, SqL, StartTime, pandaversion, tgbot
 pandaub = PandaBot
 from ..Config import Config
 from ..helpers.functions import get_readable_time
