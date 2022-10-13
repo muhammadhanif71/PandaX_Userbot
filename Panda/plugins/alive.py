@@ -13,17 +13,41 @@ from ..sql_helper.db import BaseDB
 
 Mongoredis = BaseDB()
 
-CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT = SqL.getdb("CUSTOM_ALIVE_TEXT") or "PandaX-Userbot"
+custom_text = " 𝐏𝐚𝐧𝐝𝐚 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐁𝐎𝐓_𝐈𝐒_𝐑𝐔𝐍𝐍𝐈𝐍𝐆 𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐏𝐚𝐧𝐝𝐚_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐀𝐜𝐭𝐢𝐯𝐞".split(
+    " "
+)
+CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT = SqL.getdb("CUSTOM_ALIVE_TEXT") or f"{random.choice(custom_text)}"
 
 # ================= CONSTANT =================
 DEFAULTUSER = mention
 # ============================================
-EMOJI = SqL.getdb("EMOJI") or "🎨"
+
 NAME = DEFAULTUSER
+
 
 plugin_category = "plugins"
 
 SUDO = SqL.getdb("sudoenable")
+
+def SUDO():
+    try:
+        if SqL.getdb("sudoenable") is not None:
+            SudoActive = SqL.setdb("sudoenable", "True")
+            return SudoActive
+        else:
+            SudoActive = SqL.setdb("sudoenable", "False")
+            return SudoActive
+    except Exception as e:
+        print(f"{str(e)}")
+        sys.exit()
+
+
+
+
+emoji_alive = "🌛 🌜 🌚 🌝 🎲 🧩 ♟ 🎯 🎳 🎭💕 💞 💓 💗 💖 ❤️‍🔥 💔 🤎 🤍 🖤 ❤️ 🧡 💛 💚 💙 💜 💘 💝 🐵 🦁 🐯 🐱 🐶 🐺 🐻 🐨 🐼 🐹 🐭 🐰 🦊 🦝 🐮 🐷 🐽 🐗 🦓 🦄 🐴 🐸 🐲 🦎 🐉 🦖 🦕 🐢 🐊 🐍 🐁 🐀 🐇 🐈 🐩 🐕 🦮 🐕‍🦺 🐅 🐆 🐎 🐖 🐄 🐂 🐃 🐏 🐑 🐐 🦌 🦙 🦥 🦘 🐘 🦏 🦛 🦒 🐒 🦍 🦧 🐪 🐫 🐿️ 🦨 🦡 🦔 🦦 🦇 🐓 🐔 🐣 🐤 🐥 🐦 🦉 🦅 🦜 🕊️ 🦢 🦩 🦚 🦃 🦆 🐧 🦈 🐬 🐋 🐳 🐟 🐠 🐡 🦐 🦞 🦀 🦑 🐙 🦪 🦂 🕷️ 🦋 🐞 🐝 🦟 🦗 🐜 🐌 🐚 🕸️ 🐛 🐾 🌞 🤢 🤮 🤧 🤒 🍓 🍒 🍎 🍉 🍑 🍊 🥭 🍍 🍌 🌶 🍇 🥝 🍐 🍏 🍈 🍋 🍄 🥕 🍠 🧅 🌽 🥦 🥒 🥬 🥑 🥯 🥖 🥐 🍞 🥜 🌰 🥔 🧄 🍆 🧇 🥞 🥚 🧀 🥓 🥩 🍗 🍖 🥙 🌯 🌮 🍕 🍟 🥨 🥪 🌭 🍔 🧆 🥘 🍝 🥫 🥣 🥗 🍲 🍛 🍜 🍢 🥟 🍱 🍚 🥡 🍤 🍣 🦞 🦪 🍘 🍡 🥠 🥮 🍧 🍨 📞".split(
+    " "
+)
+
 SUDOuser = _sudousers_list()
 
 LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or "https://telegra.ph/file/462ea6cf2beab87ef2d9f.jpg"
@@ -42,7 +66,7 @@ usernames = Config.TG_BOT_USERNAME
     },
 )
 async def redis(alive):
-    await PandaBot.get_me()
+    PandaBot.me = await PandaBot.get_me()
     await get_readable_time((time.time() - StartTime))
     await alive.edit("꧁༺ Panda Userbot ༻꧂")
     await alive.edit("꧁༺ Userbot ༻꧂")
@@ -52,12 +76,13 @@ async def redis(alive):
             logo = LOGO
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
-            await tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
+            if tgbot:
+                await tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
             await alive.edit(
-                output + "\n\n *`Logo Yang Disediakan Tidak Valid."
+                aliveess + "\n\n *`Logo Yang Disediakan Tidak Valid."
                 "\nPastikan Tautan Yang Anda Gunakan Valid`"
             )
             await asyncio.sleep(100)
@@ -70,25 +95,16 @@ async def redis(alive):
 
 aliveess = f"""
 {CUSTOM_ALIVE_TEXT}
-
-☉ 👤 𝗢𝘄𝗻𝗲𝗿: {NAME}
-
-☉ 🛰 Version: `𝚅{pandaversion}`
-
-☉ 👾 𝗧𝗲𝗹𝗲𝘁𝗵𝗼𝗻: `𝚅{version.__version__}`
-☉ 🎙 𝗣𝘆𝘁𝗴𝗰𝗮𝗹𝗹𝘀: `𝚅{__version__}`
-☉ 🐍 𝗣𝘆𝘁𝗵𝗼𝗻: `𝚅{python_version()}`
-
-☉ 🎭 Dual-Mode: {dual_mode()}
-☉ 🆕 Command DualMode: {dual_duall()}
-☉ 👥 BotUser-Dual: `{usernames}`\n
+☉ {random.choice(emoji_alive)} 𝗢𝘄𝗻𝗲𝗿: @{PandaBot.me.username}
+☉ {random.choice(emoji_alive)} Version: `𝚅{pandaversion}`
+☉ {random.choice(emoji_alive)} 𝗧𝗲𝗹𝗲𝘁𝗵𝗼𝗻: `𝚅{version.__version__}`
+☉ {random.choice(emoji_alive)} 𝗣𝘆𝘁𝗴𝗰𝗮𝗹𝗹𝘀: `𝚅{__version__}`
+☉ {random.choice(emoji_alive)} 𝗣𝘆𝘁𝗵𝗼𝗻: `𝚅{python_version()}`\n
 ⟣✧✧✧✧✧✧✧✧✧✧✧✧✧✧⟢
 ╭━─━─━─━─━─━─━─━─━╮
                𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲:
-
-☉ 🐘 𝗗𝗕_𝗦𝗾𝗟: `{SqL.ping()}`
-☉ 👥 𝗦𝘂𝗱𝗼: {SUDO}
-
+☉ {random.choice(emoji_alive)} 𝗗𝗕_𝗦𝗾𝗟: `{SqL.ping()}`
+☉ {random.choice(emoji_alive)} 𝗦𝘂𝗱𝗼: {SUDO()}
 ╰━─━─━─━─━─━─━─━─━╯
 ⟣✧✧✧✧✧✧✧✧✧✧✧✧✧✧⟢
 """
