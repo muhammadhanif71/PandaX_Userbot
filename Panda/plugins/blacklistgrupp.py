@@ -12,7 +12,7 @@ grupbclk = SqL.getdb("BLACKLISTGC") or ""
 async def joingrup(event):
     if event.user_joined:
         if i in grupbclk:
-            await PandaBot.kick_participant(event.chat_id, i)
+            await event.client.kick_participant(event.chat_id, i)
 
 
 
