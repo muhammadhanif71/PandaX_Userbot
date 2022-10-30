@@ -75,16 +75,16 @@ async def redis(alive):
     await asyncio.sleep(1)
     if LOGO:
         try:
-            logo = LOGO = [
+            logo = [
                 aliveslogo
                 async for aliveslogo in event.client.iter_messages(
                     "@protprotviral", filter=InputMessagesFilterVideo
                 )
             ]
             await alive.delete()
-            msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
+            msg = await PandaBot.send_file(alive.chat_id, file=random.choice(logo), caption=aliveess)
             if tgbot:
-                await tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
+                await tgbot.send_file(alive.chat_id, file=random.choice(logo), caption=aliveess, buttons=menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
