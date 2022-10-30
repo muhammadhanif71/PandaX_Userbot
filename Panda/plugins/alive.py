@@ -52,7 +52,7 @@ emoji_alive = "★ ♦ ♠ ♣ ¡ ! ‹ › ∞ ≈ × 🦌 🐘 🐨 🐼 🐧 
 
 SUDOuser = _sudousers_list()
 
-LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or "https://telegra.ph/file/462ea6cf2beab87ef2d9f.jpg"
+LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or ""
 
 usernames = Config.TG_BOT_USERNAME
 
