@@ -75,12 +75,7 @@ async def redis(alive):
     await asyncio.sleep(1)
     if LOGO:
         try:
-            logo = [
-                aliveslogo
-                async for aliveslogo in event.client.iter_messages(
-                    "@protprotviral", filter=InputMessagesFilterVideo
-                )
-            ]
+            logo = LOGO
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, file=random.choice(logo), caption=aliveess)
             if tgbot:
