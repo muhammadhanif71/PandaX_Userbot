@@ -45,13 +45,26 @@ def SUDO():
 
 
 
+alive_logo = [
+    f"https://telegra.ph/file/{_}.jpg"
+    for _ in [
+        "99dd9fbca84bc407ac4e8",
+        "c13edd5c46ad875d57bd7",
+        "d3c370234bf81c5bc2214",
+        "50c6b49f05129eff150c0",
+        "d27c36c92679d1fcaf662",
+        "995641228cd4c93895464",
+        "5d5c6e7c33046a14c0fea",
+    ]
+]
+
 emoji_alive = "★ ♦ ♠ ♣ ¡ ! ‹ › ∞ ≈ × 🦌 🐘 🐨 🐼 🐧 🦇 🦃 🐲 💮 🌸 🌺 🌻 🌼 🏵 🌳 🌲 🌺 🎭 🌟 🌠 🌩 ⚡ 🔥 ☄️ ❄ 🛸 ✨ 🎑 ⚒️ 🛠 ⛏️ 🔨 ⚔️ 🗡 ⚙️ 🏹 🔮 🗿 ⚱️ ⚰️ ➡️ ↗️ ⬆️ ⬅️ ↘️ ⬇️ ✅ ☑️ ❓ ⁉️ ‼️ ❗🇲🇨 🇹🇷 🇩🇪".split(
     " "
 )
 
 SUDOuser = _sudousers_list()
 
-LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or ""
+LOGO = Config.ALIVE_PIC = SqL.getdb("ALIVE_PIC") or f"{random.choice(alive_logo)}"
 
 usernames = Config.TG_BOT_USERNAME
 
@@ -76,9 +89,9 @@ async def redis(alive):
         try:
             logo = LOGO
             await alive.delete()
-            msg = await PandaBot.send_file(alive.chat_id, file=random.choice(logo), caption=aliveess)
+            msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
             if tgbot:
-                await tgbot.send_file(alive.chat_id, file=random.choice(logo), caption=aliveess, buttons=menu())
+                await tgbot.send_file(alive.chat_id, logo, caption=aliveess, buttons=menu())
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
