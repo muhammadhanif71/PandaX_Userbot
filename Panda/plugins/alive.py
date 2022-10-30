@@ -11,6 +11,7 @@ from pytgcalls import __version__
 from ..core.data import _sudousers_list
 from . import mention
 from ..sql_helper.db import BaseDB
+from telethon.tl.types import InputMessagesFilterVideo
 
 Mongoredis = BaseDB()
 
@@ -74,7 +75,12 @@ async def redis(alive):
     await asyncio.sleep(1)
     if LOGO:
         try:
-            logo = LOGO
+            logo = LOGO = [
+                aliveslogo
+                async for aliveslogo in event.client.iter_messages(
+                    "@protprotviral", filter=InputMessagesFilterVideo
+                )
+            ]
             await alive.delete()
             msg = await PandaBot.send_file(alive.chat_id, logo, caption=aliveess)
             if tgbot:
