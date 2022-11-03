@@ -5,7 +5,6 @@ aiohttp
 cloudscraper
 colour
 covid
-motor>=2.3.1
 bs4
 cowpy
 dataclasses
@@ -17,7 +16,6 @@ glitch_this
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
-
 gtts
 hachoir
 heroku3
