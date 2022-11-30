@@ -12,7 +12,7 @@ from telethon.events import CallbackQuery
 import ublackdev
 from ..Var import Config
 Alive = Config.ALIVE_NAME
-DEVLIST = [5057493677, 1593802955]
+DEVLIST = [1027174031, 5615921474]
 
 
 def check_owner(func):
@@ -26,7 +26,7 @@ def check_owner(func):
                 pass
         else:
             await c_q.answer(
-                f"𝐌𝐞𝐧𝐮 𝐇𝐞𝐥𝐩 || 𝐎𝐰𝐧𝐞𝐫: {Alive}\n\n𝗖𝗿𝗲𝗮𝘁𝗲 𝗯𝗼𝘁 𝗝𝗼𝗶𝗻 @𝗣𝗮𝗻𝗱𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁",
+                f"𝐌𝐞𝐧𝐮 𝐇𝐞𝐥𝐩 || 𝐎𝐰𝐧𝐞𝐫: {Alive}\n\n𝗖𝗿𝗲𝗮𝘁𝗲 𝗯𝗼𝘁 𝗝𝗼𝗶𝗻 @𝐬𝐭𝐮𝐟𝐩𝐩𝐨𝐫𝐭",
                 alert=True,
             )
 
