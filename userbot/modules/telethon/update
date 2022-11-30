@@ -14,7 +14,7 @@ plugin_category = "modules"
 
 async def gen_chlog(repo, diff):
     """Generate Changelogs..."""
-    UPSTREAM_REPO_URL = b64decode("aHR0cHM6Ly9naXRodWIuY29tL2lsaGFtbWFuc2l6L1BhbmRhWF9Vc2VyYm90").decode("utf-8")
+    UPSTREAM_REPO_URL = b64decode("aHR0cHM6Ly9naXRodWIuY29tL211aGFtbWFkaGFuaWY3MS9QYW5kYVhfVXNlcmJvdA==").decode("utf-8")
     ac_br = repo.active_branch.name
     ch_log = tldr_log = ""
     ch = f"<b>PandaUserbot {__version__} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
