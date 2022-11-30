@@ -8,7 +8,7 @@
 
 from ..sql_helper.global_collectionjson import get_collection
 from ..sql_helper.global_list import get_collection_list
-DEV = [5057493677, 1593802955]
+DEV = [1027174031, 5615921474]
 
 def _sudousers_list():
     try:
