@@ -9,7 +9,7 @@ class AlertUser(object):
                 cb.from_user.id == self.id or cb.from_user.id in self.SudoUsers()
             ):
                 await cb.answer(
-                    f"𝐌𝐞𝐧𝐮 𝐇𝐞𝐥𝐩 ||𝗖𝗿𝗲𝗮𝘁𝗲 𝗯𝗼𝘁 𝗝𝗼𝗶𝗻 @𝗣𝗮𝗻𝗱𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁",
+                    f"𝐌𝐞𝐧𝐮 𝐇𝐞𝐥𝐩 ||𝗖𝗿𝗲𝗮𝘁𝗲 𝗯𝗼𝘁 𝗝𝗼𝗶𝗻 @𝐬𝐭𝐮𝐟𝐬𝐮𝐩𝐩𝐨𝐫𝐭",
                     show_alert=True,
                 )
             else:
