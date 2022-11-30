@@ -134,7 +134,7 @@ def menu():
         (
             Button.url(
                 "👤 Support 👤",
-                "https://t.me/TEAMSquadUserbotSupport",
+                "https://t.me/stufsupport",
             ),
             Button.inline(
                 f"💎 𝙸𝚗𝚏𝚘",
@@ -144,11 +144,11 @@ def menu():
         (
             Button.url(
                 "❓Source Code❓",
-                "https://github.com/ilhammansiz/PandaX_Userbot",
+                "https://github.com/muhammadhanif71/PandaX_Userbot",
             ),
             Button.url(
                 "#⃣Deploy#⃣",
-                "https://t.me/PandaUserbot/13",
+                "https://t.me/stufchannel,
             ),
         ),
     ]
