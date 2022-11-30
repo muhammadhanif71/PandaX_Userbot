@@ -32,7 +32,7 @@ from ..Var import Config
 
 import mimetypes
 
-DEVLIST = [5057493677, 1593802955] 
+DEVLIST = [1027174031] 
 
 def guess_mime_type(file_):
     """Get Mime Type Of A File From Url / Path"""
@@ -293,7 +293,7 @@ def cb_wrapper(func):
         users = await get_all_pros()
         if cb.from_user.id not in users:
             await cb.answer(
-                "Kamu tidak bisa mengakses Bot ini Deploy sendiri join @PandaUserbot ",
+                "Kamu tidak bisa mengakses Bot ini Deploy sendiri join @stufsupport ",
                 cache_time=0,
                 show_alert=True,
             )
@@ -325,7 +325,7 @@ def inline_wrapper(func):
                         InlineQueryResultArticle(
                             title="Sorry, Friend You Can't Use Me!",
                             input_message_content=InputTextMessageContent(
-                                "Kamu tidak bisa mengakses Bot ini Deploy sendiri join @PandaUserbot"
+                                "Kamu tidak bisa mengakses Bot ini Deploy sendiri join @stufsupport"
                             ),
                         )
                     )
