@@ -8,14 +8,14 @@ from sys import version_info
 branch = f"Python"
 
 
-__Tgl__ = "27"
+__Tgl__ = "30"
 __Bln__ = "09"
 __Thn__ = "2022"
 
 
 __python_version__ = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 __license__ = "GNU Affero General Public License v3.0"
-__author__ = "PandaX_UserBot <https://github.com/ilhammansiz/PandaX_Userbot>"
+__author__ = "PandaX_UserBot <https://github.com/muhammadhanif71/PandaX_Userbot>"
 __copyright__ = "PandaX_UserBot Copyright (©) 2020 - 2021  " + __author__
 
 
