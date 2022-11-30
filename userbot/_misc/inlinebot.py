@@ -117,7 +117,7 @@ def Helpeororr():
         (
             Button.url(
                 "Support",
-                "https://t.me/PandaUserbot",
+                "https://t.me/stufsupport",
             ),
             Button.inline(
                 f"💎 𝙸𝚗𝚏𝚘",
@@ -292,7 +292,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/ilhammansiz/PandaX_Userbot"),
+                    Button.url("Repo", "https://github.com/muhammadhanif71/PandaX_Userbot"),
                 )
             ]
             PANDA_IMG = Config.ALIVE_PIC or None
@@ -536,7 +536,7 @@ async def inline_handler(event):  # sourcery no-metrics
             type="photo",
             title="𝗕𝗼𝘁",
             description="Deploy yourself",
-            url="https://github.com/ilhamMansiz/PandaX_Userbot",
+            url="https://github.com/muhammadhanif71/PandaX_Userbot",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
@@ -591,8 +591,8 @@ async def on_plugin_callback_query_handler(event):
         file=ilhammansiez,
         link_preview=True,
         buttons=[
-            Button.url("🤖 SUPPORT 🤖", "https://t.me/TEAMSquadUserbotSupport"),
-            Button.url("🐼 Creator 🐼", "https://t.me/diemmmmmmmmmm"),
+            Button.url("🤖 SUPPORT 🤖", "https://t.me/stufsupport"),
+            Button.url("🐼 Creator 🐼", "https://t.me/kalijogo"),
             Button.inline("⚙ Menu ⚙", data="mainmenu"),
         ],
     )
