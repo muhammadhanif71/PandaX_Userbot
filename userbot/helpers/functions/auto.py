@@ -220,7 +220,7 @@ async def autobot():
             await mansizbot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
             await mansizbot.send_message(
-            bf, f"PandaX_Userbot Assistant\n\nBy ~ @diemmmmmmmmmm\nSupport ~ @TEAMSquadUserbotSupport ",
+            bf, f"PandaX_Userbot Assistant\n\nBy ~ @kalijogo\nSupport ~ @stufsupport ",
             )
             LOGS.info(f"Ok, Sekarang Buat grupnya ya bangsat")
             try:
